@@ -340,7 +340,7 @@
 
 // CURRENT:
 import { GoogleMap, DirectionsService, DirectionsRenderer, DistanceMatrixService, useJsApiLoader, MarkerF, InfoWindowF } from "@react-google-maps/api";
-import { React, useCallback, useEffect, useState } from "react";
+import { React, useCallback, useEffect, useRef, useState } from "react";
 import {
     Accordion,
     AccordionItem,
@@ -396,15 +396,14 @@ export default function RouteMap () {
         routes: [],
         status: null
     });
-    // const [directionsOptions, setDirectionsOptions] = useState(null);
+    const count = useRef(0);
 
     
-
-  function directionsCallback (directionsOptions) {
+  useEffect(() => {
+    count.current = 0;
+  });
+  const directionsCallback = useCallback((directionsOptions) => {
       console.log('directionsCallback:', directionsOptions);
-      console.log('directionsCallback:', Object.values(directionsOptions));
-      console.log('directionsCallback:', directionsOptions.request);
-      console.log('directionsCallback:', directionsOptions.request.destination);
       console.log('directionsCallback:', directionsOptions.request.destination.query);
 
       // // if (response !== null) {
@@ -420,16 +419,15 @@ export default function RouteMap () {
       // // }
       // return directionsOptions
 
-      if (directionsOptions !== null) {
-        if (directionsOptions.status === 'OK') {
-          setDirectionsOptions(() => (directionsOptions));
-            console.log("dO after setDO directionsCallback:", directionsOptions);
-        } else {
-          console.log('response: ', directionsOptions);
-        }
-      }
-    // }
-  }
+      
+      if (directionsOptions.status === 'OK' && count.current === 0) {
+        count.current += 1;
+        setDirectionsOptions(directionsOptions);
+        console.log("dO after setDO directionsCallback:", directionsOptions);
+      } else {
+        console.log('response: ', directionsOptions);
+      } 
+  }, []);
   
   // function distanceMatrixCallback (response) {
   //     // console.log(response);
@@ -593,13 +591,12 @@ export default function RouteMap () {
                             </InfoWindowF>
                         ) : null
             } */} 
-        
+            
             {
               (
                 directionsOptions.request.origin.query &&
                 directionsOptions.request.destination.query
               ) && (
-              // directionsOptions !== null && (
                 <DirectionsService
                   options={{ 
                     destination: directionsOptions.request.destination.query,
@@ -611,8 +608,6 @@ export default function RouteMap () {
                   onLoad={directionsService => {
                     // console.log('DirectionsService onLoad directionsService: ', directionsService);
                     console.log('DirectionsService:', directionsOptions);
-                    console.log('DirectionsService:', directionsOptions.request);
-                    console.log('DirectionsService:', directionsOptions.request.origin);
                   }}
                   // onUnmount={directionsService => {
                   //   console.log('DirectionsService onUnmount directionsService: ', directionsService)
@@ -622,11 +617,8 @@ export default function RouteMap () {
             }
 
             {
-              // directionsOptions !== null
               directionsOptions.status !== null
               &&
-              // directionsOptions.geocoded_waypoints !== []
-              //  ?
                 (<DirectionsRenderer
                   options={{
                     directions: directionsOptions
@@ -639,7 +631,6 @@ export default function RouteMap () {
                   //   console.log('DirectionsRenderer onUnmount directionsRenderer: ', directionsRenderer)
                   // }}
                 />)
-              //  : null
             }
           </GoogleMap>
         </div>
