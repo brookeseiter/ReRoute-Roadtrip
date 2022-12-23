@@ -100,5 +100,28 @@
 }
 
 .DirectionsAccordion {
-  text-align: right;
+  text-align: left;
+}
+
+.map-settings #direction-example {
+  flex-direction: row;
+  float: left;
+}
+
+.map-settings #panel {
+  flex-direction: row;
+  display:inline-block;
+}
+
+#direction-example {
+  text-align: left !important;
+  /* flex-direction: row; */
+}
+
+#panel {
+  width: 50%;
+  height: 400px;
+  text-align: left;
+  /* flex-direction: row; */
+  /* flex-direction: row-reverse; */
 }

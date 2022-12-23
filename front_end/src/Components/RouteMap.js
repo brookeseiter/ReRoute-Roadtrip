@@ -314,6 +314,7 @@ import "@reach/accordion/styles.css";
 
 const Directions = props => {
   const [directions, setDirections] = useState();
+  const [panel, setPanel] = useState();
   const { origin, destination, waypoints } = props;
   const count = useRef(0);
 
@@ -331,25 +332,35 @@ const Directions = props => {
     if (status === "OK" && count.current === 0) {
       count.current += 1;
       setDirections(result);
+      console.log(directions);
+      console.log(result);
     }
   };
+  console.log(directions);
 
   return (
-    <>
-      <DirectionsService
-        options={{
-          destination,
-          origin,
-          travelMode: "DRIVING",
-          waypoints,
-          optimizeWaypoints: true
-        }}
-        callback={directionsCallback}
-      />
-      {directions && (
-        <DirectionsRenderer directions={directions} options={options} />
-      )}
-    </>
+     <div className="Directions">
+      {/* <div className="DirectionsAccordion">
+      <DirectionsAccordion origin={origin} destination={destination} waypoints={waypoints} directions={directions} />
+      </div> */}
+        <DirectionsService
+          options={{
+            destination,
+            origin,
+            travelMode: "DRIVING",
+            waypoints,
+            optimizeWaypoints: true
+          }}
+          callback={directionsCallback}
+        />
+        {directions && (
+          <DirectionsRenderer 
+            directions={directions} 
+            options={options} 
+            panel={ document.getElementById('panel') }/>
+        )}
+        {/* <div id="panel"></div> */}
+    </div>
   );
 };
 
@@ -456,7 +467,7 @@ export default function RouteMap () {
         id='direction-example'
         mapContainerStyle={{
           height: '400px',
-          width: '50%'
+          width: '500px'
         }}
         zoom={10}
         center={
@@ -472,7 +483,7 @@ export default function RouteMap () {
       >
         {origin !== '' &&
           destination !== '' && (
-            <Directions origin={origin} destination={destination} waypoints={waypoints}/>
+            <Directions origin={origin} destination={destination} waypoints={waypoints} />
           )}
           {stopsObj.map((stopObj) => (
                 <MarkerF  
@@ -502,13 +513,14 @@ export default function RouteMap () {
                         ) : null
             }
       </GoogleMap>): null}
+      <div id="panel"></div>
       </div>
     </div>
   );
 };
 
 
-function DirectionsAccordion ({ origin, destination, waypoints }) {
+function DirectionsAccordion ({ origin, destination, waypoints, directions }) {
 
     return (
         <div className="DirectionsAccordion">
