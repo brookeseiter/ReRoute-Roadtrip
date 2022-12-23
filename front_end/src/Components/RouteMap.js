@@ -314,8 +314,7 @@ import "@reach/accordion/styles.css";
 
 const Directions = props => {
   const [directions, setDirections] = useState();
-  const [panel, setPanel] = useState();
-  const { origin, destination, waypoints } = props;
+  const { origin, destination, waypoints, getTextDirections } = props;
   const count = useRef(0);
 
   const options = {
@@ -332,17 +331,15 @@ const Directions = props => {
     if (status === "OK" && count.current === 0) {
       count.current += 1;
       setDirections(result);
-      console.log(directions);
-      console.log(result);
     }
   };
-  console.log(directions);
+
+  if (directions !== undefined) {
+    getTextDirections(directions);
+  }
 
   return (
      <div className="Directions">
-      {/* <div className="DirectionsAccordion">
-      <DirectionsAccordion origin={origin} destination={destination} waypoints={waypoints} directions={directions} />
-      </div> */}
         <DirectionsService
           options={{
             destination,
@@ -357,9 +354,8 @@ const Directions = props => {
           <DirectionsRenderer 
             directions={directions} 
             options={options} 
-            panel={ document.getElementById('panel') }/>
+            panel={ document.getElementById('panel') } />
         )}
-        {/* <div id="panel"></div> */}
     </div>
   );
 };
@@ -374,6 +370,7 @@ export default function RouteMap () {
   const [inputs, setInputs] = useState({});
   const [mapData, setMapData] =useState([]);
   const [selected, setSelected] = useState(null);
+  const [textDirections, setTextDirections] = useState(null);
   let [selectedWaypoints, setSelectedWaypoints] = useState([]);
   let [origin, setOrigin] = useState('');
   let [destination, setDestination] = useState('');
@@ -455,8 +452,13 @@ export default function RouteMap () {
             Build Route
           </button>
           {
-            origin !== '' && (
-              <DirectionsAccordion origin={origin} destination={destination} waypoints={selectedWaypoints} />
+            (origin !== '' && textDirections !== null) && (
+              <DirectionsAccordion 
+                origin={origin} 
+                destination={destination} 
+                waypoints={selectedWaypoints} 
+                textDirections={textDirections}
+              />
             )
           }
         </div>
@@ -483,7 +485,12 @@ export default function RouteMap () {
       >
         {origin !== '' &&
           destination !== '' && (
-            <Directions origin={origin} destination={destination} waypoints={waypoints} />
+            <Directions 
+              origin={origin} 
+              destination={destination} 
+              waypoints={waypoints} 
+              getTextDirections={setTextDirections} 
+            />
           )}
           {stopsObj.map((stopObj) => (
                 <MarkerF  
@@ -520,7 +527,26 @@ export default function RouteMap () {
 };
 
 
-function DirectionsAccordion ({ origin, destination, waypoints, directions }) {
+function DirectionsAccordion ({ origin, destination, waypoints, textDirections }) {
+  // let [editableTextDirections, setEditableTextDirections] = useState(textDirections);
+  let editableTextDirections = textDirections;
+  let routes = editableTextDirections.routes;
+ 
+  // console.log(editableTextDirections);
+  // console.log(routes);
+
+  for (const route of routes) {
+    let routeDetails = Object.values(route);
+    let legs = routeDetails[2];
+    for (const leg of legs) {
+      let steps = leg.steps;
+      console.log(steps);
+      for (const step of steps) {
+        let directionTurns = step.instructions;
+        console.log(directionTurns);
+      }
+    }
+  }
 
     return (
         <div className="DirectionsAccordion">
