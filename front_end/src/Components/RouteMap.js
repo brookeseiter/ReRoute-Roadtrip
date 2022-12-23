@@ -560,8 +560,6 @@ import "@reach/accordion/styles.css";
 const Directions = props => {
   const [directions, setDirections] = useState();
   const { origin, destination, waypoints } = props;
-  // const waypoints = useRef([ origin, destination ]);
-  // const [waypoints, setWaypoints] = useState([]);
   const count = useRef(0);
 
   const options = {
@@ -578,8 +576,8 @@ const Directions = props => {
   const directionsCallback = (result, status) => {
     if (status === "OK" && count.current === 0) {
       count.current += 1;
+      // setDirections((prev) => ({...prev, result}));
       setDirections(result);
-      console.log('directions:', directions);
       console.log('result:', result);
     }
   };
@@ -637,18 +635,16 @@ export default function RouteMap () {
   const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
 
   function addRouteClick () {
-    const selectedWaypoint = {
+    let selectedWaypoint = {
       location: {
         lat: selected.value.stop_lat,
         lng: selected.value.stop_lng
       },
       stopover: true,
     };
-    setWaypoints([selectedWaypoint]);
-    console.log(waypoints);
-    // waypoints.push(selectedWaypoint);
-    // console.log(waypoints);
+    setWaypoints(waypoints => [...waypoints, selectedWaypoint]);
   }
+  console.log(waypoints);
   
   return (
     <div className='map'>
