@@ -301,43 +301,6 @@
   
 // }
 
-// function DirectionsAccordion ({ directionsOptions }) {
-//     const origin_address = directionsOptions.response.request.origin.query;
-//     const destination_address = directionsOptions.response.request.destination.query;
-//     // const waypoint_coords = directionsOptions.response.request.waypoints[0].location;
-
-//     return (
-//         <div className="DirectionsAccordion">
-//             <Accordion collapsible multiple>
-//                 <AccordionItem>
-//                     <h3>
-//                         <AccordionButton>Origin</AccordionButton>
-//                     </h3>
-//                     <AccordionPanel>
-//                         { origin_address }
-//                     </AccordionPanel>
-//                 </AccordionItem>
-//                 {/* <AccordionItem>
-//                     <h3>
-//                         <AccordionButton>Origin</AccordionButton>
-//                     </h3>
-//                     <AccordionPanel>
-//                         { waypoint_coords }
-//                     </AccordionPanel>
-//                 </AccordionItem> */}
-//                 <AccordionItem>
-//                     <h3>
-//                         <AccordionButton>Destination</AccordionButton>
-//                     </h3>
-//                     <AccordionPanel>
-//                         { destination_address }
-//                     </AccordionPanel>
-//                 </AccordionItem>
-//             </Accordion>
-//         </div>
-//     )
-// }
-
 // CURRENT:
 import { GoogleMap, DirectionsService, DirectionsRenderer, DistanceMatrixService, useJsApiLoader, MarkerF, InfoWindowF } from "@react-google-maps/api";
 import { React, useCallback, useEffect, useRef, useState } from "react";
@@ -368,7 +331,6 @@ const Directions = props => {
     if (status === "OK" && count.current === 0) {
       count.current += 1;
       setDirections(result);
-      console.log('result:', result);
     }
   };
 
@@ -390,15 +352,18 @@ const Directions = props => {
     </>
   );
 };
+
 const center = {
   lat: 37.733795, 
   lng: -122.446747
 };
+
 export default function RouteMap () {
   const [libraries] = useState(['places']);
   const [inputs, setInputs] = useState({});
   const [mapData, setMapData] =useState([]);
   const [selected, setSelected] = useState(null);
+  let [selectedWaypoints, setSelectedWaypoints] = useState([]);
   let [origin, setOrigin] = useState('');
   let [destination, setDestination] = useState('');
   let [waypoints, setWaypoints] = useState([]);
@@ -412,7 +377,6 @@ export default function RouteMap () {
     const value = e.target.value;
     setInputs(values => ({...values, [name]: value}));
   }
-  console.log(inputs);
 
   function onClick () {
     setOrigin(inputs.origin);
@@ -438,8 +402,8 @@ export default function RouteMap () {
       stopover: true,
     };
     setWaypoints(waypoints => [...waypoints, selectedWaypoint]);
+    setSelectedWaypoints(selectedWaypoints => [...selectedWaypoints, selected]);
   }
-  console.log(waypoints);
   
   return (
     <div className='map'>
@@ -476,18 +440,23 @@ export default function RouteMap () {
               />
             </div>
           </div>
+          <button className='btn btn-primary' type='button' onClick={onClick}>
+            Build Route
+          </button>
+          {
+            origin !== '' && (
+              <DirectionsAccordion origin={origin} destination={destination} waypoints={selectedWaypoints} />
+            )
+          }
         </div>
-        <button className='btn btn-primary' type='button' onClick={onClick}>
-          Build Route
-        </button>
         {
           origin !== '' ?
         
         (<GoogleMap
-        id="direction-example"
+        id='direction-example'
         mapContainerStyle={{
           height: '400px',
-          width: '100%'
+          width: '50%'
         }}
         zoom={10}
         center={
@@ -537,6 +506,45 @@ export default function RouteMap () {
     </div>
   );
 };
+
+
+function DirectionsAccordion ({ origin, destination, waypoints }) {
+
+    return (
+        <div className="DirectionsAccordion">
+          <Accordion collapsible multiple>
+            <AccordionItem>
+              <h3>
+                <AccordionButton>Origin</AccordionButton>
+              </h3>
+              <AccordionPanel>
+                {origin}
+              </AccordionPanel>
+            </AccordionItem>
+            {waypoints.map((waypoint) => (
+              <AccordionItem key={waypoint.key}>
+                <h3>
+                  <AccordionButton>{waypoint.value.stop_name}</AccordionButton>
+                </h3>
+                <AccordionPanel>
+                  <p>Category: {waypoint.value.stop_category}</p>
+                  <p>Latitude: {waypoint.value.stop_lat}</p>
+                  <p>Longitude: {waypoint.value.stop_lng}</p>
+                </AccordionPanel>
+              </AccordionItem>
+            ))}
+            <AccordionItem>
+              <h3>
+                <AccordionButton>Destination</AccordionButton>
+              </h3>
+              <AccordionPanel>
+                {destination}
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+        </div>
+    )
+}
 
 
 
