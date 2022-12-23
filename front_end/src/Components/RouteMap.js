@@ -85,14 +85,14 @@
 
 //   function onClick () {
 //     if (selected) {
-//       let selectedWaypoints = [];
-//       const selectedWaypoint = {
-//         location: {
-//           lat: selected.value.stop_lat,
-//           lng: selected.value.stop_lng
-//         },
-//         stopover: true,
-//       };
+      // let selectedWaypoints = [];
+      // const selectedWaypoint = {
+      //   location: {
+      //     lat: selected.value.stop_lat,
+      //     lng: selected.value.stop_lng
+      //   },
+      //   stopover: true,
+      // };
 //       console.log(selectedWaypoint);
 //       selectedWaypoints.push(selectedWaypoint);
 //       console.log(selectedWaypoints);
@@ -201,34 +201,34 @@
 //             //   console.log('DirectionsRenderer onUnmount map: ', map)
 //             // }}
 //           >
-//             {stopsObj.map((stopObj) => (
-//                 <MarkerF  
-//                     key={stopObj.key}
-//                     position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
-//                     onClick={() => {
-//                         setSelected(stopObj);
-//                         console.log(stopObj);
-//                     }}
-//                     visible={true}
-//                 />
-//             ))}
-//             {selected ? (
-//                             <InfoWindowF
-//                                 selected={selected}
-//                                 position={{ lat: selected.value.stop_lat, lng: selected.value.stop_lng }} 
-//                                 onCloseClick={() => {
-//                                     setSelected(null);
-//                                 }}
-//                             >
-//                                 <div>
-//                                     <h2>{selected.value.stop_name}</h2>
-//                                     <p>Category: {selected.value.stop_category}</p>
-//                                     {/* <button onClick={(stobObj) => {addStopToRoute(stopObj)}}>Add to Route</button> */}
-//                                     <button onClick={onClick}>Add to Route</button>
-//                                 </div>
-//                             </InfoWindowF>
-//                         ) : null
-//             }
+            // {stopsObj.map((stopObj) => (
+            //     <MarkerF  
+            //         key={stopObj.key}
+            //         position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
+            //         onClick={() => {
+            //             setSelected(stopObj);
+            //             console.log(stopObj);
+            //         }}
+            //         visible={true}
+            //     />
+            // ))}
+            // {selected ? (
+            //                 <InfoWindowF
+            //                     selected={selected}
+            //                     position={{ lat: selected.value.stop_lat, lng: selected.value.stop_lng }} 
+            //                     onCloseClick={() => {
+            //                         setSelected(null);
+            //                     }}
+            //                 >
+            //                     <div>
+            //                         <h2>{selected.value.stop_name}</h2>
+            //                         <p>Category: {selected.value.stop_category}</p>
+            //                         {/* <button onClick={(stobObj) => {addStopToRoute(stopObj)}}>Add to Route</button> */}
+            //                         <button onClick={onClick}>Add to Route</button>
+            //                     </div>
+            //                 </InfoWindowF>
+            //             ) : null
+            // }
 
 //             {
 //               (
@@ -355,23 +355,23 @@ import "@reach/accordion/styles.css";
 // };
 // export default function RouteMap () {
     // const [libraries] = useState(['places']);
-//     const [mapData, setMapData] =useState([]);
-//     const [selected, setSelected] = useState(null);
+    // const [mapData, setMapData] =useState([]);
+    // const [selected, setSelected] = useState(null);
 //     const [inputs, setInputs] = useState({});
     // const { isLoaded } = useJsApiLoader({
     //     googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     //     libraries
     // });
 
-//     useEffect(() => {
-//         fetch('/api/stops/map_data')
-//             .then((response) => response.json())
-//             .then((data) => {
-//                 setMapData(data);
-//             });
-//     }, []);
+    // useEffect(() => {
+    //     fetch('/api/stops/map_data')
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             setMapData(data);
+    //         });
+    // }, []);
 
-//     const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
+    // const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
 //     // console.log(stopsObj);
     
 //     const [directionsOptions, setDirectionsOptions] = useState({
@@ -559,9 +559,9 @@ import "@reach/accordion/styles.css";
 
 const Directions = props => {
   const [directions, setDirections] = useState();
-  const { origin, destination } = props;
+  const { origin, destination, waypoints } = props;
   // const waypoints = useRef([ origin, destination ]);
-  const [waypoints, setWaypoints] = useState([]);
+  // const [waypoints, setWaypoints] = useState([]);
   const count = useRef(0);
 
   const options = {
@@ -574,7 +574,7 @@ const Directions = props => {
   
   useEffect(() => {
     count.current = 0;
-  }, [origin.lat, origin.lng, destination.lat, destination.lng]);
+  }, [origin.lat, origin.lng, destination.lat, destination.lng, waypoints]);
   const directionsCallback = (result, status) => {
     if (status === "OK" && count.current === 0) {
       count.current += 1;
@@ -605,8 +605,11 @@ const Directions = props => {
 export default function RouteMap () {
   const [libraries] = useState(['places']);
   const [inputs, setInputs] = useState({});
+  const [mapData, setMapData] =useState([]);
+  const [selected, setSelected] = useState(null);
   let [origin, setOrigin] = useState(null);
   let [destination, setDestination] = useState(null);
+  let [waypoints, setWaypoints] = useState([]);
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries
@@ -622,6 +625,31 @@ export default function RouteMap () {
     setOrigin({lat: 36.12342387261906, lng: -115.31629700883283});
     setDestination({lat: 41.58747224099601, lng: -109.27087423113984});
   }
+
+  useEffect(() => {
+    fetch('/api/stops/map_data')
+        .then((response) => response.json())
+        .then((data) => {
+            setMapData(data);
+        });
+  }, []);
+
+  const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
+
+  function addRouteClick () {
+    const selectedWaypoint = {
+      location: {
+        lat: selected.value.stop_lat,
+        lng: selected.value.stop_lng
+      },
+      stopover: true,
+    };
+    setWaypoints([selectedWaypoint]);
+    console.log(waypoints);
+    // waypoints.push(selectedWaypoint);
+    // console.log(waypoints);
+  }
+  
   return (
     <div className='map'>
       <div className='map-settings'>
@@ -691,8 +719,35 @@ export default function RouteMap () {
           origin.lng !== undefined &&
           destination.lat !== undefined &&
           destination.lng !== undefined && (
-            <Directions origin={origin} destination={destination} />
+            <Directions origin={origin} destination={destination} waypoints={waypoints}/>
           )}
+          {stopsObj.map((stopObj) => (
+                <MarkerF  
+                    key={stopObj.key}
+                    position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
+                    onClick={() => {
+                        setSelected(stopObj);
+                        console.log(stopObj);
+                    }}
+                    visible={true}
+                />
+            ))}
+            {selected ? (
+                            <InfoWindowF
+                                selected={selected}
+                                position={{ lat: selected.value.stop_lat, lng: selected.value.stop_lng }} 
+                                onCloseClick={() => {
+                                    setSelected(null);
+                                }}
+                            >
+                                <div>
+                                    <h2>{selected.value.stop_name}</h2>
+                                    <p>Category: {selected.value.stop_category}</p>
+                                    <button onClick={addRouteClick}>Add to Route</button>
+                                </div>
+                            </InfoWindowF>
+                        ) : null
+            }
       </GoogleMap>): null}
       </div>
     </div>
