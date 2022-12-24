@@ -140,6 +140,7 @@ def stop_reviews(stop_id):
             Review.review_id,
             Review.rating,
             Review.content,
+            Stop.stop_id,
             Stop.stop_name,
             Stop.stop_lat,
             Stop.stop_lng,
@@ -170,14 +171,15 @@ def stop_reviews_to_dict(lst):
     for review in lst:
         data = {
             'review_id': review[0],
-            'review_rating': review[1],
-            'review_content': review[2],
-            'stop_name': review[3],
-            'stop_lat': review[4],
-            'stop_lng': review[5],
-            'stop_category': review[6],
-            'user_id': review[7],
-            'username': review[8]
+            'rating': review[1],
+            'content': review[2],
+            'stop_id': review[3],
+            'stop_name': review[4],
+            'stop_lat': review[5],
+            'stop_lng': review[6],
+            'stop_category': review[7],
+            'user_id': review[8],
+            'username': review[9]
         }
         data_list.append(data)
     return  data_list
