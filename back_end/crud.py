@@ -129,14 +129,38 @@ def stop_reviews(stop_id):
     #             .group_by(Review.review_id, Stop.stop_id)
     #         ).all() 
     # below returns a list of objects that contain review_id, rating, user_id, stop_id       
-    return(db.session.query(Review)
-                .join(Stop)
-                .filter(Stop.stop_id == stop_id)
-                .group_by(Review.review_id, Stop.stop_id)
-            ).all()
-
-
-
+    # return(db.session.query(Review)
+    #             .join(Stop)
+    #             .filter(Stop.stop_id == stop_id)
+    #             .group_by(Review.review_id, Stop.stop_id)
+    #         ).all()
+    return (
+        db.session.query(
+            Review.review_id,
+            Review.rating,
+            Review.content,
+            Stop.stop_name,
+            Stop.stop_lat,
+            Stop.stop_lng,
+            Stop.stop_category,
+            User.user_id,
+            User.username
+        )
+        .join(
+            Stop, 
+            Stop.stop_id 
+            == Review.stop_id
+        )
+        .join(
+            User,
+            User.user_id
+            == Review.user_id
+        )
+        .filter(
+            Stop.stop_id == stop_id
+        )
+        .all()
+    )
 
 
 # def create_route(user, num_stops, route_name, total_miles, total_time, 
