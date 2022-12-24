@@ -122,10 +122,17 @@ def get_reviews_by_stop(stop_id):
 def stop_reviews(stop_id):
     """Returns a lit of sqlalchemy rows with review information for a stop."""
 
-    return(db.session.query(Review.review_id, Review.rating, Review.content, Review.user_id)
+    # below returns a list of tuples with review_id, review_rating, content, and user_id, stop_id
+    # return(db.session.query(Review.review_id, Review.rating, Review.content, Review.user_id, Review.stop_id) 
+    #             .join(Stop)
+    #             .filter(Stop.stop_id == stop_id)
+    #             .group_by(Review.review_id, Stop.stop_id)
+    #         ).all() 
+    # below returns a list of objects that contain review_id, rating, user_id, stop_id       
+    return(db.session.query(Review)
                 .join(Stop)
                 .filter(Stop.stop_id == stop_id)
-                .group_by(Review.review_id)
+                .group_by(Review.review_id, Stop.stop_id)
             ).all()
 
 
