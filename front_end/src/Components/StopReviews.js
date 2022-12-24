@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const StopReviews = ({ setUpdateReviews }) => {
+const StopReviews = ({ updateReviews }) => {
     let { stop_id } = useParams(); 
     const [reviews, setReviews] = useState([]); 
 
@@ -14,7 +14,7 @@ const StopReviews = ({ setUpdateReviews }) => {
 
     const reviewsObj = Object.entries(reviews).map(([key, value]) => ({key, value}))
     console.log(reviewsObj);
-
+    
     return ( 
         <div className="StopReviewDetails">
             <article>
@@ -34,3 +34,4 @@ const StopReviews = ({ setUpdateReviews }) => {
 }
  
 export default StopReviews;
+
