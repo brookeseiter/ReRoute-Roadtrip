@@ -401,7 +401,7 @@ export default function RouteMap () {
 
   const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
 
-  function addRouteClick () {
+  function addRouteStop () {
     let selectedWaypoint = {
       location: {
         lat: selected.value.stop_lat,
@@ -411,6 +411,10 @@ export default function RouteMap () {
     };
     setWaypoints(waypoints => [...waypoints, selectedWaypoint]);
     setSelectedWaypoints(selectedWaypoints => [...selectedWaypoints, selected]);
+  }
+
+  function deleteRouteStop () {
+    console.log('deleted');
   }
   
   return (
@@ -514,7 +518,8 @@ export default function RouteMap () {
                                 <div>
                                     <h2>{selected.value.stop_name}</h2>
                                     <p>Category: {selected.value.stop_category}</p>
-                                    <button onClick={addRouteClick}>Add to Route</button>
+                                    <button onClick={addRouteStop}>Add to Route</button>
+                                    <button onClick={deleteRouteStop}>Remove from Route</button>
                                 </div>
                             </InfoWindowF>
                         ) : null
@@ -529,24 +534,29 @@ export default function RouteMap () {
 
 function DirectionsAccordion ({ origin, destination, waypoints, textDirections }) {
   // let [editableTextDirections, setEditableTextDirections] = useState(textDirections);
-  let editableTextDirections = textDirections;
-  let routes = editableTextDirections.routes;
+  // let editableTextDirections = textDirections;
+  // let routes = editableTextDirections.routes;
+  // let directionsList = [];
  
   // console.log(editableTextDirections);
   // console.log(routes);
 
-  for (const route of routes) {
-    let routeDetails = Object.values(route);
-    let legs = routeDetails[2];
-    for (const leg of legs) {
-      let steps = leg.steps;
-      console.log(steps);
-      for (const step of steps) {
-        let directionTurns = step.instructions;
-        console.log(directionTurns);
-      }
-    }
-  }
+
+  // for (const route of routes) {
+  //   let routeDetails = Object.values(route);
+  //   let legs = routeDetails[2];
+  //   for (const leg of legs) {
+  //     let steps = leg.steps;
+  //     console.log(steps);
+  //     for (const step of steps) {
+  //       let directionTurns = step.instructions;
+  //       // console.log(directionTurns);
+  //       directionsList.push(directionTurns);
+  //       // console.log(directionsList);
+  //     }
+  //   }
+  // }
+  
 
     return (
         <div className="DirectionsAccordion">
