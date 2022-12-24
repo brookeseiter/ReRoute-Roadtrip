@@ -166,9 +166,13 @@ def delete_stop(stop_id):
 def view_stop_reviews(stop_id):
     """View a stop's reviews."""
 
-    stop_reviews = crud.get_reviews_by_stop(stop_id)
+    # stop_reviews = crud.get_reviews_by_stop(stop_id)
 
-    return jsonify({review.review_id: review.to_dict() for review in stop_reviews})
+    # return jsonify({review.review_id: review.to_dict() for review in stop_reviews})
+    stop_reviews = crud.stop_reviews(stop_id)
+    stop_reviews_dict = crud.stop_reviews_to_dict(stop_reviews)
+
+    return jsonify({stop_review['review_id']: stop_review for stop_review in stop_reviews_dict})
 
 @app.route('/api/stops/<stop_id>/review', methods = ['GET', 'POST'])
 def create_review(stop_id):

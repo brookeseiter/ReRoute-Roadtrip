@@ -1,6 +1,7 @@
 """CRUD operations."""
 
 from model import db, User, Stop, Review, connect_to_db
+import json
 
 
 def create_user(fname, lname, email, username, password, phone_num):
@@ -161,6 +162,25 @@ def stop_reviews(stop_id):
         )
         .all()
     )
+
+def stop_reviews_to_dict(lst):
+
+    data_list = []
+
+    for review in lst:
+        data = {
+            'review_id': review[0],
+            'review_rating': review[1],
+            'review_content': review[2],
+            'stop_name': review[3],
+            'stop_lat': review[4],
+            'stop_lng': review[5],
+            'stop_category': review[6],
+            'user_id': review[7],
+            'username': review[8]
+        }
+        data_list.append(data)
+    return  data_list
 
 
 # def create_route(user, num_stops, route_name, total_miles, total_time, 

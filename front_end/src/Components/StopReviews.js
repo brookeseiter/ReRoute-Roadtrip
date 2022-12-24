@@ -13,6 +13,7 @@ const StopReviews = ({ setUpdateReviews }) => {
     }, [stop_id]); 
 
     const reviewsObj = Object.entries(reviews).map(([key, value]) => ({key, value}))
+    console.log(reviewsObj);
 
     return ( 
         <div className="StopReviewDetails">
