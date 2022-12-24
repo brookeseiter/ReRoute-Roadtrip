@@ -414,7 +414,25 @@ export default function RouteMap () {
   }
 
   function deleteRouteStop () {
-    console.log('deleted');
+
+    const routeWaypointCoords = {
+      lat: selected.value.stop_lat,
+      lng: selected.value.stop_lng
+    };
+
+    const indexOfRouteWaypoint = waypoints.findIndex(waypoint => {
+      return waypoint.location.lat === routeWaypointCoords.lat;
+    });
+
+    waypoints.splice(indexOfRouteWaypoint, 1);
+    setWaypoints(waypoints => [...waypoints]);
+
+    const indexOfAccordionWaypoint = selectedWaypoints.findIndex(selectedWaypoint => {
+      return selectedWaypoint.value.stop_lat === routeWaypointCoords.lat;
+    });
+    
+    selectedWaypoints.splice(indexOfAccordionWaypoint, 1);
+    setSelectedWaypoints(selectedWaypoints => [...selectedWaypoints]);
   }
   
   return (
@@ -569,7 +587,7 @@ function DirectionsAccordion ({ origin, destination, waypoints, textDirections }
                 {origin}
               </AccordionPanel>
             </AccordionItem>
-            {waypoints.map((waypoint) => (
+            {waypoints.map((waypoint) => ( 
               <AccordionItem key={waypoint.key}>
                 <h3>
                   <AccordionButton>{waypoint.value.stop_name}</AccordionButton>
