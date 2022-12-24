@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const StopReviews = () => {
+const StopReviews = ({ setUpdateReviews }) => {
     let { stop_id } = useParams(); 
     const [reviews, setReviews] = useState([]); 
 

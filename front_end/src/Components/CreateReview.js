@@ -1,13 +1,9 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const CreateReview = ({ onQuery }) => {
+const CreateReview = ({ setUpdateReviews }) => {
     let { stop_id } = useParams(); 
     const [inputs, setInputs] = useState({});
-
-    const handleInput = (e) => {
-        onQuery(e.target.value);
-    }
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -42,6 +38,7 @@ const CreateReview = ({ onQuery }) => {
         console.log('handleSubmit triggered');
         console.log(inputs);
         console.log(body);
+        setUpdateReviews(body);
     }
 
     return ( 
@@ -55,7 +52,6 @@ const CreateReview = ({ onQuery }) => {
                         name="rating"
                         value={inputs.rating || ""}
                         onChange={handleChange}
-                        onInput={handleInput}
                     />
                     <label>Review</label>
                     <input 
@@ -64,7 +60,6 @@ const CreateReview = ({ onQuery }) => {
                         name="content"
                         value={inputs.content || ""}
                         onChange={handleChange} 
-                        onInput={handleInput}
                     />
                     <button>Create Review</button>
                 </form>
