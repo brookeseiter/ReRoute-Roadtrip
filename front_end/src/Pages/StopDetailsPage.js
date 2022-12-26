@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import CreateReview from "../Components/CreateReview";
 import StopReviews from "../Components/StopReviews";
 
 const StopDetails = () => {
     let { stop_id } = useParams(); 
     const [stop, setStop] = useState([]); 
-    // const [updateReviews, setUpdateReviews] = useState(false);
     const [updateRating, setUpdateRating] = useState('');
 
     const handleRatingChange = avgRating => {
+        console.log(avgRating);
         setUpdateRating(avgRating);
     }
-    console.log(updateRating);
-
 
     useEffect(() => {
         fetch(`/api/stops/${stop_id}`) 
@@ -52,27 +49,27 @@ const StopDetails = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                // setUpdateReviews(true);
+                setUpdateRating(updateRating);
             })
             .catch(error => console.log(error));
-
-        
         console.log('handleSubmit triggered');
         console.log(inputs);
         console.log(body);
-        setUpdateRating(true);
     }
-
+    
     return ( 
         <div className="StopPage">
             <article>
                 <h2>{ stop.stop_name }</h2>
-                <p>Stop Category: { stop.stop_category }</p>
-                <p>Stop Latitude: { stop.stop_lat }</p>
-                <p>Stop Longitude: { stop.stop_lng }</p>
+                    <p>Stop Category: { stop.stop_category }</p>
+                    <p>Stop Latitude: { stop.stop_lat }</p>
+                    <p>Stop Longitude: { stop.stop_lng }</p>
                 <br></br>
-                <p>Rating: { updateRating }</p>
-                {/* <CreateReview setUpdateReviews={setUpdateReviews}/> */}
+                    {
+                        updateRating  ?
+                        (<p>Rating: { updateRating }</p>) : null
+                    }
+                <br></br>
             <div className="CreateReview" onSubmit={handleSubmit}>
                 <h2>Leave a Review</h2>
                     <form className="CreateReviewForm">
@@ -94,9 +91,9 @@ const StopDetails = () => {
                         />
                         <button onClick={() => setUpdateRating(true)}>Create Review</button>
                     </form>
-             </div>
+            </div>
             <br></br>
-            <StopReviews handleRatingChange={handleRatingChange} />
+                <StopReviews handleRatingChange={handleRatingChange} />
             </article>
         </div>
      );
