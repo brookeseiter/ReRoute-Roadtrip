@@ -276,13 +276,14 @@ export default function RouteMap () {
                         setSelected(stopObj);
                         console.log(stopObj);
                     }}
-                    visible={true}
+                    // optimized={false}
+                    // visible={true}
                 />
             ))}
             {selected ? (
                             <InfoWindowF
                                 selected={selected}
-                                position={{ lat: selected.value.stop_lat, lng: selected.value.stop_lng }} 
+                                position={{ lat: selected.value.stop_lat + 0.5, lng: selected.value.stop_lng}} 
                                 onCloseClick={() => {
                                     setSelected(null);
                                 }}
