@@ -253,6 +253,9 @@ export default function RouteMap () {
                         ) : null
             }
       </GoogleMap>): null}
+      <div className="route-info">
+        <p>Total Distance: {totalDist} mi</p>
+      </div>
       <div id="panel"></div>
       </div>
     </div>
