@@ -33,7 +33,11 @@ const Directions = props => {
         const legDist = parseInt(directionLeg.distance.text.slice(0, -3));
         distList.push(legDist);
       }
-      handleDistChange(distList);
+      let distSum = 0;
+      distList.forEach( num => {
+        distSum += num;
+      });
+      handleDistChange(distSum);
     }
   };
 
@@ -74,17 +78,17 @@ export default function RouteMap () {
   let [origin, setOrigin] = useState('');
   let [destination, setDestination] = useState('');
   let [waypoints, setWaypoints] = useState([]);
-  const [totalDistList, setTotalDistList] = useState([]);
+  const [totalDist, setTotalDist] = useState(null);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries
   });
 
-  const handleDistChange = distList => {
-    setTotalDistList(distList);
+  const handleDistChange = distSum => {
+    setTotalDist(distSum);
   }
-  console.log(totalDistList);
+  console.log(totalDist);
 
   const handleChange = (e) => {
     const name = e.target.name;
