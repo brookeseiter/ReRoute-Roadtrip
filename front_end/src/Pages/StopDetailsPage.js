@@ -6,7 +6,14 @@ import StopReviews from "../Components/StopReviews";
 const StopDetails = () => {
     let { stop_id } = useParams(); 
     const [stop, setStop] = useState([]); 
-    const [updateReviews, setUpdateReviews] = useState(false);
+    // const [updateReviews, setUpdateReviews] = useState(false);
+    const [updateRating, setUpdateRating] = useState('');
+
+    const handleRatingChange = avgRating => {
+        setUpdateRating(avgRating);
+    }
+    console.log(updateRating);
+
 
     useEffect(() => {
         fetch(`/api/stops/${stop_id}`) 
@@ -45,7 +52,7 @@ const StopDetails = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                setUpdateReviews(true);
+                // setUpdateReviews(true);
             })
             .catch(error => console.log(error));
 
@@ -53,7 +60,7 @@ const StopDetails = () => {
         console.log('handleSubmit triggered');
         console.log(inputs);
         console.log(body);
-        setUpdateReviews(true);
+        setUpdateRating(true);
     }
 
     return ( 
@@ -64,6 +71,7 @@ const StopDetails = () => {
                 <p>Stop Latitude: { stop.stop_lat }</p>
                 <p>Stop Longitude: { stop.stop_lng }</p>
                 <br></br>
+                <p>Rating: { updateRating }</p>
                 {/* <CreateReview setUpdateReviews={setUpdateReviews}/> */}
             <div className="CreateReview" onSubmit={handleSubmit}>
                 <h2>Leave a Review</h2>
@@ -84,11 +92,11 @@ const StopDetails = () => {
                             value={inputs.content || ""}
                             onChange={handleChange} 
                         />
-                        <button onClick={() => setUpdateReviews(true)}>Create Review</button>
+                        <button onClick={() => setUpdateRating(true)}>Create Review</button>
                     </form>
              </div>
             <br></br>
-            <StopReviews updateReviews={updateReviews} />
+            <StopReviews handleRatingChange={handleRatingChange} />
             </article>
         </div>
      );
