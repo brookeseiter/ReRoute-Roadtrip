@@ -29,8 +29,6 @@ export default function RouteMap () {
     libraries
     // region: 'US'
   });
-  console.log(isLoaded);
-  console.log(origin);
 
   const handleDistChange = distSum => {
     setTotalDist(distSum);
@@ -227,64 +225,25 @@ const Directions = props => {
 
   const directionsCallback = (result, status) => {
     if (status === "OK" && count.current === 0) {
+      const distList = [];
+      let totTime = 0;
       count.current += 1;
       setDirections(result);
-      console.log(result);
-      const distList = [];
-      const timeList = [];
       for (const directionLeg of result.routes[0].legs) {
         const legDist = parseInt(directionLeg.distance.text.slice(0, -3));
         const legTime = directionLeg.duration.value;
         distList.push(legDist);
-        timeList.push(legTime);
+        totTime += legTime
       }
-      console.log(timeList);
-      // const total = [0, 0, 0]; // days, hours, minutes
-      // for(let i = 0; i < timeList.length; i++){
-      //     if(timeList[0].includes("day ")){
-      //         total[0]++;
-      //     }else if(timeList[i].includes("days")){
-      //         total[0] += parseInt(timeList[i].substring(0, timeList[i].indexOf(" days")));
-      //     }
-      //     if(timeList[i].includes("hour ")){
-      //         total[1]++;
-      //     }else if(timeList[i].includes("hours")){
-      //         if(timeList[i].indexOf(" hours") <= 3){
-      //             total[1] += (parseInt(timeList[i].substring(0, timeList[i].indexOf(" hours")))) * 60;
-      //         }else{
-      //             if(timeList[i].includes("days")){
-      //                 total[1] += parseInt(timeList[i].substring(timeList[i].lastIndexOf("days ")) + 5, timeList[i].indexOf(" hours"));
-      //             }else{
-      //                 total[1] += parseInt(timeList[i].substring(timeList[i].lastIndexOf("day ")) + 4, timeList[i].indexOf(" hours"));
-      //             }
-      //         }
-      //     }
-      //     if(timeList[i].includes("min ")){
-      //         total[2]++;
-      //         console.log(total[2]);
-      //     }else if(timeList[i].includes("mins")){
-      //         if(timeList[i].indexOf(" mins") <= 3){
-      //             total[2] += parseInt(timeList[i].substring(0, timeList[i].indexOf(" mins")));
-      //             console.log(total[2]);
-      //         }else{
-      //             if(timeList[i].includes("hours")){
-      //                 total[2] += parseInt(timeList[i].substring(timeList[i].indexOf("hours ") + 6, timeList[i].indexOf(" mins")));
-      //                 console.log(total[2]);
-      //             }else{
-      //                 total[2] += parseInt((timeList[i].substring(timeList[i].indexOf("hour ") + 5, timeList[i].indexOf(" mins"))));
-      //             }
-      //         }
-      //     }
-      // }
-      // console.log(total[0] + " days in mins " + total[1] + " hours in mins " + total[2] + " mins.");
-      // const totalMins = total[1] + total[2];
-      // console.log(total[1] + total[2]);
-      // console.log(totalMins);
 
       let distSum = 0;
       distList.forEach( num => {
         distSum += num;
       });
+
+      const totRouteTime = secondsToDHM(totTime);
+      console.log(totRouteTime);
+
       handleDistChange(distSum);
     }
   };
@@ -346,6 +305,21 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
           </Accordion>
         </div>
     )
+}
+
+// Wilson Lee :https://stackoverflow.com/questions/37096367/how-to-convert-seconds-to-minutes-and-hours-in-javascript
+function secondsToDHM(s) {
+  s = Number(s);
+  var d = Math.floor(d / 86400);
+  var h = Math.floor(s % 86400 / 3600);
+  var m = Math.floor(s  % 86400 % 3600 / 60);
+
+  var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+  var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+  var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes") : "";
+  
+  var timeDisplay = dDisplay + hDisplay + mDisplay
+  return timeDisplay; 
 }
 
 // good google map render:
