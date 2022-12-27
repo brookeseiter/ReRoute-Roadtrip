@@ -67,6 +67,8 @@ export default function RouteMap () {
     };
     setWaypoints(waypoints => [...waypoints, selectedWaypoint]);
     setSelectedWaypoints(selectedWaypoints => [...selectedWaypoints, selected]);
+    // if error directions returned no route appears, remove line below
+    setSelected(null);
   }
 
   function deleteRouteStop () {
@@ -89,6 +91,7 @@ export default function RouteMap () {
     
     selectedWaypoints.splice(indexOfAccordionWaypoint, 1);
     setSelectedWaypoints(selectedWaypoints => [...selectedWaypoints]);
+    // setSelected(null);
   }
   
   return (
@@ -182,7 +185,7 @@ export default function RouteMap () {
               {selected ? (
                               <InfoWindowF
                                   selected={selected}
-                                  position={{ lat: selected.value.stop_lat + 0.5, lng: selected.value.stop_lng}} 
+                                  position={{ lat: selected.value.stop_lat, lng: selected.value.stop_lng}} 
                                   onCloseClick={() => {
                                       setSelected(null);
                                   }}
