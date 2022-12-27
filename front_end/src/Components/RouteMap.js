@@ -1,5 +1,5 @@
-import { GoogleMap, DirectionsService, DirectionsRenderer, DistanceMatrixService, useJsApiLoader, MarkerF, InfoWindowF } from "@react-google-maps/api";
-import { React, useCallback, useEffect, useRef, useState } from "react";
+import { GoogleMap, DirectionsService, DirectionsRenderer, useJsApiLoader, MarkerF, InfoWindowF, LoadScript } from "@react-google-maps/api";
+import { React, useEffect, useRef, useState } from "react";
 import {
     Accordion,
     AccordionItem,
@@ -8,110 +8,9 @@ import {
   } from "@reach/accordion";
 import "@reach/accordion/styles.css";
 
-const Directions = props => {
-  const [directions, setDirections] = useState();
-  const { origin, destination, waypoints, handleDistChange } = props;
-  const count = useRef(0);
-
-  const options = {
-    polylineOptions: {
-      strokeWeight: 6,
-      strokeOpacity: 0.8
-    }
-  };
-  
-  useEffect(() => {
-    count.current = 0;
-  }, [origin, destination, waypoints]);
-
-  const directionsCallback = (result, status) => {
-    if (status === "OK" && count.current === 0) {
-      count.current += 1;
-      setDirections(result);
-      console.log(result);
-      const distList = [];
-      const timeList = [];
-      for (const directionLeg of result.routes[0].legs) {
-        const legDist = parseInt(directionLeg.distance.text.slice(0, -3));
-        const legTime = directionLeg.duration.value;
-        distList.push(legDist);
-        timeList.push(legTime);
-      }
-      console.log(timeList);
-      // const total = [0, 0, 0]; // days, hours, minutes
-      // for(let i = 0; i < timeList.length; i++){
-      //     if(timeList[0].includes("day ")){
-      //         total[0]++;
-      //     }else if(timeList[i].includes("days")){
-      //         total[0] += parseInt(timeList[i].substring(0, timeList[i].indexOf(" days")));
-      //     }
-      //     if(timeList[i].includes("hour ")){
-      //         total[1]++;
-      //     }else if(timeList[i].includes("hours")){
-      //         if(timeList[i].indexOf(" hours") <= 3){
-      //             total[1] += (parseInt(timeList[i].substring(0, timeList[i].indexOf(" hours")))) * 60;
-      //         }else{
-      //             if(timeList[i].includes("days")){
-      //                 total[1] += parseInt(timeList[i].substring(timeList[i].lastIndexOf("days ")) + 5, timeList[i].indexOf(" hours"));
-      //             }else{
-      //                 total[1] += parseInt(timeList[i].substring(timeList[i].lastIndexOf("day ")) + 4, timeList[i].indexOf(" hours"));
-      //             }
-      //         }
-      //     }
-      //     if(timeList[i].includes("min ")){
-      //         total[2]++;
-      //         console.log(total[2]);
-      //     }else if(timeList[i].includes("mins")){
-      //         if(timeList[i].indexOf(" mins") <= 3){
-      //             total[2] += parseInt(timeList[i].substring(0, timeList[i].indexOf(" mins")));
-      //             console.log(total[2]);
-      //         }else{
-      //             if(timeList[i].includes("hours")){
-      //                 total[2] += parseInt(timeList[i].substring(timeList[i].indexOf("hours ") + 6, timeList[i].indexOf(" mins")));
-      //                 console.log(total[2]);
-      //             }else{
-      //                 total[2] += parseInt((timeList[i].substring(timeList[i].indexOf("hour ") + 5, timeList[i].indexOf(" mins"))));
-      //             }
-      //         }
-      //     }
-      // }
-      // console.log(total[0] + " days in mins " + total[1] + " hours in mins " + total[2] + " mins.");
-      // const totalMins = total[1] + total[2];
-      // console.log(total[1] + total[2]);
-      // console.log(totalMins);
-
-      let distSum = 0;
-      distList.forEach( num => {
-        distSum += num;
-      });
-      handleDistChange(distSum);
-    }
-  };
-
-  return (
-     <div className="Directions">
-        <DirectionsService
-          options={{
-            destination,
-            origin,
-            travelMode: "DRIVING",
-            waypoints,
-            optimizeWaypoints: true
-          }}
-          callback={directionsCallback}
-        />
-        <DirectionsRenderer 
-          directions={directions} 
-          options={options} 
-          panel={document.getElementById('panel')} 
-        />
-    </div>
-  );
-};
-
 const center = {
-  lat: 37.733795, 
-  lng: -122.446747
+  lat: 47.116386, 
+  lng: -101.299591
 };
 
 export default function RouteMap () {
@@ -128,7 +27,10 @@ export default function RouteMap () {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries
+    // region: 'US'
   });
+  console.log(isLoaded);
+  console.log(origin);
 
   const handleDistChange = distSum => {
     setTotalDist(distSum);
@@ -238,66 +140,64 @@ export default function RouteMap () {
           }
         </div>
         {
-          origin !== '' ?
-        
-        (<GoogleMap
-        id='direction-example'
-        mapContainerStyle={{
-          height: '400px',
-          width: '500px'
-        }}
-        zoom={10}
-        center={
-          center
-        }
-        options={{
-          streetViewControl: false,
-          fullscreenControl: false,
-          mapTypeControl: false,
-          controlSize: 36,
-          gestureHandling: "cooperative"
-        }}
-      >
-        {origin !== '' &&
-          destination !== '' && (
-            <Directions 
-              origin={origin} 
-              destination={destination} 
-              waypoints={waypoints} 
-              handleDistChange={handleDistChange}
-            />
-          )}
+          isLoaded === true &&
+          <GoogleMap
+          id='direction-example'
+          mapContainerStyle={{
+            height: '400px',
+            width: '500px'
+          }}
+          zoom={3.5}
+          center={
+            center
+          }
+          options={{
+            streetViewControl: false,
+            fullscreenControl: false,
+            mapTypeControl: false,
+            controlSize: 36,
+            gestureHandling: "cooperative"
+          }}
+        >
+          {origin !== '' &&
+            destination !== '' && (
+              <Directions 
+                origin={origin} 
+                destination={destination} 
+                waypoints={waypoints} 
+                handleDistChange={handleDistChange}
+              />
+            )}
 
-          {stopsObj.map((stopObj) => (
-                <MarkerF  
-                    key={stopObj.key}
-                    position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
-                    onClick={() => {
-                        setSelected(stopObj);
-                        console.log(stopObj);
-                    }}
-                    // optimized={false}
-                    // visible={true}
-                />
-            ))}
-            {selected ? (
-                            <InfoWindowF
-                                selected={selected}
-                                position={{ lat: selected.value.stop_lat + 0.5, lng: selected.value.stop_lng}} 
-                                onCloseClick={() => {
-                                    setSelected(null);
-                                }}
-                            >
-                                <div>
-                                    <h2>{selected.value.stop_name}</h2>
-                                    <p>Category: {selected.value.stop_category}</p>
-                                    <button onClick={addRouteStop}>Add to Route</button>
-                                    <button onClick={deleteRouteStop}>Remove from Route</button>
-                                </div>
-                            </InfoWindowF>
-                        ) : null
-            }
-      </GoogleMap>): null}
+            {stopsObj.map((stopObj) => (
+                  <MarkerF  
+                      key={stopObj.key}
+                      position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
+                      onClick={() => {
+                          setSelected(stopObj);
+                          console.log(stopObj);
+                      }}
+                  />
+              ))}
+              {selected ? (
+                              <InfoWindowF
+                                  selected={selected}
+                                  position={{ lat: selected.value.stop_lat + 0.5, lng: selected.value.stop_lng}} 
+                                  onCloseClick={() => {
+                                      setSelected(null);
+                                  }}
+                              >
+                                  <div>
+                                      <h2>{selected.value.stop_name}</h2>
+                                      <p>Category: {selected.value.stop_category}</p>
+                                      <button onClick={addRouteStop}>Add to Route</button>
+                                      <button onClick={deleteRouteStop}>Remove from Route</button>
+                                  </div>
+                              </InfoWindowF>
+                          ) : null
+              }
+        </GoogleMap>
+      }
       { totalDist &&
         <div className="route-info">
          <p>Total Distance: {totalDist} mi</p>
@@ -309,6 +209,106 @@ export default function RouteMap () {
   );
 };
 
+const Directions = props => {
+  const [directions, setDirections] = useState();
+  const { origin, destination, waypoints, handleDistChange } = props;
+  const count = useRef(0);
+
+  const options = {
+    polylineOptions: {
+      strokeWeight: 6,
+      strokeOpacity: 0.8
+    }
+  };
+  
+  useEffect(() => {
+    count.current = 0;
+  }, [origin, destination, waypoints]);
+
+  const directionsCallback = (result, status) => {
+    if (status === "OK" && count.current === 0) {
+      count.current += 1;
+      setDirections(result);
+      console.log(result);
+      const distList = [];
+      const timeList = [];
+      for (const directionLeg of result.routes[0].legs) {
+        const legDist = parseInt(directionLeg.distance.text.slice(0, -3));
+        const legTime = directionLeg.duration.value;
+        distList.push(legDist);
+        timeList.push(legTime);
+      }
+      console.log(timeList);
+      // const total = [0, 0, 0]; // days, hours, minutes
+      // for(let i = 0; i < timeList.length; i++){
+      //     if(timeList[0].includes("day ")){
+      //         total[0]++;
+      //     }else if(timeList[i].includes("days")){
+      //         total[0] += parseInt(timeList[i].substring(0, timeList[i].indexOf(" days")));
+      //     }
+      //     if(timeList[i].includes("hour ")){
+      //         total[1]++;
+      //     }else if(timeList[i].includes("hours")){
+      //         if(timeList[i].indexOf(" hours") <= 3){
+      //             total[1] += (parseInt(timeList[i].substring(0, timeList[i].indexOf(" hours")))) * 60;
+      //         }else{
+      //             if(timeList[i].includes("days")){
+      //                 total[1] += parseInt(timeList[i].substring(timeList[i].lastIndexOf("days ")) + 5, timeList[i].indexOf(" hours"));
+      //             }else{
+      //                 total[1] += parseInt(timeList[i].substring(timeList[i].lastIndexOf("day ")) + 4, timeList[i].indexOf(" hours"));
+      //             }
+      //         }
+      //     }
+      //     if(timeList[i].includes("min ")){
+      //         total[2]++;
+      //         console.log(total[2]);
+      //     }else if(timeList[i].includes("mins")){
+      //         if(timeList[i].indexOf(" mins") <= 3){
+      //             total[2] += parseInt(timeList[i].substring(0, timeList[i].indexOf(" mins")));
+      //             console.log(total[2]);
+      //         }else{
+      //             if(timeList[i].includes("hours")){
+      //                 total[2] += parseInt(timeList[i].substring(timeList[i].indexOf("hours ") + 6, timeList[i].indexOf(" mins")));
+      //                 console.log(total[2]);
+      //             }else{
+      //                 total[2] += parseInt((timeList[i].substring(timeList[i].indexOf("hour ") + 5, timeList[i].indexOf(" mins"))));
+      //             }
+      //         }
+      //     }
+      // }
+      // console.log(total[0] + " days in mins " + total[1] + " hours in mins " + total[2] + " mins.");
+      // const totalMins = total[1] + total[2];
+      // console.log(total[1] + total[2]);
+      // console.log(totalMins);
+
+      let distSum = 0;
+      distList.forEach( num => {
+        distSum += num;
+      });
+      handleDistChange(distSum);
+    }
+  };
+
+  return (
+     <div className="Directions">
+        <DirectionsService
+          options={{
+            destination,
+            origin,
+            travelMode: "DRIVING",
+            waypoints,
+            optimizeWaypoints: true
+          }}
+          callback={directionsCallback}
+        />
+        <DirectionsRenderer 
+          directions={directions} 
+          options={options} 
+          panel={document.getElementById('panel')} 
+        />
+    </div>
+  );
+};
 
 function DirectionsAccordion ({ origin, destination, waypoints }) { 
 
@@ -347,6 +347,67 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
         </div>
     )
 }
+
+// good google map render:
+// {
+// origin !== '' ?
+
+// (<GoogleMap
+// id='direction-example'
+// mapContainerStyle={{
+// height: '400px',
+// width: '500px'
+// }}
+// zoom={10}
+// center={
+// center
+// }
+// options={{
+// streetViewControl: false,
+// fullscreenControl: false,
+// mapTypeControl: false,
+// controlSize: 36,
+// gestureHandling: "cooperative"
+// }}
+// >
+// {origin !== '' &&
+// destination !== '' && (
+//   <Directions 
+//     origin={origin} 
+//     destination={destination} 
+//     waypoints={waypoints} 
+//     handleDistChange={handleDistChange}
+//   />
+// )}
+
+// {stopsObj.map((stopObj) => (
+//       <MarkerF  
+//           key={stopObj.key}
+//           position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
+//           onClick={() => {
+//               setSelected(stopObj);
+//               console.log(stopObj);
+//           }}
+//       />
+//   ))}
+//   {selected ? (
+//                   <InfoWindowF
+//                       selected={selected}
+//                       position={{ lat: selected.value.stop_lat + 0.5, lng: selected.value.stop_lng}} 
+//                       onCloseClick={() => {
+//                           setSelected(null);
+//                       }}
+//                   >
+//                       <div>
+//                           <h2>{selected.value.stop_name}</h2>
+//                           <p>Category: {selected.value.stop_category}</p>
+//                           <button onClick={addRouteStop}>Add to Route</button>
+//                           <button onClick={deleteRouteStop}>Remove from Route</button>
+//                       </div>
+//                   </InfoWindowF>
+//               ) : null
+//   }
+// </GoogleMap>): null}
 
 
 

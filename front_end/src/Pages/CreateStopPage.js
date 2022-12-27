@@ -19,7 +19,8 @@ export default function CreateStopPage ({ stop_lat, stop_lng }) {
 
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries,
+        libraries
+        // region: 'US'
     });
 
     const onMapLoad = useCallback((map) => {
