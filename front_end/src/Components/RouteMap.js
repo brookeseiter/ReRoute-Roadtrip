@@ -23,6 +23,7 @@ export default function RouteMap () {
   let [destination, setDestination] = useState('');
   let [waypoints, setWaypoints] = useState([]);
   const [totalDist, setTotalDist] = useState(null);
+  const [totalDur, setTotalDur] = useState(null);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -30,8 +31,9 @@ export default function RouteMap () {
     // region: 'US'
   });
 
-  const handleDistChange = distSum => {
+  const handleRouteChange = (distSum, totRouteTime) => {
     setTotalDist(distSum);
+    setTotalDur(totRouteTime);
   }
 
   const handleChange = (e) => {
@@ -163,7 +165,7 @@ export default function RouteMap () {
                 origin={origin} 
                 destination={destination} 
                 waypoints={waypoints} 
-                handleDistChange={handleDistChange}
+                handleRouteChange={handleRouteChange}
               />
             )}
 
@@ -196,9 +198,10 @@ export default function RouteMap () {
               }
         </GoogleMap>
       }
-      { totalDist &&
+      { (totalDist && totalDur) &&
         <div className="route-info">
-         <p>Total Distance: {totalDist} mi</p>
+         <p>Total Route Distance: {totalDist} mi</p>
+         <p>Total Route Duration: {totalDur}</p>
         </div>
       }
       <div id="panel"></div>
@@ -209,7 +212,7 @@ export default function RouteMap () {
 
 const Directions = props => {
   const [directions, setDirections] = useState();
-  const { origin, destination, waypoints, handleDistChange } = props;
+  const { origin, destination, waypoints, handleRouteChange } = props;
   const count = useRef(0);
 
   const options = {
@@ -244,7 +247,7 @@ const Directions = props => {
       const totRouteTime = secondsToDHM(totTime);
       console.log(totRouteTime);
 
-      handleDistChange(distSum);
+      handleRouteChange(distSum, totRouteTime);
     }
   };
 
