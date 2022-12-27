@@ -241,7 +241,8 @@ const Directions = props => {
         distList.push(legDist);
         totTime += legTime
       }
-
+      // console.log(result);
+      console.log(result.request.waypoints[0].location.location.lat())
       let distSum = 0;
       distList.forEach( num => {
         distSum += num;
@@ -251,6 +252,11 @@ const Directions = props => {
       console.log(totRouteTime);
 
       handleRouteChange(distSum, totRouteTime);
+
+      if (result.routes[0].legs.length === 1) {
+        const originalDist = parseInt(result.routes[0].legs[0].distance.text.slice(0, -3));
+        console.log('original dist:', originalDist);
+      }
     }
   };
 
