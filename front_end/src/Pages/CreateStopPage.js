@@ -11,7 +11,7 @@ const center = {
 };
 export default function CreateStopPage ({ stop_lat, stop_lng }) {
     const mapRef = useRef();
-    const [libraries] = useState(['places']);
+    const [libraries] = useState(['places','geometry']);
     const navigate = useNavigate();
     const [inputs, setInputs] = useState({});
     let [catChoice, setCatChoice] = useState("");
@@ -161,7 +161,7 @@ function StandaloneSearchBox({ panTo }) {
             radius: 50 * 1600,
         },
     });
-
+    
     return (
         <Combobox 
             onSelect={async (address) => {

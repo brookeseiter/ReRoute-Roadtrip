@@ -1,4 +1,4 @@
-import { GoogleMap, DirectionsService, DirectionsRenderer, useJsApiLoader, MarkerF, InfoWindowF, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, DirectionsService, DirectionsRenderer, useJsApiLoader, MarkerF, InfoWindowF, Circle, LoadScript, useLoadScript } from "@react-google-maps/api";
 import { React, useEffect, useRef, useState } from "react";
 import {
     Accordion,
@@ -14,7 +14,7 @@ const center = {
 };
 
 export default function RouteMap () {
-  const [libraries] = useState(['places']);
+  const [libraries] = useState(['places', 'geometry']);
   const [inputs, setInputs] = useState({});
   const [mapData, setMapData] =useState([]);
   const [selected, setSelected] = useState(null);
@@ -24,6 +24,8 @@ export default function RouteMap () {
   let [waypoints, setWaypoints] = useState([]);
   const [totalDist, setTotalDist] = useState(null);
   const [totalDur, setTotalDur] = useState(null);
+  const [routeCenter, setRouteCenter] = useState(null);
+  const [routeRadius, setRouteRadius] = useState(null);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -35,6 +37,12 @@ export default function RouteMap () {
     setTotalDist(distSum);
     setTotalDur(totRouteTime);
   }
+
+  const handleRouteCenter = (inBetween, diameter) => {
+    setRouteCenter({ lat: inBetween.lat(), lng: inBetween.lng()});
+    setRouteRadius(diameter / 2);
+  }
+  console.log('LINE 40:', routeCenter);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -164,15 +172,17 @@ export default function RouteMap () {
         >
           {origin !== '' &&
             destination !== '' && (
+              <>
               <Directions 
                 origin={origin} 
                 destination={destination} 
                 waypoints={waypoints} 
                 handleRouteChange={handleRouteChange}
+                handleRouteCenter={handleRouteCenter}
               />
-            )}
-
-            {stopsObj.map((stopObj) => (
+              <MarkerF position={routeCenter} />
+              <Circle center={routeCenter} radius={routeRadius} />
+              {stopsObj.map((stopObj) => (
                   <MarkerF  
                       key={stopObj.key}
                       position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
@@ -199,9 +209,12 @@ export default function RouteMap () {
                               </InfoWindowF>
                           ) : null
               }
+              </>
+            )}
+
         </GoogleMap>
       }
-      { (totalDist && totalDur) &&
+      { totalDist &&
         <div className="route-info">
          <p>Total Route Distance: {totalDist} mi</p>
          <p>Total Route Duration: {totalDur}</p>
@@ -215,7 +228,7 @@ export default function RouteMap () {
 
 const Directions = props => {
   const [directions, setDirections] = useState();
-  const { origin, destination, waypoints, handleRouteChange } = props;
+  const { origin, destination, waypoints, handleRouteChange, handleRouteCenter } = props;
   const count = useRef(0);
 
   const options = {
@@ -224,7 +237,7 @@ const Directions = props => {
       strokeOpacity: 0.8
     }
   };
-  
+ 
   useEffect(() => {
     count.current = 0;
   }, [origin, destination, waypoints]);
@@ -241,21 +254,32 @@ const Directions = props => {
         distList.push(legDist);
         totTime += legTime
       }
-      // console.log(result);
-      console.log(result.request.waypoints[0].location.location.lat())
+
       let distSum = 0;
       distList.forEach( num => {
         distSum += num;
       });
 
       const totRouteTime = secondsToDHM(totTime);
-      console.log(totRouteTime);
 
       handleRouteChange(distSum, totRouteTime);
 
       if (result.routes[0].legs.length === 1) {
         const originalDist = parseInt(result.routes[0].legs[0].distance.text.slice(0, -3));
         console.log('original dist:', originalDist);
+
+        const originLat = result.routes[0].legs[0].start_location.lat();
+        const originLng = result.routes[0].legs[0].start_location.lng();
+        const destinationLat = result.routes[0].legs[0].end_location.lat();
+        const destinationLng = result.routes[0].legs[0].end_location.lng();
+       
+        const originCoords = { lat: originLat, lng: originLng };
+        const destinationCoords = { lat: destinationLat, lng: destinationLng };
+
+        var diameter = window.google.maps.geometry.spherical.computeDistanceBetween(originCoords, destinationCoords);
+        var inBetween = window.google.maps.geometry.spherical.interpolate(originCoords, destinationCoords, 0.5);
+        handleRouteCenter(inBetween, diameter);
+        console.log(window);
       }
     }
   };
@@ -322,13 +346,13 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
 // Wilson Lee :https://stackoverflow.com/questions/37096367/how-to-convert-seconds-to-minutes-and-hours-in-javascript
 function secondsToDHM(s) {
   s = Number(s);
-  var d = Math.floor(d / 86400);
+  var d = Math.floor(s / 86400);
   var h = Math.floor(s % 86400 / 3600);
   var m = Math.floor(s  % 86400 % 3600 / 60);
 
-  var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
-  var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
-  var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes") : "";
+  var dDisplay = d > 0 ? d + (d === 1 ? " day, " : " days, ") : "";
+  var hDisplay = h > 0 ? h + (h === 1 ? " hour, " : " hours, ") : "";
+  var mDisplay = m > 0 ? m + (m === 1 ? " minute, " : " minutes") : "";
   
   var timeDisplay = dDisplay + hDisplay + mDisplay
   return timeDisplay; 
