@@ -1,5 +1,16 @@
-import { GoogleMap, DirectionsService, DirectionsRenderer, useJsApiLoader, MarkerF, InfoWindowF, Circle, LoadScript, useLoadScript } from "@react-google-maps/api";
-import { React, useEffect, useCallback, useRef, useState } from "react";
+import { 
+  GoogleMap, 
+  DirectionsService, 
+  DirectionsRenderer, 
+  useJsApiLoader, 
+  MarkerF, 
+  InfoWindowF, 
+  CircleF } from "@react-google-maps/api";
+import { 
+  React, 
+  useEffect, 
+  useRef, 
+  useState } from "react";
 import {
     Accordion,
     AccordionItem,
@@ -26,7 +37,6 @@ export default function RouteMap () {
   const [totalDur, setTotalDur] = useState(null);
   const [routeCenter, setRouteCenter] = useState(null);
   const [routeRadius, setRouteRadius] = useState(null);
-  let ref =useRef();
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -42,15 +52,7 @@ export default function RouteMap () {
   const handleRouteCenter = (inBetween, diameter) => {
     setRouteCenter({ lat: inBetween.lat(), lng: inBetween.lng()});
     setRouteRadius(diameter / 2);
-    const center = { lat: inBetween.lat(), lng: inBetween.lng()};
-    const opts = { center: center, radius: diameter/2 };
-    console.log(opts);
-    const circ = new window.google.maps.Circle(opts);
-    console.log(circ);
-    console.log(circ.getBounds());
-    console.log( new window.google.maps.geometry.poly.containsLocation(center));
   }
-  console.log('LINE 40:', routeCenter);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -72,19 +74,6 @@ export default function RouteMap () {
   }, []);
 
   const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
-
-  if (routeCenter) {
-    isWithinBounds(stopsObj);
-  }
-
-  const onCircleLoad = useCallback((circle) => {
-    ref.current = circle;
-    console.log(ref.current);
-    // console.log(ref.current.getBounds());
-    // const circ = new window.google.maps.Circle;
-    // console.log(circ.getBounds());
-  }, []);
-  console.log(ref);
 
   function addRouteStop () {
     let selectedWaypoint = {
@@ -202,12 +191,13 @@ export default function RouteMap () {
                 handleRouteCenter={handleRouteCenter}
               />
               <MarkerF position={routeCenter} />
-              <Circle 
+              <CircleF 
                 center={routeCenter} 
                 radius={routeRadius} 
-                onLoad={onCircleLoad}
               />
-              {stopsObj.map((stopObj) => (
+              
+              { stopsObj && routeCenter &&
+                stopsObj.map((stopObj) => (
                   <MarkerF  
                       key={stopObj.key}
                       position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
@@ -215,6 +205,14 @@ export default function RouteMap () {
                           setSelected(stopObj);
                           console.log(stopObj);
                       }}
+                      visible={
+                        isWithinBounds(
+                          routeCenter.lat, 
+                          routeCenter.lng, 
+                          stopObj.value.stop_lat, 
+                          stopObj.value.stop_lng, 
+                          routeRadius)
+                      }
                   />
               ))}
               {selected ? (
@@ -273,7 +271,6 @@ const Directions = props => {
       let totTime = 0;
       count.current += 1;
       setDirections(result);
-      console.log(result);
       for (const directionLeg of result.routes[0].legs) {
         const legDist = parseInt(directionLeg.distance.text.slice(0, -3));
         const legTime = directionLeg.duration.value;
@@ -291,8 +288,8 @@ const Directions = props => {
       handleRouteChange(distSum, totRouteTime);
 
       if (result.routes[0].legs.length === 1) {
-        const originalDist = parseInt(result.routes[0].legs[0].distance.text.slice(0, -3));
-        console.log('original dist:', originalDist);
+        // const originalDist = parseInt(result.routes[0].legs[0].distance.text.slice(0, -3));
+        // console.log('original dist:', originalDist);
 
         const originLat = result.routes[0].legs[0].start_location.lat();
         const originLng = result.routes[0].legs[0].start_location.lng();
@@ -305,7 +302,6 @@ const Directions = props => {
         var diameter = window.google.maps.geometry.spherical.computeDistanceBetween(originCoords, destinationCoords);
         var inBetween = window.google.maps.geometry.spherical.interpolate(originCoords, destinationCoords, 0.5);
         handleRouteCenter(inBetween, diameter);
-        console.log(window);
       }
     }
   };
@@ -384,70 +380,30 @@ function secondsToDHM(s) {
   return timeDisplay; 
 }
 
-function isWithinBounds(stopList) {
-  // console.log(stopList);
+// Chris Panayotoff: https://stackoverflow.com/questions/4057665/google-maps-api-v3-find-nearest-markers
+function isWithinBounds(lat1, lng1, lat2, lng2, routeRad) {
+  var radlat1 = Math.PI * lat1 / 180;
+  var radlat2 = Math.PI * lat2 / 180;
+  var theta = lng1 - lng2;
+  var radtheta = Math.PI * theta / 180;
+  var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  dist = Math.acos(dist);
+  dist = dist * 180 / Math.PI;
+  // dist in miles
+  dist = dist * 60 * 1.1515;
+
+  // distFromRouteCenter in miles
+  const distFromRouteCenter = routeRad * 0.000621371
+
+  if (dist > distFromRouteCenter) {
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
-// good google map render:
-// {
-// origin !== '' ?
 
-// (<GoogleMap
-// id='direction-example'
-// mapContainerStyle={{
-// height: '400px',
-// width: '500px'
-// }}
-// zoom={10}
-// center={
-// center
-// }
-// options={{
-// streetViewControl: false,
-// fullscreenControl: false,
-// mapTypeControl: false,
-// controlSize: 36,
-// gestureHandling: "cooperative"
-// }}
-// >
-// {origin !== '' &&
-// destination !== '' && (
-//   <Directions 
-//     origin={origin} 
-//     destination={destination} 
-//     waypoints={waypoints} 
-//     handleDistChange={handleDistChange}
-//   />
-// )}
-
-// {stopsObj.map((stopObj) => (
-//       <MarkerF  
-//           key={stopObj.key}
-//           position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
-//           onClick={() => {
-//               setSelected(stopObj);
-//               console.log(stopObj);
-//           }}
-//       />
-//   ))}
-//   {selected ? (
-//                   <InfoWindowF
-//                       selected={selected}
-//                       position={{ lat: selected.value.stop_lat + 0.5, lng: selected.value.stop_lng}} 
-//                       onCloseClick={() => {
-//                           setSelected(null);
-//                       }}
-//                   >
-//                       <div>
-//                           <h2>{selected.value.stop_name}</h2>
-//                           <p>Category: {selected.value.stop_category}</p>
-//                           <button onClick={addRouteStop}>Add to Route</button>
-//                           <button onClick={deleteRouteStop}>Remove from Route</button>
-//                       </div>
-//                   </InfoWindowF>
-//               ) : null
-//   }
-// </GoogleMap>): null}
 
 
 
