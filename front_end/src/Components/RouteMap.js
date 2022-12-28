@@ -76,6 +76,7 @@ export default function RouteMap () {
   const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
 
   function addRouteStop () {
+    console.log('SELECTED:', selected);
     let selectedWaypoint = {
       location: {
         lat: selected.value.stop_lat,
@@ -91,25 +92,19 @@ export default function RouteMap () {
 
   function deleteRouteStop () {
 
-    const routeWaypointCoords = {
-      lat: selected.value.stop_lat,
-      lng: selected.value.stop_lng
-    };
-
     const indexOfRouteWaypoint = waypoints.findIndex(waypoint => {
-      return waypoint.location.lat === routeWaypointCoords.lat;
+      return waypoint.location.lat === selected.value.stop_lat;
     });
 
     waypoints.splice(indexOfRouteWaypoint, 1);
     setWaypoints(waypoints => [...waypoints]);
 
     const indexOfAccordionWaypoint = selectedWaypoints.findIndex(selectedWaypoint => {
-      return selectedWaypoint.value.stop_lat === routeWaypointCoords.lat;
+      return selectedWaypoint.value.stop_lat === selected.value.stop_lat;
     });
     
     selectedWaypoints.splice(indexOfAccordionWaypoint, 1);
     setSelectedWaypoints(selectedWaypoints => [...selectedWaypoints]);
-    // setSelected(null);
   }
   
   return (
@@ -157,7 +152,7 @@ export default function RouteMap () {
                 destination={destination} 
                 waypoints={selectedWaypoints} 
               />
-            )
+            ) 
           }
         </div>
         {
@@ -200,11 +195,12 @@ export default function RouteMap () {
                 stopsObj.map((stopObj) => (
                   <MarkerF  
                       key={stopObj.key}
-                      position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}} 
-                      onClick={() => {
-                          setSelected(stopObj);
-                          console.log(stopObj);
-                      }}
+                      position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}}
+                      //onClick if you want to revert this to a click event
+                      onMouseOver={() => {
+                        setSelected(stopObj);
+                        console.log(stopObj);
+                    }}
                       visible={
                         isWithinBounds(
                           routeCenter.lat, 
@@ -227,7 +223,10 @@ export default function RouteMap () {
                                       <h2>{selected.value.stop_name}</h2>
                                       <p>Category: {selected.value.stop_category}</p>
                                       <button onClick={addRouteStop}>Add to Route</button>
-                                      <button onClick={deleteRouteStop}>Remove from Route</button>
+                                      <button onClick={() => {
+                                        deleteRouteStop(selected);
+                                        setSelected(null);
+                                      }}>Remove from Route</button>
                                   </div>
                               </InfoWindowF>
                           ) : null
