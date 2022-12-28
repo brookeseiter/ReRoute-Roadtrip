@@ -1,5 +1,5 @@
 import { GoogleMap, DirectionsService, DirectionsRenderer, useJsApiLoader, MarkerF, InfoWindowF, Circle, LoadScript, useLoadScript } from "@react-google-maps/api";
-import { React, useEffect, useRef, useState } from "react";
+import { React, useEffect, useCallback, useRef, useState } from "react";
 import {
     Accordion,
     AccordionItem,
@@ -26,6 +26,7 @@ export default function RouteMap () {
   const [totalDur, setTotalDur] = useState(null);
   const [routeCenter, setRouteCenter] = useState(null);
   const [routeRadius, setRouteRadius] = useState(null);
+  let ref =useRef();
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -41,6 +42,13 @@ export default function RouteMap () {
   const handleRouteCenter = (inBetween, diameter) => {
     setRouteCenter({ lat: inBetween.lat(), lng: inBetween.lng()});
     setRouteRadius(diameter / 2);
+    const center = { lat: inBetween.lat(), lng: inBetween.lng()};
+    const opts = { center: center, radius: diameter/2 };
+    console.log(opts);
+    const circ = new window.google.maps.Circle(opts);
+    console.log(circ);
+    console.log(circ.getBounds());
+    console.log( new window.google.maps.geometry.poly.containsLocation(center));
   }
   console.log('LINE 40:', routeCenter);
 
@@ -64,6 +72,19 @@ export default function RouteMap () {
   }, []);
 
   const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
+
+  if (routeCenter) {
+    isWithinBounds(stopsObj);
+  }
+
+  const onCircleLoad = useCallback((circle) => {
+    ref.current = circle;
+    console.log(ref.current);
+    // console.log(ref.current.getBounds());
+    // const circ = new window.google.maps.Circle;
+    // console.log(circ.getBounds());
+  }, []);
+  console.log(ref);
 
   function addRouteStop () {
     let selectedWaypoint = {
@@ -181,7 +202,11 @@ export default function RouteMap () {
                 handleRouteCenter={handleRouteCenter}
               />
               <MarkerF position={routeCenter} />
-              <Circle center={routeCenter} radius={routeRadius} />
+              <Circle 
+                center={routeCenter} 
+                radius={routeRadius} 
+                onLoad={onCircleLoad}
+              />
               {stopsObj.map((stopObj) => (
                   <MarkerF  
                       key={stopObj.key}
@@ -195,7 +220,7 @@ export default function RouteMap () {
               {selected ? (
                               <InfoWindowF
                                   selected={selected}
-                                  position={{ lat: selected.value.stop_lat, lng: selected.value.stop_lng}} 
+                                  position={{ lat: selected.value.stop_lat + 0.1, lng: selected.value.stop_lng}} 
                                   onCloseClick={() => {
                                       setSelected(null);
                                   }}
@@ -248,6 +273,7 @@ const Directions = props => {
       let totTime = 0;
       count.current += 1;
       setDirections(result);
+      console.log(result);
       for (const directionLeg of result.routes[0].legs) {
         const legDist = parseInt(directionLeg.distance.text.slice(0, -3));
         const legTime = directionLeg.duration.value;
@@ -356,6 +382,10 @@ function secondsToDHM(s) {
   
   var timeDisplay = dDisplay + hDisplay + mDisplay
   return timeDisplay; 
+}
+
+function isWithinBounds(stopList) {
+  // console.log(stopList);
 }
 
 // good google map render:
