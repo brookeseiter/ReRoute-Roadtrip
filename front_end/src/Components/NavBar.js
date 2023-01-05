@@ -1,14 +1,9 @@
-// type sfc tab to get the following skeleton/stateless functional component
-//shift option down to duplicate a line
-// line 12-16 shows inline styling, a dynamic value (JS object) w/ key/value pairs
-
 import { Link } from 'react-router-dom';
 
-
-const Navbar = () => {
+export default function Navbar () {
     return (  
         <nav className="navbar">
-            <h1>The Roadtrip App</h1>
+            <h1>Reroute Roadtrip</h1>
             <div className="links">
                 <Link to="/">Homepage</Link>
                 <Link to="/stops">All Stops</Link>
@@ -21,6 +16,4 @@ const Navbar = () => {
         </nav>
     );
 }
- 
-export default Navbar;
 

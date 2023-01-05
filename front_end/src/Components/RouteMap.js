@@ -37,6 +37,7 @@ export default function RouteMap () {
   const [totalDur, setTotalDur] = useState(null);
   const [routeCenter, setRouteCenter] = useState(null);
   const [routeRadius, setRouteRadius] = useState(null);
+  const [isShowing, setIsShowing] = useState(true);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -76,7 +77,6 @@ export default function RouteMap () {
   const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
 
   function addRouteStop () {
-    console.log('SELECTED:', selected);
     let selectedWaypoint = {
       location: {
         lat: selected.value.stop_lat,
@@ -86,11 +86,15 @@ export default function RouteMap () {
     };
     setWaypoints(waypoints => [...waypoints, selectedWaypoint]);
     setSelectedWaypoints(selectedWaypoints => [...selectedWaypoints, selected]);
+    setIsShowing(false);
+    console.log(selectedWaypoints.includes(selected.value.stop_lat, 0));
     // if error directions returned no route appears, remove line below
     setSelected(null);
   }
-
+  
   function deleteRouteStop () {
+    console.log(selected);
+    console.log(waypoints);
 
     const indexOfRouteWaypoint = waypoints.findIndex(waypoint => {
       return waypoint.location.lat === selected.value.stop_lat;
@@ -222,7 +226,9 @@ export default function RouteMap () {
                                   <div>
                                       <h2>{selected.value.stop_name}</h2>
                                       <p>Category: {selected.value.stop_category}</p>
-                                      <button onClick={addRouteStop}>Add to Route</button>
+                                      <button onClick={() => {
+                                        addRouteStop(selected);
+                                      }}>Add to Route</button>
                                       <button onClick={() => {
                                         deleteRouteStop(selected);
                                         setSelected(null);

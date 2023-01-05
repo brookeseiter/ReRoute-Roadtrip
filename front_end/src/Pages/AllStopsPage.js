@@ -11,6 +11,7 @@ const AllStopsPage = () => {
             .then(data => {setStops(data)})
             .catch(error => console.log(error));
     }, []);
+    console.log(stops);
 
     const stopsObj = Object.entries(stops).map(([key, value]) => ({key, value}))
     console.log(stopsObj)
