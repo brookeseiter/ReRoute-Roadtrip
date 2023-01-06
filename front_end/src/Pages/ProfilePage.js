@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import StopList from '../Components/StopList.js'
 import MyReviews from '../Components/MyReviews.js'
+import Navbar from '../Components/NavBar.js';
 
 const ProfilePage = () => {
     const [myStops, setMyStops] = useState([]);
@@ -19,6 +20,7 @@ const ProfilePage = () => {
 
     return ( 
         <div className="ProfilePage">
+            <Navbar />
             <h2>My Profile</h2>
             <Link to="/create-stop">Create a Stop</Link>
             <Link to="/create-route">Create a Route</Link>

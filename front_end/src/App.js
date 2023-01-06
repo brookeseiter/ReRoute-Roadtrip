@@ -17,11 +17,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="content">
           <Routes>
             <Route path="/" element={<Homepage />} /> 
-            <Route path="/test" element={<Homepage />} /> 
             <Route path="/create-account" element={<CreateAccountPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/profile" element={<ProfilePage />} />

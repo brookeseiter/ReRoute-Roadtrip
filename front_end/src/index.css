@@ -2,15 +2,18 @@
 
 /* base styles */
 * {
-  margin: 0;
+  /* margin: 0; */
   font-family: "Quicksand";
   color: #333;
 }
+img {
+  width: 425px;
+}
 .navbar {
-  padding: 20px;
+  /* padding: 20px; */
   display: flex;
   align-items: center;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
 }
@@ -29,9 +32,12 @@
   color: #f1356d;
 }
 .content {
-  max-width: 1000px;
-  margin: 40px auto;
+  max-width: 1100px;
+  margin: 60px auto;
   padding: 20px;
+}
+#logo.rounded.float-start {
+  width: 300px;
 }
 
 
@@ -44,28 +50,36 @@
 .stop-preview:hover {
   box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
 }
-.stop-preview h2, .StopPage h2, .review-preview h2{
-  font-size: 20px;
-  color: #f1356d;
+.stop-preview h2, .StopPage h2, .review-preview h2, .col-lg-7 h2{
+  font-size: 50px;
+  color: #181617;
   margin-bottom: 8px;
 }
 .stop-preview a {
   text-decoration: none;
 }
 
+
 /* forms */
 .CreateAccountForm, .LoginForm, .CreateStopForm, .CreateRouteForm {
-  max-width: 400px;
+  max-width: 360px;
   margin: 0 auto;
-  text-align: center;
+  text-align:center;
+}
+.LoginForm {
+  padding: 50px;
+  width: 800px;
+  align-items: center;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
 }
 .CreateAccountForm label, .LoginForm label, .CreateStopForm label, .CreateReviewForm label, .CreateReviewForm button, .CreateRouteForm label{
   text-align: left;
   display: block;
 }
 .CreateAccountForm h2, .LoginForm h2, .CreateStopForm h2, .CreateRouteForm h2{
-  font-size: 20px;
-  color: #f1356d;
+  font-size: 30px;
+  color: #000000;
   margin-bottom: 30px;
 }
 .CreateAccountForm input, .LoginForm input, .CreateStopForm input, .CreateStopForm select, .create textarea, .create select, .CreateRouteForm input{
@@ -77,7 +91,7 @@
   display: block;
 }
 .CreateAccountForm button, .LoginForm button, .CreateStopForm button, .CreateReviewForm button, .CreateRouteForm button {
-  background: #f1356d;
+  background: #26601b;
   color: #fff;
   border: 0;
   padding: 8px;

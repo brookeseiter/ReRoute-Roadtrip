@@ -23,32 +23,41 @@ export default function LoginPage () {
     }
 
     return ( 
-        <div className='LoginPage'>
-            <h2>Login</h2>
-            {(store.token && store.token !=="" && store.token !==undefined) ? 
-            ("You are logged in with this token" + store.token) :
-            (<form className='LoginForm'>
-                <label>Email:</label>
-                <input 
-                    type='text' 
-                    required 
-                    name='email' 
-                    value={inputs.email || ''}
-                    onChange={handleChange}
-                />
-                <label>Password:</label>
-                <input 
-                    type='text' 
-                    required 
-                    name='password' 
-                    value={inputs.password || ''}
-                    onChange={handleChange}
-                />
+        <div className="LoginPage">
+            <form className='LoginForm'>
+                <h2>Login</h2>
+                <div className="mb-3">
+                    <label htmlFor="loginFormInput" className="form-label">Email
+                    <input 
+                        type="text"
+                        className="form-control"
+                        id="loginFormInput"
+                        required 
+                        name="email" 
+                        value={inputs.email || ""}
+                        onChange={handleChange}
+                        placeholder="Enter email"
+                    />
+                    </label>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="loginFormInput" className="form-label">Password
+                    <input 
+                        type="text"
+                        className="form-control"
+                        id="loginFormInput"
+                        required 
+                        name="password" 
+                        value={inputs.password || ""}
+                        onChange={handleChange}
+                        placeholder="Enter password"
+                    />
+                    </label>
+                </div>
                 <button onClick={handleSubmit}>Sign In</button>
                 <br></br>
                 <small>Don't have an account yet? <Link to='/create-account'>Create One!</Link></small>
             </form>
-            )}
         </div>
      );
 }
