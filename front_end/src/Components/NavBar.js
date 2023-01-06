@@ -7,7 +7,7 @@ export default function Navbar () {
 
     return (  
         <nav className="navbar">
-            <h1>Reroute Roadtrip</h1>
+            <h1>ReRoute Roadtrip</h1>
             <div className="links">
                 <Link 
                     to="/" 

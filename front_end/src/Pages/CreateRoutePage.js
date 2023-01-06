@@ -26,7 +26,7 @@ const CreateRoutePage = () => {
             <div className="CreateRouteContent">
             <h2>Create a Route</h2>
             </div>
-            <form className='CreateRouteForm'>
+            {/* <form className='CreateRouteForm'>
                 <label>Starting Point:</label>
                 <input 
                     type='text' 
@@ -44,7 +44,7 @@ const CreateRoutePage = () => {
                     onChange={handleChange}
                 />
                 <button onClick={handleSubmit}>Get Route</button>
-            </form>
+            </form> */}
             <p>Enter origin and destination addresses to receive your route.</p>
             <RouteMap />
         </div>

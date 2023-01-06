@@ -20,7 +20,6 @@ const ProfilePage = () => {
 
     return ( 
         <div className="ProfilePage">
-            <Navbar />
             <h2>My Profile</h2>
             <Link to="/create-stop">Create a Stop</Link>
             <Link to="/create-route">Create a Route</Link>
