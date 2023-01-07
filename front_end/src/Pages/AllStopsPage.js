@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Navbar from '../Components/NavBar.js';
 import StopList from '../Components/StopList.js'
 
 const AllStopsPage = () => {
@@ -19,6 +20,7 @@ const AllStopsPage = () => {
 
     return (
         <div className="stop-list">
+            <Navbar />
             {stopsObj && <StopList stopsObj={stopsObj} title="All Stops" />}
         </div>
     );

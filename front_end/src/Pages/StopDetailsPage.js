@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Navbar from "../Components/NavBar";
 import StopReviews from "../Components/StopReviews";
 
 const StopDetails = () => {
@@ -59,6 +60,7 @@ const StopDetails = () => {
     
     return ( 
         <div className="StopPage">
+            <Navbar />
             <article>
                 <h2>{ stop.stop_name }</h2>
                     <p>Stop Category: { stop.stop_category }</p>

@@ -4,6 +4,7 @@ import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
 import usePlacesAutocomplete, {getGeocode, getLatLng} from "use-places-autocomplete";
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
+import Navbar from "../Components/NavBar";
 
 const center = {
     lat: 37.733795, 
@@ -74,6 +75,7 @@ export default function CreateStopPage () {
     if (!isLoaded) return <div>Loading...</div>
     return ( 
         <div className="CreateStopPage container" onSubmit={handleSubmit}>
+            <Navbar />
             <div className="row">
                 <div className="col-md-12">
                     <h2>Create A Stop</h2>

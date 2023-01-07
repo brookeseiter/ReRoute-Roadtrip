@@ -20,6 +20,13 @@ export default function Homepage () {
                     <p class="text-center">Make each stop part of your adventure.</p>              
                 </div>
                 <div className="col-lg-5 bg-success" style={{}}>
+                    <img 
+                        src='../Images/logo.png' 
+                        class="rounded mx-auto d-block" 
+                        id="Logo"
+                        alt=''
+                    />  
+                    <h2>ReRoute Roadtrip</h2>
                     <LoginPage />
                 </div>
             </div>

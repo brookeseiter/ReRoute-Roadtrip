@@ -6,9 +6,9 @@
   font-family: "Quicksand";
   color: #333;
 }
-img {
-  width: 425px;
-}
+/* img {
+  width: 100px;
+} */
 .navbar {
   /* padding: 20px; */
   display: flex;
@@ -31,11 +31,11 @@ img {
 .navbar a:hover {
   color: #f1356d;
 }
-.content {
+/* .content {
   max-width: 1100px;
   margin: 60px auto;
   padding: 20px;
-}
+} */
 #logo.rounded.float-start {
   width: 300px;
 }

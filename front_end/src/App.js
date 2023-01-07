@@ -17,8 +17,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
-        <div className="content">
+        {/* <Navbar /> */}
+        {/* <div className="content"> */}
           <Routes>
             <Route path="/" element={<Homepage />} /> 
             <Route path="/create-account" element={<CreateAccountPage />} />
@@ -30,7 +30,7 @@ function App() {
             <Route path="/stops/:stop_id" element={<StopDetails />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </div>
+        {/* </div> */}
       </div>
     </Router>
   );

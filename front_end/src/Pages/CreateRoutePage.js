@@ -11,6 +11,7 @@ import {
   useEffect, 
   useRef, 
   useState } from "react";
+import Navbar from "../Components/NavBar";
 
 const center = {
   lat: 47.116386, 
@@ -122,6 +123,7 @@ export default function CreateRoutePage () {
   
   return (
       <div className='CreateRoutePage container'>
+        <Navbar />
         <div className='row'>
           <div className="col">
             <h2>Create a Route</h2>
