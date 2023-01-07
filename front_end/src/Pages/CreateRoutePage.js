@@ -11,13 +11,6 @@ import {
   useEffect, 
   useRef, 
   useState } from "react";
-import {
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-  } from "@reach/accordion";
-import "@reach/accordion/styles.css";
 
 const center = {
   lat: 47.116386, 
@@ -267,7 +260,87 @@ export default function CreateRoutePage () {
           <p>Total Route Duration: {totalDur}</p>
           </div>
         }
-        <div id="panel"></div>
+        
+        {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Launch demo modal
+        </button>
+        
+       
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div> */}
+
+
+
+ 
+
+{/* modal start */}
+       <div
+        id="small_modal"
+        className="modal fade"
+        role="dialog"
+        aria-labelledby="mySmallModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-md modal-dialog-scrollable">
+          <div className="modal-content shadow-max modal-dialog-scrollable">
+            <div className="modal-header">
+              <h3 className="modal-title" id="exampleModalLabel1">
+                Directions
+              </h3>
+              <button
+                type="button"
+                className="close icon"
+                data-dismiss="modal"
+                aria-label="Close"
+                onClick={() => {
+                  document.getElementById('small_modal').style.display = 'none';
+                  document.getElementById('small_modal').style.opacity = 0;
+      
+              }}
+              >
+                close
+              </button>
+            </div>
+            <div className="modal-body modal-dialog-scrollable" id="panel">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+     {/* modal end */}
+     <button
+        type="button"
+        className="btn btn-lg btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#small_modal"
+        onClick={() => {
+            document.getElementById('small_modal').style.display = 'block';
+            document.getElementById('small_modal').style.opacity = 1;
+        }} 
+      >
+        Get Directions
+      </button>
+ 
+
+
+   
+        {/* <div id="panel"></div> */}
       </div>
   );
 };
