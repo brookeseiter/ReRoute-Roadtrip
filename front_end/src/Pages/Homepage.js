@@ -19,7 +19,7 @@ export default function Homepage () {
                     <br></br>
                     <p class="text-center">Make each stop part of your adventure.</p>              
                 </div>
-                <div className="col-lg-5" style={{}}>
+                <div className="col-lg-5 bg-success" style={{}}>
                     <LoginPage />
                 </div>
             </div>
