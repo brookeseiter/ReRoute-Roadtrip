@@ -24,7 +24,7 @@ export default function Homepage () {
                         class="rounded mx-auto d-block" 
                         id="Logo"
                         alt=""
-                        width="190px"
+                        width="180px"
                     />  
                     <h2 className="text-center">ReRoute Roadtrip</h2>
                     <p class="text-center">Make each stop part of your adventure.</p> 
