@@ -17,7 +17,7 @@ export default function Homepage () {
                         height="770px"
                     />             
                 </div>
-                <div className="col-md-4 bg-success">
+                <div className="col-md-4">
                     <br />
                     <img 
                         src="../Images/logo.png"

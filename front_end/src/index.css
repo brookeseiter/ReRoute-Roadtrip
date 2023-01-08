@@ -16,6 +16,11 @@
   font-size: 40px;
 }
 
+.col-md-4 {
+  /* background-color: #5F7161; */
+  background-color: #4E6C50;
+}
+
 .col-md-4 p {
   font-size: 15px;
 }
@@ -79,9 +84,12 @@
 }
 .LoginForm {
   padding: 10px;
-  width: 300px;
+  width: 330px;
   align-items: center;
   margin: 0 auto;
+}
+.LoginForm button {
+  width: 310px;
 }
 .CreateAccountForm label, .LoginForm label, .CreateStopForm label, .CreateReviewForm label, .CreateReviewForm button, .CreateRouteForm label{
   text-align: left;
@@ -96,16 +104,17 @@
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
-  border: 1px solid #ddd;
+  border-radius: 3px;
+  /* border: 1px solid #ddd; */
   box-sizing: border-box;
   display: block;
 }
 .CreateAccountForm button, .LoginForm button, .CreateStopForm button, .CreateReviewForm button, .CreateRouteForm button {
-  background: #26601b;
+  background: #CFB997;
   color: #fff;
   border: 0;
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 3px;
   cursor: pointer;
 }
 .search {
