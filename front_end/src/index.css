@@ -2,13 +2,24 @@
 
 /* base styles */
 * {
-  /* margin: 0; */
+  margin: 0;
   font-family: "Quicksand";
-  color: #333;
+  color: rgb(0, 0, 0);
 }
-/* img {
-  width: 100px;
-} */
+
+.row>* {
+  padding: 0%;
+}
+
+/* Homepage */
+.col-md-4 h2 {
+  font-size: 40px;
+}
+
+.col-md-4 p {
+  font-size: 15px;
+}
+
 .navbar {
   /* padding: 20px; */
   display: flex;
@@ -67,20 +78,19 @@
   text-align:center;
 }
 .LoginForm {
-  padding: 50px;
-  width: 800px;
+  padding: 10px;
+  width: 300px;
   align-items: center;
   margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
 }
 .CreateAccountForm label, .LoginForm label, .CreateStopForm label, .CreateReviewForm label, .CreateReviewForm button, .CreateRouteForm label{
   text-align: left;
   display: block;
 }
 .CreateAccountForm h2, .LoginForm h2, .CreateStopForm h2, .CreateRouteForm h2{
-  font-size: 30px;
+  font-size: 27px;
   color: #000000;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 .CreateAccountForm input, .LoginForm input, .CreateStopForm input, .CreateStopForm select, .create textarea, .create select, .CreateRouteForm input{
   width: 100%;

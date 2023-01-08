@@ -25,9 +25,8 @@ export default function LoginPage () {
     return ( 
         <div className="LoginPage">
             <form className='LoginForm'>
-                <h2>Login</h2>
                 <div className="mb-3">
-                    <label htmlFor="loginFormInput" className="form-label">Email
+                    <label htmlFor="loginFormInput" className="form-label">
                     <input 
                         type="text"
                         className="form-control"
@@ -36,12 +35,12 @@ export default function LoginPage () {
                         name="email" 
                         value={inputs.email || ""}
                         onChange={handleChange}
-                        placeholder="Enter email"
+                        placeholder="Email"
                     />
                     </label>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="loginFormInput" className="form-label">Password
+                    <label htmlFor="loginFormInput" className="form-label">
                     <input 
                         type="text"
                         className="form-control"
@@ -50,12 +49,12 @@ export default function LoginPage () {
                         name="password" 
                         value={inputs.password || ""}
                         onChange={handleChange}
-                        placeholder="Enter password"
+                        placeholder="Password"
                     />
                     </label>
                 </div>
                 <button onClick={handleSubmit}>Sign In</button>
-                <br></br>
+                <br />
                 <small>Don't have an account yet? <Link to='/create-account'>Create One!</Link></small>
             </form>
         </div>
