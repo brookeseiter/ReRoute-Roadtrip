@@ -8,18 +8,17 @@ export default function Navbar () {
     return (  
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <h2 class="navbar-brand">
+                <div class="navbar-brand">
                     <img 
                         src='../Images/logo.png' 
-                        class="d-inline-block align-text-top" 
-                        // class="rounded mx-auto d-block" 
+                        class="d-inline-block align-text-center" 
                         id="Logo"
                         alt=''
-                        width="90"
-                        height="90"
+                        width="80"
+                        height="80"
                     />  
-                    <h2 class="d-inline-block align-text-top" >ReRoute Roadtrip</h2>
-                </h2>
+                    <h1 class="d-inline-block"> ReRoute Roadtrip</h1>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
