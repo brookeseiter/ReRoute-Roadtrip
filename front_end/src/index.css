@@ -22,6 +22,7 @@ a:hover {
   color: #fff;
 }
 
+
 /* Homepage */
 .col-md-4 h2 {
   font-size: 58px;
@@ -39,6 +40,19 @@ a:hover {
 }
 h2 {
   margin-bottom: 0px;
+}
+
+/* All Stops Page */
+.AllStopsPageContent {
+  margin-left: 160px;
+  margin-right: 160px;
+}
+.stop-list h1 {
+  margin-left: 15px;
+  font-size: 50px;
+}
+.stop-preview h2 {
+  font-size: 40px;
 }
 
 
@@ -81,7 +95,7 @@ h2 {
   box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
 }
 .stop-preview h2, .StopPage h2, .review-preview h2, .col-lg-7 h2{
-  font-size: 50px;
+  font-size: 40px;
   color: #181617;
   margin-bottom: 8px;
 }

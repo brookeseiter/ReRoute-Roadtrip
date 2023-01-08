@@ -19,9 +19,11 @@ const AllStopsPage = () => {
 
 
     return (
-        <div className="stop-list">
+        <div className="AllStopsPage">
             <Navbar />
-            {stopsObj && <StopList stopsObj={stopsObj} title="All Stops" />}
+            <div className="AllStopsPageContent">
+                {stopsObj && <StopList stopsObj={stopsObj} title="All Stops" />}
+            </div>
         </div>
     );
 }
