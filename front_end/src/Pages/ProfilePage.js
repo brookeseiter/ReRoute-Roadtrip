@@ -39,7 +39,7 @@ const ProfilePage = () => {
                     <div className="col-md-9">
                         <Tabs
                             defaultActiveKey="my-stops"
-                            id="justify-tab-example"
+                            id="justifyTab"
                             className="mb-3"
                             justify
                         >

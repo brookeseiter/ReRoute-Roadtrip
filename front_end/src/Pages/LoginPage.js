@@ -23,8 +23,8 @@ export default function LoginPage () {
     }
 
     return ( 
-        <div className="LoginPage">
-            <form className='LoginForm'>
+        <div className="login-page">
+            <form className='login-form'>
                 <div className="mb-3">
                     <label htmlFor="loginFormInput" className="form-label">
                     <input 

@@ -27,7 +27,6 @@ a:hover {
   margin: 0 auto;
 }
 
-
 /* Homepage */
 .col-md-4 h2 {
   font-size: 58px;
@@ -47,17 +46,17 @@ a:hover {
 h2 {
   margin-bottom: 0px;
 }
-.LoginForm a {
+.login-form a {
   font-family: "Roboto Mono";
 }
-.LoginForm {
+.login-form {
   padding: 10px;
   width: 330px;
   text-align: center;
   align-items: center;
   margin: 0 auto;
 }
-.LoginForm button {
+.login-form button {
   width: 310px;
 }
 
@@ -147,15 +146,15 @@ h2 {
   margin: 0 auto;
   text-align:center;
 }
-.CreateAccountForm label, .LoginForm label, .create-stop-form label, .create-review-form label, .create-review-form button, .CreateRouteForm label{
+.CreateAccountForm label, .login-form label, .create-stop-form label, .create-review-form label, .create-review-form button, .CreateRouteForm label{
   text-align: left;
   display: block;
 }
-.CreateAccountForm h2, .LoginForm h2, .create-stop-form h2, .CreateRouteForm h2{
+.CreateAccountForm h2, .login-form h2, .create-stop-form h2, .CreateRouteForm h2{
   font-size: 27px;
   color: #000000;
 }
-.CreateAccountForm input, .LoginForm input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .CreateRouteForm input{
+.CreateAccountForm input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .CreateRouteForm input{
   /* width: 100%; */
   padding: 6px 10px;
   margin: 10px 0;
@@ -164,7 +163,7 @@ h2 {
   box-sizing: border-box;
   display: block;
 }
-.CreateAccountForm button, .LoginForm button, .create-stop-form button, .create-review-form button, .CreateRouteForm button , .stop-list button {
+.CreateAccountForm button, .login-form button, .create-stop-form button, .create-review-form button, .CreateRouteForm button , .stop-list button {
   background: #9f814f;
   color: #fff;
   border: 0;
