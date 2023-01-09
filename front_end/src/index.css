@@ -21,7 +21,7 @@ a {
 a:hover {
   color: #fff;
 }
-.ProfilePageContent, .AllStopsPageContent, .CreateStopPageContent {
+.profile-page-content, .all-stops-page-content, .create-stop-page-content {
   margin-left: 95px;
   margin-right: 95px;
 }

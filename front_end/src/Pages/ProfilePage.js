@@ -24,34 +24,32 @@ const ProfilePage = () => {
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}))
 
     return ( 
-        <div className="ProfilePage">
-            <div className="container">
-                <Navbar />
-                <div className="ProfilePageContent">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <h1>My Profile</h1>
-                        </div>
-                        <div className="col-md-3">
-                            <Link to="/create-stop">Create a Stop</Link>
-                            <br />
-                            <Link to="/create-route">Create a Route</Link>
-                        </div>
-                        <div className="col-md-9">
-                            <Tabs
-                                defaultActiveKey="mystops"
-                                id="justify-tab-example"
-                                className="mb-3"
-                                justify
-                            >
-                                <Tab eventKey="mystops" title="My Stops">
-                                    {{stopsObj} && <StopList stopsObj={stopsObj} title="My Stops" />}
-                                </Tab>
-                                <Tab eventKey="myreviews" title="My Reviews">
-                                    <MyReviews />
-                                </Tab>
-                            </Tabs>
-                        </div>
+        <div className="profile-page">
+            <Navbar />
+            <div className="profile-page-content container">
+                <div className="row">
+                    <div className="col-md-12">
+                        <h1>My Profile</h1>
+                    </div>
+                    <div className="col-md-3">
+                        <Link to="/create-stop">Create a Stop</Link>
+                        <br />
+                        <Link to="/create-route">Create a Route</Link>
+                    </div>
+                    <div className="col-md-9">
+                        <Tabs
+                            defaultActiveKey="mystops"
+                            id="justify-tab-example"
+                            className="mb-3"
+                            justify
+                        >
+                            <Tab eventKey="my-stops" title="My Stops">
+                                {{stopsObj} && <StopList stopsObj={stopsObj} title="My Stops" />}
+                            </Tab>
+                            <Tab eventKey="my-reviews" title="My Reviews">
+                                <MyReviews />
+                            </Tab>
+                        </Tabs>
                     </div>
                 </div>
             </div>
