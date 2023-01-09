@@ -39,7 +39,7 @@ const StopReviews = ({ handleRatingChange }) => {
     reviewsObj = Object.entries(reviews).map(([key, value]) => ({key, value}))
 
     return ( 
-        <div className="StopReviewDetails">
+        <div className="stop-review-details">
             <article>
             <h2>Reviews</h2>
                 {(reviewsObj.length === 0) && "Be the first to leave a review!" }

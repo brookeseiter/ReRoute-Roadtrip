@@ -15,7 +15,7 @@ const StopReviews = () => {
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}))
 
     return ( 
-        <div className="MyReviews">
+        <div className="my-reviews">
             {(userReviewsObj.length === 0) && "Visit a stop and leave a review!" }
             {userReviewsObj.map((userReviewObj) => (
                 <div className="user-review-preview" key={ userReviewObj.key }>

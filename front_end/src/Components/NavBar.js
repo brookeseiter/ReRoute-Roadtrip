@@ -6,7 +6,7 @@ export default function Navbar () {
     const { store, actions } = useContext(Context);
 
     return (  
-        <nav class="navbar navbar-expand-lg bg-body-tertiary container-fluid">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary container">
             <div class="navbar-brand">
                 <img 
                     src='../Images/logo.png' 
