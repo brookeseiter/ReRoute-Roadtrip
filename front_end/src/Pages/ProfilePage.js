@@ -5,6 +5,8 @@ import MyReviews from '../Components/MyReviews.js'
 import Navbar from '../Components/NavBar.js';
 import { useContext } from 'react';
 import { Context } from '../Storage/appContext.js';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 const ProfilePage = () => {
     const [myStops, setMyStops] = useState([]);
@@ -26,24 +28,32 @@ const ProfilePage = () => {
             <div className="container">
                 <Navbar />
                 <div className="ProfilePageContent">
-                    <h2>My Profile</h2>
-                    <Link to="/create-stop">Create a Stop</Link>
-                    <br />
-                    <Link to="/create-route">Create a Route</Link>
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">My Reviews</a>
-                            {/* {stopsObj && <StopList stopsObj={stopsObj} title="My Stops" />} */}
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">My Stops</a>
-                        </li>
-                    </ul>
-                    {/* {stopsObj && <StopList stopsObj={stopsObj} title="My Stops" />} */}
-                <MyReviews />
-            </div>
-            
-
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h1>My Profile</h1>
+                        </div>
+                        <div className="col-md-3">
+                            <Link to="/create-stop">Create a Stop</Link>
+                            <br />
+                            <Link to="/create-route">Create a Route</Link>
+                        </div>
+                        <div className="col-md-9">
+                            <Tabs
+                                defaultActiveKey="mystops"
+                                id="justify-tab-example"
+                                className="mb-3"
+                                justify
+                            >
+                                <Tab eventKey="mystops" title="My Stops">
+                                    {{stopsObj} && <StopList stopsObj={stopsObj} title="My Stops" />}
+                                </Tab>
+                                <Tab eventKey="myreviews" title="My Reviews">
+                                    <MyReviews />
+                                </Tab>
+                            </Tabs>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
      );

@@ -21,9 +21,9 @@ a {
 a:hover {
   color: #fff;
 }
-.ProfilePage, .AllStopsPageContent {
-  margin-left: 160px;
-  margin-right: 160px;
+.ProfilePageContent, .AllStopsPageContent {
+  margin-left: 95px;
+  margin-right: 95px;
 }
 
 
@@ -74,16 +74,10 @@ a {
 
 /* My Profile Page */
 .MyReviews h1 {
-  font-size: 25px;
+  font-size: 50px;
 }
-
-
 
 /* All Stops Page */
-.AllStopsPageContent {
-  margin-left: 95px;
-  margin-right: 95px;
-}
 .stop-list h1 {
   margin-left: 15px;
   font-size: 50px;
@@ -91,7 +85,6 @@ a {
 .stop-preview h2 {
   font-size: 40px;
 }
-
 
 /* stop previews / list */
 .stop-preview {
@@ -147,7 +140,7 @@ a {
   box-sizing: border-box;
   display: block;
 }
-.CreateAccountForm button, .LoginForm button, .CreateStopForm button, .CreateReviewForm button, .CreateRouteForm button {
+.CreateAccountForm button, .LoginForm button, .CreateStopForm button, .CreateReviewForm button, .CreateRouteForm button , .stop-list button {
   background: #9f814f;
   color: #fff;
   border: 0;
