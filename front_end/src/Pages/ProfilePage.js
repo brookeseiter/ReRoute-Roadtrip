@@ -23,23 +23,28 @@ const ProfilePage = () => {
 
     return ( 
         <div className="ProfilePage">
-            <Navbar />
-            <h2>My Profile</h2>
-            <Link to="/create-stop">Create a Stop</Link>
-            <br />
-            <Link to="/create-route">Create a Route</Link>
-            <br />
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">My Reviews</a>
+            <div className="container">
+                <Navbar />
+                <div className="ProfilePageContent">
+                    <h2>My Profile</h2>
+                    <Link to="/create-stop">Create a Stop</Link>
+                    <br />
+                    <Link to="/create-route">Create a Route</Link>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">My Reviews</a>
+                            {/* {stopsObj && <StopList stopsObj={stopsObj} title="My Stops" />} */}
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">My Stops</a>
+                        </li>
+                    </ul>
                     {/* {stopsObj && <StopList stopsObj={stopsObj} title="My Stops" />} */}
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">My Stops</a>
-                </li>
-            </ul>
-            {/* {stopsObj && <StopList stopsObj={stopsObj} title="My Stops" />} */}
-            <MyReviews />
+                <MyReviews />
+            </div>
+            
+
+            </div>
         </div>
      );
 }

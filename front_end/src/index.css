@@ -11,7 +11,7 @@
 .row>* {
   padding: 0%;
 }
-input, small, a {
+input, small, p {
   font-family: "Roboto Mono";
 }
 a {
@@ -20,6 +20,10 @@ a {
 }
 a:hover {
   color: #fff;
+}
+.ProfilePage, .AllStopsPageContent {
+  margin-left: 160px;
+  margin-right: 160px;
 }
 
 
@@ -40,6 +44,9 @@ a:hover {
 }
 h2 {
   margin-bottom: 0px;
+}
+a {
+  font-family: "Bebas Neue";
 }
 
 
@@ -62,15 +69,20 @@ h2 {
 .collapse ul {
   width: 720px;
   margin-right: 0px;
+  font-size: 20px;
 }
 
+/* My Profile Page */
+.MyReviews h1 {
+  font-size: 25px;
+}
 
 
 
 /* All Stops Page */
 .AllStopsPageContent {
-  margin-left: 160px;
-  margin-right: 160px;
+  margin-left: 95px;
+  margin-right: 95px;
 }
 .stop-list h1 {
   margin-left: 15px;
@@ -97,6 +109,9 @@ h2 {
 }
 .stop-preview a {
   text-decoration: none;
+}
+.stop-preview p {
+  font-family: "Roboto Mono";
 }
 
 
