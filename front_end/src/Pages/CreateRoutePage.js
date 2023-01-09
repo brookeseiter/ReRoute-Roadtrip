@@ -69,7 +69,6 @@ export default function CreateRoutePage () {
         });
   }, []);
 
-
   const stopsObj = Object.entries(mapData).map(([key, value]) => ({key, value}));
 
   function addRouteStop () {
@@ -122,43 +121,52 @@ export default function CreateRoutePage () {
   }
   
   return (
-      <div className='CreateRoutePage container'>
-        <Navbar />
-        <div className='row'>
-          <div className="col">
+    <div className="create-route-page container">
+      <Navbar />
+      <div className="create-route-page-content container">
+        <div className="row">
+          <div className="col-md-12">
             <h2>Create a Route</h2>
           </div>
         </div>
-        <div className="row g-3">
-          <form className="CreateRouteForm">
-              <label htmlFor='ORIGIN'>Origin
-              <input 
-                  id='ORIGIN' 
-                  className='form-control' 
-                  type='text' 
-                  name='origin'
-                  value={inputs.origin || ""}
-                  onChange={handleChange}
-              />
-              </label>
-              <label htmlFor='DESTINATION'>Destination
-              <input 
-                  id='DESTINATION' 
-                  className='form-control' 
-                  type='text' 
-                  name='destination'
-                  value={inputs.destination || ""}
-                  onChange={handleChange}
-              />
-              </label>
-              <button className='btn btn-primary' type='button' onClick={onClick}>
+          <form className="create-route-form row mb-3">
+            <label 
+              htmlFor="origin"
+            >
+              Origin
+            <input 
+              id="origin"
+              className="form-control"
+              type="text"
+              name="origin"
+              value={inputs.origin || ""}
+              onChange={handleChange}
+            />
+            </label>
+            <label 
+              htmlFor="destination"
+            >
+              Destination
+            <input 
+              id="destination"
+              className="form-control"
+              type="text"
+              name="destination"
+              value={inputs.destination || ""}
+              onChange={handleChange}
+            />
+            </label>
+            <button 
+              className='btn btn-primary' 
+              type='button' 
+              onClick={onClick}
+            >
               Build Route
-              </button>
+            </button>
           </form>
-        </div>
             
         {
-          (origin !== '') && (
+          (origin !== "") && (
             <DirectionsAccordion 
               origin={origin} 
               destination={destination} 
@@ -314,6 +322,7 @@ export default function CreateRoutePage () {
       >
         Get Directions
       </button>
+      </div>
       </div>
   );
 };
