@@ -176,7 +176,7 @@ h2 {
   box-sizing: border-box;
   display: block;
 }
-.CreateAccountForm button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button {
+.CreateAccountForm button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button, button#getDirections {
   background: #9f814f;
   color: #fff;
   border: 0;
@@ -195,29 +195,6 @@ h2 {
   width: 100%;
   max-width: 400px;
   z-index: 10;
-}
-
-.map-container {
-  width: 50%;
-  height: 50vh;
-}
-
-.DirectionsAccordion {
-  text-align: left;
-}
-
-.map-settings #direction-example {
-  flex-direction: row;
-  float: left;
-}
-
-.map-settings #panel {
-  flex-direction: row;
-  display:inline-block;
-}
-
-#direction-example {
-  text-align: left !important;
 }
 
 #panel {
