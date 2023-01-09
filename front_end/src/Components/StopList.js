@@ -13,6 +13,9 @@ const StopList = ({ stopsObj, title }) => {
 
     return (
         <div className="stop-list">
+            { title  === "All Stops" &&
+                <h1>All Stops</h1>
+            }
             {stopsObj.map((stopObj) => (
                  <div className="stop-preview" key={ stopObj.key }>
                     <Link to={`/stops/${stopObj.value.stop_id}`}>

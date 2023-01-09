@@ -19,12 +19,10 @@ const AllStopsPage = () => {
 
 
     return (
-        <div className="AllStopsPage">
-            <div className="container">
-                <Navbar />
-                <div className="AllStopsPageContent">
-                    {stopsObj && <StopList stopsObj={stopsObj} title="All Stops" />}
-                </div>
+        <div className="all-stops-page">
+            <Navbar />
+            <div className="all-stops-page-content container">
+                {stopsObj && <StopList stopsObj={stopsObj} title="All Stops" />}
             </div>
         </div>
     );
