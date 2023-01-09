@@ -59,6 +59,13 @@ h2 {
   font-size: 32px;
   margin-left: 5px;
 }
+.collapse ul {
+  width: 720px;
+  margin-right: 0px;
+}
+
+
+
 
 /* All Stops Page */
 .AllStopsPageContent {

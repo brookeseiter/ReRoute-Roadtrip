@@ -19,8 +19,8 @@ export default function Navbar () {
                     />  
                     <h1 class="d-inline-block"> ReRoute Roadtrip</h1>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse align-content-flex-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-end">
                         <li class="nav-item">
                             <Link 
                                 to="/" 
