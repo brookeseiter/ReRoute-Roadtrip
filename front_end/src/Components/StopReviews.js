@@ -40,18 +40,16 @@ const StopReviews = ({ handleRatingChange }) => {
 
     return ( 
         <div className="stop-review-details">
-            <article>
             <h2>Reviews</h2>
-                {(reviewsObj.length === 0) && "Be the first to leave a review!" }
-                {reviewsObj.map((reviewObj) => (
-                    <div className="review-preview" key={ reviewObj.key }>
-                            <p>Username: { reviewObj.value.username }</p>
-                            <p>Rating: { reviewObj.value.rating }</p>
-                            <p>{ reviewObj.value.content }</p>
-                            <br></br>
-                    </div>
-                ))}
-            </article>
+            {(reviewsObj.length === 0) && "Be the first to leave a review!" }
+            {reviewsObj.map((reviewObj) => (
+                <div className="review-preview" key={ reviewObj.key }>
+                        <p>Username: { reviewObj.value.username }</p>
+                        <p>Rating: { reviewObj.value.rating }</p>
+                        <p>{ reviewObj.value.content }</p>
+                        <br></br>
+                </div>
+            ))}
         </div>
      );
 }

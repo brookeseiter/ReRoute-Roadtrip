@@ -99,15 +99,25 @@ h2 {
 }
 
 /* Create A Stop Page */
-.CreateStopForm {
+.create-stop-form {
   margin-left: 20px;
 }
-.CreateStopForm input,  .CreateStopForm select {
+.create-stop-form input,  .create-stop-form select {
   width: 400px;
 }
 #create-stop-search {
   width: 400px;
 }
+
+/* Stop Details Page */
+#createReviewFormControlInput {
+  width: 450px;
+}
+#createReviewFormControlTextArea {
+  height: 100px;
+  width: 450px;
+}
+
 
 /* stop previews / list */
 .stop-preview {
@@ -118,7 +128,7 @@ h2 {
 .stop-preview:hover {
   box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
 }
-.stop-preview h2, .StopPage h2, .review-preview h2, .col-lg-7 h2{
+.stop-preview h2, .stop-page h2, .review-preview h2, .col-lg-7 h2{
   font-size: 40px;
   color: #181617;
   margin-bottom: 8px;
@@ -132,20 +142,20 @@ h2 {
 
 
 /* forms */
-.CreateAccountForm, .CreateStopForm, .CreateRouteForm {
+.CreateAccountForm, .create-stop-form, .CreateRouteForm {
   max-width: 360px;
   margin: 0 auto;
   text-align:center;
 }
-.CreateAccountForm label, .LoginForm label, .CreateStopForm label, .CreateReviewForm label, .CreateReviewForm button, .CreateRouteForm label{
+.CreateAccountForm label, .LoginForm label, .create-stop-form label, .create-review-form label, .create-review-form button, .CreateRouteForm label{
   text-align: left;
   display: block;
 }
-.CreateAccountForm h2, .LoginForm h2, .CreateStopForm h2, .CreateRouteForm h2{
+.CreateAccountForm h2, .LoginForm h2, .create-stop-form h2, .CreateRouteForm h2{
   font-size: 27px;
   color: #000000;
 }
-.CreateAccountForm input, .LoginForm input, .CreateStopForm input, .CreateStopForm select, .create textarea, .create select, .CreateRouteForm input{
+.CreateAccountForm input, .LoginForm input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .CreateRouteForm input{
   /* width: 100%; */
   padding: 6px 10px;
   margin: 10px 0;
@@ -154,7 +164,7 @@ h2 {
   box-sizing: border-box;
   display: block;
 }
-.CreateAccountForm button, .LoginForm button, .CreateStopForm button, .CreateReviewForm button, .CreateRouteForm button , .stop-list button {
+.CreateAccountForm button, .LoginForm button, .create-stop-form button, .create-review-form button, .CreateRouteForm button , .stop-list button {
   background: #9f814f;
   color: #fff;
   border: 0;

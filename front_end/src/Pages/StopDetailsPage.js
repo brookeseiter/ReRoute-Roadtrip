@@ -59,92 +59,64 @@ const StopDetails = () => {
     }
     
     return ( 
-        <div className="StopPage">
+        <div className="stop-page">
             <Navbar />
-            <article>
-                <h2>{ stop.stop_name }</h2>
-                    <p>Stop Category: { stop.stop_category }</p>
-                    <p>Stop Latitude: { stop.stop_lat }</p>
-                    <p>Stop Longitude: { stop.stop_lng }</p>
-                <br></br>
-                    {
-                        updateRating  ?
-                        (<p>Rating: { updateRating }</p>) : null
-                    }
-                <br></br>
-            <div className="CreateReview" onSubmit={handleSubmit}>
-                <h2>Leave a Review</h2>
-                    <form className="CreateReviewForm">
-                        <label>Rating</label>
-                        <input 
-                            type="text" 
-                            required 
-                            name="rating"
-                            value={inputs.rating || ""}
-                            onChange={handleChange}
-                        />
-                        <label>Review</label>
-                        <input 
-                            type="text" 
-                            required 
-                            name="content"
-                            value={inputs.content || ""}
-                            onChange={handleChange} 
-                        />
-                        <button onClick={() => setUpdateRating(true)}>Create Review</button>
-                    </form>
+            <div className="stop-details-page-content container">
+                <div className="row">
+                    <div className="col-md-6">
+                        <h2>{ stop.stop_name }</h2>
+                        <p>Stop Category: { stop.stop_category }</p>
+                        <p>Stop Latitude: { stop.stop_lat }</p>
+                        <p>Stop Longitude: { stop.stop_lng }</p>
+                        {
+                            updateRating  ?
+                            (<p>Rating: { updateRating }</p>) : null
+                        }
+                        <br />
+                        <div className="create-review" onSubmit={handleSubmit}>
+                            <h2>Leave a Review</h2>
+                            <form className="create-review-form">
+                                <label 
+                                    htmlFor="createReviewFormControlInput" 
+                                    class="form-label"
+                                >
+                                    Rating
+                                <input 
+                                    type="text" 
+                                    className="form-control"
+                                    id="createReviewFormControlInput"
+                                    required 
+                                    name="rating"
+                                    value={inputs.rating || ""}
+                                    onChange={handleChange}
+                                />
+                                </label>
+                                <label 
+                                    htmlFor="createReviewFormControlTextArea" 
+                                    class="form-label"
+                                >
+                                    Review
+                                </label>
+                                <textarea 
+                                    type="textarea" 
+                                    className="form-control"
+                                    id="createReviewFormControlTextArea"
+                                    required 
+                                    name="content"
+                                    value={inputs.content || ""}
+                                    onChange={handleChange} 
+                                />
+                                <button onClick={() => setUpdateRating(true)}>Create Review</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+                        <StopReviews handleRatingChange={handleRatingChange} />
+                    </div>
+                </div>
             </div>
-            <br></br>
-                <StopReviews handleRatingChange={handleRatingChange} />
-            </article>
         </div>
      );
 }
  
 export default StopDetails;
-
-
-
-
-
-// import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-
-// const StopDetails = () => {
-//     let { stop_id } = useParams(); 
-//     const [stop, setStop] = useState([]); 
-
-//     useEffect(() => {
-//         fetch(`/api/stops/${stop_id}`) 
-//             .then(response => response.json())
-//             .then(data => {setStop(data)}) 
-//             .catch(error => console.log(error));
-//     }, [stop_id]); 
-    
-//     const stopDetailsObj = Object.entries(stop).map(([key, value],) => ({key, value}))
-//     console.log(stopDetailsObj)
-
-
-//     return ( 
-//         <div className="StopPage">
-//             <article>
-//                 {/* <h2>{stopDetailsObj.value.stop_name }</h2>
-//                 <p>Category { stopDetailsObj.value.stop_category }</p>
-//                 <p>Latitude { stopDetailsObj.value.stop_lat }</p>
-//                 <p>Longitude { stopDetailsObj.value.stop_lng }</p> */}
-//                 {stopDetailsObj.map((stopDetailsObj) => (
-//                  <div className="stop-preview" key={ stopDetailsObj.key }>
-//                         <h2>{ stopDetailsObj.value.stop_name }</h2>
-//                         <p>Category { stopDetailsObj.value.stop_category }</p>
-//                         <p>Latitude { stopDetailsObj.value.stop_lat }</p>
-//                         <p>Longitude { stopDetailsObj.value.stop_lng }</p>
-//                         <p>Rating {stopDetailsObj.value.rating}</p>
-//                 </div>
-                
-//             ))}
-//             </article>
-//         </div>
-//      );
-// }
- 
-// export default StopDetails;
