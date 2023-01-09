@@ -121,49 +121,57 @@ export default function CreateRoutePage () {
   }
   
   return (
-    <div className="create-route-page container">
+    <div className="create-route-page">
       <Navbar />
       <div className="create-route-page-content container">
-        <div className="row">
-          <div className="col-md-12">
-            <h2>Create a Route</h2>
-          </div>
-        </div>
-          <form className="create-route-form row mb-3">
-            <label 
-              htmlFor="origin"
-            >
-              Origin
-            <input 
-              id="origin"
-              className="form-control"
-              type="text"
-              name="origin"
-              value={inputs.origin || ""}
-              onChange={handleChange}
-            />
-            </label>
-            <label 
-              htmlFor="destination"
-            >
-              Destination
-            <input 
-              id="destination"
-              className="form-control"
-              type="text"
-              name="destination"
-              value={inputs.destination || ""}
-              onChange={handleChange}
-            />
-            </label>
-            <button 
-              className='btn btn-primary' 
-              type='button' 
-              onClick={onClick}
-            >
-              Build Route
-            </button>
+        <div className="row align-items-center">
+          <h2>Create a Route</h2>
+          <form className="create-route-form">
+            <div className="row">
+              <div className="col">
+                <label 
+                  htmlFor="origin"
+                  className="form-label"
+                >
+                  Origin
+                <input 
+                  id="origin"
+                  className="form-control"
+                  type="text"
+                  name="origin"
+                  value={inputs.origin || ""}
+                  onChange={handleChange}
+                />
+                </label>
+              </div>
+              <div className="col">
+                <label 
+                  htmlFor="destination"
+                  className="form-label"
+                >
+                  Destination
+                <input 
+                  id="destination"
+                  className="form-control"
+                  type="text"
+                  name="destination"
+                  value={inputs.destination || ""}
+                  onChange={handleChange}
+                />
+                </label>
+              </div>
+              <div className="row justify-content-center">
+                <button 
+                  className='btn btn-primary col-md-2' 
+                  type='button' 
+                  onClick={onClick}
+                >
+                  Build Route
+                </button>
+              </div>
+            </div>
           </form>
+        </div>
             
         {
           (origin !== "") && (

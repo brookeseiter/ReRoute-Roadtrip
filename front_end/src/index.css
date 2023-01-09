@@ -9,7 +9,12 @@
   color: rgb(0, 0, 0);
 }
 .row>* {
-  padding: 0%;
+  padding: 0;
+  margin: 0;
+}
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
 input, small, p {
   font-family: "Roboto Mono";
@@ -139,19 +144,22 @@ h2 {
   font-family: "Roboto Mono";
 }
 
+/* Create Route Page */
+.create-route-form .col {
+  display: flex;
+  justify-content: center;
+}
+.create-route-form input {
+  width: 450px;
+}
 
 /* forms */
 .CreateAccountForm, .create-stop-form {
   max-width: 360px;
   margin: 0 auto;
-  text-align:center;
+  text-align: center;
 }
-.create-route-form.row {
-  width: 40%;
-  flex-wrap: nowrap;
-  /* justify-content: space-around; */
-}
-.CreateAccountForm label, .login-form label, .create-stop-form label, .create-review-form label, .create-review-form button, .create-route-form label{
+.CreateAccountForm label, .login-form label, .create-stop-form label, .create-review-form label {
   text-align: left;
   display: block;
 }
@@ -168,7 +176,7 @@ h2 {
   box-sizing: border-box;
   display: block;
 }
-.CreateAccountForm button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button , .stop-list button {
+.CreateAccountForm button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button {
   background: #9f814f;
   color: #fff;
   border: 0;
@@ -179,9 +187,6 @@ h2 {
   font-size: 18px;
   cursor: pointer;
 }
-/* .create-route-form button {
-
-} */
 .search {
   position: absolute;
   top: 1rem;
