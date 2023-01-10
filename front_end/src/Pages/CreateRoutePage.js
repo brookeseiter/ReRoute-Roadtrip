@@ -424,48 +424,78 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
 
   return (
     <div class="accordion" id="accordionPanelsStayOpen">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-            Origin
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-          <div class="accordion-body">
-            <strong>{origin}</strong> 
-          </div>
-        </div>
-      </div>
-      {waypoints.map((waypoint) => ( 
-        <div class="accordion-item" key={waypoint.key}>
-          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-              {waypoint.value.stop_name}
-            </button>
-          </h2>
-          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-            <div class="accordion-body">
-              <strong>
-                  <p>Category: {waypoint.value.stop_category}</p>
-                  <p>Latitude: {waypoint.value.stop_lat}</p>
-                  <p>Longitude: {waypoint.value.stop_lng}</p>
-              </strong> 
+      <div class="padding">
+        <div class="row container d-flex justify-content-strecth">
+          <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Route Stops</h4>
+                    <p class="card-description">Basic Accordian Example</p>
+                  <div class="mt-4">
+                    <div class="accordion" id="accordion" role="tablist">
+                      <div class="card accordion-item">
+                        <div class="card-header accordion-header" role="tab" id="panelsStayOpen-headingOne heading-1">
+                          <h6 class="mb-0">
+                            <a data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne #collapse-1" href="#collapse-1" type="button" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne collapse-1" data-abc="true" class="accordion-button collapsed">
+                              Origin
+                            </a>
+                          </h6>
+                        </div>
+                        <div id="panelsStayOpen-collapseOne collapse-1" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne heading-1" role="tabpanel" data-parent="#accordion">
+                          <div class="card-body accordion-body">
+                            <div class="col-9">
+                              <p class="mb-0">{origin}</p>                          
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {waypoints.map((waypoint) => ( 
+                        <div class="card accordion-item" key={waypoint.key}>
+                          <div class="card-header accordion-header" role="tab" id="panelsStayOpen-headingTwo heading-2">
+                            <h6 class="mb-0">
+                              <a data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo #collapse-2" href="#collapse-2" type="button" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo collapse-2" data-abc="true" class="accordion-button collapsed">
+                                {waypoint.value.stop_name}
+                              </a>
+                            </h6>
+                          </div>
+                          <div id="panelsStayOpen-collapseTwo collapse-2" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo heading-2" role="tabpanel" data-parent="#accordion">
+                            <div class="card-body accordion-body">
+                              <div class="col-9">
+                                <strong>
+                                  <p>Category: {waypoint.value.stop_category}</p>
+                                  <p>Latitude: {waypoint.value.stop_lat}</p>
+                                  <p>Longitude: {waypoint.value.stop_lng}</p>
+                                </strong>                       
+                              </div>
+                            </div> 
+                          </div>
+                        </div>
+                      ))}
+                      <div class="card accordion-item">
+                        <div class="card-header accordion-header" role="tab" id="panelsStayOpen-headingThree heading-3">
+                          <h6 class="mb-0">
+                            <a data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree #collapse-3" href="#collapse-3" type="button" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree collapse-3" data-abc="true" class="accordion-button collapsed">
+                              Destination
+                            </a>
+                          </h6>
+                        </div>
+                        <div id="panelsStayOpen-collapseThree collapse-3" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree heading-3" role="tabpanel" data-parent="#accordion">
+                          <div class="card-body accordion-body">
+                            <div class="col-9">
+                              <p class="mb-0">{destination}</p>                          
+                            </div>
+                          </div> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-            Destination
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-          <div class="accordion-body">
-            <strong>{destination}</strong> 
-          </div>
-        </div>
+        <div>
       </div>
+    </div>
     </div>
   )
 }
