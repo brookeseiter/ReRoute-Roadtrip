@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;330&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
 
 /* base styles */
 * {
@@ -17,7 +18,7 @@
   margin-right: 0;
 }
 input, small, p {
-  font-family: "Roboto Mono";
+  font-family: "Raleway";
 }
 a {
   text-decoration: none;
@@ -28,149 +29,13 @@ a:hover {
 }
 .container {
   align-items: center;
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 0 auto;
 }
-
-/* Homepage */
-.homepage.container {
-  margin: 0;
-  padding: 0;
-  max-width: fit-content;
-}
-.bg-img {
-  height: 100vh;
-  width: 100vw;
-}
-.col-md-3 h2 {
-  font-size: 58px;
-}
-.col-md-3 img {
-  margin-top: 25px;
-  margin-bottom: 10px;
-  margin-right: 20px;
-}
-.col-md-3 {
-  background-color: #4E6C50;
-  position: relative;
-  right: 130px;
-}
-.col-md-3 p {
-  font-family: "Bebas Neue";
-  font-size: 18px;
-  margin-bottom: 35px;
-}
-h2 {
-  margin-bottom: 0px;
-}
-.login-form a {
-  font-family: "Roboto Mono";
-}
-.login-form {
-  padding: 10px;
-  width: 330px;
-  text-align: center;
-  align-items: center;
-  margin: 0 auto;
-}
-.login-form button {
-  width: 310px;
-}
-
-
-/* Navbar */
-.navbar {
-  display: flex;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
-} 
-.navbar-brand {
-  width: 350px;
-  overflow: auto;
-}
-.navbar-brand h1 {
-  font-size: 32px;
-  margin-left: 5px;
-}
-.collapse ul {
-  width: 720px;
-  margin-right: 0px;
-  font-size: 20px;
-}
-
-/* My Profile Page */
-.my-reviews h1 {
+h1 {
   font-size: 50px;
-}
-
-/* All Stops Page */
-.stop-list h1 {
-  margin-left: 15px;
-  font-size: 50px;
-}
-.stop-preview h2 {
-  font-size: 40px;
-}
-
-/* Create A Stop Page */
-.create-stop-form {
-  margin-left: 20px;
-}
-.create-stop-form input,  .create-stop-form select {
-  width: 400px;
-}
-#create-stop-search {
-  width: 400px;
-}
-
-/* Stop Details Page */
-#createReviewFormControlInput {
-  width: 450px;
-}
-#createReviewFormControlTextArea {
-  height: 100px;
-  width: 450px;
-}
-
-
-/* stop previews / list */
-.stop-preview {
-  padding: 10px 16px;
-  margin: 20px 0;
-  border-bottom: 1px solid #fafafa;
-}
-.stop-preview:hover {
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
-}
-.stop-preview h2, .stop-page h2, .review-preview h2, .col-lg-7 h2{
-  font-size: 40px;
-  color: #181617;
-  margin-bottom: 8px;
-}
-.stop-preview a {
-  text-decoration: none;
-}
-.stop-preview p {
-  font-family: "Roboto Mono";
-}
-
-/* Create Route Page */
-.create-route-form .col {
-  display: flex;
-  justify-content: center;
-}
-.create-route-form input {
-  width: 450px;
-}
-.modal.fade .modal-dialog {
-  border-radius: var(--bs-modal-border-radius);
-  transform: none;
-  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
-}
-.modal {
-  --bs-modal-margin: var(--bs-modal-margin-2.8rem);
+  margin-top: 20px;
+  border-bottom: 2px solid #000000;
 }
 
 /* forms */
@@ -216,6 +81,160 @@ h2 {
   max-width: 400px;
   z-index: 10;
 }
+
+/* Homepage */
+.homepage.container {
+  margin: 0;
+  padding: 0;
+  max-width: fit-content;
+}
+.bg-img {
+  height: 100vh;
+  width: 100vw;
+}
+.col-md-3 h2 {
+  font-size: 58px;
+}
+.col-md-3 img {
+  margin-top: 25px;
+  margin-bottom: 2px;
+  margin-right: 20px;
+}
+.homepage .col-md-3 {
+  background-color: #4E6C50;
+  position: relative;
+  right: 130px;
+}
+.col-md-3 p {
+  font-family: "Bebas Neue";
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+h2 {
+  margin-bottom: 0px;
+}
+.login-form a {
+  font-family: "Roboto Mono";
+}
+.login-form {
+  padding: 10px;
+  width: 330px;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.login-form button {
+  width: 310px;
+  margin-top: 25px;
+  /* position: relative;
+  top: 10px; */
+}
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: #61764B;
+} 
+.navbar-brand {
+  width: 350px;
+  overflow: auto;
+  /* margin-left: 145px; */
+  margin-left: 190px;
+}
+.navbar-brand h1 {
+  font-size: 33px;
+  margin-left: 5px;
+  padding: 0px;
+  border-bottom: none;
+}
+img.d-inline-block {
+  /* background-color: #fff; */
+  background-color: #61764B;
+}
+.collapse ul {
+  /* width: 790px; */
+  width: 700px;
+  margin-right: 0px;
+  font-size: 21px;
+}
+.navbar.container {
+  max-width: 1450px;
+}
+
+/* My Profile Page */
+.my-reviews h1 {
+  font-size: 50px;
+}
+
+/* All Stops Page */
+.stop-preview h2 {
+  font-size: 40px;
+}
+
+
+/* Create A Stop Page */
+.create-stop-form {
+  margin-left: 20px;
+}
+.create-stop-form input,  .create-stop-form select {
+  width: 400px;
+}
+#create-stop-search {
+  width: 400px;
+}
+
+/* Stop Details Page */
+#createReviewFormControlInput {
+  width: 450px;
+}
+#createReviewFormControlTextArea {
+  height: 100px;
+  width: 450px;
+}
+
+/* Create Route Page */
+.create-route-form .col {
+  display: flex;
+  justify-content: center;
+}
+.create-route-form input {
+  width: 450px;
+}
+.modal.fade .modal-dialog {
+  border-radius: var(--bs-modal-border-radius);
+  transform: none;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+.modal {
+  --bs-modal-margin: var(--bs-modal-margin-2.8rem);
+}
+
+/* stop previews / list */
+.stop-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+.stop-preview:hover {
+  box-shadow: 4px 6px 8px rgba(0,0,0,0.1);
+}
+.stop-preview h2, .stop-page h2, .review-preview h2, .col-lg-7 h2{
+  font-size: 40px;
+  color: #181617;
+  margin-bottom: 8px;
+}
+.stop-preview a {
+  text-decoration: none;
+}
+.stop-preview p {
+  font-family: "Raleway";
+}
+
+
 
 
 
