@@ -143,6 +143,7 @@ export default function CreateStopPage () {
                                 name="stop_lat"
                                 value={marker.lat || ""}
                                 onChange={handleChange} 
+                                placeholder="Drop a pin on map"
                             />
                             </label>
                             <label 
@@ -158,6 +159,7 @@ export default function CreateStopPage () {
                                 name="stop_lng" 
                                 value={marker.lng || ""}
                                 onChange={handleChange}
+                                placeholder="Drop a pin on map"
                             />
                             </label>
                             <label>Stop Category</label>
@@ -231,7 +233,7 @@ function StandaloneSearchBox({ panTo }) {
                     setValue(e.target.value);
                 }} 
                 disabled={!ready}
-                placeholder="Enter an address"
+                placeholder="Enter an address near your stop"
             />
             <ComboboxPopover>
                 <ComboboxList>

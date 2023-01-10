@@ -52,7 +52,7 @@ h1 {
   font-size: 27px;
   color: #000000;
 }
-.CreateAccountForm input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input, .create-review-form input {
+.CreateAccountForm input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input {
   /* width: 100%; */
   padding: 6px 10px;
   margin: 10px 0;
@@ -181,13 +181,34 @@ img.d-inline-block {
 
 /* Create A Stop Page */
 .create-stop-form {
-  margin-left: 20px;
+  margin-right: 36px;
+  position: relative;;
+  bottom: 38px;
+}
+.create-stop-page h1 {
+  margin-top: 8px;
 }
 .create-stop-form input,  .create-stop-form select {
   width: 400px;
 }
-#create-stop-search {
+.create-stop-form button {
   width: 400px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.create-stop-form label {
+  font-size: 20px;
+}
+#create-stop-search {
+  width: 530px;
+  margin-bottom: 15px;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+  
 }
 
 /* Stop Details Page */
