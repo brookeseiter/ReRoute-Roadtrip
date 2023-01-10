@@ -53,11 +53,10 @@ h1 {
   color: #000000;
 }
 .CreateAccountForm input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input {
-  /* width: 100%; */
   padding: 6px 10px;
   margin: 10px 0;
   border-radius: 3px;
-  /* border: 1px solid #ddd; */
+  border: 1px solid #ddd;
   box-sizing: border-box;
   display: block;
 }
@@ -249,8 +248,22 @@ img.d-inline-block {
   display: flex;
   justify-content: center;
 }
+.create-route-page h1 {
+  margin-top: 8px;
+}
+.create-route-page label {
+  font-size: 22px;
+  margin-top: 0.5rem;
+}
 .create-route-form input {
-  width: 450px;
+  width: 485px;
+  margin-bottom: 1rem;
+}
+.create-route-form button {
+  width: 485px;
+  font-size: 20px;
+  margin-top: 0px !important;
+  margin-bottom: 2.5rem !important;
 }
 .modal.fade .modal-dialog {
   border-radius: var(--bs-modal-border-radius);

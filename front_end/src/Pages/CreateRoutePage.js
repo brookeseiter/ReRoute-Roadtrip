@@ -130,7 +130,7 @@ export default function CreateRoutePage () {
       <Navbar />
       <div className="create-route-page-content container">
         <div className="row align-items-center">
-          <h2>Create a Route</h2>
+          <h1>Create a Route</h1>
           <form className="create-route-form">
             <div className="row">
               <div className="col">
@@ -146,6 +146,7 @@ export default function CreateRoutePage () {
                   name="origin"
                   value={inputs.origin || ""}
                   onChange={handleChange}
+                  placeholder="Origin address"
                 />
                 </label>
               </div>
@@ -162,6 +163,7 @@ export default function CreateRoutePage () {
                   name="destination"
                   value={inputs.destination || ""}
                   onChange={handleChange}
+                  placeholder="Destination address"
                 />
                 </label>
               </div>
@@ -198,6 +200,7 @@ export default function CreateRoutePage () {
             }
             {
               isLoaded === true &&
+              origin !== "" &&
               <GoogleMap
                 id='direction-example'
                 mapContainerStyle={{
