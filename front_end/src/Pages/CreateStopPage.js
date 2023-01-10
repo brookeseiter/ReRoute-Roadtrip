@@ -77,7 +77,7 @@ export default function CreateStopPage () {
             <div className="create-stop-page-content container">
                 <div className="row">
                     <div className="col-md-12">
-                        <h2>Create A Stop</h2>
+                        <h1>Create A Stop</h1>
                         <p>Click the map to drop a pin at approximate location of your stop</p>
                         <StandaloneSearchBox panTo={panTo} />
                         <br />
@@ -91,7 +91,7 @@ export default function CreateStopPage () {
                             mapContainerClassName="map-container"
                             mapContainerStyle={{
                                 height: '395px',
-                                width: '545px'
+                                width: '530px'
                             }}
                             onClick={(e) => {
                                 marker = {
