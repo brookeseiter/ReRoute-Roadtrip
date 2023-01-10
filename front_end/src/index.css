@@ -152,6 +152,14 @@ h2 {
 .create-route-form input {
   width: 450px;
 }
+.modal.fade .modal-dialog {
+  border-radius: var(--bs-modal-border-radius);
+  transform: none;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+.modal {
+  --bs-modal-margin: var(--bs-modal-margin-2.8rem);
+}
 
 /* forms */
 .CreateAccountForm, .create-stop-form {
@@ -176,7 +184,7 @@ h2 {
   box-sizing: border-box;
   display: block;
 }
-.CreateAccountForm button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button, button#getDirections {
+.CreateAccountForm button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button, .create-route-page .btn {
   background: #9f814f;
   color: #fff;
   border: 0;
@@ -197,8 +205,5 @@ h2 {
   z-index: 10;
 }
 
-#panel {
-  width: 50%;
-  height: 400px;
-  text-align: left;
-}
+
+

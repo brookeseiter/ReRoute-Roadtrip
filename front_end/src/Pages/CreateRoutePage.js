@@ -12,6 +12,8 @@ import {
   useRef, 
   useState } from "react";
 import Navbar from "../Components/NavBar";
+import Modal from "react-bootstrap/Modal";
+import  Button from "react-bootstrap/Button";
 
 const center = {
   lat: 47.116386, 
@@ -32,6 +34,9 @@ export default function CreateRoutePage () {
   const [routeCenter, setRouteCenter] = useState(null);
   const [routeRadius, setRouteRadius] = useState(null);
   const [isShowing, setIsShowing] = useState(true);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [waypointKeys, setWaypointKeys] = useState([]);
 
   const { isLoaded } = useJsApiLoader({
@@ -172,7 +177,7 @@ export default function CreateRoutePage () {
             </div>
           </form>
         </div>
-        <div className="row">  
+        <div className="row map-content">  
           <div className="col">
             {
               (origin !== "") && (
@@ -284,66 +289,59 @@ export default function CreateRoutePage () {
             { totalDist &&
               <button
                 type="button"
-                id="getDirections"
-                className="btn btn-lg btn-primary"
+                className="btn btn-primary"
                 data-bs-toggle="modal"
-                data-bs-target="#small_modal"
+                data-bs-target="#directionsModal"
                 onClick={() => {
-                    document.getElementById('small_modal').style.display = 'block';
-                    document.getElementById('small_modal').style.opacity = 1;
+                    // handleShow;
+                    document.getElementById('directionsModal').style.display = 'block';
+                    document.getElementById('directionsModal').style.opacity = 1;
                 }} 
               >
                 Get Directions
-              </button>
+              </button> 
             }
           </div>
         </div>
 
-
-      {/* modal start */}
-      <div
-        id="small_modal"
-        className="modal fade"
-        role="dialog"
-        aria-labelledby="mySmallModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-md modal-dialog-scrollable">
-          <div className="modal-content shadow-max modal-dialog-scrollable">
-            <div className="modal-header">
-              <h3 className="modal-title" id="exampleModalLabel1">
-                Directions
-              </h3>
-              <button
-                type="button"
-                className="close icon"
-                data-dismiss="modal"
-                aria-label="Close"
-                onClick={() => {
-                  document.getElementById('small_modal').style.display = 'none';
-                  document.getElementById('small_modal').style.opacity = 0;
-      
-              }}
-              >
-                close
-              </button>
-            </div>
-            <div className="modal-body modal-dialog-scrollable" id="panel">
-
+        {/* show={show} onHide={handleClose} */}
+        <div
+          id="directionsModal"
+          className="modal fade"
+          role="dialog"
+          aria-labelledby="directionsModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-md modal-dialog-scrollable">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-3" id="directionsModalLabel">
+                  Directions
+                </h1>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  onClick={() => {
+                    document.getElementById('directionsModal').style.display = 'none';
+                    document.getElementById('directionsModal').style.opacity = 0;
+                  }}
+                >
+                </button>
+              </div>
+              <div className="modal-body" id="panel"></div>
             </div>
           </div>
         </div>
       </div>
-
-     
-      </div>
-      </div>
+    </div>
   );
 };
 
 const Directions = props => {
   const [directions, setDirections] = useState();
-  const { origin, destination, waypoints, handleRouteChange, handleRouteCenter } = props;
+  const { origin, destination, waypoints, handleRouteChange, handleRouteCenter} = props;
   const count = useRef(0);
 
   const options = {
