@@ -62,59 +62,63 @@ const StopDetails = () => {
         <div className="stop-page">
             <Navbar />
             <div className="stop-details-page-content container">
-                <div className="row">
-                    <div className="col-md-6">
-                        <h2>{ stop.stop_name }</h2>
-                        <p>Stop Category: { stop.stop_category }</p>
-                        <p>Stop Latitude: { stop.stop_lat }</p>
-                        <p>Stop Longitude: { stop.stop_lng }</p>
+                {/* <div className="row"> */}
+                    <div className="row stop-info">
+                        <h1>{ stop.stop_name }</h1>
+                        <p>Category: { stop.stop_category }</p>
+                        <p>Latitude: { stop.stop_lat }</p>
+                        <p>Longitude: { stop.stop_lng }</p>
                         {
                             updateRating  ?
                             (<p>Rating: { updateRating }</p>) : null
                         }
                         <br />
-                        <div className="create-review" onSubmit={handleSubmit}>
-                            <h2>Leave a Review</h2>
-                            <form className="create-review-form">
-                                <label 
-                                    htmlFor="createReviewFormControlInput" 
-                                    class="form-label"
-                                >
-                                    Rating
-                                <input 
-                                    type="text" 
-                                    className="form-control"
-                                    id="createReviewFormControlInput"
-                                    required 
-                                    name="rating"
-                                    value={inputs.rating || ""}
-                                    onChange={handleChange}
-                                />
-                                </label>
-                                <label 
-                                    htmlFor="createReviewFormControlTextArea" 
-                                    class="form-label"
-                                >
-                                    Review
-                                </label>
-                                <textarea 
-                                    type="textarea" 
-                                    className="form-control"
-                                    id="createReviewFormControlTextArea"
-                                    required 
-                                    name="content"
-                                    value={inputs.content || ""}
-                                    onChange={handleChange} 
-                                />
-                                <button onClick={() => setUpdateRating(true)}>Create Review</button>
-                            </form>
-                        </div>
                     </div>
+                    <div className="row">
+                    <div className="create-review col-md-6" onSubmit={handleSubmit}>
+                        <h2>Leave a Review</h2>
+                        <form className="create-review-form">
+                            <label 
+                                htmlFor="createReviewFormControlInput" 
+                                class="form-label"
+                            >
+                                Rating
+                            <input 
+                                type="text" 
+                                className="form-control"
+                                id="createReviewFormControlInput"
+                                required 
+                                name="rating"
+                                value={inputs.rating || ""}
+                                onChange={handleChange}
+                            />
+                            </label>
+                            <label 
+                                htmlFor="createReviewFormControlTextArea" 
+                                class="form-label"
+                            >
+                                Review
+                            </label>
+                            <textarea 
+                                type="textarea" 
+                                className="form-control"
+                                id="createReviewFormControlTextArea"
+                                required 
+                                name="content"
+                                value={inputs.content || ""}
+                                onChange={handleChange} 
+                            />
+                            <button onClick={() => setUpdateRating(true)}>Create Review</button>
+                        </form>
+                    </div>
+                    
                     <div className="col-md-6">
                         <StopReviews handleRatingChange={handleRatingChange} />
                     </div>
+                    </div>
+
                 </div>
-            </div>
+            {/* </div> */}
         </div>
      );
 }

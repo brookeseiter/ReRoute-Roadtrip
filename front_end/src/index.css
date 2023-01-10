@@ -52,7 +52,7 @@ h1 {
   font-size: 27px;
   color: #000000;
 }
-.CreateAccountForm input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input{
+.CreateAccountForm input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input, .create-review-form input {
   /* width: 100%; */
   padding: 6px 10px;
   margin: 10px 0;
@@ -67,7 +67,8 @@ h1 {
   border: 0;
   padding: 6px;
   border-radius: 3px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  margin-top: 25px;
   margin-bottom: 10px;
   font-size: 18px;
   cursor: pointer;
@@ -125,9 +126,8 @@ h2 {
 }
 .login-form button {
   width: 310px;
-  margin-top: 25px;
-  /* position: relative;
-  top: 10px; */
+  margin-top: 32px;
+  font-size: 20px;
 }
 
 
@@ -194,6 +194,28 @@ img.d-inline-block {
 #createReviewFormControlTextArea {
   height: 100px;
   width: 450px;
+}
+.create-review-form label {
+  font-size: 22px;
+}
+.create-review-form button {
+  width: 450px;
+  font-size: 22px;
+}
+.stop-details-page-content h1 {
+  font-size: 50px;
+  margin-top: 20px;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #000000;
+}
+.stop-info p {
+  margin-bottom: 1rem;
+}
+/* .stop-details-page-content .col-md-6 h2 {
+  border-bottom: 2px solid #000000;
+} */
+.stop-details-page-content {
+  overflow: scroll !important;
 }
 
 /* Create Route Page */
