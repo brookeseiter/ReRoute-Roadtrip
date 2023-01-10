@@ -97,7 +97,7 @@ h1 {
   font-size: 58px;
 }
 .col-md-3 img {
-  margin-top: 25px;
+  margin-top: 18px;
   margin-bottom: 2px;
   margin-right: 20px;
 }
@@ -109,13 +109,15 @@ h1 {
 .col-md-3 p {
   font-family: "Bebas Neue";
   font-size: 18px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 h2 {
   margin-bottom: 0px;
 }
-.login-form a {
+.login-form a, small {
   font-family: "Roboto Mono";
+  font-weight: 200;
+  font-size: 13px;
 }
 .login-form {
   padding: 10px;
@@ -126,7 +128,7 @@ h2 {
 }
 .login-form button {
   width: 310px;
-  margin-top: 32px;
+  margin-top: 25px;
   font-size: 20px;
 }
 
