@@ -91,7 +91,7 @@ export default function CreateAccountPage () {
                 />
                 <button>Submit</button>
                 <br></br>
-                <small>Already have an account? <Link to='/login'>Log In</Link></small>
+                <small>Already have an account? <Link to='/'>Log In</Link></small>
             </form>
         </div>
      );
