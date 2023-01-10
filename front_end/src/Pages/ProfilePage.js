@@ -31,7 +31,7 @@ const ProfilePage = () => {
                     <div className="col-md-12">
                         <h1>My Profile</h1>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 create-links">
                         <Link to="/create-stop">Create a Stop</Link>
                         <br />
                         <Link to="/create-route">Create a Route</Link>
