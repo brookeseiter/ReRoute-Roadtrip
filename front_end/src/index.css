@@ -33,17 +33,29 @@ a:hover {
 }
 
 /* Homepage */
-.col-md-4 h2 {
+.homepage.container {
+  margin: 0;
+  padding: 0;
+  max-width: fit-content;
+}
+.bg-img {
+  height: 100vh;
+  width: 100vw;
+}
+.col-md-3 h2 {
   font-size: 58px;
 }
-.col-md-4 img {
+.col-md-3 img {
   margin-top: 25px;
   margin-bottom: 10px;
+  margin-right: 20px;
 }
-.col-md-4 {
+.col-md-3 {
   background-color: #4E6C50;
+  position: relative;
+  right: 130px;
 }
-.col-md-4 p {
+.col-md-3 p {
   font-family: "Bebas Neue";
   font-size: 18px;
   margin-bottom: 35px;

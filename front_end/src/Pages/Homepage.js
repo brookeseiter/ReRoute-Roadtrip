@@ -3,18 +3,16 @@ import LoginPage from './LoginPage.js';
 export default function Homepage () {
 
     return ( 
-        <div className="homepage container">    
+        <div className="homepage">   
             <div className="row">
-                <div className="col-md-8 has-bg-img">
+                <div className="col-md-9 has-bg-img">
                     <img 
                         src="../Images/rocks.jpeg"
-                        class="bg-img d-block" 
+                        class="bg-img" 
                         alt=""
-                        width="1300px"
-                        height="770px"
                     />             
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <br />
                     <img 
                         src="../Images/logo.png"

@@ -16,19 +16,17 @@ function App() {
 
   return (
     <Router>
-      <div className="App container">
-        <Routes>
-          <Route path="/" element={<Homepage />} /> 
-          <Route path="/create-account" element={<CreateAccountPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/create-stop" element={<CreateStopPage />} />
-          <Route path="/create-route" element={<CreateRoutePage />} />
-          <Route path="/stops" element={<AllStopsPage />} />
-          <Route path="/stops/:stop_id" element={<StopDetails />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Homepage />} /> 
+        <Route path="/create-account" element={<CreateAccountPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/create-stop" element={<CreateStopPage />} />
+        <Route path="/create-route" element={<CreateRoutePage />} />
+        <Route path="/stops" element={<AllStopsPage />} />
+        <Route path="/stops/:stop_id" element={<StopDetails />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </Router>
   );
 }
