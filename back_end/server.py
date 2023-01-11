@@ -166,9 +166,6 @@ def delete_stop(stop_id):
 def view_stop_reviews(stop_id):
     """View a stop's reviews."""
 
-    # stop_reviews = crud.get_reviews_by_stop(stop_id)
-
-    # return jsonify({review.review_id: review.to_dict() for review in stop_reviews})
     stop_reviews = crud.stop_reviews(stop_id)
     stop_reviews_dict = crud.stop_reviews_to_dict(stop_reviews)
 
@@ -202,20 +199,11 @@ def a_user(user_id):
 def view_user_reviews(user_id):
     """View a user's reviews."""
 
-    user_reviews = crud.get_reviews_by_user(user_id)
+    user_reviews = crud.user_reviews(user_id)
+    user_reviews_dict = crud.user_reviews_to_dict(user_reviews)
 
-    return jsonify({user_review.review_id: user_review.to_dict() for user_review in user_reviews})
+    return jsonify({user_review['review_id']: user_review for user_review in user_reviews_dict})
 
-
-# @app.route("/hello", methods=["GET"])
-# @jwt_required()
-# def get_hello():
-
-#     dictionary = {
-#         "message": "hello world"
-#     }
-    
-#     return jsonify(dictionary)
 
 
 if __name__ == "__main__":

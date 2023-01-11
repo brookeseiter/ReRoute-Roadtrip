@@ -89,52 +89,9 @@ def get_reviews_by_stop(stop_id):
 
     return Review.query.filter(Review.stop_id == stop_id).all()
 
-# def get_reviews_by_stop(stop_id):
-#     """Return all reviews for a stop."""
-#     "Returns only the last set of these values as a dict, with username"
-
-#     stop_review_dict = {}
-
-#     reviews_for_stop = Review.query.filter(Review.stop_id == stop_id).all()
-
-#     for review in reviews_for_stop:
-#         stop_review_dict["review_id"] = review.review_id
-#         stop_review_dict["rating"] = review.rating
-#         stop_review_dict["user_id"] = review.user_id
-#         stop_review_dict["username"] = review.user.username
-#         stop_review_dict["stop_id"] = review.stop_id
-
-#     return stop_review_dict
-
-# def join_reviews_stops():
-#     # stops = db.session.query(Stop,Review).join(Stop).order_by(Stop.stop_id).all()
-#     # print('STOPS:----------------------------------------------------------------', stops)
-
-#     # for stop, rev in stops:  # [(<Emp>, <Dept>), (<Emp>, <Dept>)]
-#     #     return (stop.stop_name, rev.rating, rev.content)
-
-#     # return stops
-
-#     stops = db.session.query(Stop.stop_id, Stop.stop_name, Stop.stop_category,
-#                             Stop.stop_lat, Stop.stop_lng, Review.review_id, Review.rating, 
-#                             Review.content).join(Review).order_by(Stop.stop_id).all()
-#     print(stops,"===================================================")
-
 def stop_reviews(stop_id):
     """Returns a lit of sqlalchemy rows with review information for a stop."""
 
-    # below returns a list of tuples with review_id, review_rating, content, and user_id, stop_id
-    # return(db.session.query(Review.review_id, Review.rating, Review.content, Review.user_id, Review.stop_id) 
-    #             .join(Stop)
-    #             .filter(Stop.stop_id == stop_id)
-    #             .group_by(Review.review_id, Stop.stop_id)
-    #         ).all() 
-    # below returns a list of objects that contain review_id, rating, user_id, stop_id       
-    # return(db.session.query(Review)
-    #             .join(Stop)
-    #             .filter(Stop.stop_id == stop_id)
-    #             .group_by(Review.review_id, Stop.stop_id)
-    #         ).all()
     return (
         db.session.query(
             Review.review_id,
@@ -182,6 +139,54 @@ def stop_reviews_to_dict(lst):
             'username': review[9]
         }
         data_list.append(data)
+
+    return  data_list
+
+def user_reviews(user_id):
+    """Returns a lit of sqlalchemy rows with review information for a user."""
+
+    return (
+        db.session.query(
+            Review.review_id,
+            Review.rating,
+            Review.content,
+            Stop.stop_id,
+            Stop.stop_name,
+            Stop.stop_category,
+            User.user_id,
+        )
+        .join(
+           Stop, 
+            Stop.stop_id 
+            == Review.stop_id
+        )
+        .join(
+            User,
+            User.user_id
+            == Review.user_id
+        )
+        .filter(
+            User.user_id == user_id
+        )
+        .all()
+    )
+
+def user_reviews_to_dict(lst):
+
+    data_list = []
+
+    for review in lst:
+        data = {
+            'review_id': review[0],
+            'rating': review[1],
+            'content': review[2],
+            'stop_id': review[3],
+            'stop_name': review[4],
+            'stop_category': review[5],
+            'user_id': review[6],
+        }
+        data_list.append(data)
+
     return  data_list
 
 
