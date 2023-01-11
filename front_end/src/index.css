@@ -473,24 +473,22 @@ body {
 
 /* Tabs */
 .nav-pills-custom .nav-link {
-  color: #aaa;
+  color: #181617;
   background: #fff;
   position: relative;
+  font-size: 20px;
 }
-
-
 .nav-pills-custom .nav-link.active {
   color: #181617;
   background: #fff;
 }
-
 /* Add indicator arrow for the active tab */
 @media (min-width: 992px) {
   .nav-pills-custom .nav-link::before {
       content: '';
       display: block;
       border-top: 8px solid transparent;
-      border-left: 10px solid #fff;
+      border-left: 10px solid #61764B;
       border-bottom: 8px solid transparent;
       position: absolute;
       top: 50%;
@@ -499,18 +497,25 @@ body {
       opacity: 0;
   }
 }
-
 .nav-pills-custom .nav-link.active::before {
   opacity: 1;
 }
-
-#react-aria761976599-2-tab-my-stops, #react-aria761976599-2-tab-my-reviews {
-  max-width: 100%;
+.tab-content>.active {
+  display: flex;
+}
+.tab-content>.tab-pane {
+  max-width: 95%;
+}
+.tab-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.nav-pills .nav-link.active {
+  background-color: #61764B;
 }
 
-/* #react-aria761976599-2-tab-my-stops {
-  max-width: 950px;
-} */
+
 
 
 
