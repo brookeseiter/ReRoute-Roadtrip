@@ -37,12 +37,6 @@ def nested_route(path, code):
 
     return render_template('index.html')
 
-@app.route('/test')
-def test_me():
-    """Make sure front and back end servers are connected."""
-
-    return jsonify({'hello': 'im here'})
-
 
 @app.route('/register', methods = ['POST'])
 def create_user():

@@ -53,6 +53,15 @@ def get_stops():
 
     return Stop.query.all()
 
+    # stops = Stop.query.all()
+    # stop_list = []
+
+    # for stop in stops:
+    #     if stop_reviews(stop.stop_id) != []:
+    #         stop_list.append(stop_reviews(stop.stop_id))
+    
+    # return stop_list
+
 def get_stop_by_id(stop_id):
     """Return a stop by its id as a stop object."""
 
@@ -90,7 +99,7 @@ def get_reviews_by_stop(stop_id):
     return Review.query.filter(Review.stop_id == stop_id).all()
 
 def stop_reviews(stop_id):
-    """Returns a lit of sqlalchemy rows with review information for a stop."""
+    """Returns a list of sqlalchemy rows with review information for a stop."""
 
     return (
         db.session.query(
@@ -143,7 +152,7 @@ def stop_reviews_to_dict(lst):
     return  data_list
 
 def user_reviews(user_id):
-    """Returns a lit of sqlalchemy rows with review information for a user."""
+    """Returns a list of sqlalchemy rows with review information for a user."""
 
     return (
         db.session.query(

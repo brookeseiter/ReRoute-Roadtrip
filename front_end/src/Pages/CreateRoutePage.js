@@ -15,6 +15,8 @@ import Navbar from "../Components/NavBar";
 import Modal from "react-bootstrap/Modal";
 import  Button from "react-bootstrap/Button";
 import Accordion from 'react-bootstrap/Accordion';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import StopDetailsPage from './StopDetailsPage';
 
 const center = {
   lat: 47.116386, 
@@ -415,6 +417,10 @@ const Directions = props => {
 };
 
 function DirectionsAccordion ({ origin, destination, waypoints }) { 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div class="accordion" id="accordionPanelsStayOpen">
@@ -447,6 +453,18 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
                           <p className="mb-0">Category: {waypoint.value.stop_category}</p>
                           <p className="mb-0">Latitude: {waypoint.value.stop_lat}</p>
                           <p className="mb-0">Longitude: {waypoint.value.stop_lng}</p>
+                          <Button variant="primary" onClick={handleShow}>
+                            Launch
+                          </Button>
+
+                          <Offcanvas show={show} onHide={handleClose}>
+                            <Offcanvas.Header closeButton>
+                              <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                            </Offcanvas.Header>
+                            <Offcanvas.Body>
+                              <StopDetailsPage />
+                            </Offcanvas.Body>
+                          </Offcanvas>
                         </Accordion.Body>
                       </Accordion.Item>
                     ))}
