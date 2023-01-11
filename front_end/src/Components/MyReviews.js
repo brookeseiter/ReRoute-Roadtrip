@@ -18,10 +18,9 @@ const StopReviews = () => {
         <div className="my-reviews">
             {(userReviewsObj.length === 0) && "Visit a stop and leave a review!" }
             {userReviewsObj.map((userReviewObj) => (
-                <div className="user-review-preview" key={ userReviewObj.key }>
+                <div className="user-review-preview rounded" key={ userReviewObj.key }>
                         <h2>Rating: { userReviewObj.value.rating }</h2>
                         <p>{ userReviewObj.value.content }</p>
-                        <br></br>
                 </div>
             ))}
         </div>

@@ -58,7 +58,7 @@ const ProfilePage = () => {
                                         <Tab.Pane className="fade shadow rounded bg-white show p-4" eventKey="first">
                                             {{stopsObj} && <StopList stopsObj={stopsObj} title="My Stops" />}
                                         </Tab.Pane>
-                                        <Tab.Pane className="fade shadow rounded bg-white show p-5" eventKey="second">
+                                        <Tab.Pane className="fade shadow rounded bg-white show p-4" eventKey="second">
                                             <MyReviews title="My Reviews" />
                                         </Tab.Pane>
                                     </Tab.Content>
