@@ -35,9 +35,6 @@ export default function CreateRoutePage () {
   const [routeCenter, setRouteCenter] = useState(null);
   const [routeRadius, setRouteRadius] = useState(null);
   const [isShowing, setIsShowing] = useState(true);
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [waypointKeys, setWaypointKeys] = useState([]);
 
   const { isLoaded } = useJsApiLoader({
@@ -240,21 +237,21 @@ export default function CreateRoutePage () {
                     { stopsObj && routeCenter &&
                       stopsObj.map((stopObj) => (
                         <MarkerF  
-                            key={stopObj.key}
-                            position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}}
-                            //onClick if you want to revert this to a click event
-                            onMouseOver={() => {
-                              setSelected(stopObj);
-                              console.log(stopObj);
+                          key={stopObj.key}
+                          position={{ lat: stopObj.value.stop_lat, lng: stopObj.value.stop_lng}}
+                          //onClick if you want to revert this to a click event
+                          onMouseOver={() => {
+                            setSelected(stopObj);
+                            console.log(stopObj);
                           }}
-                            visible={
-                              isWithinBounds(
-                                routeCenter.lat, 
-                                routeCenter.lng, 
-                                stopObj.value.stop_lat, 
-                                stopObj.value.stop_lng, 
-                                routeRadius)
-                            }
+                          visible={
+                            isWithinBounds(
+                              routeCenter.lat, 
+                              routeCenter.lng, 
+                              stopObj.value.stop_lat, 
+                              stopObj.value.stop_lng, 
+                              routeRadius)
+                          }
                         />
                     ))}
                     {selected ? (
@@ -265,24 +262,23 @@ export default function CreateRoutePage () {
                                             setSelected(null);
                                         }}
                                     >
-                                        <div>
-                                            <h2>{selected.value.stop_name}</h2>
-                                            <p>Category: {selected.value.stop_category}</p>
-                                            {console.log('CONDITIONAL', waypointKeys.includes(selected.key))}
-                                            {console.log('WAYPOINTKEYS', waypointKeys)}
-                                            {console.log('SELECTEDKEY', selected.key)}
-                                            {console.log('TYPE SELECTEDKEY', (typeof selected.key))}
-                                            {waypointKeys.includes(selected.key) ?
-                                              (<button onClick={() => {
-                                                deleteRouteStop(selected);
-                                                setSelected(null);
-                                              }}>Remove from Route</button>) :
-                                              <button onClick={() => {
-                                                addRouteStop(selected);
-                                              }}>Add to Route</button>
-                                            }
-                                    
-                                        </div>
+                                      <div>
+                                        <h2>{selected.value.stop_name}</h2>
+                                        <p>Category: {selected.value.stop_category}</p>
+                                        {console.log('CONDITIONAL', waypointKeys.includes(selected.key))}
+                                        {console.log('WAYPOINTKEYS', waypointKeys)}
+                                        {console.log('SELECTEDKEY', selected.key)}
+                                        {console.log('TYPE SELECTEDKEY', (typeof selected.key))}
+                                        {waypointKeys.includes(selected.key) ?
+                                          (<button className="infowindow" onClick={() => {
+                                            deleteRouteStop(selected);
+                                            setSelected(null);
+                                          }}>Remove from Route</button>) :
+                                          <button className="infowindow" onClick={() => {
+                                            addRouteStop(selected);
+                                          }}>Add to Route</button>
+                                        }
+                                      </div>
                                     </InfoWindowF>
                                 ) : null
                     }
@@ -293,11 +289,10 @@ export default function CreateRoutePage () {
             { totalDist &&
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary get-directions"
                 data-bs-toggle="modal"
                 data-bs-target="#directionsModal"
                 onClick={() => {
-                    // handleShow;
                     document.getElementById('directionsModal').style.display = 'block';
                     document.getElementById('directionsModal').style.opacity = 1;
                 }} 
@@ -307,8 +302,6 @@ export default function CreateRoutePage () {
             }
           </div>
         </div>
-
-        {/* show={show} onHide={handleClose} */}
         <div
           id="directionsModal"
           className="modal fade"
@@ -430,6 +423,14 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
           <div class="grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
+                {/* <h4 class="card-title">Route Stats</h4>
+                { totalDist &&
+                  <div className="route-info">
+                    <p>Total Route Distance: {totalDist} mi</p>
+                    <p>Total Route Duration: {totalDur}</p>
+                  </div>
+                }
+                <br /> */}
                 <h4 class="card-title">Route Stops</h4>
                 <div class="mt-4">
                   <Accordion className="accordion" defaultActiveKey="0">
