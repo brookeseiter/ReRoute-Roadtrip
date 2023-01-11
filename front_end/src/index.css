@@ -348,9 +348,7 @@ body {
 
 .card .card-title {
   color: #000000;
-  margin-bottom: 0.625rem;
-  text-transform: capitalize;
-  font-size: 0.875rem;
+  font-size: 25px;
   font-weight: 500
 }
 
@@ -358,12 +356,6 @@ body {
   margin-bottom: .875rem;
   font-weight: 400;
   color: #76838f
-}
-
-.accordion .card:first-of-type {
- border-bottom: 0;
- border-bottom-right-radius: 0;
- border-bottom-left-radius: 0;
 }
 
 .accordion .card {
@@ -376,7 +368,6 @@ body {
 .accordion .card .card-header {
  background-color: transparent;
  border: none;
- padding: 2rem;
 }
 
 .card-header:first-child {
@@ -420,20 +411,31 @@ body {
 }
 
 .accordion .card .card-header a:before {
- 
- position: absolute; 
- right: 7px;
- top: 0;
- font-size: 18px;
- display: block;
- font-family: FontAwesome;
-   
+  position: absolute; 
+  right: 7px;
+  top: 0;
+  font-size: 18px;
+  display: block;
+  font-family: FontAwesome;
   display: inline-block;
   padding-right: 3px;
-  vertical-align: middle;
   font-size: .756em;
   color: #405189;
 }
+
+.padding .row.d-flex {
+  max-width: 95%;
+} 
+
+/* a.accordion-button {
+  background-color: #4E6C50;
+  margin-left: 0px;
+  text-align: left;
+} */
+
+/* .mb-0 a {
+  background-color: #4E6C50;
+} */
 
 
 

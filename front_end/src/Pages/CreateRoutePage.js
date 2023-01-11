@@ -425,27 +425,27 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
   return (
     <div class="accordion" id="accordionPanelsStayOpen">
       <div class="padding">
-        <div class="row container d-flex justify-content-strecth">
-          <div class="col-lg-6 grid-margin stretch-card">
+        <div class="row d-flex">
+          <div class="grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Route Stops</h4>
-                    <p class="card-description">Basic Accordian Example</p>
                   <div class="mt-4">
-                    <div class="accordion" id="accordion" role="tablist">
+                    <div class="accordion" id="accordion">
                       <div class="card accordion-item">
-                        <div class="card-header accordion-header" role="tab" id="panelsStayOpen-headingOne heading-1">
-                          <h6 class="mb-0">
-                            <a data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne #collapse-1" href="#collapse-1" type="button" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne collapse-1" data-abc="true" class="accordion-button collapsed">
+                        <h2 class="card-header accordion-header" id="headingOne heading-1">
+                          {/* <h6 class="mb-0"> */}
+                            {/* <a data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne #collapse-1" href="#collapse-1" type="button" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne collapse-1" data-abc="true" class="accordion-button collapsed">
                               Origin
-                            </a>
-                          </h6>
-                        </div>
-                        <div id="panelsStayOpen-collapseOne collapse-1" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne heading-1" role="tabpanel" data-parent="#accordion">
+                            </a> */}
+                            <button data-bs-toggle="collapse" data-bs-target="#collapseOne #collapse-1" type="button" aria-expanded="true" aria-controls="collapseOne collapse-1" class="accordion-button">
+                              Origin
+                            </button>
+                          {/* </h6> */}
+                        </h2>
+                        <div id="collapseOne collapse-1" class="accordion-collapse collapse show" aria-labelledby="headingOne heading-1" role="tabpanel" data-parent="#accordion">
                           <div class="card-body accordion-body">
-                            <div class="col-9">
-                              <p class="mb-0">{origin}</p>                          
-                            </div>
+                            <p class="mb-0">{origin}</p>                          
                           </div>
                         </div>
                       </div>
@@ -460,13 +460,9 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
                           </div>
                           <div id="panelsStayOpen-collapseTwo collapse-2" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo heading-2" role="tabpanel" data-parent="#accordion">
                             <div class="card-body accordion-body">
-                              <div class="col-9">
-                                <strong>
-                                  <p>Category: {waypoint.value.stop_category}</p>
-                                  <p>Latitude: {waypoint.value.stop_lat}</p>
-                                  <p>Longitude: {waypoint.value.stop_lng}</p>
-                                </strong>                       
-                              </div>
+                              <p>Category: {waypoint.value.stop_category}</p>
+                              <p>Latitude: {waypoint.value.stop_lat}</p>
+                              <p>Longitude: {waypoint.value.stop_lng}</p>                   
                             </div> 
                           </div>
                         </div>
