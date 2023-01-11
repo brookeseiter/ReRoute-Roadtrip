@@ -329,11 +329,6 @@ body {
   -ms-box-shadow: none
 }
 
-.pl-3,
-.px-3 {
-  padding-left: 1rem !important
-}
-
 .card {
   position: relative;
   display: flex;
@@ -347,12 +342,12 @@ body {
 }
 
 .card .card-title {
-  color: #000000;
-  font-size: 25px;
+  color: var(--bs-accordion-btn-color);
+  font-size: 32px;
   font-weight: 500
 }
 
-.card .card-description {
+.card {
   margin-bottom: .875rem;
   font-weight: 400;
   color: #76838f
@@ -379,7 +374,7 @@ body {
  font-size: 1rem;
 }
 
-.mb-0, .my-0 {
+.mb-0 {
  margin-bottom: 0 !important;
 }
 
@@ -399,18 +394,33 @@ body {
 
 .accordion .card .card-header * {
  font-weight: 400;
- font-size: 1rem;
+ font-size: 1.4rem;
 }
 
-.accordion .card .card-header a[aria-expanded="false"]:before {
+.accordion .card .card-header button[aria-expanded="false"]:before {
  content: "\f067";
+ margin-top: 20px;
 }
 
-.accordion .card .card-header a[aria-expanded="true"]:before {
- content: "\f068";
+.accordion .card .card-header button[aria-expanded="true"]:before {
+  content: "\f068";
+  margin-top: 20px;
+ }
+
+.accordion-button:not(.collapsed)::after {
+  background-image: none;
 }
 
-.accordion .card .card-header a:before {
+.accordion-button::after {
+  background-image: none;
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--bs-accordion-btn-color);
+  background-color: white;
+}
+
+.accordion .card .card-header button:before {
   position: absolute; 
   right: 7px;
   top: 0;
@@ -420,13 +430,17 @@ body {
   display: inline-block;
   padding-right: 3px;
   font-size: .756em;
-  color: #405189;
+  /* color: #405189; */
+  background-color: none;
 }
 
 .padding .row.d-flex {
   max-width: 95%;
 } 
 
+/* .card-header button.accordion-button {
+  max-width: 100%;
+} */
 /* a.accordion-button {
   background-color: #4E6C50;
   margin-left: 0px;

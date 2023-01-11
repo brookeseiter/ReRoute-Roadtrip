@@ -14,6 +14,7 @@ import {
 import Navbar from "../Components/NavBar";
 import Modal from "react-bootstrap/Modal";
 import  Button from "react-bootstrap/Button";
+import Accordion from 'react-bootstrap/Accordion';
 
 const center = {
   lat: 47.116386, 
@@ -427,71 +428,40 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
       <div class="padding">
         <div class="row d-flex">
           <div class="grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Route Stops</h4>
-                  <div class="mt-4">
-                    <div class="accordion" id="accordion">
-                      <div class="card accordion-item">
-                        <h2 class="card-header accordion-header" id="headingOne heading-1">
-                          {/* <h6 class="mb-0"> */}
-                            {/* <a data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne #collapse-1" href="#collapse-1" type="button" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne collapse-1" data-abc="true" class="accordion-button collapsed">
-                              Origin
-                            </a> */}
-                            <button data-bs-toggle="collapse" data-bs-target="#collapseOne #collapse-1" type="button" aria-expanded="true" aria-controls="collapseOne collapse-1" class="accordion-button">
-                              Origin
-                            </button>
-                          {/* </h6> */}
-                        </h2>
-                        <div id="collapseOne collapse-1" class="accordion-collapse collapse show" aria-labelledby="headingOne heading-1" role="tabpanel" data-parent="#accordion">
-                          <div class="card-body accordion-body">
-                            <p class="mb-0">{origin}</p>                          
-                          </div>
-                        </div>
-                      </div>
-                      {waypoints.map((waypoint) => ( 
-                        <div class="card accordion-item" key={waypoint.key}>
-                          <div class="card-header accordion-header" role="tab" id="panelsStayOpen-headingTwo heading-2">
-                            <h6 class="mb-0">
-                              <a data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo #collapse-2" href="#collapse-2" type="button" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo collapse-2" data-abc="true" class="accordion-button collapsed">
-                                {waypoint.value.stop_name}
-                              </a>
-                            </h6>
-                          </div>
-                          <div id="panelsStayOpen-collapseTwo collapse-2" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo heading-2" role="tabpanel" data-parent="#accordion">
-                            <div class="card-body accordion-body">
-                              <p>Category: {waypoint.value.stop_category}</p>
-                              <p>Latitude: {waypoint.value.stop_lat}</p>
-                              <p>Longitude: {waypoint.value.stop_lng}</p>                   
-                            </div> 
-                          </div>
-                        </div>
-                      ))}
-                      <div class="card accordion-item">
-                        <div class="card-header accordion-header" role="tab" id="panelsStayOpen-headingThree heading-3">
-                          <h6 class="mb-0">
-                            <a data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree #collapse-3" href="#collapse-3" type="button" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree collapse-3" data-abc="true" class="accordion-button collapsed">
-                              Destination
-                            </a>
-                          </h6>
-                        </div>
-                        <div id="panelsStayOpen-collapseThree collapse-3" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree heading-3" role="tabpanel" data-parent="#accordion">
-                          <div class="card-body accordion-body">
-                            <div class="col-9">
-                              <p class="mb-0">{destination}</p>                          
-                            </div>
-                          </div> 
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Route Stops</h4>
+                <div class="mt-4">
+                  <Accordion className="accordion" defaultActiveKey="0">
+                    <Accordion.Item className="card" eventKey="0">
+                      <Accordion.Header className="card-header">Origin</Accordion.Header>
+                      <Accordion.Body className="card-body">
+                        <p className="mb-0">{origin}</p>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                    {waypoints.map((waypoint) => ( 
+                      <Accordion.Item className="card" eventKey="1" key={waypoint.key}>
+                        <Accordion.Header className="card-header">{waypoint.value.stop_name}</Accordion.Header>
+                        <Accordion.Body className="card-body">
+                          <p className="mb-0">Category: {waypoint.value.stop_category}</p>
+                          <p className="mb-0">Latitude: {waypoint.value.stop_lat}</p>
+                          <p className="mb-0">Longitude: {waypoint.value.stop_lng}</p>
+                        </Accordion.Body>
+                      </Accordion.Item>
+                    ))}
+                    <Accordion.Item className="card" eventKey="2">
+                      <Accordion.Header className="card-header">Destination</Accordion.Header>
+                      <Accordion.Body className="card-body">
+                      <p className="mb-0">{destination}</p>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
                 </div>
               </div>
             </div>
           </div>
-        <div>
+        </div>
       </div>
-    </div>
     </div>
   )
 }
