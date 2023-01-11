@@ -55,7 +55,11 @@ export default function LoginPage () {
                 </div>
                 <button onClick={handleSubmit}>SIGN IN</button>
                 <br />
-                <small>Don't have an account yet? <br /> <Link to='/create-account'>Create One</Link></small>
+                <small>
+                    Don't have an account yet? 
+                    <br /> 
+                    <Link to='/create-account'>Create One</Link>
+                </small>
             </form>
         </div>
      );

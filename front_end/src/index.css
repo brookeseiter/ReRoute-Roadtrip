@@ -40,21 +40,22 @@ h1 {
   border-bottom: 2px solid #000000;
 }
 
+
 /* forms */
-.CreateAccountForm, .create-stop-form {
+.create-account-form, .create-stop-form {
   max-width: 360px;
   margin: 0 auto;
   text-align: center;
 }
-.CreateAccountForm label, .login-form label, .create-stop-form label, .create-review-form label {
+.create-account-form label, .login-form label, .create-stop-form label, .create-review-form label {
   text-align: left;
   display: block;
 }
-.CreateAccountForm h2, .login-form h2, .create-stop-form h2, .create-route-form h2{
+.create-account-form h2, .login-form h2, .create-stop-form h2, .create-route-form h2{
   font-size: 27px;
   color: #000000;
 }
-.CreateAccountForm input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input {
+.create-account-form input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input {
   padding: 6px 10px;
   margin: 10px 0;
   border-radius: 3px;
@@ -62,13 +63,12 @@ h1 {
   box-sizing: border-box;
   display: block;
 }
-.CreateAccountForm button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button, .create-route-page .btn {
+.create-account-form button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button, .create-route-page .btn {
   background: #9f814f;
   color: #fff;
   border: 0;
   padding: 6px;
   border-radius: 3px;
-  /* margin-top: 10px; */
   margin-top: 25px;
   margin-bottom: 10px;
   font-size: 18px;
@@ -83,6 +83,7 @@ h1 {
   max-width: 400px;
   z-index: 10;
 }
+
 
 /* Homepage */
 .homepage.container {
@@ -168,6 +169,42 @@ img.d-inline-block {
   max-width: 1450px;
 }
 
+
+/* Create Account Page */
+.create-account-page input {
+  width: 400px;
+}
+.create-account-page button {
+  width: 400px;
+  font-size: 22px;
+}
+.create-account-page h1 {
+  margin-bottom: 1rem;
+}
+.create-account-page p {
+  margin-bottom: 1rem;
+}
+.create-account-form small {
+  font-family: "Roboto Mono";
+  font-weight: 200;
+  font-size: 13px;
+  position: relative;
+  left: 25px;
+  text-align: center;
+}
+.create-account-form a {
+  font-family: "Roboto Mono";
+  font-weight: 200;
+  font-size: 13px;
+  position: relative;
+  right: 6px;
+}
+a:hover {
+  color: #181617;
+  font-weight: 500;
+}
+
+
 /* My Profile Page */
 .create-links {
   font-size: 30px;
@@ -175,6 +212,7 @@ img.d-inline-block {
 /* .nav-tabs {
   --bs-nav-tabs-link-active-color: var(--bs-nav-tabs-link-active-color-#000) !important;
 } */
+
 
 /* All Stops Page */
 .stop-preview h2 {
@@ -214,6 +252,7 @@ img.d-inline-block {
   
 }
 
+
 /* Stop Details Page */
 #createReviewFormControlInput {
   width: 450px;
@@ -244,6 +283,7 @@ img.d-inline-block {
 .stop-details-page-content {
   overflow: scroll !important;
 }
+
 
 /* Create Route Page */
 .create-route-form .col {
@@ -289,6 +329,7 @@ button.infowindow {
   cursor: pointer;
 }
 
+
 /* stop previews / list */
 .stop-preview {
   padding: 10px 16px;
@@ -311,37 +352,31 @@ button.infowindow {
 }
 
 
-
-
+/* Accordion */
 body {
   background-color: #f9f9fa
 }
-
 .flex {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto
 }
-
 @media (max-width:991.98px) {
   .padding {
       padding: 1.5rem
   }
 }
-
 @media (max-width:767.98px) {
   .padding {
       padding: 1rem
   }
 }
-
 .card {
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   -ms-box-shadow: none
 }
-
 .card {
   position: relative;
   display: flex;
@@ -353,44 +388,36 @@ body {
   border: 1px solid #d2d2dc;
   border-radius: 0
 }
-
 .card .card-title {
   color: var(--bs-accordion-btn-color);
   font-size: 32px;
   font-weight: 500
 }
-
 .card {
   margin-bottom: .875rem;
   font-weight: 400;
   color: #76838f
 }
-
 .accordion .card {
  margin-bottom: .75rem;
  box-shadow: 0px 1px 15px 1px rgba(230, 234, 236, 0.35);
  border-radius: .25rem;
  border: none;
 }
-
 .accordion .card .card-header {
  background-color: transparent;
  border: none;
 }
-
 .card-header:first-child {
  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
-
 .accordion .card .card-header * {
  font-weight: 400;
  font-size: 1rem;
 }
-
 .mb-0 {
  margin-bottom: 0 !important;
 }
-
 .accordion .card .card-header a {
  display: block;
  color: inherit;
@@ -404,35 +431,28 @@ body {
  transition: color 0.5s ease;
  padding-right: 1.5rem;
 }
-
 .accordion .card .card-header * {
  font-weight: 400;
  font-size: 1.4rem;
 }
-
 .accordion .card .card-header button[aria-expanded="false"]:before {
  content: "\f067";
  margin-top: 20px;
 }
-
 .accordion .card .card-header button[aria-expanded="true"]:before {
   content: "\f068";
   margin-top: 20px;
- }
-
+}
 .accordion-button:not(.collapsed)::after {
   background-image: none;
 }
-
 .accordion-button::after {
   background-image: none;
 }
-
 .accordion-button:not(.collapsed) {
   color: var(--bs-accordion-btn-color);
   background-color: white;
 }
-
 .accordion .card .card-header button:before {
   position: absolute; 
   right: 7px;
@@ -446,23 +466,10 @@ body {
   /* color: #405189; */
   background-color: none;
 }
-
 .padding .row.d-flex {
   max-width: 95%;
 } 
 
-/* .card-header button.accordion-button {
-  max-width: 100%;
-} */
-/* a.accordion-button {
-  background-color: #4E6C50;
-  margin-left: 0px;
-  text-align: left;
-} */
-
-/* .mb-0 a {
-  background-color: #4E6C50;
-} */
 
 
 

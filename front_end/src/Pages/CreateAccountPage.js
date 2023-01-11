@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../Components/NavBar";
 
 export default function CreateAccountPage () {
     const [inputs, setInputs] = useState({});
@@ -38,61 +39,114 @@ export default function CreateAccountPage () {
     }
 
     return ( 
-        <div className="CreateAccountPage" onSubmit={handleSubmit}>
-            <h2>Create An Account</h2>
-            <form className="CreateAccountForm">
-                <label>First name:</label>
-                <input 
-                    type="text" 
-                    required 
-                    name="fname" 
-                    value={inputs.fname || ""}
-                    onChange={handleChange}
-                />
-                <label>Last name:</label>
-                <input 
-                    type="text" 
-                    required 
-                    name="lname" 
-                    value={inputs.lname || ""}
-                    onChange={handleChange}
-                />
-                <label>Email:</label>
-                <input 
-                    type="text" 
-                    required 
-                    name="email" 
-                    value={inputs.email || ""}
-                    onChange={handleChange}
-                />
-                <label>Username:</label>
-                <input 
-                    type="text" 
-                    required 
-                    name="username" 
-                    value={inputs.username || ""}
-                    onChange={handleChange}
-                />
-                <label>Password:</label>
-                <input 
-                    type="text" 
-                    required 
-                    name="password" 
-                    value={inputs.password || ""}
-                    onChange={handleChange}
-                />
-                <label>Phone Number:</label>
-                <input 
-                    type="text" 
-                    required 
-                    name="phone_num" 
-                    value={inputs.phone_num || ""}
-                    onChange={handleChange}
-                />
-                <button>Submit</button>
-                <br></br>
-                <small>Already have an account? <Link to='/'>Log In</Link></small>
-            </form>
+        <div className="create-account-page" onSubmit={handleSubmit}>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary container">
+                <div class="navbar-brand">
+                    <img 
+                        src='../Images/logo.png' 
+                        class="d-inline-block align-text-center" 
+                        id="Logo"
+                        alt=''
+                        width="80"
+                        height="80"
+                    />  
+                    <h1 class="d-inline-block"> ReRoute Roadtrip</h1>
+                </div>
+            </nav>
+            <div className="create-account-page-content container">
+                <div className="row">
+                    <div className="col">
+                        <h1>Create An Account</h1>
+                        <form className="create-account-form">
+                            <div className="mb-3">
+                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <input 
+                                    type="text"
+                                    className="form-control"
+                                    id="createAccountFormInput"
+                                    name="fname" 
+                                    value={inputs.fname || ""}
+                                    onChange={handleChange}
+                                    placeholder="First Name"
+                                />
+                                </label>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <input 
+                                    type="text"
+                                    className="form-control"
+                                    id="createAccountFormInput"
+                                    name="lname" 
+                                    value={inputs.lname || ""}
+                                    onChange={handleChange}
+                                    placeholder="Last Name"
+                                />
+                                </label>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <input 
+                                    type="text"
+                                    className="form-control"
+                                    id="createAccountFormInput"
+                                    name="email" 
+                                    value={inputs.email || ""}
+                                    onChange={handleChange}
+                                    placeholder="Email"
+                                />
+                                </label>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <input 
+                                    type="text"
+                                    className="form-control"
+                                    id="createAccountFormInput"
+                                    name="username" 
+                                    value={inputs.username || ""}
+                                    onChange={handleChange}
+                                    placeholder="Username"
+                                />
+                                </label>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <input 
+                                    type="text"
+                                    className="form-control"
+                                    id="createAccountFormInput"
+                                    name="password" 
+                                    value={inputs.password || ""}
+                                    onChange={handleChange}
+                                    placeholder="Password"
+                                />
+                                </label>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <input 
+                                    type="text"
+                                    className="form-control"
+                                    id="createAccountFormInput"
+                                    name="phone_num" 
+                                    value={inputs.phone_num || ""}
+                                    onChange={handleChange}
+                                    placeholder="Phone Number"
+                                />
+                                </label>
+                            </div>
+                            <button>Submit</button>
+                            <br />
+                            <small>
+                                Already have an account? 
+                                <br /> 
+                                <Link to='/'>Log In</Link>
+                            </small>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
      );
 }
