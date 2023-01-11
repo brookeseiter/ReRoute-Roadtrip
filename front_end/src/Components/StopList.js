@@ -17,7 +17,7 @@ const StopList = ({ stopsObj, title }) => {
                 <h1>All Stops</h1>
             }
             {stopsObj.map((stopObj) => (
-                 <div className="stop-preview" key={ stopObj.key }>
+                 <div className="stop-preview rounded" key={ stopObj.key }>
                     <Link to={`/stops/${stopObj.value.stop_id}`}>
                         <h2>{ stopObj.value.stop_name }</h2>
                         <p>Category { stopObj.value.stop_category }</p>
