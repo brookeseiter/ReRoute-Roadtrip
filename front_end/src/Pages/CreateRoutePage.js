@@ -17,6 +17,9 @@ import  Button from "react-bootstrap/Button";
 import Accordion from 'react-bootstrap/Accordion';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import StopDetailsPage from './StopDetailsPage';
+import { Link } from "react-router-dom";
+import usePlacesAutocomplete, {getGeocode, getLatLng} from "use-places-autocomplete";
+import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} from "@reach/combobox";
 
 const center = {
   lat: 47.116386, 
@@ -96,7 +99,7 @@ export default function CreateRoutePage () {
     console.log(waypointKeys);
     setSelected(null);
   }
-  console.log(waypointKeys);
+  // console.log(waypointKeys);
   
   function deleteRouteStop () {
     console.log(selected);
@@ -139,6 +142,7 @@ export default function CreateRoutePage () {
                   className="form-label"
                 >
                   Origin
+                 
                 <input 
                   id="origin"
                   className="form-control"
@@ -165,6 +169,10 @@ export default function CreateRoutePage () {
                   onChange={handleChange}
                   placeholder="Destination address"
                 />
+                {/* {
+                  isLoaded &&
+                  <PlacesAutocomplete />
+                } */}
                 </label>
               </div>
               <div className="row justify-content-center">
@@ -421,6 +429,11 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  // function handleCanvas () {
+  //   return (
+      
+  //   );
+  // }
 
   return (
     <div class="accordion" id="accordionPanelsStayOpen">
@@ -453,7 +466,16 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
                           <p className="mb-0">Category: {waypoint.value.stop_category}</p>
                           <p className="mb-0">Latitude: {waypoint.value.stop_lat}</p>
                           <p className="mb-0">Longitude: {waypoint.value.stop_lng}</p>
-                          <Button variant="primary" onClick={handleShow}>
+                          <Button 
+                            variant="primary" 
+                            // onClick={handleShow}
+                            onClick={
+                              
+                              handleShow
+                              // <Link to={`/stops/${waypoint.value.stop_id}`} />;
+                              
+                            }
+                          >
                             Launch
                           </Button>
 
@@ -462,9 +484,10 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
                               <Offcanvas.Title>Offcanvas</Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                              <StopDetailsPage />
+                              {/* <StopDetailsPage stopId={waypoint.value.stop_id}/> */}
                             </Offcanvas.Body>
                           </Offcanvas>
+
                         </Accordion.Body>
                       </Accordion.Item>
                     ))}
@@ -523,5 +546,84 @@ function isWithinBounds(lat1, lng1, lat2, lng2, routeRad) {
   }
 }
 
+// function StandaloneSearchBox({ panTo }) {
+//   const {
+//       ready, 
+//       value, 
+//       suggestions : {status, data}, 
+//       setValue, 
+//       clearSuggestions} 
+//       = usePlacesAutocomplete({
+//       requestOptions: {
+//           location: { lat: () => 37.2982, lng: () => -113.0263 },
+//           radius: 50 * 1600,
+//       },
+//   });
+  
+//   return (
+//       <Combobox 
+//           style={{width: '400px'}}
+//           onSelect={async (address) => {
+//               setValue(address, false);
+//               clearSuggestions();
+//               try {
+//                   const results = await getGeocode({address});
+//                   const { lat, lng } = getLatLng(results[0]);
+//                   panTo({ lat, lng });
+//                   console.log(lat, lng);
+//               } catch(error) {
+//                   console.log("There was an error.");
+//               }
+//           }}
+//       >
+//           <ComboboxInput 
+//               id="create-stop-search"
+//               value={value} 
+//               onChange={(e) => {
+//                   setValue(e.target.value);
+//               }} 
+//               disabled={!ready}
+//               placeholder="Enter an address near your stop"
+//           />
+//           <ComboboxPopover>
+//               <ComboboxList>
+//                   {status === "OK" && 
+//                       data.map(({id, description}) => (
+//                           <ComboboxOption id="create-stop-search-option" key={id} value={description} />
+//                       ))}
+//               </ComboboxList>
+//           </ComboboxPopover>
+//       </Combobox>
+//   );
+// }
 
+// const PlacesAutocomplete = () => {
+//   const {
+//     ready,
+//     value,
+//     suggestions: { status, data },
+//     setValue,
+//   } = usePlacesAutocomplete();
 
+//   const handleInput = (e) => {
+//     setValue(e.target.value);
+//   };
+
+//   const handleSelect = (val) => {
+//     setValue(val, false);
+//   };
+
+//   return (
+//     <Combobox onSelect={handleSelect} aria-labelledby="demo">
+//       <ComboboxInput value={value} onChange={handleInput} disabled={!ready} />
+//       <ComboboxPopover>
+//         <ComboboxList>
+//           {status === "OK" &&
+//             data.map(({ place_id, description }) => (
+//               <ComboboxOption key={place_id} value={description} />
+//             ))}
+//         </ComboboxList>
+//       </ComboboxPopover>
+//     </Combobox>
+//   );
+// };

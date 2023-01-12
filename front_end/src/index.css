@@ -142,6 +142,8 @@ h2 {
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
   background-color: #61764B;
+  border-top-left-radius: 0% !important;
+  border-top-right-radius: 0% !important;
 } 
 .navbar-brand {
   width: 350px;

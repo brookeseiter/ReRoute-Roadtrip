@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Components/NavBar";
 import StopReviews from "../Components/StopReviews";
 
-const StopDetails = () => {
+const StopDetails = ({stopId}) => {
     let { stop_id } = useParams(); 
     const [stop, setStop] = useState([]); 
     const [updateRating, setUpdateRating] = useState('');
@@ -12,13 +12,20 @@ const StopDetails = () => {
         console.log(avgRating);
         setUpdateRating(avgRating);
     }
-
+   
     useEffect(() => {
         fetch(`/api/stops/${stop_id}`) 
             .then(response => response.json())
             .then(data => {setStop(data)}) 
             .catch(error => console.log(error));
     }, [stop_id]); 
+
+    useEffect(() => {
+        fetch(`/api/stops/${stopId}`) 
+            .then(response => response.json())
+            .then(data => {setStop(data)}) 
+            .catch(error => console.log(error));
+    }, [stopId]); 
 
     const [inputs, setInputs] = useState({});
 
@@ -61,7 +68,7 @@ const StopDetails = () => {
     return ( 
         <div className="stop-page">
             <Navbar />
-            <div className="stop-details-page-content container">
+            <div className="stop-details-page-content container" id="stop-details">
                 {/* <div className="row"> */}
                     <div className="row stop-info">
                         <h1>{ stop.stop_name }</h1>
