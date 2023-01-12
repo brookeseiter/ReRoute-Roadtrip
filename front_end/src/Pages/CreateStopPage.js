@@ -174,18 +174,18 @@ export default function CreateStopPage () {
                                     console.log(catChoice);
                                 }}
                             >
-                                <option value="camping">Camping</option>
-                                <option value="caverns">Caverns</option>
-                                <option value="climbing-access/scrambling">Climbing Access/Scrambling</option>
-                                <option value="hiking">Hiking</option>
-                                <option value="national-monument">National Monument</option>
-                                <option value="national-park">National Park</option>
-                                <option value="picnic-area">Picnic Area</option>
-                                <option value="state-park">State Park</option>
-                                <option value="swimming-hole">Swimming Hole</option>
-                                <option value="unique-find">Unique Find</option>
-                                <option value="view-point">View Point</option>
-                                <option value="water-access">Water Access</option>
+                                <option value="Camping">Camping</option>
+                                <option value="Caverns">Caverns</option>
+                                <option value="Climbing Access/Scrambling">Climbing Access/Scrambling</option>
+                                <option value="Hiking">Hiking</option>
+                                <option value="National Monument">National Monument</option>
+                                <option value="National Park">National Park</option>
+                                <option value="Picnic Area">Picnic Area</option>
+                                <option value="State Park">State Park</option>
+                                <option value="Swimming Hole">Swimming Hole</option>
+                                <option value="Unique Find">Unique Find</option>
+                                <option value="View Point">View Point</option>
+                                <option value="Water Access">Water Access</option>
                             </select>
                             <button>Create Stop</button>
                         </form>
