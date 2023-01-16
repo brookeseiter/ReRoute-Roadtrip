@@ -21,13 +21,13 @@ const StopReviews = () => {
             {(userReviewsObj.length === 0) && "Visit a stop and leave a review!" }
             {userReviewsObj.map((userReviewObj) => (
                 <div className="user-review-preview rounded" key={ userReviewObj.key }>
-                    <Link to={`/stops/${userReviewObj.value.stop_id}`}>
+                    {/* <Link to={`/stops/${userReviewObj.value.stop_id}`}> */}
                         <h2>{ userReviewObj.value.stop_name }</h2>
                         <p>{ userReviewObj.value.stop_category }</p>
                         <h3>Your Review:</h3>
                         <p>Rating: { userReviewObj.value.rating }</p>
                         <p>{ userReviewObj.value.content }</p>
-                    </Link>
+                    {/* </Link> */}
                 </div>
             ))}
         </div>

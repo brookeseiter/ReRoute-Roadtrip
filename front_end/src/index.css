@@ -116,7 +116,7 @@ h2 {
   margin-bottom: 0px;
 }
 .login-form a, small {
-  /* font-family: "Roboto Mono"; */
+  font-family: "Roboto Condensed";
   font-weight: 200;
   font-size: 13px;
 }
