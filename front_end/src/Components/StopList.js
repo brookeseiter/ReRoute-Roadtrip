@@ -21,8 +21,8 @@ const StopList = ({ stopsObj, title }) => {
                     <Link to={`/stops/${stopObj.value.stop_id}`}>
                         <h2>{ stopObj.value.stop_name }</h2>
                         <p>Category { stopObj.value.stop_category }</p>
-                        <p>Latitude { stopObj.value.stop_lat }</p>
-                        <p>Longitude { stopObj.value.stop_lng }</p>
+                        <p>Latitude { stopObj.value.stop_lat.toFixed(7) }</p>
+                        <p>Longitude { stopObj.value.stop_lng.toFixed(7) }</p>
                     </Link> 
                     { title  === "My Stops" &&
                         <button onClick={() => handleDelete(stopObj)}>Delete Stop</button>

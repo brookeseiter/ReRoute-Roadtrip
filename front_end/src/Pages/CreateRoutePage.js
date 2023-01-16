@@ -425,33 +425,16 @@ const Directions = props => {
 };
 
 function DirectionsAccordion ({ origin, destination, waypoints }) { 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  // function handleCanvas () {
-  //   return (
-      
-  //   );
-  // }
 
   return (
-    <div class="accordion" id="accordionPanelsStayOpen">
-      <div class="padding">
-        <div class="row d-flex">
-          <div class="grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                {/* <h4 class="card-title">Route Stats</h4>
-                { totalDist &&
-                  <div className="route-info">
-                    <p>Total Route Distance: {totalDist} mi</p>
-                    <p>Total Route Duration: {totalDur}</p>
-                  </div>
-                }
-                <br /> */}
-                <h4 class="card-title">Route Stops</h4>
-                <div class="mt-4">
+    <div className="accordion" id="accordionPanelsStayOpen">
+      <div className="padding">
+        <div className="row d-flex">
+          <div className="grid-margin stretch-card">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">Route Stops</h4>
+                <div className="mt-4">
                   <Accordion className="accordion" defaultActiveKey="0">
                     <Accordion.Item className="card" eventKey="0">
                       <Accordion.Header className="card-header">Origin</Accordion.Header>
@@ -466,28 +449,6 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
                           <p className="mb-0">Category: {waypoint.value.stop_category}</p>
                           <p className="mb-0">Latitude: {waypoint.value.stop_lat}</p>
                           <p className="mb-0">Longitude: {waypoint.value.stop_lng}</p>
-                          {/* <Button 
-                            variant="primary" 
-                            // onClick={handleShow}
-                            onClick={
-                              
-                              handleShow
-                              // <Link to={`/stops/${waypoint.value.stop_id}`} />;
-                              
-                            }
-                          >
-                            Launch
-                          </Button> */}
-
-                          <Offcanvas show={show} onHide={handleClose}>
-                            <Offcanvas.Header closeButton>
-                              <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                            </Offcanvas.Header>
-                            <Offcanvas.Body>
-                              {/* <StopDetailsPage stopId={waypoint.value.stop_id}/> */}
-                            </Offcanvas.Body>
-                          </Offcanvas>
-
                         </Accordion.Body>
                       </Accordion.Item>
                     ))}

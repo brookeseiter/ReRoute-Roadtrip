@@ -73,7 +73,7 @@ const StopDetails = ({stopId}) => {
                     <div className="row stop-info">
                         <h1>{ stop.stop_name }</h1>
                         <p>Category: { stop.stop_category }</p>
-                        <p>Latitude: { stop.stop_lat }</p>
+                        <p>Latitude: { stop.stop_lat}</p>
                         <p>Longitude: { stop.stop_lng }</p>
                         {
                             updateRating  ?

@@ -40,7 +40,7 @@ const ProfilePage = () => {
                         <Link to="/create-route">Create a Route</Link>
                     </div>
 
-                    <section class="py-5">
+                    <section className="py-5">
                         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                             <Row>
                                 <Col sm={3}>
