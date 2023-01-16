@@ -466,7 +466,7 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
                           <p className="mb-0">Category: {waypoint.value.stop_category}</p>
                           <p className="mb-0">Latitude: {waypoint.value.stop_lat}</p>
                           <p className="mb-0">Longitude: {waypoint.value.stop_lng}</p>
-                          <Button 
+                          {/* <Button 
                             variant="primary" 
                             // onClick={handleShow}
                             onClick={
@@ -477,7 +477,7 @@ function DirectionsAccordion ({ origin, destination, waypoints }) {
                             }
                           >
                             Launch
-                          </Button>
+                          </Button> */}
 
                           <Offcanvas show={show} onHide={handleClose}>
                             <Offcanvas.Header closeButton>

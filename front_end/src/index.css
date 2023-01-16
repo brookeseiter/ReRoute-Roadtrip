@@ -279,9 +279,6 @@ a:hover {
 .stop-info p {
   margin-bottom: 1rem;
 }
-/* .stop-details-page-content .col-md-6 h2 {
-  border-bottom: 2px solid #000000;
-} */
 .stop-details-page-content {
   overflow: scroll !important;
 }
@@ -339,7 +336,7 @@ button.infowindow {
   border-bottom: 1px solid #fafafa;
 }
 .stop-preview:hover {
-  box-shadow: 4px 6px 8px rgba(0,0,0,0.1);
+  box-shadow: 8px 8px 10px rgba(0,0,0,0.1);
 }
 .stop-preview h2, .stop-page h2, .review-preview h2, .col-lg-7 h2{
   font-size: 40px;
@@ -471,6 +468,9 @@ body {
 
 
 /* Tabs */
+section.py-5 {
+  padding-top: 1.5rem !important;
+}
 .nav-pills-custom .nav-link {
   color: #181617;
   background: #fff;

@@ -42,7 +42,7 @@ export default function LoginPage () {
                 <div className="mb-3">
                     <label htmlFor="loginFormInput" className="form-label">
                     <input 
-                        type="text"
+                        type="password"
                         className="form-control"
                         id="loginFormInput"
                         required 
