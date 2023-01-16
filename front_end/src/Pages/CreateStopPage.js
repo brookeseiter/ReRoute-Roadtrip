@@ -95,8 +95,8 @@ export default function CreateStopPage () {
                             }}
                             onClick={(e) => {
                                 marker = {
-                                    lat: e.latLng.lat().toFixed(7),
-                                    lng: e.latLng.lng().toFixed(7)};
+                                    lat: e.latLng.lat(),
+                                    lng: e.latLng.lng()};
                                 setMarker(marker);
                                 console.log(marker);
                             }}
