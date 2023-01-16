@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;330&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css');
 
 
@@ -20,7 +19,7 @@
   margin-right: 0;
 }
 input, small, p {
-  font-family: "Raleway";
+  font-family: "Roboto Condensed";
 }
 a {
   text-decoration: none;
@@ -117,7 +116,7 @@ h2 {
   margin-bottom: 0px;
 }
 .login-form a, small {
-  font-family: "Roboto Mono";
+  /* font-family: "Roboto Mono"; */
   font-weight: 200;
   font-size: 13px;
 }
@@ -148,8 +147,7 @@ h2 {
 .navbar-brand {
   width: 350px;
   overflow: auto;
-  /* margin-left: 145px; */
-  margin-left: 190px;
+  margin-left: 198px;
 }
 .navbar-brand h1 {
   font-size: 33px;
@@ -158,12 +156,10 @@ h2 {
   border-bottom: none;
 }
 img.d-inline-block {
-  /* background-color: #fff; */
   background-color: #61764B;
 }
 .collapse ul {
-  /* width: 790px; */
-  width: 700px;
+  width: 652px;
   margin-right: 0px;
   font-size: 21px;
 }
@@ -187,7 +183,6 @@ img.d-inline-block {
   margin-bottom: 1rem;
 }
 .create-account-form small {
-  font-family: "Roboto Mono";
   font-weight: 200;
   font-size: 13px;
   position: relative;
@@ -195,7 +190,6 @@ img.d-inline-block {
   text-align: center;
 }
 .create-account-form a {
-  font-family: "Roboto Mono";
   font-weight: 200;
   font-size: 13px;
   position: relative;
@@ -354,9 +348,6 @@ button.infowindow {
 }
 .stop-preview a {
   text-decoration: none;
-}
-.stop-preview p {
-  font-family: "Raleway";
 }
 
 
