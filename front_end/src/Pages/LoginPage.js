@@ -30,7 +30,7 @@ export default function LoginPage () {
                     <input 
                         type="text"
                         className="form-control"
-                        id="loginFormInput"
+                        id="loginFormInputEmail"
                         required 
                         name="email" 
                         value={inputs.email || ""}
@@ -40,7 +40,7 @@ export default function LoginPage () {
                     </label>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="loginFormInput" className="form-label">
+                    <label htmlFor="loginFormInputPassword" className="form-label">
                     <input 
                         type="password"
                         className="form-control"

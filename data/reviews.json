@@ -9,7 +9,7 @@
         "user_id": 4,
         "stop_id": 2,
         "rating": "1",
-        "content": "Stop didn't match reviews. There were tweakers and trash everywhere!"
+        "content": "Stop didn't match reviews. It was quite small and relatively dirty. Only come here if you don't mind rubbing shoulders with 10 other people!"
     },
     {
         "user_id": 1,
@@ -26,8 +26,8 @@
     {
         "user_id": 8,
         "stop_id": 2,
-        "rating": "2",
-        "content": "Really creepy vibe at this place, sort of a seedy area. Watch your back."
+        "rating": "3",
+        "content": "I had a good time here. Cool stop that's pretty easy to find just off the road. It would be better if you came bright and early because there were a ton of people and not much room."
     },
     {
         "user_id": 8,

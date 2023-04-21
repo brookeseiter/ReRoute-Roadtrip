@@ -237,7 +237,7 @@ export default function CreateRoutePage () {
                       handleRouteChange={handleRouteChange}
                       handleRouteCenter={handleRouteCenter}
                     />
-                    <MarkerF position={routeCenter} />
+                    {/* <MarkerF position={routeCenter} /> */}
                     <CircleF 
                       center={routeCenter} 
                       radius={routeRadius} 

@@ -8,7 +8,7 @@ export default function Homepage () {
                 <div className="col-md-9 has-bg-img">
                     <img 
                         src="../Images/rocks.jpeg"
-                        class="bg-img" 
+                        className="bg-img" 
                         alt=""
                     />             
                 </div>
@@ -16,13 +16,13 @@ export default function Homepage () {
                     <br />
                     <img 
                         src="../Images/logo.png"
-                        class="rounded mx-auto d-block" 
+                        className="rounded mx-auto d-block" 
                         id="Logo"
                         alt=""
                         width="180px"
                     />  
                     <h2 className="text-center">ReRoute Roadtrip</h2>
-                    <p class="text-center">Make each stop part of your adventure.</p> 
+                    <p className="text-center">Make each stop part of your adventure.</p> 
                     <LoginPage />
                 </div>
             </div>

@@ -2084,6 +2084,139 @@
         "stop_name": "Grand Teton National Park",
         "stop_lat": 43.81853565,
         "stop_lng": -110.7054666
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "Shanty Town Wetlands",
+        "stop_lat": 40.1397463,
+        "stop_lng": -115.5091309
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Hiking",
+        "stop_name": "Hidden Forest Cabin Alternative Trail",
+        "stop_lat": 36.6245728,
+        "stop_lng": -115.2325708
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Mt.Irish Boulders",
+        "stop_lat": 37.5550558,
+        "stop_lng": -115.4183651
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Calico Basin Climbing Valley",
+        "stop_lat": 36.1435955,
+        "stop_lng": -115.4192758
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Clothing Option Hot Springs",
+        "stop_lat": 37.4632955,
+        "stop_lng": -115.1977512
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "The Knolls Boat Ramp",
+        "stop_lat": 40.7676503,
+        "stop_lng": -113.2144390
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Gooseberry Springs",
+        "stop_lat": 39.1994776,
+        "stop_lng": -110.5970343
+    },
+    {
+        "user_id": 9,
+        "stop_category": "View Point",
+        "stop_name": "Secret Trail to Pogonip Ridge",
+        "stop_lat": 39.2022994,
+        "stop_lng": -115.5332811
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Picnic Area",
+        "stop_name": "Flagstaff Picnic Area",
+        "stop_lat": 38.4519291,
+        "stop_lng": -116.4262143
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Kawich Valley Pond",
+        "stop_lat": 37.5116111,
+        "stop_lng": -116.2132643
+    },
+    {
+        "user_id": 9,
+        "stop_category": "View Point",
+        "stop_name": "Nannies Peak View Point",
+        "stop_lat": 41.1319971,
+        "stop_lng": -115.9580723
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "Bullfrog Bay Boat Access",
+        "stop_lat": 37.5235025,
+        "stop_lng": -110.7454432
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Unique Find",
+        "stop_name": "Canyonlands Petroglyphs",
+        "stop_lat": 38.1930073,
+        "stop_lng": -109.9069984
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Unique Find",
+        "stop_name": "Navajo Cave Paintings",
+        "stop_lat": 36.6317916,
+        "stop_lng": -110.5230086
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Picnic Area",
+        "stop_name": "Horse Mountain Picnic Area",
+        "stop_lat": 40.2670539,
+        "stop_lng": -116.9642583
+    },
+    {
+        "user_id": 9,
+        "stop_category": "State Park",
+        "stop_name": "Starvation State Park",
+        "stop_lat": 40.1929673,
+        "stop_lng": -110.4996635
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Unique Find",
+        "stop_name": "Giant Offroad Crater",
+        "stop_lat": 40.3456670,
+        "stop_lng": -114.0597330
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Unique Find",
+        "stop_name": "Fish Springs Wildlife Refuge",
+        "stop_lat": 39.8367793,
+        "stop_lng": -113.3471552
+    },
+    {
+        "user_id": 9,
+        "stop_category": "State Park",
+        "stop_name": "Valley of Fire State Park",
+        "stop_lat": 36.4957412,
+        "stop_lng": -114.4693225
     }
 ]
 

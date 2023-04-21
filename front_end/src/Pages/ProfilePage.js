@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import StopList from '../Components/StopList.js'
 import MyReviews from '../Components/MyReviews.js'
 import Navbar from '../Components/NavBar.js';
-import { useContext } from 'react';
-import { Context } from '../Storage/appContext.js';
+// import { useContext } from 'react';
+// import { Context } from '../Storage/appContext.js';
 import Tab from 'react-bootstrap/Tab';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -13,7 +13,7 @@ import Nav from 'react-bootstrap/Nav';
 
 const ProfilePage = () => {
     const [myStops, setMyStops] = useState([]);
-    const { store, actions } = useContext(Context);
+    // const { store, actions } = useContext(Context);
     
     useEffect(() => {
         const user_id = sessionStorage.user_id

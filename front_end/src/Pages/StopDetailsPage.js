@@ -27,6 +27,9 @@ const StopDetails = ({stopId}) => {
             .catch(error => console.log(error));
     }, [stopId]); 
 
+    // why are there two calls to the same function with
+    // stop_id vs stopId?
+
     const [inputs, setInputs] = useState({});
 
     const handleChange = (e) => {
