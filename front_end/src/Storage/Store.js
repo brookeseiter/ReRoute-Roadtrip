@@ -1,4 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
+
 	return {
 		store: {
 			token : null,
@@ -49,8 +50,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const response = await fetch('/login', requestOptions)   
                     if (response.status !== 200){
                         alert("The username or password entered is incorrect, please try again.");
+						console.log(response);
                         return false;
-                    } 
+                    }
                  
                     const data = await response.json();
                     console.log("this came from the backend", data);

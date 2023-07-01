@@ -200,6 +200,14 @@ def view_user_reviews(user_id):
 
     return jsonify({user_review['review_id']: user_review for user_review in user_reviews_dict})
 
+# @app.route('/api/user/<user_id>/reviews')
+# def view_user_reviews(user_id):
+#     """View a user's reviews."""
+
+#     user_reviews = crud.get_reviews_by_user(user_id)
+
+#     return jsonify({user_review.review_id: user_review.to_dict() for user_review in user_reviews})
+
 
 
 if __name__ == "__main__":

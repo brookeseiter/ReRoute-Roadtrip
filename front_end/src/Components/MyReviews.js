@@ -14,7 +14,7 @@ const StopReviews = () => {
     }, []); 
 
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
-    console.log(userReviewsObj);
+    console.log('user reviews by user id:', userReviewsObj);
 
     return ( 
         <div className="my-reviews">
