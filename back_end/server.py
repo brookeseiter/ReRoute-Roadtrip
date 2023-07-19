@@ -56,19 +56,13 @@ def create_user():
 
     return jsonify(new_user.to_dict())
 
+
 @app.route('/login', methods = ['POST'])
 def login_user():
     """Log in a user."""
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
-
-    # if email != "test" or password != "test":
-    #     return jsonify({"message":"bad email or password"}), 401
-
-    # access_token = create_access_token(identity=email)
-
-    # return jsonify(access_token=access_token)
 
     user = crud.get_user_by_email(email)
 
@@ -89,6 +83,7 @@ def login_user():
         print('USER PASSWORD', user.password)
         print('TYPED PASSWORD', password)
         return jsonify(access_token=access_token, user_id=user_id)
+
 
 # @app.route("/logout")
 # def logout_user():
@@ -214,7 +209,6 @@ def view_user_reviews(user_id):
 #     user_reviews = crud.get_reviews_by_user(user_id)
 
 #     return jsonify({user_review.review_id: user_review.to_dict() for user_review in user_reviews})
-
 
 
 if __name__ == "__main__":
