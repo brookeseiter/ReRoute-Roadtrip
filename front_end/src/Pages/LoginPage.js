@@ -19,7 +19,12 @@ export default function LoginPage () {
         e.preventDefault();
         actions.login(inputs).then(() => {
             navigate('/profile'); 
+            console.log(inputs);
         })
+        // if (actions.login(inputs) == true) {
+        //     navigate('/profile'); 
+        //     console.log(inputs);
+        // }
     }
 
     return ( 

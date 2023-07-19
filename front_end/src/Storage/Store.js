@@ -47,7 +47,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                 };
         
                 try{
-                    const response = await fetch('/login', requestOptions)   
+                    const response = await fetch('/login', requestOptions);  
+					console.log('response:', response); 
+					console.log('response status:', response.status); 
                     if (response.status !== 200){
                         alert("The username or password entered is incorrect, please try again.");
 						console.log(response);
