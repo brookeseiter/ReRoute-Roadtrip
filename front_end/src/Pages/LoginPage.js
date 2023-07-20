@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { Context } from "../Storage/appContext";
+// import { useContext } from "react";
+// import { Context } from "../Storage/appContext";
 
 export default function LoginPage () {
     const [inputs, setInputs] = useState({});
-    const { store, actions } = useContext(Context);
+    // const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -15,17 +15,40 @@ export default function LoginPage () {
         setInputs(values => ({...values, [name]: value}));
     }
 
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     actions.login(inputs).then(() => {
+    //         navigate('/profile'); 
+    //         console.log(inputs);
+    //     })
+    //     // if (actions.login(inputs) == true) {
+    //     //     navigate('/profile'); 
+    //     //     console.log(inputs);
+    //     // }
+    // }
     const handleSubmit = (e) => {
         e.preventDefault();
-        actions.login(inputs).then(() => {
-            navigate('/profile'); 
-            console.log(inputs);
-        })
-        // if (actions.login(inputs) == true) {
-        //     navigate('/profile'); 
-        //     console.log(inputs);
-        // }
+        const body = {
+            email: inputs.email,
+            password: inputs.password
+        }
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }
+
+        fetch('/login', requestOptions)
+            console.log(requestOptions)
+            .then(response => response.json())
+            .then(data =>{console.log('this is the data:', data);})
+            .catch(error => console.log(error))
+        navigate('/profile');
     }
+    
 
     return ( 
         <div className="login-page">

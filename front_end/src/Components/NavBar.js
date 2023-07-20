@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { Context } from '../Storage/appContext.js';
+// import { useContext } from 'react';
+// import { Context } from '../Storage/appContext.js';
 
 export default function Navbar () {
-    const { store, actions } = useContext(Context);
+    // const { store, actions } = useContext(Context);
 
     return (  
         <nav className="navbar navbar-expand-lg bg-body-tertiary container rounded shadow">
@@ -21,12 +21,18 @@ export default function Navbar () {
             <div className="collapse navbar-collapse align-content-flex-end" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 justify-content-end">
                     <li className="nav-item">
-                        <Link 
+                        {/* <Link 
                             to="/" 
                             className="nav-link" 
                             aria-current="page"
                             style={{color: "black"}} 
                             onClick={() => actions.logout()}
+                        > */}
+                        <Link 
+                            to="/" 
+                            className="nav-link" 
+                            aria-current="page"
+                            style={{color: "black"}} 
                         >
                             Log Out
                         </Link>

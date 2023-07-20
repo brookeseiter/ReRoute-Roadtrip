@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Components/NavBar";
 
 export default function CreateAccountPage () {
     const [inputs, setInputs] = useState({});
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -36,12 +37,13 @@ export default function CreateAccountPage () {
             .catch(error => console.log(error))
 
         alert('Account created successfully, Please log in.');
+        navigate('/');
     }
 
     return ( 
         <div className="create-account-page" onSubmit={handleSubmit}>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary container">
-                <div class="navbar-brand">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary container">
+                <div className="navbar-brand">
                     <img 
                         src='../Images/logo.png' 
                         class="d-inline-block align-text-center" 
@@ -50,7 +52,7 @@ export default function CreateAccountPage () {
                         width="80"
                         height="80"
                     />  
-                    <h1 class="d-inline-block"> ReRoute Roadtrip</h1>
+                    <h1 className="d-inline-block"> ReRoute Roadtrip</h1>
                 </div>
             </nav>
             <div className="create-account-page-content container">

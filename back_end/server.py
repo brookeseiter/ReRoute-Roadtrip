@@ -5,6 +5,10 @@ from flask import (Flask, render_template, url_for, request, flash, session,
 from flask_login import UserMixin
 from model import connect_to_db, db
 from model import User, Stop
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import InputRequired  , Length, ValidationError
+from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
@@ -16,8 +20,9 @@ import os
 app = Flask(__name__)
 app.secret_key = 'dev'
 CORS(app)
-app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET")
-jwt = JWTManager(app)
+bycrypt = Bcrypt(app)
+# app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET")
+# jwt = JWTManager(app)
 
 @app.route('/')
 def home():
@@ -48,10 +53,18 @@ def create_user():
     password = request.json['password']
     phone_num = request.json['phone_num']
 
-    new_user = crud.create_user(fname, lname, email, username, password, phone_num)
+    # user_exists = crud.user_exists
+    user_exists = User.query.filter_by(email=email).first() is not None
 
-    db.session.add(new_user)
-    db.session.commit()
+    if user_exists:
+        return jsonify({"error": "Email already exists."}), 409
+    else:
+        hashed_password = bycrypt.generate_password_hash(password)
+        new_user = crud.create_user(fname, lname, email, username, hashed_password, phone_num)
+        db.session.add(new_user)
+        db.session.commit()
+        session['user_id'] = new_user.user_id
+        flash('Account created successfully.')
 
     return jsonify(new_user.to_dict())
 
@@ -77,12 +90,18 @@ def login_user():
     else:
         user_id = user.user_id
         session['user'] = user_id
-        access_token = create_access_token(identity=email)
+        # access_token = create_access_token(identity=email)
         print('USER PASSWORD', user.password)
         print('TYPED PASSWORD', password)
         print('SESSION:', session)
         print('SESSION USER:', session['user'])
-        return jsonify(access_token=access_token, user_id=user_id)
+        password_checked = bycrypt.check_password_hash(user.password, password)
+        if password_checked == True:
+            login_user(user)
+        else: 
+            print('WRONG PASSWORD')
+        return jsonify(user_id=user_id)
+        # return jsonify(access_token=access_token, user_id=user_id)
 
 
 # @app.route("/logout")

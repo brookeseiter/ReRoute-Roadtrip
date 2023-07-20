@@ -7,13 +7,12 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import LoginPage from './Pages/LoginPage';
 import CreateStopPage from './Pages/CreateStopPage';
 import CreateRoutePage from './Pages/CreateRoutePage';
-import injectContext from './Storage/appContext';
+// import injectContext from './Storage/appContext';
 import AllStopsPage from './Pages/AllStopsPage';
 import StopDetails from './Pages/StopDetailsPage';
 import NotFound from './Components/NotFound';
 
 function App() {
-
   return (
     <Router>
       <Routes>
@@ -31,7 +30,9 @@ function App() {
   );
 }
 
-export default injectContext(App);
+// export default injectContext(App);
+export default App;
+
 
 
 

@@ -17,6 +17,11 @@ def create_user(fname, lname, email, username, password, phone_num):
 
     return user
 
+def user_exists(email):
+    """Check whether a user exists. T/F"""
+
+    return User.query.filter_by(email=email).first() is not None
+
 def get_users():
     """Return all users."""
 
