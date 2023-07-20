@@ -67,21 +67,22 @@ def login_user():
     user = crud.get_user_by_email(email)
 
     print('Login user route of server.py activated')
+    print('USER:', user)
 
     if not user:
-        # Response.delete_cookie(email)
         return jsonify({'message':'Please create an account.'}), 401
     elif user.password != password:
-        print('USER PASSWORD', user.password)
-        print('TYPED PASSWORD', password)
-        # Response.delete_cookie(key=email)
-        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', Response)
+        print('USER PASSWORD:', user.password)
+        print('TYPED PASSWORD:', password)
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
     else:
         user_id = user.user_id
+        session['user'] = user_id
         access_token = create_access_token(identity=email)
         print('USER PASSWORD', user.password)
         print('TYPED PASSWORD', password)
+        print('SESSION:', session)
+        print('SESSION USER:', session['user'])
         return jsonify(access_token=access_token, user_id=user_id)
 
 
