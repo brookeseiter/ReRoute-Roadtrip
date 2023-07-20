@@ -1,7 +1,8 @@
 """Server for movie ratings app."""
 
-from flask import (Flask, render_template, request, flash, session,
+from flask import (Flask, render_template, url_for, request, flash, session,
                    redirect, Response, jsonify)
+from flask_login import UserMixin
 from model import connect_to_db, db
 from model import User, Stop
 from flask_cors import CORS
@@ -11,8 +12,6 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 import crud
 import os 
-
-
 
 app = Flask(__name__)
 app.secret_key = 'dev'
