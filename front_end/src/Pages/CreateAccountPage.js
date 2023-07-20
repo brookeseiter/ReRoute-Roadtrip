@@ -32,12 +32,19 @@ export default function CreateAccountPage () {
         }
 
         fetch('/register', requestOptions)
-            .then(response => response.json())
+            .then(response => {
+                response.json();
+                if (response.status !== 200) {
+                    alert("Account already exists. Please choose a unique email and username.");
+                    navigate('/create-account');
+                }
+                else {
+                    alert('Account created successfully, Please log in.');
+                    navigate('/');
+                }
+            })
             .then(data =>{console.log(data)})
             .catch(error => console.log(error))
-
-        alert('Account created successfully, Please log in.');
-        navigate('/');
     }
 
     return ( 
@@ -46,7 +53,7 @@ export default function CreateAccountPage () {
                 <div className="navbar-brand">
                     <img 
                         src='../Images/logo.png' 
-                        class="d-inline-block align-text-center" 
+                        className="d-inline-block align-text-center" 
                         id="Logo"
                         alt=''
                         width="80"
