@@ -1,9 +1,33 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { useContext } from 'react';
 // import { Context } from '../Storage/appContext.js';
 
 export default function Navbar () {
     // const { store, actions } = useContext(Context);
+    const navigate = useNavigate();
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+
+        fetch('/logout')
+            // .then(response => {
+            //     console.log(requestOptions);
+            //     console.log(response.json());
+            //     // response.json();
+            //     if (response.status === 200) {
+            //         alert('Login successful.');
+            //         navigate('/profile');
+            //     }
+            // })
+            // .then(data =>{console.log('this is the data:', data);})
+            // .catch(error => {
+            //     console.log(error, 'error');
+            //     if (error.response.status === 401) {
+            //         alert('Incorrect email or password');
+            //     }
+            // });
+        navigate('/');
+    }
 
     return (  
         <nav className="navbar navbar-expand-lg bg-body-tertiary container rounded shadow">
@@ -33,6 +57,7 @@ export default function Navbar () {
                             className="nav-link" 
                             aria-current="page"
                             style={{color: "black"}} 
+                            onClick={handleLogout}
                         >
                             Log Out
                         </Link>

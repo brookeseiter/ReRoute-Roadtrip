@@ -2,7 +2,7 @@
 
 from flask import (Flask, render_template, url_for, request, flash, session,
                    redirect, Response, jsonify)
-from flask_login import UserMixin
+from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user
 from model import connect_to_db, db
 from model import User, Stop
 from flask_wtf import FlaskForm
@@ -24,6 +24,10 @@ bycrypt = Bcrypt(app)
 # app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET")
 # jwt = JWTManager(app)
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
 @app.route('/')
 def home():
 
@@ -41,6 +45,9 @@ def nested_route(path, code):
 
     return render_template('index.html')
 
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
 
 @app.route('/register', methods = ['POST'])
 def create_user():
@@ -82,9 +89,7 @@ def login_user():
     print('Login user route of server.py activated')
     print('USER:', user)
     print(user.password)
-    print(type(user.password))
     print(password)
-    print(type(password))
 
     if user is None:
         print('in if')
@@ -97,6 +102,7 @@ def login_user():
         print('TYPED PASSWORD:', password)
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
     else:
+        # login_user()
         user_id = user.user_id
         session['user'] = user_id
         # access_token = create_access_token(identity=email)
@@ -108,14 +114,16 @@ def login_user():
         # return jsonify(access_token=access_token, user_id=user_id)
 
 
-# @app.route("/logout")
-# def logout_user():
-#     """Log user out."""
+@app.route("/logout", methods = ['GET', 'POST'])
+def logout_user():
+    """Log user out."""
 
-#     del session['user_email']
-#     print(session)
+    print('pre-delete session:', session)
+    del session['user_id']
+    # logout_user()
+    print('post-delete session:', session)
     
-#     return jsonify({'message': 'Logout succesful.'})
+    return jsonify({'message': 'Logout succesful.'})
 
 @app.route('/create-stop', methods = ['POST'])
 def create_stop():

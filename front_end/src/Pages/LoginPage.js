@@ -43,9 +43,7 @@ export default function LoginPage () {
 
         fetch('/login', requestOptions)
             .then(response => {
-                console.log(requestOptions);
-                console.log(response.json());
-                // response.json();
+                response.json();
                 if (response.status === 200) {
                     alert('Login successful.');
                     navigate('/profile');
@@ -58,7 +56,6 @@ export default function LoginPage () {
                     alert('Incorrect email or password');
                 }
             });
-        // navigate('/profile');
     }
     
 
