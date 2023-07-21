@@ -32,19 +32,26 @@ export default function CreateAccountPage () {
         }
 
         fetch('/register', requestOptions)
-            .then(response => {
-                response.json();
-                if (response.status !== 200) {
-                    alert('Account already exists. Please choose a unique email and username.');
-                    navigate('/create-account');
-                }
-                else {
-                    alert('Account created successfully, Please log in.');
-                    navigate('/');
-                }
-            })
+            // .then(response => {
+            //     response.json();
+            //     // if (response.status !== 200) {
+            //     //     alert('Account already exists. Please choose a unique email and username.');
+            //     //     navigate('/create-account');
+            //     // }
+            //     // else {
+            //     //     alert('Account created successfully, Please log in.');
+            //     //     navigate('/');
+            //     // }
+            // })
+            .then(response => response.json())
             .then(data =>{console.log(data);})
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error);
+                // if (response.status === 409) {
+                //     alert('Account already exists. Please choose a unique email and username.');
+                //     navigate('/create-account');
+                // }
+            })
     }
 
     return ( 
