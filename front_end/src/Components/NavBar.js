@@ -33,7 +33,7 @@ export default function Navbar () {
         <nav className="navbar navbar-expand-lg bg-body-tertiary container rounded shadow">
             <div className="navbar-brand">
                 <img 
-                    src='../Images/logo.png' 
+                    src='../Images/logo.png'
                     className="d-inline-block align-text-center" 
                     id="Logo"
                     alt=''
