@@ -35,7 +35,7 @@ export default function CreateAccountPage () {
             .then(response => {
                 response.json();
                 if (response.status !== 200) {
-                    alert("Account already exists. Please choose a unique email and username.");
+                    alert('Account already exists. Please choose a unique email and username.');
                     navigate('/create-account');
                 }
                 else {
@@ -43,7 +43,7 @@ export default function CreateAccountPage () {
                     navigate('/');
                 }
             })
-            .then(data =>{console.log(data)})
+            .then(data =>{console.log(data);})
             .catch(error => console.log(error))
     }
 

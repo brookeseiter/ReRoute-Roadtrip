@@ -42,11 +42,23 @@ export default function LoginPage () {
         }
 
         fetch('/login', requestOptions)
-            console.log(requestOptions)
-            .then(response => response.json())
+            .then(response => {
+                console.log(requestOptions);
+                console.log(response.json());
+                // response.json();
+                if (response.status === 200) {
+                    alert('Login successful.');
+                    navigate('/profile');
+                }
+            })
             .then(data =>{console.log('this is the data:', data);})
-            .catch(error => console.log(error))
-        navigate('/profile');
+            .catch(error => {
+                console.log(error, 'error');
+                if (error.response.status === 401) {
+                    alert('Incorrect email or password');
+                }
+            });
+        // navigate('/profile');
     }
     
 

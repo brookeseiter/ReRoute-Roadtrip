@@ -59,12 +59,13 @@ def create_user():
     if user_exists:
         return jsonify({"error": "Email already exists."}), 409
     else:
-        hashed_password = bycrypt.generate_password_hash(password)
+        hashed_password = bycrypt.generate_password_hash(password).decode('utf-8')
+        print(hashed_password)
         new_user = crud.create_user(fname, lname, email, username, hashed_password, phone_num)
+        print(new_user)
         db.session.add(new_user)
         db.session.commit()
         session['user_id'] = new_user.user_id
-        flash('Account created successfully.')
 
     return jsonify(new_user.to_dict())
 
@@ -80,10 +81,18 @@ def login_user():
 
     print('Login user route of server.py activated')
     print('USER:', user)
+    print(user.password)
+    print(type(user.password))
+    print(password)
+    print(type(password))
 
-    if not user:
+    if user is None:
+        print('in if')
+        print('USER IS NONE')
         return jsonify({'message':'Please create an account.'}), 401
-    elif user.password != password:
+    # elif user.password != password:
+    elif not bycrypt.check_password_hash(user.password, password):
+        print('in elif')
         print('USER PASSWORD:', user.password)
         print('TYPED PASSWORD:', password)
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
@@ -95,11 +104,6 @@ def login_user():
         print('TYPED PASSWORD', password)
         print('SESSION:', session)
         print('SESSION USER:', session['user'])
-        password_checked = bycrypt.check_password_hash(user.password, password)
-        if password_checked == True:
-            login_user(user)
-        else: 
-            print('WRONG PASSWORD')
         return jsonify(user_id=user_id)
         # return jsonify(access_token=access_token, user_id=user_id)
 
