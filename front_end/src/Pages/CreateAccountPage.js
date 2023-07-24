@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../Components/NavBar";
 
 export default function CreateAccountPage () {
     const [inputs, setInputs] = useState({});
@@ -32,20 +31,16 @@ export default function CreateAccountPage () {
         }
 
         fetch('/register', requestOptions)
-            .then(response => response.json())
+            .then(response => response.ok ? response.json() : Promise.reject(response))
             .then(data => {
                 console.log(data);
-                if (data.error) {
-                    alert('An account already exists with this username/email. Please try again.');
-                }
-                else {
-                    alert('Account created successfully, Please log in.')
-                    navigate('/');
-                }
+                alert('Account created successfully, Please log in.');
+                navigate('/');
             })
             .catch(error => {
-                console.log(error);
-            })
+                console.log('error: ', error);
+                alert('An account already exists with this username/email. Please try again.');
+            });     
     }
 
     return ( 
