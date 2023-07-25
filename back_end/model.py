@@ -5,7 +5,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from datetime import datetime
 from uuid import uuid4
-import redis
 
 db = SQLAlchemy()
 
@@ -173,12 +172,6 @@ def connect_to_db(flask_app, db_uri="postgresql:///roadtrip_database", echo=True
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-    SESSION_TYPE = "redis"
-    SESSION_PERMANENT = False
-    SESSION_USE_SIGNER = True
-    # PERMANENT_SESSION_LIFETIME = 1800
-    SESSION_REDIS = redis.from_url("redis://127.0.0.1:6379")
 
     db.app = flask_app
     db.init_app(flask_app)

@@ -17,6 +17,7 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 import crud
 import os 
+import redis
 from os import environ
 from dotenv import load_dotenv
 
@@ -31,6 +32,12 @@ bycrypt = Bcrypt(app)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config["AUTH_SECRET_KEY"] = os.environ.get("AUTH_SECRET_KEY")
 server_session = Session(app)
+
+SESSION_TYPE = "redis"
+SESSION_PERMANENT = False
+SESSION_USE_SIGNER = True
+# PERMANENT_SESSION_LIFETIME = 1800
+SESSION_REDIS = redis.from_url("redis://127.0.0.1:6379")
 
 # login_manager = LoginManager()
 # login_manager.init_app(app)
