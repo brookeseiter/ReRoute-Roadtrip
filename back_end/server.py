@@ -1,5 +1,6 @@
 """Server for movie ratings app."""
 
+import json
 from flask import (Flask, render_template, url_for, request, flash, session,
                    redirect, Response, jsonify)
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user
@@ -42,6 +43,20 @@ SESSION_REDIS = redis.from_url("redis://127.0.0.1:6379")
 # login_manager = LoginManager()
 # login_manager.init_app(app)
 # login_manager.login_view = 'login'
+
+@app.route('/@me')
+def get_current_user():
+    user_id = session.get('user_id')
+
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user = crud.get_user_by_id(user_id)
+
+    return jsonify({
+        "user_id": user.user_id,
+        "email": user.email 
+    })
 
 @app.route('/')
 def home():
