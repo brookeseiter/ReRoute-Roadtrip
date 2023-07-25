@@ -10,12 +10,17 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired  , Length, ValidationError
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
+from flask_session import Session
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 import crud
 import os 
+from os import environ
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = 'dev'
@@ -23,26 +28,26 @@ CORS(app)
 bycrypt = Bcrypt(app)
 # app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET")
 # jwt = JWTManager(app)
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config["AUTH_SECRET_KEY"] = os.environ.get("AUTH_SECRET_KEY")
+server_session = Session(app)
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
+# login_manager = LoginManager()
+# login_manager.init_app(app)
+# login_manager.login_view = 'login'
 
 @app.route('/')
 def home():
-
     return render_template('index.html')
 
 
 @app.route('/<path>')
 def route(path):
-
     return render_template('index.html')
 
 
 @app.route('/<path>/<code>')
 def nested_route(path, code):
-
     return render_template('index.html')
 
 # @login_manager.user_loader
@@ -64,15 +69,18 @@ def create_user():
     user_exists = User.query.filter_by(email=email).first() is not None
 
     if user_exists:
-        return jsonify({"error": "Email already exists."}), 409
-    else:
-        hashed_password = bycrypt.generate_password_hash(password).decode('utf-8')
-        print(hashed_password)
-        new_user = crud.create_user(fname, lname, email, username, hashed_password, phone_num)
-        print(new_user)
-        db.session.add(new_user)
-        db.session.commit()
-        session['user_id'] = new_user.user_id
+        return jsonify({"error": "Email/username already exists."}), 409
+    
+    hashed_password = bycrypt.generate_password_hash(password).decode('utf-8')
+    new_user = crud.create_user(fname, lname, email, username, hashed_password, phone_num)
+    db.session.add(new_user)
+    db.session.commit()
+    print('NEW USER DATA:', new_user)
+
+    session['user_id'] = new_user.user_id
+    print('SESSION:', session)
+    print('SESSION[user_id]:', session['user_id'])
+    print('SERVER SESSION:', server_session)
 
     return jsonify(new_user.to_dict())
 
@@ -88,29 +96,27 @@ def login_user():
 
     print('Login user route of server.py activated')
     print('USER:', user)
-    print(user.password)
+    # print(user.password)
     print(password)
+    print(user)
 
     if user is None:
-        print('in if')
         print('USER IS NONE')
         return jsonify({'message':'Please create an account.'}), 401
     # elif user.password != password:
     elif not bycrypt.check_password_hash(user.password, password):
-        print('in elif')
         print('USER PASSWORD:', user.password)
         print('TYPED PASSWORD:', password)
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
     else:
         # login_user()
-        user_id = user.user_id
-        session['user'] = user_id
+        # user_id = user.user_id
+        session['user_id'] = user.user_id
         # access_token = create_access_token(identity=email)
         print('USER PASSWORD', user.password)
         print('TYPED PASSWORD', password)
         print('SESSION:', session)
-        print('SESSION USER:', session['user'])
-        return jsonify(user_id=user_id)
+        return jsonify(user_id=user.user_id)
         # return jsonify(access_token=access_token, user_id=user_id)
 
 

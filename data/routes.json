@@ -1,12 +1,2221 @@
 [
     {
-    "num_stops": 1,
-    "route_name": "Utah Trip",
-    "total_miles": ,
-    "total_time" ,
-    "start_lat" ,
-    "start_lng" ,
-    "end_lat" ,
-    "end_lng" ,
+        "user_id": 1,
+        "stop_category": "National Park",
+        "stop_name": "Zion National Park",
+        "stop_lat": 37.30210144,
+        "stop_lng": -113.03503460
     },
+    {
+        "user_id": 1,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Meadow Hot Spring",
+        "stop_lat": 38.91200237,
+        "stop_lng": -112.50882590  
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Water Access",
+        "stop_name": "Mesquite Ditch Boat Ramp",
+        "stop_lat": 36.810277,
+        "stop_lng": -114.007487
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Hiking",
+        "stop_name": "Offroad Desert Canyon",
+        "stop_lat": 37.487956,
+        "stop_lng": -113.680436
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Water Access",
+        "stop_name": "Neget Island in Mono Lake",
+        "stop_lat": 38.022152,
+        "stop_lng": -119.051764
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Half Moon Boulder, Death Valley",
+        "stop_lat": 36.428348,
+        "stop_lng": -117.196748
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Monument",
+        "stop_name": "Birmingham Civil Rights National Monument",
+        "stop_lat": 33.5154266357,
+        "stop_lng": -86.814666748
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Monument",
+        "stop_name": "Freedom Riders National Monument",
+        "stop_lat": 33.635269165,
+        "stop_lng": -85.9064331055
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Horseshoe Bend National Military Park",
+        "stop_lat": 32.97668879,
+        "stop_lng": -85.73413589
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Hiking",
+        "stop_name": "Little River Canyon National Preserve",
+        "stop_lat": 34.41461863,
+        "stop_lng": -85.61734327
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Hiking",
+        "stop_name": "Natchez Trace National Scenic Trail",
+        "stop_lat": 34.330290333,
+        "stop_lng": -88.7100104094
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Caverns",
+        "stop_name": "Natchez Trace Parkway",
+        "stop_lat": 33.78002293,
+        "stop_lng": -89.03092439
+    },
+    {
+        "user_id": 2,
+        "stop_category": "National Monument",
+        "stop_name": "Russell Cave National Monument",
+        "stop_lat": 34.97402063,
+        "stop_lng": -85.81560314
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Historic Site",
+        "stop_name": "Selma To Montgomery National Historic Trail",
+        "stop_lat": 32.27082092,
+        "stop_lng": -86.72823702
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Historic Site",
+        "stop_name": "Trail Of Tears National Historic Trail",
+        "stop_lat": 36.0530021046,
+        "stop_lng": -89.6761041963
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Historic Site",
+        "stop_name": "Tuskegee Airmen National Historic Site",
+        "stop_lat": 32.45538671,
+        "stop_lng": -85.67983321
+    },
+    {
+        "user_id": 6,
+        "stop_category": "Water Access",
+        "stop_name": "Alagnak Wild River",
+        "stop_lat": 59.05180188,
+        "stop_lng": -156.112002
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Camping",
+        "stop_name": "Alaska Public Lands",
+        "stop_lat": 61.2188,
+        "stop_lng": -149.894536
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Historic Site",
+        "stop_name": "Aleutian Islands World War II National Historic Area",
+        "stop_lat": 53.9143,
+        "stop_lng": -166.5197
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Monument",
+        "stop_name": "Aniakchak National Monument & Preserve",
+        "stop_lat": 56.85317675,
+        "stop_lng": -157.5544362
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Picnic Area",
+        "stop_name": "Bering Land Bridge National Preserve",
+        "stop_lat": 65.96087902,
+        "stop_lng": -164.4086432
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Monument",
+        "stop_name": "Cape Krusenstern National Monument",
+        "stop_lat": 67.41499986,
+        "stop_lng": -163.5037786
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Park",
+        "stop_name": "Denali National Park & Preserve",
+        "stop_lat": 63.29777484,
+        "stop_lng": -151.0526568
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Park",
+        "stop_name": "Gates Of The Arctic National Park & Preserve",
+        "stop_lat": 67.75961636,
+        "stop_lng": -153.2917758
+    },
+    {
+        "user_id": 8,
+        "stop_category": "National Park",
+        "stop_name": "Glacier Bay National Park & Preserve",
+        "stop_lat": 58.80086718,
+        "stop_lng": -136.8407579
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Unique Find",
+        "stop_name": "I\u00f1upiat Heritage Center",
+        "stop_lat": 71.29832445,
+        "stop_lng": -156.7535863
+    },
+    {
+        "user_id": 8,
+        "stop_category": "National Monument",
+        "stop_name": "Canyon de Chelly National Monument",
+        "stop_lat": 36.14319567,
+        "stop_lng": -109.3388303
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Monument",
+        "stop_name": "Casa Grande Ruins National Monument",
+        "stop_lat": 32.99702582,
+        "stop_lng": -111.5325383
+    },
+    {
+        "user_id": 8,
+        "stop_category": "National Monument",
+        "stop_name": "Chiricahua National Monument",
+        "stop_lat": 32.01214618,
+        "stop_lng": -109.341607
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Unique Find",
+        "stop_name": "Coronado National Memorial",
+        "stop_lat": 31.34900397,
+        "stop_lng": -110.2561574
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Historic Site",
+        "stop_name": "Fort Bowie National Historic Site",
+        "stop_lat": 32.14925942,
+        "stop_lng": -109.451132
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Camping",
+        "stop_name": "Glen Canyon National Recreation Area",
+        "stop_lat": 36.9357464677,
+        "stop_lng": -111.485594268
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Park",
+        "stop_name": "Grand Canyon National Park",
+        "stop_lat": 36.0001165336,
+        "stop_lng": -112.121516363
+    },
+    {
+        "user_id": 8,
+        "stop_category": "National Monument",
+        "stop_name": "Grand Canyon-Parashant National Monument",
+        "stop_lat": 36.41535465,
+        "stop_lng": -113.6682797
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Historic Site",
+        "stop_name": "Hubbell Trading Post National Historic Site",
+        "stop_lat": 35.70727324,
+        "stop_lng": -109.5599515
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Historic Site",
+        "stop_name": "Juan Bautista de Anza National Historic Trail",
+        "stop_lat": 33.8743390994,
+        "stop_lng": -117.224179857
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Water Access",
+        "stop_name": "Arkansas Post National Memorial",
+        "stop_lat": 34.00389998,
+        "stop_lng": -91.30837178
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Buffalo National River",
+        "stop_lat": 36.04116481,
+        "stop_lng": -92.90761584
+    },
+    {
+        "user_id": 6,
+        "stop_category": "Historic Site",
+        "stop_name": "Fort Smith National Historic Site",
+        "stop_lat": 35.38834746,
+        "stop_lng": -94.43129079
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Park",
+        "stop_name": "Hot Springs National Park",
+        "stop_lat": 34.52414366,
+        "stop_lng": -93.06332936
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Historic Site",
+        "stop_name": "Little Rock Central High School National Historic Site",
+        "stop_lat": 34.7369465,
+        "stop_lng": -92.29987899
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Camping",
+        "stop_name": "Pea Ridge National Military Park",
+        "stop_lat": 36.45438033,
+        "stop_lng": -94.03468357
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Historic Site",
+        "stop_name": "President William Jefferson Clinton Birthplace Home National Historic Site",
+        "stop_lat": 33.66758356,
+        "stop_lng": -93.59641868
+    },
+    {
+        "user_id": 7,
+        "stop_category": "View Point",
+        "stop_name": "Alcatraz Island",
+        "stop_lat": 37.82676234,
+        "stop_lng": -122.4230206
+    },
+    {
+        "user_id": 5,
+        "stop_category": "National Monument",
+        "stop_name": "Cabrillo National Monument",
+        "stop_lat": 32.6722503,
+        "stop_lng": -117.2415985
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "California National Historic Trail",
+        "stop_lat": 42.3999643979,
+        "stop_lng": -108.702415369
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Monument",
+        "stop_name": "Castle Mountains National Monument",
+        "stop_lat": 35.29156348,
+        "stop_lng": -115.0935606
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Water Access",
+        "stop_name": "Channel Islands National Park",
+        "stop_lat": 33.98680093,
+        "stop_lng": -119.9112735
+    },
+    {
+        "user_id": 1,
+        "stop_category": "National Monument",
+        "stop_name": "C\u00e9sar E. Ch\u00e1vez National Monument",
+        "stop_lat": 35.22729389,
+        "stop_lng": -118.5615781
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Park",
+        "stop_name": "Death Valley National Park",
+        "stop_lat": 36.48753731,
+        "stop_lng": -117.134395
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Monument",
+        "stop_name": "Devils Postpile National Monument",
+        "stop_lat": 37.6152564,
+        "stop_lng": -119.0873903
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Historic Site",
+        "stop_name": "Eugene O'Neill National Historic Site",
+        "stop_lat": 37.82604456,
+        "stop_lng": -122.0271566
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Historic Site",
+        "stop_name": "Fort Point National Historic Site",
+        "stop_lat": 37.80837439,
+        "stop_lng": -122.473747
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Camping",
+        "stop_name": "Amache National Historic Site",
+        "stop_lat": 38.04962,
+        "stop_lng": -102.32903
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Historic Site",
+        "stop_name": "Bent's Old Fort National Historic Site",
+        "stop_lat": 38.03977546,
+        "stop_lng": -103.4266499
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Park",
+        "stop_name": "Black Canyon Of The Gunnison National Park",
+        "stop_lat": 38.57779869,
+        "stop_lng": -107.7242756
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Monument",
+        "stop_name": "Colorado National Monument",
+        "stop_lat": 39.05045016,
+        "stop_lng": -108.6920709
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Hiking",
+        "stop_name": "Curecanti National Recreation Area",
+        "stop_lat": 38.46584558,
+        "stop_lng": -107.3303371
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Monument",
+        "stop_name": "Dinosaur National Monument",
+        "stop_lat": 40.50739742,
+        "stop_lng": -108.9333714
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Monument",
+        "stop_name": "Florissant Fossil Beds National Monument",
+        "stop_lat": 38.91260586,
+        "stop_lng": -105.2803396
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Park",
+        "stop_name": "Great Sand Dunes National Park & Preserve",
+        "stop_lat": 37.79256812,
+        "stop_lng": -105.5919572
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Monument",
+        "stop_name": "Hovenweep National Monument",
+        "stop_lat": 37.39134092,
+        "stop_lng": -109.0047977
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Historic Site",
+        "stop_name": "Coltsville National Historical Park",
+        "stop_lat": 42.4677505493,
+        "stop_lng": -73.203666687
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Picnic Area",
+        "stop_name": "New England National Scenic Trail",
+        "stop_lat": 42.2915819137,
+        "stop_lng": -72.5242767334
+    },
+    {
+        "user_id": 4,
+        "stop_category": "View Point",
+        "stop_name": "Washington-Rochambeau Revolutionary Route National Historic Trail",
+        "stop_lat": 40.0958204557,
+        "stop_lng": -74.8563515109
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Camping",
+        "stop_name": "Weir Farm National Historical Park",
+        "stop_lat": 41.25886268,
+        "stop_lng": -73.45452542
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Hiking",
+        "stop_name": "Captain John Smith Chesapeake National Historic Trail",
+        "stop_lat": 38.971601,
+        "stop_lng": -76.483355
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Water Access",
+        "stop_name": "Chesapeake Bay",
+        "stop_lat": 38.971601,
+        "stop_lng": -76.483355
+    },
+    {
+        "user_id": 10,
+        "stop_category": "View Point",
+        "stop_name": "First State National Historical Park",
+        "stop_lat": 39.83076929,
+        "stop_lng": -75.56353942
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Picnic Area",
+        "stop_name": "Big Cypress National Preserve",
+        "stop_lat": 25.97079602,
+        "stop_lng": -81.08120629
+    },
+    {
+        "user_id": 2,
+        "stop_category": "National Park",
+        "stop_name": "Biscayne National Park",
+        "stop_lat": 25.490587,
+        "stop_lng": -80.21023851
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "Canaveral National Seashore",
+        "stop_lat": 28.78637529,
+        "stop_lng": -80.75419576
+    },
+    {
+        "user_id": 10,
+        "stop_category": "National Monument",
+        "stop_name": "Castillo de San Marcos National Monument",
+        "stop_lat": 29.89785701,
+        "stop_lng": -81.31217173
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Picnic Area",
+        "stop_name": "De Soto National Memorial",
+        "stop_lat": 27.52272613,
+        "stop_lng": -82.64335416
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Park",
+        "stop_name": "Dry Tortugas National Park",
+        "stop_lat": 24.628741,
+        "stop_lng": -82.87319
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Park",
+        "stop_name": "Everglades National Park",
+        "stop_lat": 25.37294225,
+        "stop_lng": -80.88200301
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Monument",
+        "stop_name": "Fort Matanzas National Monument",
+        "stop_lat": 29.7121489,
+        "stop_lng": -81.23567535
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Water Access",
+        "stop_name": "Gulf Islands National Seashore",
+        "stop_lat": 30.29924926,
+        "stop_lng": -87.75064297
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Camping",
+        "stop_name": "Timucuan Ecological & Historic Preserve",
+        "stop_lat": 30.47251894,
+        "stop_lng": -81.49950104
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Historic Site",
+        "stop_name": "Andersonville National Historic Site",
+        "stop_lat": 32.19831758,
+        "stop_lng": -84.12988898
+    },
+    {
+        "user_id": 6,
+        "stop_category": "Camping",
+        "stop_name": "Appalachian National Scenic Trail",
+        "stop_lat": 40.41029575,
+        "stop_lng": -76.4337548
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Unique Find",
+        "stop_name": "Chattahoochee River National Recreation Area",
+        "stop_lat": 33.99698333,
+        "stop_lng": -84.28953177
+    },
+    {
+        "user_id": 10,
+        "stop_category": "View Point",
+        "stop_name": "Chickamauga & Chattanooga National Military Park",
+        "stop_lat": 34.94317623,
+        "stop_lng": -85.28749537
+    },
+    {
+        "user_id": 6,
+        "stop_category": "Water Access",
+        "stop_name": "Cumberland Island National Seashore",
+        "stop_lat": 30.85857484,
+        "stop_lng": -81.45253575
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Monument",
+        "stop_name": "Fort Frederica National Monument",
+        "stop_lat": 31.2214699,
+        "stop_lng": -81.39452014
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Monument",
+        "stop_name": "Fort Pulaski National Monument",
+        "stop_lat": 32.0308274,
+        "stop_lng": -80.93361681
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Picnic Area",
+        "stop_name": "Jimmy Carter National Historical Park",
+        "stop_lat": 32.03611,
+        "stop_lng": -84.3924
+    },
+    {
+        "user_id": 8,
+        "stop_category": "View Point",
+        "stop_name": "Kennesaw Mountain National Battlefield Park",
+        "stop_lat": 33.95370717,
+        "stop_lng": -84.59214186
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Picnic Area",
+        "stop_name": "Martin Luther King, Jr. National Historical Park",
+        "stop_lat": 33.75618241,
+        "stop_lng": -84.37256768
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Ala Kahakai National Historic Trail",
+        "stop_lat": 19.144668109,
+        "stop_lng": -155.890734294
+    },
+    {
+        "user_id": 10,
+        "stop_category": "National Park",
+        "stop_name": "Haleakal\u0101 National Park",
+        "stop_lat": 20.70693015,
+        "stop_lng": -156.1591775
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Park",
+        "stop_name": "Hawai\u02bbi Volcanoes National Park",
+        "stop_lat": 19.3355036,
+        "stop_lng": -155.4700257
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Historic Site",
+        "stop_name": "Hono'uli'uli National Historic Site",
+        "stop_lat": 21.38817536,
+        "stop_lng": -158.0574991
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Camping",
+        "stop_name": "Kalaupapa National Historical Park",
+        "stop_lat": 21.1731108,
+        "stop_lng": -156.9511609
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Picnic Area",
+        "stop_name": "Kaloko-Honok\u014dhau National Historical Park",
+        "stop_lat": 19.68083237,
+        "stop_lng": -156.0306932
+    },
+    {
+        "user_id": 6,
+        "stop_category": "Historic Site",
+        "stop_name": "Pearl Harbor National Memorial",
+        "stop_lat": 21.3670699388,
+        "stop_lng": -157.938578898
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Pu\u02bbuhonua o H\u014dnaunau National Historical Park",
+        "stop_lat": 19.41268627,
+        "stop_lng": -155.9008789
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Historic Site",
+        "stop_name": "Pu\u02bbukohol\u0101 Heiau National Historic Site",
+        "stop_lat": 20.02772186,
+        "stop_lng": -155.8211629
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Camping",
+        "stop_name": "City Of Rocks National Reserve",
+        "stop_lat": 42.0699024,
+        "stop_lng": -113.7124097
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Picnic Area",
+        "stop_name": "Craters Of The Moon National Monument & Preserve",
+        "stop_lat": 43.20345611,
+        "stop_lng": -113.4791609
+    },
+    {
+        "user_id": 8,
+        "stop_category": "National Monument",
+        "stop_name": "Hagerman Fossil Beds National Monument",
+        "stop_lat": 42.79074114,
+        "stop_lng": -114.9443074
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Hiking",
+        "stop_name": "Ice Age Floods National Geologic Trail",
+        "stop_lat": 46.5669309008,
+        "stop_lng": -118.992564971
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Historic Site",
+        "stop_name": "Minidoka National Historic Site",
+        "stop_lat": 42.80586068,
+        "stop_lng": -114.4449868
+    },
+    {
+        "user_id": 2,
+        "stop_category": "View Point",
+        "stop_name": "Nez Perce National Historical Park",
+        "stop_lat": 46.07019093,
+        "stop_lng": -115.8761258
+    },
+    {
+        "user_id": 7,
+        "stop_category": "View Point",
+        "stop_name": "Oregon National Historic Trail",
+        "stop_lat": 41.9876977831,
+        "stop_lng": -109.634200841
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Park",
+        "stop_name": "Yellowstone National Park",
+        "stop_lat": 44.59824417,
+        "stop_lng": -110.5471695
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Historic Site",
+        "stop_name": "Lincoln Home National Historic Site",
+        "stop_lat": 39.79715642,
+        "stop_lng": -89.64513397
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Monument",
+        "stop_name": "Pullman National Monument",
+        "stop_lat": 41.69429163,
+        "stop_lng": -87.60873824
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Hiking",
+        "stop_name": "George Rogers Clark National Historical Park",
+        "stop_lat": 38.67912659,
+        "stop_lng": -87.53545212
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Park",
+        "stop_name": "Indiana Dunes National Park",
+        "stop_lat": 41.63765525,
+        "stop_lng": -87.09647445
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Lewis & Clark National Historic Trail",
+        "stop_lat": 41.2646141052,
+        "stop_lng": -95.9245147705
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Picnic Area",
+        "stop_name": "Lincoln Boyhood National Memorial",
+        "stop_lat": 38.11817004,
+        "stop_lng": -86.99656861
+    },
+    {
+        "user_id": 2,
+        "stop_category": "National Monument",
+        "stop_name": "Effigy Mounds National Monument",
+        "stop_lat": 43.08095081,
+        "stop_lng": -91.19687517
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Historic Site",
+        "stop_name": "Herbert Hoover National Historic Site",
+        "stop_lat": 41.66793558,
+        "stop_lng": -91.35232139
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Mormon Pioneer National Historic Trail",
+        "stop_lat": 41.2650321741,
+        "stop_lng": -101.84083756
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Picnic Area",
+        "stop_name": "Brown v. Board of Education National Historical Park",
+        "stop_lat": 39.03787665,
+        "stop_lng": -95.67614437
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Historic Site",
+        "stop_name": "Fort Larned National Historic Site",
+        "stop_lat": 38.18047491,
+        "stop_lng": -99.21836664
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Historic Site",
+        "stop_name": "Fort Scott National Historic Site",
+        "stop_lat": 37.84358849,
+        "stop_lng": -94.70429174
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Historic Site",
+        "stop_name": "Nicodemus National Historic Site",
+        "stop_lat": 39.39167606,
+        "stop_lng": -99.61680329
+    },
+    {
+        "user_id": 2,
+        "stop_category": "View Point",
+        "stop_name": "Pony Express National Historic Trail",
+        "stop_lat": 42.2365761128,
+        "stop_lng": -109.266148417
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Hiking",
+        "stop_name": "Santa Fe National Historic Trail",
+        "stop_lat": 37.7276522226,
+        "stop_lng": -99.921969227
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Camping",
+        "stop_name": "Tallgrass Prairie National Preserve",
+        "stop_lat": 38.44023613,
+        "stop_lng": -96.5670822
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Historic Site",
+        "stop_name": "Abraham Lincoln Birthplace National Historical Park",
+        "stop_lat": 37.5858662,
+        "stop_lng": -85.67330523
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Big South Fork National River & Recreation Area",
+        "stop_lat": 36.5348388,
+        "stop_lng": -84.66506688
+    },
+    {
+        "user_id": 2,
+        "stop_category": "National Monument",
+        "stop_name": "Camp Nelson National Monument",
+        "stop_lat": 37.7970179913,
+        "stop_lng": -84.598168306
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Camping",
+        "stop_name": "Cumberland Gap National Historical Park",
+        "stop_lat": 36.62503076,
+        "stop_lng": -83.6114083
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Unique Find",
+        "stop_name": "Fort Donelson National Battlefield",
+        "stop_lat": 36.49019078,
+        "stop_lng": -87.92445695
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Park",
+        "stop_name": "Mammoth Cave National Park",
+        "stop_lat": 37.19760458,
+        "stop_lng": -86.13090198
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Monument",
+        "stop_name": "Mill Springs Battlefield National Monument",
+        "stop_lat": 37.0688158602,
+        "stop_lng": -84.7375361304
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Cane River Creole National Historical Park",
+        "stop_lat": 31.65408447,
+        "stop_lng": -93.00131977
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "El Camino Real de los Tejas National Historic Trail",
+        "stop_lat": 30.0922964581,
+        "stop_lng": -97.3397666725
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Hiking",
+        "stop_name": "Jean Lafitte National Historical Park and Preserve",
+        "stop_lat": 29.81739855,
+        "stop_lng": -90.1402241
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Picnic Area",
+        "stop_name": "New Orleans Jazz National Historical Park",
+        "stop_lat": 29.96303129,
+        "stop_lng": -90.06749669
+    },
+    {
+        "user_id": 5,
+        "stop_category": "National Monument",
+        "stop_name": "Poverty Point National Monument",
+        "stop_lat": 32.6424361,
+        "stop_lng": -91.40829834
+    },
+    {
+        "user_id": 2,
+        "stop_category": "View Point",
+        "stop_name": "Vicksburg National Military Park",
+        "stop_lat": 32.3621286,
+        "stop_lng": -90.85030186
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Park",
+        "stop_name": "Acadia National Park",
+        "stop_lat": 44.409286,
+        "stop_lng": -68.247501
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Monument",
+        "stop_name": "Katahdin Woods and Waters National Monument",
+        "stop_lat": 45.9567565918,
+        "stop_lng": -68.7122879028
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Unique Find",
+        "stop_name": "Maine Acadian Culture",
+        "stop_lat": 47.25102114,
+        "stop_lng": -68.59447532
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Picnic Area",
+        "stop_name": "Roosevelt Campobello International Park",
+        "stop_lat": 44.8736,
+        "stop_lng": -66.9621
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Historic Site",
+        "stop_name": "Saint Croix Island International Historic Site",
+        "stop_lat": 45.12858838,
+        "stop_lng": -67.13363651
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Unique Find",
+        "stop_name": "Antietam National Battlefield",
+        "stop_lat": 39.46763452,
+        "stop_lng": -77.73828017
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "Assateague Island National Seashore",
+        "stop_lat": 38.05593172,
+        "stop_lng": -75.24524611
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Picnic Area",
+        "stop_name": "Baltimore-Washington Parkway",
+        "stop_lat": 39.02604289,
+        "stop_lng": -76.85410921
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Catoctin Mountain Park",
+        "stop_lat": 39.65068457,
+        "stop_lng": -77.46417665
+    },
+    {
+        "user_id": 10,
+        "stop_category": "View Point",
+        "stop_name": "Chesapeake & Ohio Canal National Historical Park",
+        "stop_lat": 39.000283692,
+        "stop_lng": -77.2481399539
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Unique Find",
+        "stop_name": "Civil War Defenses of Washington",
+        "stop_lat": 38.9644,
+        "stop_lng": -77.0292
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Historic Site",
+        "stop_name": "Clara Barton National Historic Site",
+        "stop_lat": 38.96762882,
+        "stop_lng": -77.14009689
+    },
+    {
+        "user_id": 7,
+        "stop_category": "View Point",
+        "stop_name": "Adams National Historical Park",
+        "stop_lat": 42.2553961,
+        "stop_lng": -71.01160356
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Water Access",
+        "stop_name": "Blackstone River Valley National Historical Park",
+        "stop_lat": 41.8775792792,
+        "stop_lng": -71.382433945
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Historic Site",
+        "stop_name": "Boston African American National Historic Site",
+        "stop_lat": 42.35908295,
+        "stop_lng": -71.06764181
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Camping",
+        "stop_name": "Boston Harbor Islands National Recreation Area",
+        "stop_lat": 42.30905526,
+        "stop_lng": -70.93941138
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Hiking",
+        "stop_name": "Boston National Historical Park",
+        "stop_lat": 42.36957407,
+        "stop_lng": -71.05536763
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Water Access",
+        "stop_name": "Cape Cod National Seashore",
+        "stop_lat": 41.92381465,
+        "stop_lng": -70.04319832
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Historic Site",
+        "stop_name": "Frederick Law Olmsted National Historic Site",
+        "stop_lat": 42.32424266,
+        "stop_lng": -71.13202567
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Historic Site",
+        "stop_name": "John Fitzgerald Kennedy National Historic Site",
+        "stop_lat": 42.34693694,
+        "stop_lng": -71.12323846
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Historic Site",
+        "stop_name": "Longfellow House Washington's Headquarters National Historic Site",
+        "stop_lat": 42.37698854,
+        "stop_lng": -71.12636956
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Park",
+        "stop_name": "Isle Royale National Park",
+        "stop_lat": 48.01145819,
+        "stop_lng": -88.82780657
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Camping",
+        "stop_name": "Keweenaw National Historical Park",
+        "stop_lat": 47.1792308,
+        "stop_lng": -88.52275344
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Water Access",
+        "stop_name": "Pictured Rocks National Lakeshore",
+        "stop_lat": 46.56435642,
+        "stop_lng": -86.31628733
+    },
+    {
+        "user_id": 6,
+        "stop_category": "Unique Find",
+        "stop_name": "River Raisin National Battlefield Park",
+        "stop_lat": 41.91291085,
+        "stop_lng": -83.37620464
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "Sleeping Bear Dunes National Lakeshore",
+        "stop_lat": 44.92844962,
+        "stop_lng": -86.02706591
+    },
+    {
+        "user_id": 8,
+        "stop_category": "National Monument",
+        "stop_name": "Grand Portage National Monument",
+        "stop_lat": 47.99294217,
+        "stop_lng": -89.75573031
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Picnic Area",
+        "stop_name": "Mississippi National River & Recreation Area",
+        "stop_lat": 44.942487,
+        "stop_lng": -93.098712
+    },
+    {
+        "user_id": 6,
+        "stop_category": "Caverns",
+        "stop_name": "North Country National Scenic Trail",
+        "stop_lat": 46.334400743,
+        "stop_lng": -90.8165630499
+    },
+    {
+        "user_id": 5,
+        "stop_category": "National Monument",
+        "stop_name": "Pipestone National Monument",
+        "stop_lat": 44.01351958,
+        "stop_lng": -96.32475523
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Water Access",
+        "stop_name": "Saint Croix National Scenic Riverway",
+        "stop_lat": 45.70019235,
+        "stop_lng": -92.36126685
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Park",
+        "stop_name": "Voyageurs National Park",
+        "stop_lat": 48.48370609,
+        "stop_lng": -92.8382913
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Camping",
+        "stop_name": "Brices Cross Roads National Battlefield Site",
+        "stop_lat": 34.50611958,
+        "stop_lng": -88.72889343
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Monument",
+        "stop_name": "Medgar and Myrlie Evers Home National Monument",
+        "stop_lat": 32.34096274,
+        "stop_lng": -90.21264553
+    },
+    {
+        "user_id": 9,
+        "stop_category": "View Point",
+        "stop_name": "Natchez National Historical Park",
+        "stop_lat": 31.54697621,
+        "stop_lng": -91.39040665
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Water Access",
+        "stop_name": "Shiloh National Military Park",
+        "stop_lat": 35.13850907,
+        "stop_lng": -88.3421072
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Unique Find",
+        "stop_name": "Tupelo National Battlefield",
+        "stop_lat": 34.25557705,
+        "stop_lng": -88.73708623
+    },
+    {
+        "user_id": 5,
+        "stop_category": "National Park",
+        "stop_name": "Gateway Arch National Park",
+        "stop_lat": 38.6258069,
+        "stop_lng": -90.1892508
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Monument",
+        "stop_name": "George Washington Carver National Monument",
+        "stop_lat": 36.9871322,
+        "stop_lng": -94.35522737
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Historic Site",
+        "stop_name": "Harry S Truman National Historic Site",
+        "stop_lat": 38.92711967,
+        "stop_lng": -94.5162488
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Ozark National Scenic Riverways",
+        "stop_lat": 37.13968894,
+        "stop_lng": -91.25709817
+    },
+    {
+        "user_id": 9,
+        "stop_category": "View Point",
+        "stop_name": "Ste. Genevi\u00e8ve National Historical Park",
+        "stop_lat": 37.9792171421179,
+        "stop_lng": -90.0432157516479
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Camping",
+        "stop_name": "Big Hole National Battlefield",
+        "stop_lat": 45.64647324,
+        "stop_lng": -113.6458443
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Camping",
+        "stop_name": "Bighorn Canyon National Recreation Area",
+        "stop_lat": 45.13154227,
+        "stop_lng": -108.1443943
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Historic Site",
+        "stop_name": "Fort Union Trading Post National Historic Site",
+        "stop_lat": 48.00075828,
+        "stop_lng": -104.0375238
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Park",
+        "stop_name": "Glacier National Park",
+        "stop_lat": 48.68414678,
+        "stop_lng": -113.8009306
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Historic Site",
+        "stop_name": "Grant-Kohrs Ranch National Historic Site",
+        "stop_lat": 46.41358923,
+        "stop_lng": -112.7467024
+    },
+    {
+        "user_id": 1,
+        "stop_category": "National Monument",
+        "stop_name": "Little Bighorn Battlefield National Monument",
+        "stop_lat": 45.55633048,
+        "stop_lng": -107.4183614
+    },
+    {
+        "user_id": 5,
+        "stop_category": "National Monument",
+        "stop_name": "Agate Fossil Beds National Monument",
+        "stop_lat": 42.42170419,
+        "stop_lng": -103.753886
+    },
+    {
+        "user_id": 10,
+        "stop_category": "View Point",
+        "stop_name": "Homestead National Historical Park",
+        "stop_lat": 40.28802381,
+        "stop_lng": -96.83387781
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Water Access",
+        "stop_name": "Missouri National Recreational River",
+        "stop_lat": 42.7882189,
+        "stop_lng": -97.59077822
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Water Access",
+        "stop_name": "Niobrara National Scenic River",
+        "stop_lat": 42.79413083,
+        "stop_lng": -99.91870646
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Monument",
+        "stop_name": "Scotts Bluff National Monument",
+        "stop_lat": 41.83464193,
+        "stop_lng": -103.7071351
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Park",
+        "stop_name": "Great Basin National Park",
+        "stop_lat": 38.94617378,
+        "stop_lng": -114.2579782
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Lake Mead National Recreation Area",
+        "stop_lat": 35.96622528,
+        "stop_lng": -114.3469067
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Hiking",
+        "stop_name": "Old Spanish National Historic Trail",
+        "stop_lat": 37.0791782514,
+        "stop_lng": -112.114693431
+    },
+    {
+        "user_id": 1,
+        "stop_category": "National Monument",
+        "stop_name": "Tule Springs Fossil Beds National Monument",
+        "stop_lat": 36.3893217,
+        "stop_lng": -115.3202223
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Camping",
+        "stop_name": "Saint-Gaudens National Historical Park",
+        "stop_lat": 43.4997238,
+        "stop_lng": -72.37333969
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Delaware Water Gap National Recreation Area",
+        "stop_lat": 41.12793491,
+        "stop_lng": -74.94751173
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Monument",
+        "stop_name": "Ellis Island Part of Statue of Liberty National Monument",
+        "stop_lat": 40.69946,
+        "stop_lng": -74.0401
+    },
+    {
+        "user_id": 5,
+        "stop_category": "View Point",
+        "stop_name": "Gateway National Recreation Area",
+        "stop_lat": 40.56536246,
+        "stop_lng": -73.9171087
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Water Access",
+        "stop_name": "Great Egg Harbor River",
+        "stop_lat": 39.3042,
+        "stop_lng": -74.6497
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Water Access",
+        "stop_name": "Lower Delaware National Wild and Scenic River",
+        "stop_lat": 40.4000389,
+        "stop_lng": -74.983737
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Picnic Area",
+        "stop_name": "Morristown National Historical Park",
+        "stop_lat": 40.7650755,
+        "stop_lng": -74.53455122
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Camping",
+        "stop_name": "New Jersey Pinelands National Reserve",
+        "stop_lat": 39.9384,
+        "stop_lng": -74.625
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Paterson Great Falls National Historical Park",
+        "stop_lat": 40.91584645,
+        "stop_lng": -74.18021494
+    },
+    {
+        "user_id": 1,
+        "stop_category": "View Point",
+        "stop_name": "Thomas Edison National Historical Park",
+        "stop_lat": 40.78549896,
+        "stop_lng": -74.23821139
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Monument",
+        "stop_name": "Aztec Ruins National Monument",
+        "stop_lat": 36.83682216,
+        "stop_lng": -107.9999245
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Monument",
+        "stop_name": "Bandelier National Monument",
+        "stop_lat": 35.77898596,
+        "stop_lng": -106.3317124
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Monument",
+        "stop_name": "Capulin Volcano National Monument",
+        "stop_lat": 36.78171096,
+        "stop_lng": -103.9710427
+    },
+    {
+        "user_id": 2,
+        "stop_category": "National Park",
+        "stop_name": "Carlsbad Caverns National Park",
+        "stop_lat": 32.14089463,
+        "stop_lng": -104.5529688
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Unique Find",
+        "stop_name": "Chaco Culture National Historical Park",
+        "stop_lat": 36.03963414,
+        "stop_lng": -107.9560076
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Hiking",
+        "stop_name": "El Camino Real de Tierra Adentro National Historic Trail",
+        "stop_lat": 33.7990672546,
+        "stop_lng": -106.866386195
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Monument",
+        "stop_name": "El Malpais National Monument",
+        "stop_lat": 34.88422799,
+        "stop_lng": -107.9950948
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Monument",
+        "stop_name": "El Morro National Monument",
+        "stop_lat": 35.03895916,
+        "stop_lng": -108.3463984
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Monument",
+        "stop_name": "Fort Union National Monument",
+        "stop_lat": 35.90700629,
+        "stop_lng": -105.0145185
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Monument",
+        "stop_name": "Gila Cliff Dwellings National Monument",
+        "stop_lat": 33.22715258,
+        "stop_lng": -108.2706711
+    },
+    {
+        "user_id": 10,
+        "stop_category": "National Monument",
+        "stop_name": "African Burial Ground National Monument",
+        "stop_lat": 40.71452681,
+        "stop_lng": -74.00447358
+    },
+    {
+        "user_id": 2,
+        "stop_category": "National Monument",
+        "stop_name": "Castle Clinton National Monument",
+        "stop_lat": 40.70347795,
+        "stop_lng": -74.01680558
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Historic Site",
+        "stop_name": "Eleanor Roosevelt National Historic Site",
+        "stop_lat": 41.76208482,
+        "stop_lng": -73.89894026
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Picnic Area",
+        "stop_name": "Federal Hall National Memorial",
+        "stop_lat": 40.70731192,
+        "stop_lng": -74.01025636
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Water Access",
+        "stop_name": "Fire Island National Seashore",
+        "stop_lat": 40.69668638,
+        "stop_lng": -73.00013462
+    },
+    {
+        "user_id": 1,
+        "stop_category": "National Monument",
+        "stop_name": "Fort Stanwix National Monument",
+        "stop_lat": 43.21053441,
+        "stop_lng": -75.45557626
+    },
+    {
+        "user_id": 7,
+        "stop_category": "View Point",
+        "stop_name": "Blue Ridge Parkway",
+        "stop_lat": 35.5657195274,
+        "stop_lng": -82.486484587
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "Cape Hatteras National Seashore",
+        "stop_lat": 35.41370839,
+        "stop_lng": -75.65061112
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Water Access",
+        "stop_name": "Cape Lookout National Seashore",
+        "stop_lat": 34.8267961,
+        "stop_lng": -76.34319082
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Historic Site",
+        "stop_name": "Carl Sandburg Home National Historic Site",
+        "stop_lat": 35.26815509,
+        "stop_lng": -82.45106258
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Historic Site",
+        "stop_name": "Fort Raleigh National Historic Site",
+        "stop_lat": 35.93278602,
+        "stop_lng": -75.71496865
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Park",
+        "stop_name": "Great Smoky Mountains National Park",
+        "stop_lat": 35.60116374,
+        "stop_lng": -83.50818326
+    },
+    {
+        "user_id": 6,
+        "stop_category": "Picnic Area",
+        "stop_name": "Guilford Courthouse National Military Park",
+        "stop_lat": 36.13225478,
+        "stop_lng": -79.8424561
+    },
+    {
+        "user_id": 6,
+        "stop_category": "View Point",
+        "stop_name": "Moores Creek National Battlefield",
+        "stop_lat": 34.45820776,
+        "stop_lng": -78.11031134
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Hiking",
+        "stop_name": "Overmountain Victory National Historic Trail",
+        "stop_lat": 35.14044,
+        "stop_lng": -81.377
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Historic Site",
+        "stop_name": "Knife River Indian Villages National Historic Site",
+        "stop_lat": 47.3540219,
+        "stop_lng": -101.3860533
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Park",
+        "stop_name": "Theodore Roosevelt National Park",
+        "stop_lat": 47.17777274,
+        "stop_lng": -103.4300083
+    },
+    {
+        "user_id": 1,
+        "stop_category": "National Monument",
+        "stop_name": "Charles Young Buffalo Soldiers National Monument",
+        "stop_lat": 39.70817829,
+        "stop_lng": -83.89328575
+    },
+    {
+        "user_id": 7,
+        "stop_category": "National Park",
+        "stop_name": "Cuyahoga Valley National Park",
+        "stop_lat": 41.26093905,
+        "stop_lng": -81.57116722
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Unique Find",
+        "stop_name": "Dayton Aviation Heritage National Historical Park",
+        "stop_lat": 39.78944467,
+        "stop_lng": -84.10442045
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Historic Site",
+        "stop_name": "First Ladies National Historic Site",
+        "stop_lat": 40.79689857,
+        "stop_lng": -81.37579869
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Hopewell Culture National Historical Park",
+        "stop_lat": 39.31594374,
+        "stop_lng": -83.08049456
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Historic Site",
+        "stop_name": "James A Garfield National Historic Site",
+        "stop_lat": 41.66486549,
+        "stop_lng": -81.35086557
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Picnic Area",
+        "stop_name": "Perry's Victory & International Peace Memorial",
+        "stop_lat": 41.65449782,
+        "stop_lng": -82.8115794
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Historic Site",
+        "stop_name": "William Howard Taft National Historic Site",
+        "stop_lat": 39.11970352,
+        "stop_lng": -84.50758951
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Chickasaw National Recreation Area",
+        "stop_lat": 34.46050507,
+        "stop_lng": -97.00715669
+    },
+    {
+        "user_id": 10,
+        "stop_category": "Picnic Area",
+        "stop_name": "Oklahoma City National Memorial",
+        "stop_lat": 35.473,
+        "stop_lng": -97.5171
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Historic Site",
+        "stop_name": "Washita Battlefield National Historic Site",
+        "stop_lat": 35.62083963,
+        "stop_lng": -99.70445143
+    },
+    {
+        "user_id": 2,
+        "stop_category": "National Park",
+        "stop_name": "Crater Lake National Park",
+        "stop_lat": 42.94065854,
+        "stop_lng": -122.1338414
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Historic Site",
+        "stop_name": "Fort Vancouver National Historic Site",
+        "stop_lat": 45.62234841,
+        "stop_lng": -122.6617043
+    },
+    {
+        "user_id": 10,
+        "stop_category": "National Monument",
+        "stop_name": "John Day Fossil Beds National Monument",
+        "stop_lat": 44.62566508,
+        "stop_lng": -119.8811491
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Caverns",
+        "stop_name": "Oregon Caves National Monument & Preserve",
+        "stop_lat": 42.10319143,
+        "stop_lng": -123.4018586
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Historic Site",
+        "stop_name": "Allegheny Portage Railroad National Historic Site",
+        "stop_lat": 40.42977467,
+        "stop_lng": -78.57431622
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Historic Site",
+        "stop_name": "Edgar Allan Poe National Historic Site",
+        "stop_lat": 39.96195482,
+        "stop_lng": -75.1500062
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Historic Site",
+        "stop_name": "Eisenhower National Historic Site",
+        "stop_lat": 39.79577592,
+        "stop_lng": -77.26508101
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Picnic Area",
+        "stop_name": "Flight 93 National Memorial",
+        "stop_lat": 40.06061476,
+        "stop_lng": -78.89456905
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Hiking",
+        "stop_name": "Fort Necessity National Battlefield",
+        "stop_lat": 39.81306048,
+        "stop_lng": -79.59033344
+    },
+    {
+        "user_id": 3,
+        "stop_category": "View Point",
+        "stop_name": "Roger Williams National Memorial",
+        "stop_lat": 41.8298955,
+        "stop_lng": -71.41056665
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Historic Site",
+        "stop_name": "Touro Synagogue National Historic Site",
+        "stop_lat": 41.4893,
+        "stop_lng": -71.3121
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Historic Site",
+        "stop_name": "Charles Pinckney National Historic Site",
+        "stop_lat": 32.84577392,
+        "stop_lng": -79.82487582
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Park",
+        "stop_name": "Congaree National Park",
+        "stop_lat": 33.79187523,
+        "stop_lng": -80.74867805
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Picnic Area",
+        "stop_name": "Cowpens National Battlefield",
+        "stop_lat": 35.13160654,
+        "stop_lng": -81.80935433
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Camping",
+        "stop_name": "Fort Sumter and Fort Moultrie National Historical Park",
+        "stop_lat": 32.75654469,
+        "stop_lng": -79.87068744
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Picnic Area",
+        "stop_name": "Kings Mountain National Military Park",
+        "stop_lat": 35.13900723,
+        "stop_lng": -81.38978712
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Historic Site",
+        "stop_name": "Ninety Six National Historic Site",
+        "stop_lat": 34.14273587,
+        "stop_lng": -82.01636079
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Unique Find",
+        "stop_name": "Reconstruction Era National Historical Park",
+        "stop_lat": 32.3868598938,
+        "stop_lng": -80.6511077881
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Park",
+        "stop_name": "Badlands National Park",
+        "stop_lat": 43.68584846,
+        "stop_lng": -102.482942
+    },
+    {
+        "user_id": 5,
+        "stop_category": "National Monument",
+        "stop_name": "Jewel Cave National Monument",
+        "stop_lat": 43.73102945,
+        "stop_lng": -103.829994
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Historic Site",
+        "stop_name": "Minuteman Missile National Historic Site",
+        "stop_lat": 43.89558013,
+        "stop_lng": -102.0272131
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Unique Find",
+        "stop_name": "Mount Rushmore National Memorial",
+        "stop_lat": 43.88037021,
+        "stop_lng": -103.4525186
+    },
+    {
+        "user_id": 1,
+        "stop_category": "National Park",
+        "stop_name": "Wind Cave National Park",
+        "stop_lat": 43.58012365,
+        "stop_lng": -103.4394709
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Camping",
+        "stop_name": "Andrew Johnson National Historic Site",
+        "stop_lat": 36.15624509,
+        "stop_lng": -82.83709021
+    },
+    {
+        "user_id": 3,
+        "stop_category": "Picnic Area",
+        "stop_name": "Manhattan Project National Historical Park",
+        "stop_lat": 35.88096,
+        "stop_lng": -106.30214
+    },
+    {
+        "user_id": 8,
+        "stop_category": "National Monument",
+        "stop_name": "Alibates Flint Quarries National Monument",
+        "stop_lat": 35.5819662,
+        "stop_lng": -101.6717008
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Camping",
+        "stop_name": "Amistad National Recreation Area",
+        "stop_lat": 29.53539777,
+        "stop_lng": -101.075821
+    },
+    {
+        "user_id": 8,
+        "stop_category": "National Park",
+        "stop_name": "Big Bend National Park",
+        "stop_lat": 29.29817767,
+        "stop_lng": -103.2297897
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Hiking",
+        "stop_name": "Big Thicket National Preserve",
+        "stop_lat": 30.457983431,
+        "stop_lng": -94.386742115
+    },
+    {
+        "user_id": 8,
+        "stop_category": "View Point",
+        "stop_name": "Chamizal National Memorial",
+        "stop_lat": 31.76729634,
+        "stop_lng": -106.4544011
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Picnic Area",
+        "stop_name": "Fort Davis National Historic Site",
+        "stop_lat": 30.59930381,
+        "stop_lng": -103.8961904
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Park",
+        "stop_name": "Guadalupe Mountains National Park",
+        "stop_lat": 31.92304462,
+        "stop_lng": -104.885527
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Park",
+        "stop_name": "Arches National Park",
+        "stop_lat": 38.72261844,
+        "stop_lng": -109.5863666
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Park",
+        "stop_name": "Bryce Canyon National Park",
+        "stop_lat": 37.58399144,
+        "stop_lng": -112.1826689
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Park",
+        "stop_name": "Canyonlands National Park",
+        "stop_lat": 38.24555783,
+        "stop_lng": -109.8801624
+    },
+    {
+        "user_id": 1,
+        "stop_category": "National Park",
+        "stop_name": "Capitol Reef National Park",
+        "stop_lat": 38.2821653131,
+        "stop_lng": -111.247048378
+    },
+    {
+        "user_id": 6,
+        "stop_category": "National Monument",
+        "stop_name": "Cedar Breaks National Monument",
+        "stop_lat": 37.63545562,
+        "stop_lng": -112.845268
+    },
+    {
+        "user_id": 1,
+        "stop_category": "View Point",
+        "stop_name": "Golden Spike National Historical Park",
+        "stop_lat": 41.61947508,
+        "stop_lng": -112.5242653
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Hiking",
+        "stop_name": "Marsh - Billings - Rockefeller National Historical Park",
+        "stop_lat": 43.63348732,
+        "stop_lng": -72.53424638
+    },
+    {
+        "user_id": 9,
+        "stop_category": "View Point",
+        "stop_name": "Appomattox Court House National Historical Park",
+        "stop_lat": 37.38022164,
+        "stop_lng": -78.79856982
+    },
+    {
+        "user_id": 2,
+        "stop_category": "Unique Find",
+        "stop_name": "Arlington House, The Robert E. Lee Memorial",
+        "stop_lat": 38.8822021484,
+        "stop_lng": -77.0734786987
+    },
+    {
+        "user_id": 3,
+        "stop_category": "National Monument",
+        "stop_name": "Booker T Washington National Monument",
+        "stop_lat": 37.11520539,
+        "stop_lng": -79.73185833
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Picnic Area",
+        "stop_name": "Cape Henry Memorial Part of Colonial National Historical Park",
+        "stop_lat": 36.9278094,
+        "stop_lng": -76.0088219
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Cedar Creek & Belle Grove National Historical Park",
+        "stop_lat": 39.0093576,
+        "stop_lng": -78.30618934
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Camping",
+        "stop_name": "Ebey's Landing National Historical Reserve",
+        "stop_lat": 48.21403036,
+        "stop_lng": -122.6877213
+    },
+    {
+        "user_id": 4,
+        "stop_category": "Camping",
+        "stop_name": "Klondike Gold Rush - Seattle Unit National Historical Park",
+        "stop_lat": 47.5993663,
+        "stop_lng": -122.3319664
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Hiking",
+        "stop_name": "Lake Roosevelt National Recreation Area",
+        "stop_lat": 48.17148735,
+        "stop_lng": -118.3513713
+    },
+    {
+        "user_id": 10,
+        "stop_category": "National Park",
+        "stop_name": "Mount Rainier National Park",
+        "stop_lat": 46.86075416,
+        "stop_lng": -121.7043885
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "Bluestone National Scenic River",
+        "stop_lat": 37.56577087,
+        "stop_lng": -80.98366657
+    },
+    {
+        "user_id": 7,
+        "stop_category": "Camping",
+        "stop_name": "Gauley River National Recreation Area",
+        "stop_lat": 38.20614947,
+        "stop_lng": -81.00420836
+    },
+    {
+        "user_id": 3,
+        "stop_category": "View Point",
+        "stop_name": "Harpers Ferry National Historical Park",
+        "stop_lat": 39.31865949,
+        "stop_lng": -77.74088546
+    },
+    {
+        "user_id": 10,
+        "stop_category": "National Park",
+        "stop_name": "New River Gorge National Park & Preserve",
+        "stop_lat": 37.86878554,
+        "stop_lng": -80.99956002
+    },
+    {
+        "user_id": 5,
+        "stop_category": "Water Access",
+        "stop_name": "Apostle Islands National Lakeshore",
+        "stop_lat": 46.96240467,
+        "stop_lng": -90.66045665
+    },
+    {
+        "user_id": 1,
+        "stop_category": "Hiking",
+        "stop_name": "Ice Age National Scenic Trail",
+        "stop_lat": 43.9895697794,
+        "stop_lng": -89.5612021706
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Monument",
+        "stop_name": "Devils Tower National Monument",
+        "stop_lat": 44.59064655,
+        "stop_lng": -104.7156341
+    },
+    {
+        "user_id": 8,
+        "stop_category": "Historic Site",
+        "stop_name": "Fort Laramie National Historic Site",
+        "stop_lat": 42.20301694,
+        "stop_lng": -104.5459112
+    },
+    {
+        "user_id": 4,
+        "stop_category": "National Monument",
+        "stop_name": "Fossil Butte National Monument",
+        "stop_lat": 41.85635223,
+        "stop_lng": -110.7624754
+    },
+    {
+        "user_id": 9,
+        "stop_category": "National Park",
+        "stop_name": "Grand Teton National Park",
+        "stop_lat": 43.81853565,
+        "stop_lng": -110.7054666
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "Shanty Town Wetlands",
+        "stop_lat": 40.1397463,
+        "stop_lng": -115.5091309
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Hiking",
+        "stop_name": "Hidden Forest Cabin Alternative Trail",
+        "stop_lat": 36.6245728,
+        "stop_lng": -115.2325708
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Mt.Irish Boulders",
+        "stop_lat": 37.5550558,
+        "stop_lng": -115.4183651
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Climbing Access/Scrambling",
+        "stop_name": "Calico Basin Climbing Valley",
+        "stop_lat": 36.1435955,
+        "stop_lng": -115.4192758
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Clothing Option Hot Springs",
+        "stop_lat": 37.4632955,
+        "stop_lng": -115.1977512
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "The Knolls Boat Ramp",
+        "stop_lat": 40.7676503,
+        "stop_lng": -113.2144390
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Gooseberry Springs",
+        "stop_lat": 39.1994776,
+        "stop_lng": -110.5970343
+    },
+    {
+        "user_id": 9,
+        "stop_category": "View Point",
+        "stop_name": "Secret Trail to Pogonip Ridge",
+        "stop_lat": 39.2022994,
+        "stop_lng": -115.5332811
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Picnic Area",
+        "stop_name": "Flagstaff Picnic Area",
+        "stop_lat": 38.4519291,
+        "stop_lng": -116.4262143
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Swimming Hole",
+        "stop_name": "Kawich Valley Pond",
+        "stop_lat": 37.5116111,
+        "stop_lng": -116.2132643
+    },
+    {
+        "user_id": 9,
+        "stop_category": "View Point",
+        "stop_name": "Nannies Peak View Point",
+        "stop_lat": 41.1319971,
+        "stop_lng": -115.9580723
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Water Access",
+        "stop_name": "Bullfrog Bay Boat Access",
+        "stop_lat": 37.5235025,
+        "stop_lng": -110.7454432
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Unique Find",
+        "stop_name": "Canyonlands Petroglyphs",
+        "stop_lat": 38.1930073,
+        "stop_lng": -109.9069984
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Unique Find",
+        "stop_name": "Navajo Cave Paintings",
+        "stop_lat": 36.6317916,
+        "stop_lng": -110.5230086
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Picnic Area",
+        "stop_name": "Horse Mountain Picnic Area",
+        "stop_lat": 40.2670539,
+        "stop_lng": -116.9642583
+    },
+    {
+        "user_id": 9,
+        "stop_category": "State Park",
+        "stop_name": "Starvation State Park",
+        "stop_lat": 40.1929673,
+        "stop_lng": -110.4996635
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Unique Find",
+        "stop_name": "Giant Offroad Crater",
+        "stop_lat": 40.3456670,
+        "stop_lng": -114.0597330
+    },
+    {
+        "user_id": 9,
+        "stop_category": "Unique Find",
+        "stop_name": "Fish Springs Wildlife Refuge",
+        "stop_lat": 39.8367793,
+        "stop_lng": -113.3471552
+    },
+    {
+        "user_id": 9,
+        "stop_category": "State Park",
+        "stop_name": "Valley of Fire State Park",
+        "stop_lat": 36.4957412,
+        "stop_lng": -114.4693225
+    }
 ]

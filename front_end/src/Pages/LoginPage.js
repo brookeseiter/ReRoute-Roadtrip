@@ -41,18 +41,32 @@ export default function LoginPage () {
             body: JSON.stringify(body)
         }
 
+        // fetch('/login', requestOptions)
+        //     .then(response => {
+        //         response.json();
+        //         console.log(response);
+        //         if (response.status === 200) {
+        //             alert('Login successful.');
+        //             navigate('/profile');
+        //         }
+        //     })
+        //     .then(data => console.log('this is the data:', data))
+        //     .catch(error => {
+        //         console.log(error, 'error');
+        //         if (error.response.status === 401) {
+        //             alert('Incorrect email or password');
+        //         }
+        //     });
         fetch('/login', requestOptions)
-            .then(response => {
-                response.json();
-                if (response.status === 200) {
-                    alert('Login successful.');
-                    navigate('/profile');
-                }
+            .then(response => response.ok ? response.json() : Promise.reject(response))
+            .then(data => {
+                console.log('this is the data:', data);
+                alert('Login successful.');
+                navigate('/profile');
             })
-            .then(data =>{console.log('this is the data:', data);})
             .catch(error => {
-                console.log(error, 'error');
-                if (error.response.status === 401) {
+                console.log('error: ', error);
+                if (error.status === 401) {
                     alert('Incorrect email or password');
                 }
             });
