@@ -46,6 +46,8 @@ SESSION_REDIS = redis.from_url("redis://127.0.0.1:6379")
 
 @app.route('/@me')
 def get_current_user():
+    """If logged in, returns information about current user."""
+
     user_id = session.get('user_id')
 
     if not user_id:
@@ -146,12 +148,11 @@ def login_user():
 def logout_user():
     """Log user out."""
 
-    print('pre-delete session:', session)
-    del session['user_id']
-    # logout_user()
-    print('post-delete session:', session)
+    print('SESSION:', session)
+    session.pop("user_id")
+    print('NEW SESSION:', session)
     
-    return jsonify({'message': 'Logout succesful.'})
+    return jsonify({'message': 'Logout succesful.'}), 200
 
 @app.route('/create-stop', methods = ['POST'])
 def create_stop():
