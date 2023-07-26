@@ -23,6 +23,7 @@ export default function CreateAccountPage () {
         }
 
         const requestOptions = {
+            credentials: 'same-origin',
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

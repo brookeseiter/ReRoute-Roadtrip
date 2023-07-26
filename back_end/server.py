@@ -24,21 +24,24 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Create the Flask application
 app = Flask(__name__)
 app.secret_key = 'dev'
-CORS(app)
+CORS(app, supports_credentials=True)
 bycrypt = Bcrypt(app)
 # app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET")
 # jwt = JWTManager(app)
-app.config['SESSION_TYPE'] = 'filesystem'
+# app.config['SESSION_TYPE'] = 'filesystem'
 app.config["AUTH_SECRET_KEY"] = os.environ.get("AUTH_SECRET_KEY")
-server_session = Session(app)
 
-SESSION_TYPE = "redis"
-SESSION_PERMANENT = False
-SESSION_USE_SIGNER = True
-# PERMANENT_SESSION_LIFETIME = 1800
-SESSION_REDIS = redis.from_url("redis://127.0.0.1:6379")
+# Configure Redis for storing the session data on the server side
+app.config['SESSION_TYPE'] = "redis"
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_REDIS'] = redis.from_url("redis://127.0.0.1:6379")
+
+# Create and initialize the Flask-Session object AFTER 'app' has been configured
+server_session = Session(app)
 
 # login_manager = LoginManager()
 # login_manager.init_app(app)
@@ -120,14 +123,12 @@ def login_user():
 
     print('Login user route of server.py activated')
     print('USER:', user)
-    # print(user.password)
     print(password)
     print(user)
 
     if user is None:
         print('USER IS NONE')
         return jsonify({'message':'Please create an account.'}), 401
-    # elif user.password != password:
     elif not bycrypt.check_password_hash(user.password, password):
         print('USER PASSWORD:', user.password)
         print('TYPED PASSWORD:', password)
@@ -148,6 +149,7 @@ def login_user():
 def logout_user():
     """Log user out."""
 
+    print(server_session)
     print('SESSION:', session)
     session.pop("user_id")
     print('NEW SESSION:', session)

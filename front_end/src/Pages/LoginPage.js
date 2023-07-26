@@ -34,9 +34,8 @@ export default function LoginPage () {
         }
 
         const requestOptions = {
-            credentials: 'include',
+            credentials: 'same-origin',
             method: 'POST',
-            mode: 'cors',
             headers: {
                 'content-type': 'application/json'
             },
