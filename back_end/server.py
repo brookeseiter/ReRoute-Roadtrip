@@ -32,7 +32,6 @@ bycrypt = Bcrypt(app)
 # app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET")
 # jwt = JWTManager(app)
 # app.config['SESSION_TYPE'] = 'filesystem'
-app.config["AUTH_SECRET_KEY"] = os.environ.get("AUTH_SECRET_KEY")
 
 # Configure Redis for storing the session data on the server side
 app.config['SESSION_TYPE'] = "redis"
