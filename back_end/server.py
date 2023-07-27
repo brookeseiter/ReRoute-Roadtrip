@@ -1,25 +1,13 @@
-"""Server for movie ratings app."""
+"""Server for ReRoute Roadtrip app."""
 
-import json
-from flask import (Flask, render_template, url_for, request, flash, session,
-                   redirect, Response, jsonify)
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user
-from model import connect_to_db, db
-from model import User, Stop
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired  , Length, ValidationError
+import os 
+import crud
+import redis
+from flask import (Flask, render_template, request, session, jsonify)
+from model import connect_to_db, db, User
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_session import Session
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
-from flask_jwt_extended import JWTManager
-import crud
-import os 
-import redis
-from os import environ
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -27,29 +15,17 @@ load_dotenv()
 # Create the Flask application
 app = Flask(__name__)
 app.secret_key = os.environ['SECRET_KEY']
-# app.config.from_prefixed_env()
-print(app.config["SECRET_KEY"])
-# app.secret_key = 'dev'
 CORS(app, supports_credentials=True)
 bycrypt = Bcrypt(app)
-# app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET")
-# jwt = JWTManager(app)
-# app.config["AUTH_SECRET_KEY"] = os.environ.get("AUTH_SECRET_KEY")
-# print(app.config['AUTH_SECRET_KEY'])
 
 # Configure Redis for storing the session data on the server side
 app.config['SESSION_TYPE'] = "redis"
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_REDIS'] = redis.from_url("redis://127.0.0.1:6379")
-# app.config['SESSION_COOKIE_NAME'] = 'qid'
 
 # Create and initialize the Flask-Session object AFTER 'app' has been configured
 server_session = Session(app)
-
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-# login_manager.login_view = 'login'
 
 @app.route('/@me')
 def get_current_user():
@@ -81,9 +57,6 @@ def route(path):
 def nested_route(path, code):
     return render_template('index.html')
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.query.get(int(user_id))
 
 @app.route('/register', methods = ['POST'])
 def create_user():
