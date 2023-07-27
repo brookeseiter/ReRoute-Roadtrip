@@ -26,18 +26,23 @@ load_dotenv()
 
 # Create the Flask application
 app = Flask(__name__)
-app.secret_key = 'dev'
+app.secret_key = os.environ['SECRET_KEY']
+# app.config.from_prefixed_env()
+print(app.config["SECRET_KEY"])
+# app.secret_key = 'dev'
 CORS(app, supports_credentials=True)
 bycrypt = Bcrypt(app)
 # app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET")
 # jwt = JWTManager(app)
-# app.config['SESSION_TYPE'] = 'filesystem'
+# app.config["AUTH_SECRET_KEY"] = os.environ.get("AUTH_SECRET_KEY")
+# print(app.config['AUTH_SECRET_KEY'])
 
 # Configure Redis for storing the session data on the server side
 app.config['SESSION_TYPE'] = "redis"
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_REDIS'] = redis.from_url("redis://127.0.0.1:6379")
+# app.config['SESSION_COOKIE_NAME'] = 'qid'
 
 # Create and initialize the Flask-Session object AFTER 'app' has been configured
 server_session = Session(app)
@@ -103,6 +108,7 @@ def create_user():
     db.session.commit()
     print('NEW USER DATA:', new_user)
 
+    app.config['SESSION_COOKIE_NAME'] = 'uid'
     session['user_id'] = new_user.user_id
     print('SESSION:', session)
     print('SESSION[user_id]:', session['user_id'])
@@ -135,6 +141,7 @@ def login_user():
     else:
         # login_user()
         # user_id = user.user_id
+        app.config['SESSION_COOKIE_NAME'] = 'session'
         session['user_id'] = user.user_id
         # access_token = create_access_token(identity=email)
         print('USER PASSWORD', user.password)
