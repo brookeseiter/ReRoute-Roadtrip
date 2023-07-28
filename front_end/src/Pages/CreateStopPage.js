@@ -15,6 +15,7 @@ export default function CreateStopPage () {
     const mapRef = useRef();
     const [libraries] = useState(['places','geometry']);
     const navigate = useNavigate();
+    // const[user, setUser] = useState({});
     const [inputs, setInputs] = useState({});
     let [catChoice, setCatChoice] = useState("");
     let [marker, setMarker] = useState([]);
@@ -43,7 +44,7 @@ export default function CreateStopPage () {
     const handleSubmit = (e) => {
         e.preventDefault();
         const body = {
-            user_id: sessionStorage.user_id,
+            // user_id: user.user_id,
             stop_category: catChoice,
             stop_name: inputs.stop_name,
             stop_lat: marker.lat,

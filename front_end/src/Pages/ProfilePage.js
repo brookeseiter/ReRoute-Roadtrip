@@ -24,7 +24,8 @@ const ProfilePage = () => {
             .catch(error => console.log(error));
     }, []);
 
-    const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}))
+    const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
+
 
     return ( 
         <div className="profile-page">

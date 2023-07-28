@@ -34,14 +34,15 @@ export default function CreateAccountPage () {
         fetch('/register', requestOptions)
             .then(response => response.ok ? response.json() : Promise.reject(response))
             .then(data => {
-                console.log(data);
+                console.log('data:', data);
+                // setUser(data);
                 alert('Account created successfully, Please log in.');
                 navigate('/');
             })
             .catch(error => {
                 console.log('error: ', error);
                 alert('An account already exists with this username/email. Please try again.');
-            });     
+            });   
     }
 
     return ( 

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function LoginPage () {
     const [inputs, setInputs] = useState({});
     // const { store, actions } = useContext(Context);
+    const[user, setUser] = useState({});
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -60,8 +61,9 @@ export default function LoginPage () {
         //     });
         fetch('/login', requestOptions)
             .then(response => response.ok ? response.json() : Promise.reject(response))
-            .then(data => {
-                console.log('this is the data:', data);
+            .then(userData => {
+                console.log('userData:', userData);
+                setUser(userData);
                 alert('Login successful.');
                 navigate('/profile');
             })
