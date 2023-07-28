@@ -1,14 +1,13 @@
 """Server for ReRoute Roadtrip app."""
 
-import os 
-import crud
-import redis
 from flask import (Flask, render_template, request, session, jsonify)
 from model import connect_to_db, db, User
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_session import Session
 from dotenv import load_dotenv
+import os 
+import crud
 
 load_dotenv()
 
@@ -18,11 +17,10 @@ app.secret_key = os.environ['SECRET_KEY']
 CORS(app, supports_credentials=True)
 bycrypt = Bcrypt(app)
 
-# Configure Redis for storing the session data on the server side
-app.config['SESSION_TYPE'] = "redis"
+# Configure filesystem for storing the session data on the server side
+app.config['SESSION_TYPE'] = "filesystem"
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
-app.config['SESSION_REDIS'] = redis.from_url("redis://127.0.0.1:6379")
 
 # Create and initialize the Flask-Session object AFTER 'app' has been configured
 server_session = Session(app)
@@ -79,13 +77,11 @@ def create_user():
     new_user = crud.create_user(fname, lname, email, username, hashed_password, phone_num)
     db.session.add(new_user)
     db.session.commit()
-    print('NEW USER DATA:', new_user)
 
-    app.config['SESSION_COOKIE_NAME'] = 'uid'
+    # is this necessary?
     session['user_id'] = new_user.user_id
-    print('SESSION:', session)
-    print('SESSION[user_id]:', session['user_id'])
-    print('SERVER SESSION:', server_session)
+    print(session)
+    print(session["user_id"])
 
     return jsonify(new_user.to_dict())
 
@@ -99,39 +95,20 @@ def login_user():
 
     user = crud.get_user_by_email(email)
 
-    print('Login user route of server.py activated')
-    print('USER:', user)
-    print(password)
-    print(user)
-
     if user is None:
-        print('USER IS NONE')
         return jsonify({'message':'Please create an account.'}), 401
     elif not bycrypt.check_password_hash(user.password, password):
-        print('USER PASSWORD:', user.password)
-        print('TYPED PASSWORD:', password)
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
     else:
-        # login_user()
-        # user_id = user.user_id
-        app.config['SESSION_COOKIE_NAME'] = 'session'
         session['user_id'] = user.user_id
-        # access_token = create_access_token(identity=email)
-        print('USER PASSWORD', user.password)
-        print('TYPED PASSWORD', password)
-        print('SESSION:', session)
         return jsonify(user_id=user.user_id)
-        # return jsonify(access_token=access_token, user_id=user_id)
 
 
 @app.route("/logout", methods = ['GET', 'POST'])
 def logout_user():
     """Log user out."""
 
-    print(server_session)
-    print('SESSION:', session)
     session.pop("user_id")
-    print('NEW SESSION:', session)
     
     return jsonify({'message': 'Logout succesful.'}), 200
 
