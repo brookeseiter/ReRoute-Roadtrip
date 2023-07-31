@@ -25,21 +25,30 @@ app.config['SESSION_USE_SIGNER'] = True
 # Create and initialize the Flask-Session object AFTER 'app' has been configured
 server_session = Session(app)
 
-@app.route('/@me')
+@app.route('/user')
 def get_current_user():
-    """If logged in, returns information about current user."""
+    """Check for logged in user and return user ID."""
+    print(session)
+    if 'user_id' not in session:
+        return jsonify({})
+    else:
+        return jsonify(session['user_id'])
 
-    user_id = session.get('user_id')
+# @app.route('/@me')
+# def get_current_user():
+#     """If logged in, returns information about current user."""
 
-    if not user_id:
-        return jsonify({"error": "Unauthorized"}), 401
+#     user_id = session.get('user_id')
 
-    user = crud.get_user_by_id(user_id)
+#     if not user_id:
+#         return jsonify({"error": "Unauthorized"}), 401
 
-    return jsonify({
-        "user_id": user.user_id,
-        "email": user.email 
-    })
+#     user = crud.get_user_by_id(user_id)
+
+#     return jsonify({
+#         "user_id": user.user_id,
+#         "email": user.email 
+#     })
 
 @app.route('/')
 def home():
