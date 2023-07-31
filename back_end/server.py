@@ -60,8 +60,6 @@ def nested_route(path, code):
 def create_user():
     """Create a new user."""
 
-    fname = request.json['fname']
-    lname = request.json['lname']
     email = request.json['email']
     username = request.json['username']
     password = request.json['password']
@@ -74,14 +72,12 @@ def create_user():
         return jsonify({"error": "Email/username already exists."}), 409
     
     hashed_password = bycrypt.generate_password_hash(password).decode('utf-8')
-    new_user = crud.create_user(fname, lname, email, username, hashed_password, phone_num)
+    new_user = crud.create_user(email, username, hashed_password, phone_num)
     db.session.add(new_user)
     db.session.commit()
 
     # is this necessary?
     session['user_id'] = new_user.user_id
-    print(session)
-    print(session["user_id"])
 
     return jsonify(new_user.to_dict())
 

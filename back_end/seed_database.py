@@ -24,16 +24,14 @@ with open("../data/users.json") as f:
 # to create fake stops/routes/reviews
 users_in_db = []
 for user in user_data:
-    fname, lname, email, username, password, phone_num = (
-        user["fname"],
-        user["lname"],
+    email, username, password, phone_num = (
         user["email"],
         user["username"],
         user["password"],
         user["phone_num"],
     )
 
-    db_user = crud.create_user(fname, lname, email, username, password, phone_num)
+    db_user = crud.create_user(email, username, password, phone_num)
     users_in_db.append(db_user)
 
 model.db.session.add_all(users_in_db)

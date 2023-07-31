@@ -14,8 +14,6 @@ export default function CreateAccountPage () {
     const handleSubmit = (e) => {
         e.preventDefault();
         const body = {
-            fname: inputs.fname,
-            lname: inputs.lname,
             email: inputs.email,
             username: inputs.username,
             password: inputs.password,
@@ -65,32 +63,6 @@ export default function CreateAccountPage () {
                     <div className="col">
                         <h1>Create An Account</h1>
                         <form className="create-account-form">
-                            <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="form-label">
-                                <input 
-                                    type="text"
-                                    className="form-control"
-                                    id="createAccountFormInput"
-                                    name="fname" 
-                                    value={inputs.fname || ""}
-                                    onChange={handleChange}
-                                    placeholder="First Name"
-                                />
-                                </label>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="form-label">
-                                <input 
-                                    type="text"
-                                    className="form-control"
-                                    id="createAccountFormInput"
-                                    name="lname" 
-                                    value={inputs.lname || ""}
-                                    onChange={handleChange}
-                                    placeholder="Last Name"
-                                />
-                                </label>
-                            </div>
                             <div className="mb-3">
                                 <label htmlFor="createAccountFormInput" className="form-label">
                                 <input 
