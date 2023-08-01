@@ -5,11 +5,11 @@ import { useNavigate, redirect } from "react-router-dom";
 // import { Context } from "../Storage/appContext";
 
 
-export default function LoginPage () {
+export default function LoginPage ({loading}) {
     const navigate = useNavigate();
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
-    const[user, setUser] = useState({});
+    const [user, setUser] = useState({});
     const[isLoggedIn, setIsLoggedIn] = useState(false);
 
     const updateEmail = evt => {
@@ -35,6 +35,7 @@ export default function LoginPage () {
 
     const handleLogin = evt => {
         console.log('in handleLogin');
+        console.log('evt:', evt);
         evt.preventDefault();
         const userJson = { 'email': email, 'password': password };
         console.log(userJson);
@@ -54,14 +55,20 @@ export default function LoginPage () {
                 console.log('in if handleLogin');
               } else {
                 setUser(userData);
-                confirmLogin(user);
+                confirmLogin(userData);
                 redirect(`/profile`);
                 console.log('in else handleLogin');
+                console.log(userData);
+                sessionStorage.setItem('userID', userData.user_id);
+                const userId = sessionStorage.getItem('userID');
+                console.log('USER_ID session storage:', userId);
               }
             })
       }};
-
+    
     console.log(user);
+
+
 
     if (isLoggedIn === true) {
         return navigate(`/profile`);
@@ -70,7 +77,7 @@ export default function LoginPage () {
         <div className="login-page">
             <form className='login-form' onSubmit={handleLogin}>
                 <div className="mb-3">
-                    <label htmlFor="loginFormInput" className="form-label">
+                    <label htmlFor="loginFormInputEmail" className="form-label">
                     <input 
                         type="text"
                         className="form-control"
@@ -87,7 +94,7 @@ export default function LoginPage () {
                     <input 
                         type="password"
                         className="form-control"
-                        id="loginFormInput"
+                        id="loginFormInputPassword"
                         required 
                         name="password" 
                         onChange={updatePassword}

@@ -14,7 +14,7 @@ import NotFound from './Components/NotFound';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const[user, setUser] = useState({});
+  const[user, setUser] = useState({user_id:"", email:""});
   const[isLoggedIn, setIsLoggedIn] = useState(null);
   const[loading, setLoading] = useState(false);
   const[email, setEmail] = useState("");
@@ -75,6 +75,7 @@ function App() {
   const handleLogin = evt => {
     console.log('in handleLogin');
     evt.preventDefault();
+    console.log(evt);
     const userJson = { 'email': email, 'password': password };
     console.log(userJson);
 
@@ -82,6 +83,7 @@ function App() {
       alert("Please enter both email and password.");
     } else {
       fetch(`/login`, {
+        credentials: 'same-origin',
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(userJson)
@@ -99,13 +101,13 @@ function App() {
           }
         })
   }};
-
+  console.log(user);
   const handleSignOut = evt => {
     fetch('/logout')
       .then((response) => response.text())
       .then((updateLogin) => {
         setUser({});
-        // setIsLoggedIn(false);
+        setIsLoggedIn(false);
     });
   };
 
@@ -116,6 +118,8 @@ function App() {
         <Route path="/" element={<Homepage />} /> 
         <Route path="/create-account" element={<CreateAccountPage />} />
         <Route path="/login" element={ <LoginPage handleLogin={evt => handleLogin(evt)}
+                                                  // user={user}
+                                                  setUser={setUser}
                                                   updateEmail={evt => updateEmail(evt)}
                                                   updatePassword={evt => updatePassword(evt)}
                                                   email={email}
@@ -123,7 +127,9 @@ function App() {
                                                   isLoggedIn={isLoggedIn} 
                                                   loading={loading}/> } />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/create-stop" element={<CreateStopPage />} />
+        <Route path="/create-stop" element={<CreateStopPage user={user}
+                                                            isLoggedIn={isLoggedIn} 
+                                                            loading={loading}/>} />
         <Route path="/create-route" element={<CreateRoutePage />} />
         <Route path="/stops" element={<AllStopsPage />} />
         <Route path="/stops/:stop_id" element={<StopDetails />} />
