@@ -79,7 +79,6 @@ def create_user():
     username = request.json['username']
     password = request.json['password']
     phone_num = request.json['phoneNum']
-    print(email, username, password, phone_num)
 
     # user_exists = crud.user_exists
     user_exists = User.query.filter_by(email=email).first() is not None
@@ -89,7 +88,7 @@ def create_user():
     
     hashed_password = bycrypt.generate_password_hash(password).decode('utf-8')
     new_user = crud.create_user(email, username, hashed_password, phone_num)
-    print('NEW USER:', new_user)
+    print('~NEW USER:', new_user)
     db.session.add(new_user)
     db.session.commit()
 
@@ -109,7 +108,7 @@ def login_user():
     email = request.json.get('email', None)
     password = request.json.get('password', None)
 
-    print(email, password)
+    print('login_user server.py:', email, password)
 
     user = crud.get_user_by_email(email)
 
@@ -119,7 +118,7 @@ def login_user():
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
     else:
         session['user_id'] = user.user_id
-        return jsonify(user_id=user.user_id)
+        return jsonify(user_id=user.user_id), 200
 
 
 @app.route("/logout", methods = ['GET', 'POST'])

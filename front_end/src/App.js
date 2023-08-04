@@ -49,24 +49,22 @@ function App() {
   console.log(isLoggedIn);
 
   return (
-    
-      <Routes>
-        <Route path="/" element={<Homepage />} /> 
-        <Route path="/create-account" element={<CreateAccountPage setEmail={(e) => setUser({ ...user, email: e.target.value })}
-                                                                  setUsername={(e) => setUser({ ...user, username: e.target.value })}  
-                                                                  setPassword={(e) => setUser({ ...user, password: e.target.value })}
-                                                                  setPhoneNum={(e) => setUser({ ...user, phoneNum: e.target.value })}
-                                                                  setIsLoggedIn={setIsLoggedIn}
-                                                                  user={user}/>} />
-        <Route path="/login" element={ <LoginPage user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/create-stop" element={<CreateStopPage />} />
-        <Route path="/create-route" element={<CreateRoutePage />} />
-        <Route path="/stops" element={<AllStopsPage />} />
-        <Route path="/stops/:stop_id" element={<StopDetails />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      
+    <Routes>
+      <Route path="/" element={<Homepage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} /> 
+      <Route path="/create-account" element={<CreateAccountPage setEmail={(e) => setUser({ ...user, email: e.target.value })}
+                                                                setUsername={(e) => setUser({ ...user, username: e.target.value })}  
+                                                                setPassword={(e) => setUser({ ...user, password: e.target.value })}
+                                                                setPhoneNum={(e) => setUser({ ...user, phoneNum: e.target.value })}
+                                                                setIsLoggedIn={setIsLoggedIn}
+                                                                user={user}/>} />
+      <Route path="/login" element={ <LoginPage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+      <Route path="/create-stop" element={<CreateStopPage />} />
+      <Route path="/create-route" element={<CreateRoutePage />} />
+      <Route path="/stops" element={<AllStopsPage />} />
+      <Route path="/stops/:stop_id" element={<StopDetails />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes> 
   );
 }
 

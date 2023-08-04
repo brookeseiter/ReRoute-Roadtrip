@@ -1,22 +1,15 @@
 import React from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate, redirect } from "react-router-dom";
-// import { useHistory } from 'react-router-dom';
-// import { useContext } from "react";
-// import { Context } from "../Storage/appContext";
+import { useNavigate } from "react-router-dom";
 
 
 export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
     const navigate = useNavigate();
 
-    // const updateEmail = (evt) => setEmail(evt.target.value);
-
-    // const updatePassword = (evt) => setPassword(evt.target.value);
-
-    const handleLogin = (evt) => {
+    const handleLogin = (e) => {
         console.log('in handleLogin');
-        evt.preventDefault();
+        e.preventDefault();
         console.log(user);
         fetch(`/login`, {
           method: 'POST',
@@ -25,16 +18,14 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
         })
           .then((response) => response.json())
           .then((userData) => {
-            if (userData.status === '200') {
+            console.log(userData);
+            if (userData.user_id) {
               console.log('userData:', userData)
               setIsLoggedIn(true);
-              // setTimeout(() => {
-              //   navigate('/profile')
-              // }, 2500)
               navigate('/profile');
             }
             else {
-              Error('error message:', 'there has been an error');
+              console.log('didnt go through');
             }
           }, []);
     };

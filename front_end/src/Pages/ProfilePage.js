@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 
 
-const ProfilePage = () => {
+const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn }) => {
     const [myStops, setMyStops] = useState([]);
     // const { store, actions } = useContext(Context);
     

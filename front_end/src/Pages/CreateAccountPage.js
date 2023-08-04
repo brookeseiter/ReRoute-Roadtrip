@@ -24,6 +24,7 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                 setIsLoggedIn(true);
                 alert('Account created successfully, Please log in.');
                 navigate('/');
+                console.log('user:', user);
             })
             .catch(error => {
                 console.log('error: ', error);

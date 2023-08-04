@@ -1,6 +1,6 @@
 import LoginPage from './LoginPage.js';
 
-export default function Homepage () {
+export default function Homepage ({ user, setUser, isLoggedIn, setIsLoggedIn }) {
 
     return ( 
         <div className="homepage">   
@@ -23,7 +23,7 @@ export default function Homepage () {
                     />  
                     <h2 className="text-center">ReRoute Roadtrip</h2>
                     <p className="text-center">Make each stop part of your adventure.</p> 
-                    <LoginPage />
+                    <LoginPage user={user} setUser= {setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
                 </div>
             </div>
         </div>
