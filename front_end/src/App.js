@@ -1,14 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './Components/NavBar';
 import Homepage from './Pages/Homepage';
 import ProfilePage from './Pages/ProfilePage';
 import CreateAccountPage from './Pages/CreateAccountPage';
-// import { BrowserRouter as Router, Routes, Route, redirect, Navigate } from 'react-router-dom';
 import LoginPage from './Pages/LoginPage';
 import CreateStopPage from './Pages/CreateStopPage';
 import CreateRoutePage from './Pages/CreateRoutePage';
-// import injectContext from './Storage/appContext';
 import AllStopsPage from './Pages/AllStopsPage';
 import StopDetails from './Pages/StopDetailsPage';
 import NotFound from './Components/NotFound';
@@ -18,29 +15,20 @@ function App() {
   const[isLoggedIn, setIsLoggedIn] = useState(false);
   const[user, setUser] = useState({ email: '', username: '', password: '', phoneNum: '' });
   const[currentUser, setCurrentUser] = useState({ user_id: '' });
-  // const[email, setEmail] = useState('');
-  // const[password, setPassword] = useState('');
 
-
-  
-  // const changeLogStatus = () => {
-  //   setIsLoggedIn(true);
-  //   console.log('isLoggedIn in changeLogStatus:', isLoggedIn);
-  // }
-  
 
   useEffect(() => {
     console.log('in App.js useEffect');
     fetch('/login-status')
       .then((response) => response.json())
-      .then((data) => {
-        if (data.status === '200') {
-          console.log(data);
+      .then((loginStatusData) => {
+        if (loginStatusData.status === '200') {
+          console.log(loginStatusData);
           setIsLoggedIn(true);
-          setCurrentUser(data.user_id);
+          setCurrentUser(loginStatusData.user_id);
         }
         else {
-          console.log(data);
+          console.log(loginStatusData);
           console.log('theres an error or login hasnt happened yet');
         }
       })
@@ -68,7 +56,6 @@ function App() {
   );
 }
 
-// export default injectContext(App);
 export default App;
 
 

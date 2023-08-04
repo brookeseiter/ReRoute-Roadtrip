@@ -26,7 +26,7 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn }) => {
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
 
-
+    console.log(user);
     return ( 
         <div className="profile-page">
             <Navbar />
