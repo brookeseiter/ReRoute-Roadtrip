@@ -9,46 +9,35 @@ import { useNavigate, redirect } from "react-router-dom";
 
 export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
     const navigate = useNavigate();
-    const[email, setEmail] = useState("");
-    const[password, setPassword] = useState("");
 
-    const updateEmail = (evt) => {
-        evt.preventDefault();
-        setEmail(evt.target.value);
-    };
+    // const updateEmail = (evt) => setEmail(evt.target.value);
 
-    const updatePassword = (evt) => {
-        evt.preventDefault();
-        setPassword(evt.target.value);
-    };
+    // const updatePassword = (evt) => setPassword(evt.target.value);
 
     const handleLogin = (evt) => {
         console.log('in handleLogin');
         evt.preventDefault();
         console.log(user);
-    
-        if (email === "" || password === "") {
-          alert("Please enter both email and password.");
-        } else {
-          fetch(`/login`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(user)
-          })
-            .then((response) => response.json())
-            .then((userData) => {
-              if (userData.status === '200') {
-                setIsLoggedIn(true);
-                // setTimeout(() => {
-                //   navigate('/profile')
-                // }, 2500)
-                navigate('/profile');
-              }
-              else {
-                Error('error message:', 'there has been an error');
-              }
-            }, []);
-    }};
+        fetch(`/login`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(user)
+        })
+          .then((response) => response.json())
+          .then((userData) => {
+            if (userData.status === '200') {
+              console.log('userData:', userData)
+              setIsLoggedIn(true);
+              // setTimeout(() => {
+              //   navigate('/profile')
+              // }, 2500)
+              navigate('/profile');
+            }
+            else {
+              Error('error message:', 'there has been an error');
+            }
+          }, []);
+    };
   
 
     return ( 
@@ -57,13 +46,13 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
                 <div className="mb-3">
                     <label htmlFor="loginFormInputEmail" className="form-label">
                     <input 
-                        value={email}
+                        value={user.email}
                         type="text"
                         className="form-control"
                         id="loginFormInputEmail"
                         required 
                         name="email" 
-                        onChange={updateEmail}
+                        onChange={(e) => setUser({ ...user, email: e.target.value })}
                         placeholder="Email"
                     />
                     </label>
@@ -71,13 +60,13 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
                 <div className="mb-3">
                     <label htmlFor="loginFormInputPassword" className="form-label">
                     <input 
-                        value={password}
+                        value={user.password}
                         type="password"
                         className="form-control"
                         id="loginFormInputPassword"
                         required 
                         name="password" 
-                        onChange={updatePassword}
+                        onChange={(e) => setUser({ ...user, password: e.target.value })}
                         placeholder="Password"
                     />
                     </label>
@@ -91,7 +80,8 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
                 </small>
             </form>
         </div>
-  );
+  )
+}
 
 
 // export default function LoginPage ({handleLogin, updateEmail, updatePassword, isLoggedIn}) {
@@ -196,7 +186,7 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
 //             </form>
 //         </div>
 //      );
-}
+// }
 
 
 
