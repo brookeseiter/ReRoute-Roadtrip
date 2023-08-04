@@ -16,7 +16,6 @@ function App() {
   const[user, setUser] = useState({ email: '', username: '', password: '', phoneNum: '' });
   const[currentUser, setCurrentUser] = useState({ user_id: '' });
 
-
   useEffect(() => {
     console.log('in App.js useEffect');
     fetch('/login-status')

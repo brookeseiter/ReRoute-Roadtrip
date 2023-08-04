@@ -1,9 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
-// import { useContext } from 'react';
-// import { Context } from '../Storage/appContext.js';
 
 export default function Navbar () {
-    // const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
     const handleLogout = (e) => {

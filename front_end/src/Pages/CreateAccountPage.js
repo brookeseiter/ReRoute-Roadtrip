@@ -49,7 +49,7 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                         <h1>Create An Account</h1>
                         <form className="create-account-form">
                             <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <label htmlFor="createAccountFormInput" className="create-account-input">
                                 <input 
                                     type="text"
                                     className="form-control"
@@ -61,7 +61,7 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                                 </label>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <label htmlFor="createAccountFormInput" className="create-account-input">
                                 <input 
                                     type="text"
                                     className="form-control"
@@ -73,7 +73,7 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                                 </label>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <label htmlFor="createAccountFormInput" className="create-account-input">
                                 <input 
                                     type="text"
                                     className="form-control"
@@ -85,7 +85,7 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                                 </label>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="form-label">
+                                <label htmlFor="createAccountFormInput" className="create-account-input">
                                 <input 
                                     type="text"
                                     className="form-control"
