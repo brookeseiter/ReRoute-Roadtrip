@@ -26,6 +26,7 @@ function App() {
           console.log(loginStatusData);
           setIsLoggedIn(true);
           setCurrentUser(loginStatusData.user_id);
+          console.log(currentUser);
         }
         else {
           console.log(loginStatusData);
@@ -43,7 +44,6 @@ function App() {
                                                                 setUsername={(e) => setUser({ ...user, username: e.target.value })}  
                                                                 setPassword={(e) => setUser({ ...user, password: e.target.value })}
                                                                 setPhoneNum={(e) => setUser({ ...user, phoneNum: e.target.value })}
-                                                                setIsLoggedIn={setIsLoggedIn}
                                                                 user={user}/>} />
       <Route path="/login" element={ <LoginPage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />

@@ -18,7 +18,6 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
         })
           .then((response) => response.json())
           .then((userData) => {
-            console.log(userData);
             if (userData.user_id) {
               console.log('userData:', userData)
               setIsLoggedIn(true);

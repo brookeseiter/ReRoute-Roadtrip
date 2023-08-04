@@ -1,8 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-
-
-export default function CreateAccountPage ({ setEmail, setUsername, setPassword, setPhoneNum, setIsLoggedIn, user }) {
+export default function CreateAccountPage ({ setEmail, setUsername, setPassword, setPhoneNum, user }) {
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -20,7 +18,6 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
             .then(response => response.ok ? response.json() : Promise.reject(response))
             .then(data => {
                 console.log('data:', data);
-                setIsLoggedIn(true);
                 alert('Account created successfully, Please log in.');
                 navigate('/');
                 console.log('user:', user);

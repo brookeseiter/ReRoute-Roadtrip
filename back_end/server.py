@@ -28,8 +28,6 @@ server_session = Session(app)
 @app.route('/login-status')
 def login_status():
     """Check for logged in user and return user ID."""
-
-    print('in login_status')
     
     if 'user_id' in session:
         return jsonify({
@@ -88,13 +86,8 @@ def create_user():
     
     hashed_password = bycrypt.generate_password_hash(password).decode('utf-8')
     new_user = crud.create_user(email, username, hashed_password, phone_num)
-    print('~NEW USER:', new_user)
     db.session.add(new_user)
     db.session.commit()
-
-    # is this necessary?
-    session['user_id'] = new_user.user_id
-    print('SESSION:', session)
 
     return jsonify(new_user.to_dict()), 200
 
@@ -103,12 +96,8 @@ def create_user():
 def login_user():
     """Log in a user."""
 
-    print('in login_user server.py')
-    print(request.json)
     email = request.json.get('email', None)
     password = request.json.get('password', None)
-
-    print('login_user server.py:', email, password)
 
     user = crud.get_user_by_email(email)
 
