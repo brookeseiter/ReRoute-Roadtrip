@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function CreateAccountPage () {
+export default function CreateAccountPage ({ setIsLoggedIn, user }) {
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate();
 
@@ -33,6 +33,7 @@ export default function CreateAccountPage () {
             .then(response => response.ok ? response.json() : Promise.reject(response))
             .then(data => {
                 console.log('data:', data);
+                setIsLoggedIn(true);
                 // setUser(data);
                 alert('Account created successfully, Please log in.');
                 navigate('/');

@@ -1,44 +1,31 @@
+import React from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate, redirect } from "react-router-dom";
+// import { useHistory } from 'react-router-dom';
 // import { useContext } from "react";
 // import { Context } from "../Storage/appContext";
 
 
-export default function LoginPage ({loading}) {
+export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
     const navigate = useNavigate();
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
-    const [user, setUser] = useState({});
-    const[isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const updateEmail = evt => {
+    const updateEmail = (evt) => {
+        evt.preventDefault();
         setEmail(evt.target.value);
     };
 
-    const updatePassword = evt => {
+    const updatePassword = (evt) => {
+        evt.preventDefault();
         setPassword(evt.target.value);
     };
 
-    const confirmLogin = (user) => {
-        if (user === "Incorrect Email") {
-          alert("Email and password is incorrect.");
-          console.log('in if confirmLogin');
-        } else if (user === "Incorrect Password") {
-          alert("Password is incorrect.");
-          console.log('in else if confirmLogin, incorrect pw');
-        } else {
-          setIsLoggedIn(true);
-          console.log('in else confirmLogin, login confirmed');
-        }
-      }
-
-    const handleLogin = evt => {
+    const handleLogin = (evt) => {
         console.log('in handleLogin');
-        console.log('evt:', evt);
         evt.preventDefault();
-        const userJson = { 'email': email, 'password': password };
-        console.log(userJson);
+        console.log(user);
     
         if (email === "" || password === "") {
           alert("Please enter both email and password.");
@@ -46,39 +33,31 @@ export default function LoginPage ({loading}) {
           fetch(`/login`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(userJson)
+            body: JSON.stringify(user)
           })
             .then((response) => response.json())
             .then((userData) => {
-              if (userData==="Incorrect Password" || userData==="Incorrect Email") {
-                alert(userData);
-                console.log('in if handleLogin');
-              } else {
-                setUser(userData);
-                confirmLogin(userData);
-                redirect(`/profile`);
-                console.log('in else handleLogin');
-                console.log(userData);
-                sessionStorage.setItem('userID', userData.user_id);
-                const userId = sessionStorage.getItem('userID');
-                console.log('USER_ID session storage:', userId);
+              if (userData.status === '200') {
+                setIsLoggedIn(true);
+                // setTimeout(() => {
+                //   navigate('/profile')
+                // }, 2500)
+                navigate('/profile');
               }
-            })
-      }};
-    
-    console.log(user);
+              else {
+                Error('error message:', 'there has been an error');
+              }
+            }, []);
+    }};
+  
 
-
-
-    if (isLoggedIn === true) {
-        return navigate(`/profile`);
-    } else {
     return ( 
         <div className="login-page">
             <form className='login-form' onSubmit={handleLogin}>
                 <div className="mb-3">
                     <label htmlFor="loginFormInputEmail" className="form-label">
                     <input 
+                        value={email}
                         type="text"
                         className="form-control"
                         id="loginFormInputEmail"
@@ -92,6 +71,7 @@ export default function LoginPage ({loading}) {
                 <div className="mb-3">
                     <label htmlFor="loginFormInputPassword" className="form-label">
                     <input 
+                        value={password}
                         type="password"
                         className="form-control"
                         id="loginFormInputPassword"
@@ -111,9 +91,8 @@ export default function LoginPage ({loading}) {
                 </small>
             </form>
         </div>
-     );
-};
-// }
+  );
+
 
 // export default function LoginPage ({handleLogin, updateEmail, updatePassword, isLoggedIn}) {
 //     const [inputs, setInputs] = useState({});

@@ -25,14 +25,20 @@ app.config['SESSION_USE_SIGNER'] = True
 # Create and initialize the Flask-Session object AFTER 'app' has been configured
 server_session = Session(app)
 
-@app.route('/user')
-def get_current_user():
+@app.route('/login-status')
+def login_status():
     """Check for logged in user and return user ID."""
-    print(session)
-    if 'user_id' not in session:
-        return jsonify({})
+
+    print('in login_status')
+    
+    if 'user_id' in session:
+        return jsonify({
+            'status': '200',
+            'message': 'User is logged in.',
+            'user_id': session['user_id']
+        })
     else:
-        return jsonify(session['user_id'])
+        return jsonify({'message': 'Session is empty'}), 400
 
 # @app.route('/@me')
 # def get_current_user():
@@ -86,7 +92,7 @@ def create_user():
     db.session.commit()
 
     # is this necessary?
-    session['user_id'] = new_user.user_id
+    # session['user_id'] = new_user.user_id
 
     return jsonify(new_user.to_dict())
 
@@ -95,8 +101,11 @@ def create_user():
 def login_user():
     """Log in a user."""
 
+    print('in login_user server.py')
     email = request.json.get('email', None)
     password = request.json.get('password', None)
+
+    print(email, password)
 
     user = crud.get_user_by_email(email)
 
