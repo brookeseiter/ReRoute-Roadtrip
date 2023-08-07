@@ -27,32 +27,16 @@ server_session = Session(app)
 
 @app.route('/login-status')
 def login_status():
-    """Check for logged in user and return user ID."""
+    """Checks for logged in user and returns their user ID."""
     
     if 'user_id' in session:
         return jsonify({
-            'status': '200',
             'message': 'User is logged in.',
             'user_id': session['user_id']
-        })
+        }), 200
     else:
-        return jsonify({'message': 'Session is empty'})
+        return jsonify({'message': 'There is no user currently in the session.'})
 
-# @app.route('/@me')
-# def get_current_user():
-#     """If logged in, returns information about current user."""
-
-#     user_id = session.get('user_id')
-
-#     if not user_id:
-#         return jsonify({"error": "Unauthorized"}), 401
-
-#     user = crud.get_user_by_id(user_id)
-
-#     return jsonify({
-#         "user_id": user.user_id,
-#         "email": user.email 
-#     })
 
 @app.route('/')
 def home():
@@ -77,7 +61,6 @@ def create_user():
     username = request.json['username']
     password = request.json['password']
     phone_num = request.json['phoneNum']
-    print(phone_num)
 
     # user_exists = crud.user_exists
     user_exists = User.query.filter_by(email=email).first() is not None

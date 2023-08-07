@@ -17,27 +17,19 @@ function App() {
   const[user, setUser] = useState({ email: '', username: '', phoneNum: '' });
   const[currentUser, setCurrentUser] = useState({ user_id: '' });
 
-
   useEffect(() => {
     fetch('/login-status')
-      .then((response) => response.json())
+      .then((response) => response.ok ? response.json() : Promise.reject(response))
       .then((loginStatusData) => {
-        if (loginStatusData.status === '200') {
-          console.log(loginStatusData);
-          setIsLoggedIn(true);
-          setCurrentUser(loginStatusData.user_id);
-          // console.log(currentUser);
-        }
-        else {
-          console.log(loginStatusData);
-          console.log('theres an error or login hasnt happened yet');
-        }
+        console.log(loginStatusData);
+        setIsLoggedIn(true);
+        setCurrentUser(loginStatusData.user_id);
       })
+      .catch(error => {
+          console.log('error: ', error);
+          console.log('theres an error or login hasnt happened yet');
+      }, []); 
   });
-  
-
-  console.log(isLoggedIn);
-  console.log(currentUser);
 
   return (
     <Routes>
