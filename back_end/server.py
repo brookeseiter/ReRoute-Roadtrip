@@ -77,6 +77,7 @@ def create_user():
     username = request.json['username']
     password = request.json['password']
     phone_num = request.json['phoneNum']
+    print(phone_num)
 
     # user_exists = crud.user_exists
     user_exists = User.query.filter_by(email=email).first() is not None
@@ -107,7 +108,12 @@ def login_user():
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
     else:
         session['user_id'] = user.user_id
-        return jsonify(user_id=user.user_id), 200
+        return jsonify({
+            "user_id": user.user_id,
+            "email": user.email,
+            "username": user.username,
+            "phone_num": user.phone_num
+        }), 200
 
 
 @app.route("/logout", methods = ['GET', 'POST'])

@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 
 
-const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn }) => {
+const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser }) => {
     const [myStops, setMyStops] = useState([]);
     // const { store, actions } = useContext(Context);
     
@@ -26,7 +26,8 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn }) => {
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
 
-    console.log(user);
+    console.log('user:', user);
+    console.log('user:', currentUser);
     return ( 
         <div className="profile-page">
             <Navbar />

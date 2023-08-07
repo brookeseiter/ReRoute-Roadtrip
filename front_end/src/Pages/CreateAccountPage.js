@@ -1,20 +1,33 @@
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function CreateAccountPage ({ setEmail, setUsername, setPassword, setPhoneNum, user }) {
+export default function CreateAccountPage () {
     const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [phoneNum, setPhoneNum] = useState("");
+
 
     const handleSignUp = (e) => {
         e.preventDefault();
+        const userInfo = {
+            email: email,
+            username: username,
+            password: password,
+            phoneNum: phoneNum
+        }
+        console.log(userInfo);
         const requestOptions = {
             credentials: 'same-origin',
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(userInfo)
         }
 
-        if (user.email === "" || user.username === "" || user.password === "" || user.phoneNum === "") {
+        if (email === "" || username === "" || password === "" || phoneNum === "") {
             alert('Please enter values for email, username, password, and phone number.');
         }
         else {
@@ -24,7 +37,6 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                 console.log('data:', data);
                 alert('Account created successfully, Please log in.');
                 navigate('/');
-                console.log('user:', user);
             })
             .catch(error => {
                 console.log('error: ', error);
@@ -59,7 +71,8 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                                     type="text"
                                     name="email"
                                     id="email-input" 
-                                    onChange={setEmail}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={email}
                                     placeholder="Email"
                                 />
                                 </label>
@@ -70,7 +83,8 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                                     type="text"
                                     name="username" 
                                     id="username-input"
-                                    onChange={setUsername}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    value={username}
                                     placeholder="Username"
                                 />
                                 </label>
@@ -81,7 +95,8 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                                     type="text"
                                     name="password" 
                                     id="password-input"
-                                    onChange={setPassword}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={password}
                                     placeholder="Password"
                                 />
                                 </label>
@@ -92,7 +107,8 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                                     type="text"
                                     name="phoneNum" 
                                     id="phone-num-input"
-                                    onChange={setPhoneNum}
+                                    onChange={(e) => setPhoneNum(e.target.value)}
+                                    value={phoneNum}
                                     placeholder="Phone Number"
                                 />
                                 </label>

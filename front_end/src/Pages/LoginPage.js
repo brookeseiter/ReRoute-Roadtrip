@@ -7,26 +7,34 @@ import { useNavigate } from "react-router-dom";
 export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
     const navigate = useNavigate();
 
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     const handleLogin = (e) => {
         console.log('in handleLogin');
         e.preventDefault();
-        console.log(user);
+        const userInfo = {
+          email: email,
+          password: password
+        }
+        console.log(userInfo);
         fetch(`/login`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(user)
+          body: JSON.stringify(userInfo)
         })
           .then((response) => response.json())
           .then((userData) => {
             if (userData.user_id) {
               console.log('userData:', userData)
+              setUser({ ...user, email: userData.email, username: userData.username, phoneNum: userData.phone_num });
               setIsLoggedIn(true);
               navigate('/profile');
             }
             else {
               console.log('didnt go through');
             }
-          });
+          }, []);
     };
   
 
@@ -39,8 +47,8 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
                         type="text"
                         name="email" 
                         id="email-input"
-                        value={user.email}
-                        onChange={(e) => setUser({ ...user, email: e.target.value })}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email"
                         required 
                     />
@@ -52,8 +60,8 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
                         type="password"
                         name="password" 
                         id="password-input"
-                        value={user.password}
-                        onChange={(e) => setUser({ ...user, password: e.target.value })}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"
                         required 
                     />

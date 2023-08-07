@@ -11,13 +11,14 @@ import StopDetails from './Pages/StopDetailsPage';
 import NotFound from './Components/NotFound';
 import { useEffect, useState } from 'react';
 
+
 function App() {
   const[isLoggedIn, setIsLoggedIn] = useState(false);
-  const[user, setUser] = useState({ email: '', username: '', password: '', phoneNum: '' });
+  const[user, setUser] = useState({ email: '', username: '', phoneNum: '' });
   const[currentUser, setCurrentUser] = useState({ user_id: '' });
 
+
   useEffect(() => {
-    console.log('in App.js useEffect');
     fetch('/login-status')
       .then((response) => response.json())
       .then((loginStatusData) => {
@@ -25,7 +26,7 @@ function App() {
           console.log(loginStatusData);
           setIsLoggedIn(true);
           setCurrentUser(loginStatusData.user_id);
-          console.log(currentUser);
+          // console.log(currentUser);
         }
         else {
           console.log(loginStatusData);
@@ -33,20 +34,18 @@ function App() {
         }
       })
   });
+  
 
   console.log(isLoggedIn);
+  console.log(currentUser);
 
   return (
     <Routes>
       <Route path="/" element={<Homepage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} /> 
-      <Route path="/create-account" element={<CreateAccountPage setEmail={(e) => setUser({ ...user, email: e.target.value })}
-                                                                setUsername={(e) => setUser({ ...user, username: e.target.value })}  
-                                                                setPassword={(e) => setUser({ ...user, password: e.target.value })}
-                                                                setPhoneNum={(e) => setUser({ ...user, phoneNum: e.target.value })}
-                                                                user={user}/>} />
-      <Route path="/login" element={ <LoginPage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
-      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
-      <Route path="/create-stop" element={<CreateStopPage />} />
+      <Route path="/create-account" element={<CreateAccountPage />} />
+      <Route path="/login" element={<LoginPage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} />} />
+      <Route path="/create-stop" element={<CreateStopPage user={user} isLoggedIn={isLoggedIn} />} />
       <Route path="/create-route" element={<CreateRoutePage />} />
       <Route path="/stops" element={<AllStopsPage />} />
       <Route path="/stops/:stop_id" element={<StopDetails />} />

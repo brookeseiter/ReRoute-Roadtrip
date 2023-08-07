@@ -11,14 +11,13 @@ const center = {
     lng: -122.446747
 };
 
-export default function CreateStopPage (props) {
+export default function CreateStopPage ({user, isLoggedIn}) {
     const mapRef = useRef();
     const [libraries] = useState(['places','geometry']);
     const navigate = useNavigate();
     const [inputs, setInputs] = useState({});
     let [catChoice, setCatChoice] = useState("");
     let [marker, setMarker] = useState([]);
-    const {user, isLoggedIn, Loading} = props
 
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey:process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -72,6 +71,7 @@ export default function CreateStopPage (props) {
     }
 
     console.log(user);
+    console.log(isLoggedIn);
 
     if (!isLoaded) return <div>Loading...</div>
     return ( 
