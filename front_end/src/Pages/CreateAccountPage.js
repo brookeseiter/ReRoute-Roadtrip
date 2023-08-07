@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function CreateAccountPage ({ setEmail, setUsername, setPassword, setPhoneNum, user }) {
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSignUp = (e) => {
         e.preventDefault();
         const requestOptions = {
             credentials: 'same-origin',
@@ -14,7 +14,11 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
             body: JSON.stringify(user)
         }
 
-        fetch('/register', requestOptions)
+        if (user.email === "" || user.username === "" || user.password === "" || user.phoneNum === "") {
+            alert('Please enter values for email, username, password, and phone number.');
+        }
+        else {
+            fetch('/register', requestOptions)
             .then(response => response.ok ? response.json() : Promise.reject(response))
             .then(data => {
                 console.log('data:', data);
@@ -25,11 +29,12 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
             .catch(error => {
                 console.log('error: ', error);
                 alert('An account already exists with this username/email. Please try again.');
-            }, []);   
+            }, []); 
+        }  
     };
 
     return ( 
-        <div className="create-account-page" onSubmit={handleSubmit}>
+        <div className="create-account-page" onSubmit={handleSignUp}>
             <nav className="navbar navbar-expand-lg bg-body-tertiary container">
                 <div className="navbar-brand">
                     <img 

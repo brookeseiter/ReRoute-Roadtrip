@@ -26,7 +26,7 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
             else {
               console.log('didnt go through');
             }
-          }, []);
+          });
     };
   
 
