@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function CreateAccountPage () {
@@ -17,7 +17,6 @@ export default function CreateAccountPage () {
             password: password,
             phoneNum: phoneNum
         }
-        console.log(userInfo);
         const requestOptions = {
             credentials: 'same-origin',
             method: 'POST',
@@ -29,16 +28,14 @@ export default function CreateAccountPage () {
 
         if (email === "" || username === "" || password === "" || phoneNum === "") {
             alert('Please enter values for email, username, password, and phone number.');
-        }
-        else {
+        } else {
             fetch('/register', requestOptions)
-            .then(response => response.ok ? response.json() : Promise.reject(response))
-            .then(data => {
-                console.log('data:', data);
+            .then((response) => response.ok ? response.json() : Promise.reject(response))
+            .then((userData) => {
                 alert('Account created successfully, Please log in.');
                 navigate('/');
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log('error: ', error);
                 alert('An account already exists with this username/email. Please try again.');
             }, []); 

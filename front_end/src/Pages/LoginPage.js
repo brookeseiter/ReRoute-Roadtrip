@@ -6,37 +6,33 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
     const navigate = useNavigate();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleLogin = (e) => {
-        console.log('in handleLogin');
-        e.preventDefault();
-        const userInfo = {
-          email: email,
-          password: password
-        }
-        console.log(userInfo);
+      e.preventDefault();
+      const userInfo = {email: email, password: password};
+
+      if (email === "" || password === "") {
+        alert('Please enter values for email and password.');
+      } else {
         fetch(`/login`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(userInfo)
         })
-          .then((response) => response.json())
+          .then((response) => response.ok ? response.json() : Promise.reject(response))
           .then((userData) => {
-            if (userData.user_id) {
-              console.log('userData:', userData)
-              setUser({ ...user, email: userData.email, username: userData.username, phoneNum: userData.phone_num });
-              setIsLoggedIn(true);
-              navigate('/profile');
-            }
-            else {
-              console.log('didnt go through');
-            }
-          }, []);
+            setUser({ ...user, email: userData.email, username: userData.username, phoneNum: userData.phone_num });
+            setIsLoggedIn(true);
+            navigate('/profile');
+          })
+          .catch((error) => {
+            console.log('error: ', error);
+            alert('An account already exists with this username/email. Please try again.');
+          }, []); 
+      }
     };
-  
 
     return ( 
         <div className="login-page">
