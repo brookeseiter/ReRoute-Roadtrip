@@ -49,48 +49,44 @@ export default function CreateAccountPage ({ setEmail, setUsername, setPassword,
                         <h1>Create An Account</h1>
                         <form className="create-account-form">
                             <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="create-account-input">
+                                <label htmlFor="email-input" className="create-account-input">
                                 <input 
                                     type="text"
-                                    className="form-control"
-                                    id="createAccountFormInput"
-                                    name="email" 
+                                    name="email"
+                                    id="email-input" 
                                     onChange={setEmail}
                                     placeholder="Email"
                                 />
                                 </label>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="create-account-input">
+                                <label htmlFor="username-input" className="create-account-input">
                                 <input 
                                     type="text"
-                                    className="form-control"
-                                    id="createAccountFormInput"
                                     name="username" 
+                                    id="username-input"
                                     onChange={setUsername}
                                     placeholder="Username"
                                 />
                                 </label>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="create-account-input">
+                                <label htmlFor="password-input" className="create-account-input">
                                 <input 
                                     type="text"
-                                    className="form-control"
-                                    id="createAccountFormInput"
                                     name="password" 
+                                    id="password-input"
                                     onChange={setPassword}
                                     placeholder="Password"
                                 />
                                 </label>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="createAccountFormInput" className="create-account-input">
+                                <label htmlFor="phone-num-input" className="create-account-input">
                                 <input 
                                     type="text"
-                                    className="form-control"
-                                    id="createAccountFormInput"
                                     name="phoneNum" 
+                                    id="phone-num-input"
                                     onChange={setPhoneNum}
                                     placeholder="Phone Number"
                                 />

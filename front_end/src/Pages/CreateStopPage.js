@@ -118,56 +118,57 @@ export default function CreateStopPage (props) {
                     <div className="col-md-6">
                         <form className="create-stop-form">
                             <label 
-                                htmlFor="create-stop-form-input" 
-                                className="form-label"
+                                htmlFor="stop-name-input" 
+                                className="create-stop-form-input"
                             >
                                 Stop Name
                             <input 
                                 type="text" 
-                                className="form-control"
-                                id="create-stop-form-input"
-                                required 
                                 name="stop_name"
+                                id="stop-name-input"
                                 value={inputs.stop_name || ""}
                                 onChange={handleChange}
                                 placeholder="Name your stop"
+                                required 
                             />
                             </label>
                             <label 
-                                htmlFor="create-stop-form-input" 
-                                className="form-label"
+                                htmlFor="stop-lat-input" 
+                                className="create-stop-form-input"
                             >
                                 Stop Latitutde
                             <input 
                                 type="text" 
-                                className="form-control"
-                                id="create-stop-form-input"
-                                required 
                                 name="stop_lat"
+                                id="stop-lat-input"
                                 value={marker.lat || ""}
                                 onChange={handleChange} 
                                 placeholder="Drop a pin on map"
+                                required 
                             />
                             </label>
                             <label 
-                                htmlFor="create-stop-form-input" 
-                                className="form-label"
+                                htmlFor="stop-lng-input" 
+                                className="create-stop-form-input"
                             >
                                 Stop Longitude
                             <input 
                                 type="text"
-                                className="form-control"
-                                id="create-stop-form-input"
-                                required 
                                 name="stop_lng" 
+                                id="stop-lng-input"
                                 value={marker.lng || ""}
                                 onChange={handleChange}
                                 placeholder="Drop a pin on map"
+                                required 
                             />
                             </label>
-                            <label>Stop Category</label>
+                            <label
+                                htmlFor="stop-category-select"
+                                className="create-stop-form-select"
+                            >
+                                Stop Category
+                            </label>
                             <select 
-                                className="form-select"
                                 name="stop_category" 
                                 id="stop-category-select" 
                                 value={catChoice} 
@@ -176,6 +177,7 @@ export default function CreateStopPage (props) {
                                     setCatChoice(catChoice);
                                     console.log(catChoice);
                                 }}
+                                required
                             >
                                 <option value="Camping">Camping</option>
                                 <option value="Caverns">Caverns</option>

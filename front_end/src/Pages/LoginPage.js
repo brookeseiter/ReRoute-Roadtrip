@@ -34,30 +34,28 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
         <div className="login-page">
             <form className='login-form' onSubmit={handleLogin}>
                 <div className="mb-3">
-                    <label htmlFor="loginFormInputEmail" className="form-label">
+                    <label htmlFor="email-input" className="login-form-input">
                     <input 
-                        value={user.email}
                         type="text"
-                        className="form-control"
-                        id="loginFormInputEmail"
-                        required 
                         name="email" 
+                        id="email-input"
+                        value={user.email}
                         onChange={(e) => setUser({ ...user, email: e.target.value })}
                         placeholder="Email"
+                        required 
                     />
                     </label>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="loginFormInputPassword" className="form-label">
+                    <label htmlFor="password-input" className="login-form-input">
                     <input 
-                        value={user.password}
                         type="password"
-                        className="form-control"
-                        id="loginFormInputPassword"
-                        required 
                         name="password" 
+                        id="password-input"
+                        value={user.password}
                         onChange={(e) => setUser({ ...user, password: e.target.value })}
                         placeholder="Password"
+                        required 
                     />
                     </label>
                 </div>
