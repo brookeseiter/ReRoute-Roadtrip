@@ -16,7 +16,7 @@ def create_user(email, username, password, phone_num):
     return user
 
 def user_exists(email):
-    """Check whether a user exists. T/F"""
+    """Check whether a user exists."""
 
     return User.query.filter_by(email=email).first() is not None
 

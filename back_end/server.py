@@ -62,8 +62,7 @@ def create_user():
     password = request.json['password']
     phone_num = request.json['phoneNum']
 
-    # user_exists = crud.user_exists
-    user_exists = User.query.filter_by(email=email).first() is not None
+    user_exists = crud.user_exists(email=email)
 
     if user_exists:
         return jsonify({"error": "Email/username already exists."}), 409
