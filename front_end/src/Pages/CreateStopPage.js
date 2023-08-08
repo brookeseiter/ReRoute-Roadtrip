@@ -11,7 +11,7 @@ const center = {
     lng: -122.446747
 };
 
-export default function CreateStopPage ({user, isLoggedIn}) {
+export default function CreateStopPage ({ user, isLoggedIn, currentUser }) {
     const mapRef = useRef();
     const [libraries] = useState(['places','geometry']);
     const navigate = useNavigate();
@@ -43,12 +43,13 @@ export default function CreateStopPage ({user, isLoggedIn}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const body = {
-            user_id: user.user_id,
+            user_id: currentUser,
             stop_category: catChoice,
-            stop_name: inputs.stop_name,
+            stop_name: inputs.stopName,
             stop_lat: marker.lat,
             stop_lng: marker.lng,
         }
+        console.log(body);
 
         const requestOptions = {
             method: 'POST',
@@ -60,9 +61,10 @@ export default function CreateStopPage ({user, isLoggedIn}) {
 
         fetch('/create-stop', requestOptions)
             .then(response => response.json())
-            .then((data) => {
-                const stop_id= data.stop_id;
-                navigate(`/stops/${stop_id}`); 
+            .then((stopData) => {
+                console.log(stopData);
+                const stopId= stopData.stop_id;
+                navigate(`/stops/${stopId}`); 
             })
             .catch(error => console.log(error))
         console.log('handleSubmit triggered');
@@ -124,9 +126,9 @@ export default function CreateStopPage ({user, isLoggedIn}) {
                                 Stop Name
                             <input 
                                 type="text" 
-                                name="stop_name"
+                                name="stopName"
                                 id="stop-name-input"
-                                value={inputs.stop_name || ""}
+                                value={inputs.stopName || ""}
                                 onChange={handleChange}
                                 placeholder="Name your stop"
                                 required 
@@ -139,7 +141,7 @@ export default function CreateStopPage ({user, isLoggedIn}) {
                                 Stop Latitutde
                             <input 
                                 type="text" 
-                                name="stop_lat"
+                                name="stopLat"
                                 id="stop-lat-input"
                                 value={marker.lat || ""}
                                 onChange={handleChange} 
@@ -154,7 +156,7 @@ export default function CreateStopPage ({user, isLoggedIn}) {
                                 Stop Longitude
                             <input 
                                 type="text"
-                                name="stop_lng" 
+                                name="stopLng" 
                                 id="stop-lng-input"
                                 value={marker.lng || ""}
                                 onChange={handleChange}
@@ -169,7 +171,7 @@ export default function CreateStopPage ({user, isLoggedIn}) {
                                 Stop Category
                             </label>
                             <select 
-                                name="stop_category" 
+                                name="stopCategory" 
                                 id="stop-category-select" 
                                 value={catChoice} 
                                 onChange={(e) => {

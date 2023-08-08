@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import StopList from '../Components/StopList.js'
 import MyReviews from '../Components/MyReviews.js'
 import Navbar from '../Components/NavBar.js';
-// import { useContext } from 'react';
-// import { Context } from '../Storage/appContext.js';
 import Tab from 'react-bootstrap/Tab';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -13,21 +11,25 @@ import Nav from 'react-bootstrap/Nav';
 
 const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser }) => {
     const [myStops, setMyStops] = useState([]);
-    // const { store, actions } = useContext(Context);
     
     useEffect(() => {
-        const user_id = sessionStorage.user_id
+        const userId = currentUser;
+        console.log('userId:', userId);
 
-        fetch(`/api/${user_id}/stops`)
-            .then(response => response.json())
-            .then(data => {setMyStops(data)})
-            .catch(error => console.log(error));
+        fetch(`/api/${userId}/stops`)
+            .then((response) => response.json())
+            .then((userStopData) => {
+                console.log(userStopData);
+                setMyStops(userStopData);
+            })
+            .catch((error) => console.log(error));
     }, []);
+
+    console.log('myStops:', myStops);
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
 
-    console.log('user:', user);
-    console.log('user:', currentUser);
+    
     return ( 
         <div className="profile-page">
             <Navbar />
