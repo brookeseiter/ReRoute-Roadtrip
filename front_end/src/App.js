@@ -39,7 +39,7 @@ function App() {
       <Route path="/create-stop" element={<CreateStopPage user={user} isLoggedIn={isLoggedIn} currentUser={currentUser} />} />
       <Route path="/create-route" element={<CreateRoutePage />} />
       <Route path="/stops" element={<AllStopsPage />} />
-      <Route path="/stops/:stop_id" element={<StopDetails />} />
+      <Route path="/stops/:stop_id" element={<StopDetails currentUser={currentUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes> 
   );

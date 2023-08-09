@@ -256,10 +256,10 @@ a:hover {
 
 
 /* Stop Details Page */
-#createReviewFormControlInput {
+#review-rating-input {
   width: 450px;
 }
-#createReviewFormControlTextArea {
+#review-text-input {
   height: 100px;
   width: 450px;
 }
