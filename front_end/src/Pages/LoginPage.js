@@ -23,7 +23,7 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
         })
           .then((response) => response.ok ? response.json() : Promise.reject(response))
           .then((userData) => {
-            setUser({ ...user, email: userData.email, username: userData.username, phoneNum: userData.phone_num });
+            setUser({ ...user, email: userData.email, username: userData.username, phoneNum: userData.phoneNum });
             setIsLoggedIn(true);
             navigate('/profile');
           })
@@ -33,6 +33,8 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
           }, []); 
       }
     };
+
+    console.log('LoginPage user:', user);
 
     return ( 
         <div className="login-page">

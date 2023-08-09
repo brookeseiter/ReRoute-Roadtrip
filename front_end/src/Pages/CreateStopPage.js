@@ -42,21 +42,21 @@ export default function CreateStopPage ({ user, isLoggedIn, currentUser }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const body = {
-            user_id: currentUser,
-            stop_category: catChoice,
-            stop_name: inputs.stopName,
-            stop_lat: marker.lat,
-            stop_lng: marker.lng,
+        const stopInfo = {
+            userId: currentUser,
+            stopCategory: catChoice,
+            stopName: inputs.stopName,
+            stopLat: marker.lat,
+            stopLng: marker.lng,
         }
-        console.log(body);
+        console.log(stopInfo);
 
         const requestOptions = {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify(stopInfo)
         }
 
         fetch('/create-stop', requestOptions)
@@ -69,7 +69,7 @@ export default function CreateStopPage ({ user, isLoggedIn, currentUser }) {
             .catch(error => console.log(error))
         console.log('handleSubmit triggered');
         console.log(inputs);
-        console.log(body);
+        console.log(stopInfo);
     }
 
     console.log(user);

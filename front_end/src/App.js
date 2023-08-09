@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
 function App() {
   const[isLoggedIn, setIsLoggedIn] = useState(false);
   const[user, setUser] = useState({ email: '', username: '', phoneNum: '' });
-  const[currentUser, setCurrentUser] = useState({ user_id: '' });
+  const[currentUser, setCurrentUser] = useState({ userId: '' });
 
   useEffect(() => {
     fetch('/login-status')
@@ -23,7 +23,7 @@ function App() {
       .then((loginStatusData) => {
         console.log(loginStatusData);
         setIsLoggedIn(true);
-        setCurrentUser(loginStatusData.user_id);
+        setCurrentUser(loginStatusData.userId);
       })
       .catch(error => {
           console.log('error: ', error);

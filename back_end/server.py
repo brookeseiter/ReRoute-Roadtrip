@@ -32,7 +32,7 @@ def login_status():
     if 'user_id' in session:
         return jsonify({
             'message': 'User is logged in.',
-            'user_id': session['user_id']
+            'userId': session['user_id']
         }), 200
     else:
         return jsonify({'message': 'There is no user currently in the session.'})
@@ -91,10 +91,10 @@ def login_user():
     else:
         session['user_id'] = user.user_id
         return jsonify({
-            "user_id": user.user_id,
+            "userId": user.user_id,
             "email": user.email,
             "username": user.username,
-            "phone_num": user.phone_num
+            "phoneNum": user.phone_num
         }), 200
 
 
@@ -110,11 +110,11 @@ def logout_user():
 def create_stop():
     """Create a new stop."""
 
-    user_id = request.json['user_id']
-    stop_category = request.json['stop_category']
-    stop_name = request.json['stop_name']
-    stop_lat = request.json['stop_lat']
-    stop_lng = request.json['stop_lng']
+    user_id = request.json['userId']
+    stop_category = request.json['stopCategory']
+    stop_name = request.json['stopName']
+    stop_lat = request.json['stopLat']
+    stop_lng = request.json['stopLng']
 
     new_stop = crud.create_stop(user_id, stop_category, stop_name, stop_lat, stop_lng)
 
