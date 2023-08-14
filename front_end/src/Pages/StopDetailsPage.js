@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Components/NavBar";
 import StopReviews from "../Components/StopReviews";
 
-const StopDetails = ({ stopId, currentUser }) => {
-    let { stop_id } = useParams(); 
+const StopDetails = ({ currentUser }) => {
+    let { stopId } = useParams(); 
     const [stop, setStop] = useState([]); 
     const [updateRating, setUpdateRating] = useState('');
 
@@ -14,21 +14,14 @@ const StopDetails = ({ stopId, currentUser }) => {
     }
    
     useEffect(() => {
-        fetch(`/api/stops/${stop_id}`) 
-            .then(response => response.json())
-            .then(data => {setStop(data)}) 
-            .catch(error => console.log(error));
-    }, [stop_id]); 
-
-    useEffect(() => {
         fetch(`/api/stops/${stopId}`) 
-            .then(response => response.json())
-            .then(data => {setStop(data)}) 
-            .catch(error => console.log(error));
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setStop(data);
+            }) 
+            .catch((error) => console.log(error));
     }, [stopId]); 
-
-    // why are there two calls to the same function with
-    // stop_id vs stopId?
 
     const [inputs, setInputs] = useState({});
 
@@ -42,7 +35,7 @@ const StopDetails = ({ stopId, currentUser }) => {
         e.preventDefault();
         const body = {
             user_id: currentUser,
-            stop_id: stop_id,
+            stop_id: stopId,
             rating: inputs.rating,
             content: inputs.content
         }
@@ -56,7 +49,7 @@ const StopDetails = ({ stopId, currentUser }) => {
             body: JSON.stringify(body)
         }
 
-        fetch(`/api/stops/${stop_id}/review`, requestOptions)
+        fetch(`/api/stops/${stopId}/review`, requestOptions)
             .then(response => response.json())
             .then(data => {
                 console.log(data);

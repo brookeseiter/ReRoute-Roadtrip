@@ -120,12 +120,18 @@ h2 {
   font-weight: 200;
   font-size: 13px;
 }
+.login-form a:hover {
+  color: #fff;
+}
 .login-form {
   padding: 10px;
   width: 330px;
   text-align: center;
   align-items: center;
   margin: 0 auto;
+}
+#email-input, #password-input {
+  width: 310px;
 }
 .login-form button {
   width: 310px;
