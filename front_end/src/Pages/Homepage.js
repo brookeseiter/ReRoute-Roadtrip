@@ -23,7 +23,7 @@ export default function Homepage ({ currentUser, setCurrentUser, isLoggedIn, set
                     />  
                     <h2 className="text-center">ReRoute Roadtrip</h2>
                     <p className="text-center">Make each stop part of your adventure.</p> 
-                    <LoginPage currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+                    <LoginPage currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}  />
                 </div>
             </div>
         </div>

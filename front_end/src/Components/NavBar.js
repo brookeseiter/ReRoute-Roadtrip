@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Navbar () {
-// export default function Navbar ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
+// export default function Navbar () {
+export default function Navbar ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate();
 
     const handleLogout = (e) => {
@@ -9,19 +9,16 @@ export default function Navbar () {
 
 
         fetch('/logout')
-            // .then(response => response.json())
-            // .then(data =>{
-            //     console.log(data);
-            //     alert('Logout successful.');
-            //     setIsLoggedIn(false);
-            //     navigate('/');
-            // })
-            // .catch(error => {
-            //     console.log(error, 'error');
-            //     if (error.response.status === 401) {
-            //         alert('Incorrect email or password');
-            //     }
-            // });
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data);
+                alert('Logout successful.');
+                setIsLoggedIn(false);
+                navigate('/');
+            })
+            .catch(error => {
+                console.log(error, 'error');
+            });
         navigate('/');
     }
 

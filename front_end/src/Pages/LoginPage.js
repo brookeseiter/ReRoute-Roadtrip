@@ -24,13 +24,12 @@ export default function LoginPage ({ currentUser, setCurrentUser, isLoggedIn, se
       })
         .then((response) => response.ok ? response.json() : Promise.reject(response))
         .then((userData) => {
-          console.log(userData);
           setIsLoggedIn(true);
           navigate('/profile');
         })
         .catch((error) => {
           console.log('error: ', error);
-          alert('An account already exists with this username/email. Please try again.');
+          alert('Either the email or password you entered was incorrect or no account has been made with these credentials. Please try again.');
         }, []); 
     }
   };

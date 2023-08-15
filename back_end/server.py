@@ -39,6 +39,7 @@ def login_status():
             'phoneNum': session['user']['phone_num']
         }), 200
     else:
+        print('login_status session:', session)
         return jsonify({'message': 'There is no user currently in the session.'})
 
 

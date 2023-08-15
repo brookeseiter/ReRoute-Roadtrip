@@ -18,17 +18,42 @@ function App() {
 
   useEffect(() => {
     fetch('/login-status')
-      .then((response) => response.ok ? response.json() : Promise.reject(response))
+      .then((response) => response.json())
       .then((loginStatusData) => {
-        console.log(loginStatusData);
-        setIsLoggedIn(true);
-        setCurrentUser({ ...currentUser, userId: loginStatusData.userId, email: loginStatusData.email, username: loginStatusData.username, phoneNum: loginStatusData.phoneNum });
-        console.log('I JUST CHANGEDDDDDDDDDDDDDDDDD');
+        if (loginStatusData.message === 'There is no user currently in the session.') {
+          setIsLoggedIn(false);
+          console.log('isLoggedIn if /login-status', isLoggedIn);
+          console.log(loginStatusData);
+        }
+        else {
+          console.log(loginStatusData);
+          console.log('isLoggedIn else /login-status', isLoggedIn);
+          console.log(currentUser);
+          setCurrentUser({...currentUser, userId: loginStatusData.userId, email: loginStatusData.email, username: loginStatusData.username, phoneNum: loginStatusData.phoneNum });
+          console.log(currentUser);
+          console.log('I JUST CHANGEDDDDDDDDDDDDDDDDD');
+        }
       })
       .catch(error => {
           console.log('error: ', error);
       }, []); 
-  }, []);
+  }, [isLoggedIn]);
+
+  // useEffect(() => {
+  //   fetch('/login-status')
+  //     .then((response) => response.ok ? response.json() : Promise.reject(response))
+  //     .then((loginStatusData) => {
+  //       console.log(loginStatusData);
+  //       setIsLoggedIn(true);
+  //       setCurrentUser({...currentUser, userId: loginStatusData.userId, email: loginStatusData.email, username: loginStatusData.username, phoneNum: loginStatusData.phoneNum });
+  //       console.log('I JUST CHANGEDDDDDDDDDDDDDDDDD');
+  //     })
+  //     .catch(error => {
+  //         console.log('error: ', error);
+  //     }, []); 
+  // }, []);
+
+  // console.log(currentUser);
 
   return (
     <Routes>
