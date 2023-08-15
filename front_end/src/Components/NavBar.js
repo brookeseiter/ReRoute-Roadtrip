@@ -34,13 +34,6 @@ export default function Navbar ({ currentUser, setCurrentUser, isLoggedIn, setIs
             <div className="collapse navbar-collapse align-content-flex-end" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 justify-content-end">
                     <li className="nav-item">
-                        {/* <Link 
-                            to="/" 
-                            className="nav-link" 
-                            aria-current="page"
-                            style={{color: "black"}} 
-                            onClick={() => actions.logout()}
-                        > */}
                         <Link 
                             to="/" 
                             className="nav-link" 

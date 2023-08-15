@@ -29,11 +29,14 @@ const ProfilePage = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser })
     console.log('currentUser ProfilePage', currentUser);
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
-
     
     return ( 
         <div className="profile-page">
-            <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Navbar currentUser={currentUser} 
+                    setCurrentUser={setCurrentUser} 
+                    isLoggedIn={isLoggedIn} 
+                    setIsLoggedIn={setIsLoggedIn} 
+            />
             <div className="profile-page-content container">
                 <div className="row">
                     <div className="col-md-12">

@@ -35,10 +35,17 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Homepage currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} /> 
+      <Route path="/" element={<Homepage  currentUser={currentUser} 
+                                          setCurrentUser={setCurrentUser} 
+                                          isLoggedIn={isLoggedIn} 
+                                          setIsLoggedIn={setIsLoggedIn} />} /> 
       <Route path="/create-account" element={<CreateAccountPage />} />
-      <Route path="/profile" element={<ProfilePage currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
-      <Route path="/create-stop" element={<CreateStopPage currentUser={currentUser} isLoggedIn={isLoggedIn} />} />
+      <Route path="/profile" element={<ProfilePage  currentUser={currentUser} 
+                                                    setCurrentUser={setCurrentUser} 
+                                                    isLoggedIn={isLoggedIn} 
+                                                    setIsLoggedIn={setIsLoggedIn} />} />
+      <Route path="/create-stop" element={<CreateStopPage currentUser={currentUser} 
+                                                          isLoggedIn={isLoggedIn} />} />
       <Route path="/create-route" element={<CreateRoutePage />} />
       <Route path="/stops" element={<AllStopsPage />} />
       <Route path="/stops/:stop_id" element={<StopDetails currentUser={currentUser} />} />
