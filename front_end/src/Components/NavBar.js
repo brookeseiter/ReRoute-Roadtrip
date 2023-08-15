@@ -1,22 +1,21 @@
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar () {
+// export default function Navbar ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate();
 
     const handleLogout = (e) => {
         e.preventDefault();
 
+
         fetch('/logout')
-            // .then(response => {
-            //     console.log(requestOptions);
-            //     console.log(response.json());
-            //     // response.json();
-            //     if (response.status === 200) {
-            //         alert('Login successful.');
-            //         navigate('/profile');
-            //     }
+            // .then(response => response.json())
+            // .then(data =>{
+            //     console.log(data);
+            //     alert('Logout successful.');
+            //     setIsLoggedIn(false);
+            //     navigate('/');
             // })
-            // .then(data =>{console.log('this is the data:', data);})
             // .catch(error => {
             //     console.log(error, 'error');
             //     if (error.response.status === 401) {

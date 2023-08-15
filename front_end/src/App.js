@@ -23,6 +23,7 @@ function App() {
         console.log(loginStatusData);
         setIsLoggedIn(true);
         setCurrentUser({ ...currentUser, userId: loginStatusData.userId, email: loginStatusData.email, username: loginStatusData.username, phoneNum: loginStatusData.phoneNum });
+        console.log('I JUST CHANGEDDDDDDDDDDDDDDDDD');
       })
       .catch(error => {
           console.log('error: ', error);
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Homepage currentUser={currentUser} setCurrentUser={setCurrentUser} />} /> 
+      <Route path="/" element={<Homepage currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} /> 
       <Route path="/create-account" element={<CreateAccountPage />} />
       <Route path="/profile" element={<ProfilePage currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/create-stop" element={<CreateStopPage currentUser={currentUser} isLoggedIn={isLoggedIn} />} />

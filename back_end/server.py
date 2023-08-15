@@ -30,6 +30,7 @@ def login_status():
     """Checks for logged in user and returns their user ID."""
     
     if 'user' in session:
+        print('login-status session:', session)
         return jsonify({
             'message': 'User is logged in.',
             'userId': session['user']['user_id'],
@@ -107,6 +108,7 @@ def logout_user():
     """Log user out."""
 
     session.pop("user")
+    print('LOGOUT SESSION:', session)
     
     return jsonify({'message': 'Logout succesful.'}), 200
 

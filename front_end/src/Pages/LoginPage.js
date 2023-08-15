@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-export default function LoginPage ({ currentUser, setCurrentUser }) {
+// export default function LoginPage () {
+export default function LoginPage ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,18 +14,48 @@ export default function LoginPage ({ currentUser, setCurrentUser }) {
     e.preventDefault();
     const userInfo = {email: email, password: password};
 
-    fetch(`/login`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(userInfo)
-    })
-      .then((response) => response.ok ? response.json() : Promise.reject(response))
-      .then((userData) => navigate('/profile'))
-      .catch((error) => {
-        console.log('error: ', error);
-        alert('An account already exists with this username/email. Please try again.');
-      }, []); 
+    if (email === "" || password === "") {
+      alert('Please enter values for email and password.');
+    } else {
+      fetch(`/login`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(userInfo)
+      })
+        .then((response) => response.ok ? response.json() : Promise.reject(response))
+        .then((userData) => {
+          console.log(userData);
+          setIsLoggedIn(true);
+          navigate('/profile');
+        })
+        .catch((error) => {
+          console.log('error: ', error);
+          alert('An account already exists with this username/email. Please try again.');
+        }, []); 
+    }
   };
+
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   const userInfo = {email: email, password: password};
+
+  //   const requestOptions = {
+  //     credentials: 'same-origin',
+  //     method: 'POST',
+  //     headers: {
+  //         'content-type': 'application/json'
+  //     },
+  //     body: JSON.stringify(userInfo)
+  //   };
+
+  //   fetch(`/login`, requestOptions)
+  //     .then((response) => response.ok ? response.json() : Promise.reject(response))
+  //     .then((userData) => navigate('/profile'))
+  //     .catch((error) => {
+  //       console.log('error: ', error);
+  //       alert('Incorrect email or password. Please try again.');
+  //     }, []); 
+  // };
 
   return ( 
       <div className="login-page">

@@ -16,7 +16,8 @@ export default function CreateAccountPage () {
             username: username,
             password: password,
             phoneNum: phoneNum
-        }
+        };
+
         const requestOptions = {
             credentials: 'same-origin',
             method: 'POST',
@@ -24,7 +25,8 @@ export default function CreateAccountPage () {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(userInfo)
-        }
+        };
+
         fetch('/register', requestOptions)
         .then((response) => response.ok ? response.json() : Promise.reject(response))
         .then((userData) => {
