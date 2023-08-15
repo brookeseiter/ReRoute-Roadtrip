@@ -25,21 +25,16 @@ export default function CreateAccountPage () {
             },
             body: JSON.stringify(userInfo)
         }
-
-        if (email === "" || username === "" || password === "" || phoneNum === "") {
-            alert('Please enter values for email, username, password, and phone number.');
-        } else {
-            fetch('/register', requestOptions)
-            .then((response) => response.ok ? response.json() : Promise.reject(response))
-            .then((userData) => {
-                alert('Account created successfully, Please log in.');
-                navigate('/');
-            })
-            .catch((error) => {
-                console.log('error: ', error);
-                alert('An account already exists with this username/email. Please try again.');
-            }, []); 
-        }  
+        fetch('/register', requestOptions)
+        .then((response) => response.ok ? response.json() : Promise.reject(response))
+        .then((userData) => {
+            alert('Account created successfully, Please log in.');
+            navigate('/');
+        })
+        .catch((error) => {
+            console.log('error: ', error);
+            alert('An account already exists with this username/email. Please try again.');
+        }, []); 
     };
 
     return ( 
@@ -71,6 +66,7 @@ export default function CreateAccountPage () {
                                     onChange={(e) => setEmail(e.target.value)}
                                     value={email}
                                     placeholder="Email"
+                                    required
                                 />
                                 </label>
                             </div>
@@ -83,6 +79,7 @@ export default function CreateAccountPage () {
                                     onChange={(e) => setUsername(e.target.value)}
                                     value={username}
                                     placeholder="Username"
+                                    required
                                 />
                                 </label>
                             </div>
@@ -95,6 +92,7 @@ export default function CreateAccountPage () {
                                     onChange={(e) => setPassword(e.target.value)}
                                     value={password}
                                     placeholder="Password"
+                                    required
                                 />
                                 </label>
                             </div>
@@ -107,6 +105,7 @@ export default function CreateAccountPage () {
                                     onChange={(e) => setPhoneNum(e.target.value)}
                                     value={phoneNum}
                                     placeholder="Phone Number"
+                                    required
                                 />
                                 </label>
                             </div>
