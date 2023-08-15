@@ -1,26 +1,22 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-// export default function Navbar () {
 export default function Navbar ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate();
 
     const handleLogout = (e) => {
         e.preventDefault();
 
-
-        fetch('/logout')
+        fetch(`/logout`)
             .then(response => response.json())
             .then(data =>{
-                console.log(data);
-                alert('Logout successful.');
                 setIsLoggedIn(false);
+                alert('Logout successful.');
                 navigate('/');
             })
             .catch(error => {
                 console.log(error, 'error');
             });
-        navigate('/');
-    }
+    };
 
     return (  
         <nav className="navbar navbar-expand-lg bg-body-tertiary container rounded shadow">
@@ -49,7 +45,7 @@ export default function Navbar ({ currentUser, setCurrentUser, isLoggedIn, setIs
                             to="/" 
                             className="nav-link" 
                             aria-current="page"
-                            style={{color: "black"}} 
+                            style={{ color: "black" }} 
                             onClick={handleLogout}
                         >
                             Log Out

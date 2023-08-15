@@ -27,7 +27,7 @@ export default function CreateAccountPage () {
             body: JSON.stringify(userInfo)
         };
 
-        fetch('/register', requestOptions)
+        fetch(`/register`, requestOptions)
         .then((response) => response.ok ? response.json() : Promise.reject(response))
         .then((userData) => {
             alert('Account created successfully, Please log in.');

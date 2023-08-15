@@ -1,9 +1,8 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from './Pages/Homepage';
 import ProfilePage from './Pages/ProfilePage';
 import CreateAccountPage from './Pages/CreateAccountPage';
-// import LoginPage from './Pages/LoginPage';
 import CreateStopPage from './Pages/CreateStopPage';
 import CreateRoutePage from './Pages/CreateRoutePage';
 import AllStopsPage from './Pages/AllStopsPage';
@@ -17,43 +16,22 @@ function App() {
   const[currentUser, setCurrentUser] = useState({ userId: '', email: '', username: '', phoneNum: '' });
 
   useEffect(() => {
-    fetch('/login-status')
+    fetch(`/login-status`)
       .then((response) => response.json())
       .then((loginStatusData) => {
         if (loginStatusData.message === 'There is no user currently in the session.') {
           setIsLoggedIn(false);
-          console.log('isLoggedIn if /login-status', isLoggedIn);
-          console.log(loginStatusData);
+          setCurrentUser({...currentUser, userId: '', email: '', username: '', phoneNum: '' });
         }
         else {
-          console.log(loginStatusData);
-          console.log('isLoggedIn else /login-status', isLoggedIn);
-          console.log(currentUser);
           setCurrentUser({...currentUser, userId: loginStatusData.userId, email: loginStatusData.email, username: loginStatusData.username, phoneNum: loginStatusData.phoneNum });
-          console.log(currentUser);
-          console.log('I JUST CHANGEDDDDDDDDDDDDDDDDD');
         }
       })
       .catch(error => {
           console.log('error: ', error);
       }, []); 
+  // eslint-disable-next-line
   }, [isLoggedIn]);
-
-  // useEffect(() => {
-  //   fetch('/login-status')
-  //     .then((response) => response.ok ? response.json() : Promise.reject(response))
-  //     .then((loginStatusData) => {
-  //       console.log(loginStatusData);
-  //       setIsLoggedIn(true);
-  //       setCurrentUser({...currentUser, userId: loginStatusData.userId, email: loginStatusData.email, username: loginStatusData.username, phoneNum: loginStatusData.phoneNum });
-  //       console.log('I JUST CHANGEDDDDDDDDDDDDDDDDD');
-  //     })
-  //     .catch(error => {
-  //         console.log('error: ', error);
-  //     }, []); 
-  // }, []);
-
-  // console.log(currentUser);
 
   return (
     <Routes>

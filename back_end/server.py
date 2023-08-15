@@ -25,24 +25,6 @@ app.config['SESSION_USE_SIGNER'] = True
 # Create and initialize the Flask-Session object AFTER 'app' has been configured
 server_session = Session(app)
 
-@app.route('/login-status')
-def login_status():
-    """Checks for logged in user and returns their user ID."""
-    
-    if 'user' in session:
-        print('login-status session:', session)
-        return jsonify({
-            'message': 'User is logged in.',
-            'userId': session['user']['user_id'],
-            'email': session['user']['email'],
-            'username': session['user']['username'],
-            'phoneNum': session['user']['phone_num']
-        }), 200
-    else:
-        print('login_status session:', session)
-        return jsonify({'message': 'There is no user currently in the session.'})
-
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -79,6 +61,20 @@ def create_user():
 
     return jsonify(new_user.to_dict()), 200
 
+@app.route('/login-status')
+def login_status():
+    """Checks for logged in user and returns their user information."""
+    
+    if 'user' in session:
+        return jsonify({
+            'message': 'User is logged in.',
+            'userId': session['user']['user_id'],
+            'email': session['user']['email'],
+            'username': session['user']['username'],
+            'phoneNum': session['user']['phone_num']
+        }), 200
+    else:
+        return jsonify({'message': 'There is no user currently in the session.'})
 
 @app.route('/login', methods = ['POST'])
 def login_user():
@@ -95,7 +91,6 @@ def login_user():
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
     else:
         session['user'] = {'user_id': user.user_id, 'email': user.email, 'username': user.username, 'phone_num': user.phone_num}
-        print('SESSION:', session)
         return jsonify({
             "userId": user.user_id,
             "email": user.email,
@@ -103,13 +98,11 @@ def login_user():
             "phoneNum": user.phone_num
         }), 200
 
-
 @app.route("/logout", methods = ['GET', 'POST'])
 def logout_user():
     """Log user out."""
 
     session.pop("user")
-    print('LOGOUT SESSION:', session)
     
     return jsonify({'message': 'Logout succesful.'}), 200
 
