@@ -29,10 +29,13 @@ server_session = Session(app)
 def login_status():
     """Checks for logged in user and returns their user ID."""
     
-    if 'user_id' in session:
+    if 'user' in session:
         return jsonify({
             'message': 'User is logged in.',
-            'userId': session['user_id']
+            'userId': session['user']['user_id'],
+            'email': session['user']['email'],
+            'username': session['user']['username'],
+            'phoneNum': session['user']['phone_num']
         }), 200
     else:
         return jsonify({'message': 'There is no user currently in the session.'})
@@ -89,7 +92,8 @@ def login_user():
     elif not bycrypt.check_password_hash(user.password, password):
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
     else:
-        session['user_id'] = user.user_id
+        session['user'] = {'user_id': user.user_id, 'email': user.email, 'username': user.username, 'phone_num': user.phone_num}
+        print('SESSION:', session)
         return jsonify({
             "userId": user.user_id,
             "email": user.email,
@@ -102,7 +106,7 @@ def login_user():
 def logout_user():
     """Log user out."""
 
-    session.pop("user_id")
+    session.pop("user")
     
     return jsonify({'message': 'Logout succesful.'}), 200
 

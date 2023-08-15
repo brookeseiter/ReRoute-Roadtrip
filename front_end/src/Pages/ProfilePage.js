@@ -26,6 +26,8 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser }) 
     }, []);
 
     console.log('myStops:', myStops);
+    console.log('user ProfilePage:', user);
+    console.log('currentUser ProfilePage', currentUser);
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
 

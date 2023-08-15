@@ -72,8 +72,9 @@ export default function CreateStopPage ({ user, isLoggedIn, currentUser }) {
         console.log(stopInfo);
     }
 
-    console.log(user);
-    console.log(isLoggedIn);
+    console.log('user CreateStopPage:', user);
+    console.log('currentUser CreateStopPage:', currentUser);
+  
 
     if (!isLoaded) return <div>Loading...</div>
     return ( 

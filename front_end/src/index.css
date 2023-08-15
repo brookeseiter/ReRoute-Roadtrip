@@ -176,7 +176,7 @@ img.d-inline-block {
 
 /* Create Account Page */
 .create-account-page input {
-  width: 400px;
+  width: 400px !important;
 }
 .create-account-page button {
   width: 400px;
