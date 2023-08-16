@@ -72,7 +72,6 @@ export default function CreateStopPage ({ user, isLoggedIn, currentUser }) {
         console.log(stopInfo);
     }
 
-    console.log('user CreateStopPage:', user);
     console.log('currentUser CreateStopPage:', currentUser);
   
 

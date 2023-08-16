@@ -52,7 +52,7 @@ def create_user():
     user_exists = crud.user_exists(email=email)
 
     if user_exists:
-        return jsonify({"error": "Email/username already exists."}), 409
+        return jsonify({"error": "Email/username already exists."}), 401
     
     hashed_password = bycrypt.generate_password_hash(password).decode('utf-8')
     new_user = crud.create_user(email, username, hashed_password, phone_num)

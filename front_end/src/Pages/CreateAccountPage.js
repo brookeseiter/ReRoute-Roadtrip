@@ -65,8 +65,8 @@ export default function CreateAccountPage () {
                                     type="text"
                                     name="email"
                                     id="email-input" 
-                                    onChange={(e) => setEmail(e.target.value)}
                                     value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Email"
                                     required
                                 />
@@ -78,8 +78,8 @@ export default function CreateAccountPage () {
                                     type="text"
                                     name="username" 
                                     id="username-input"
-                                    onChange={(e) => setUsername(e.target.value)}
                                     value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
                                     placeholder="Username"
                                     required
                                 />
@@ -91,8 +91,8 @@ export default function CreateAccountPage () {
                                     type="text"
                                     name="password" 
                                     id="password-input"
-                                    onChange={(e) => setPassword(e.target.value)}
                                     value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Password"
                                     required
                                 />
@@ -104,8 +104,8 @@ export default function CreateAccountPage () {
                                     type="text"
                                     name="phoneNum" 
                                     id="phone-num-input"
-                                    onChange={(e) => setPhoneNum(e.target.value)}
                                     value={phoneNum}
+                                    onChange={(e) => setPhoneNum(e.target.value)}
                                     placeholder="Phone Number"
                                     required
                                 />
