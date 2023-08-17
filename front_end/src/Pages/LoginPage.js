@@ -3,9 +3,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
-export default function LoginPage ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
-  const navigate = useNavigate();
+export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
+// 8/16/ 2:51
+// export default function LoginPage ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
+  // const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,14 +26,21 @@ export default function LoginPage ({ currentUser, setCurrentUser, isLoggedIn, se
     fetch(`/login`, requestOptions)
       .then((response) => response.ok ? response.json() : Promise.reject(response))
       .then((userData) => {
+        // next line attempt to redo old state 8/8
+        setUser({ ...user, email: userData.email, username: userData.username, phoneNum: userData.phoneNum });
+        console.log(user);
         setIsLoggedIn(true);
-        navigate('/profile');
+        // navigate('/profile');
       })
       .catch((error) => {
         console.log('error: ', error);
         alert('Either the email or password you entered was incorrect or no account has been made with these credentials. Please try again.');
       }, []); 
   };
+
+  console.log('value of user on LoginPage', user);
+  // console.log('value of currentUser on LoginPage', currentUser);
+  // maybe conditionally render login page or navigate to profile page when currentUser is loaded
 
   return ( 
       <div className="login-page">

@@ -63,18 +63,31 @@ def create_user():
 
 @app.route('/login-status')
 def login_status():
-    """Checks for logged in user and returns their user information."""
+    """Checks for logged in user and returns their user ID."""
     
-    if 'user' in session:
+    if 'user_id' in session:
         return jsonify({
             'message': 'User is logged in.',
-            'userId': session['user']['user_id'],
-            'email': session['user']['email'],
-            'username': session['user']['username'],
-            'phoneNum': session['user']['phone_num']
+            'userId': session['user_id']
         }), 200
     else:
         return jsonify({'message': 'There is no user currently in the session.'})
+
+# 8/16
+# @app.route('/login-status')
+# def login_status():
+#     """Checks for logged in user and returns their user information."""
+    
+#     if 'user' in session:
+#         return jsonify({
+#             'message': 'User is logged in.',
+#             'userId': session['user']['user_id'],
+#             'email': session['user']['email'],
+#             'username': session['user']['username'],
+#             'phoneNum': session['user']['phone_num']
+#         }), 200
+#     else:
+#         return jsonify({'message': 'There is no user currently in the session.'})
 
 @app.route('/login', methods = ['POST'])
 def login_user():
@@ -90,19 +103,29 @@ def login_user():
     elif not bycrypt.check_password_hash(user.password, password):
         return jsonify({'message':'Incorrect password entered, please try again.'}), 401
     else:
-        session['user'] = {'user_id': user.user_id, 'email': user.email, 'username': user.username, 'phone_num': user.phone_num}
+        session['user_id'] = user.user_id
         return jsonify({
             "userId": user.user_id,
             "email": user.email,
             "username": user.username,
             "phoneNum": user.phone_num
         }), 200
+        # 8/16
+        # session['user'] = {'user_id': user.user_id, 'email': user.email, 'username': user.username, 'phone_num': user.phone_num}
+        # return jsonify({
+        #     "userId": user.user_id,
+        #     "email": user.email,
+        #     "username": user.username,
+        #     "phoneNum": user.phone_num
+        # }), 200
 
 @app.route("/logout", methods = ['GET', 'POST'])
 def logout_user():
     """Log user out."""
 
-    session.pop("user")
+    print(session)
+    session.pop('user_id')
+    # session.pop("user")
     
     return jsonify({'message': 'Logout succesful.'}), 200
 
@@ -143,7 +166,10 @@ def view_all_stops_on_map():
 def stops_by_user(user_id):
     """View a user's stops."""
 
-    user_stops = crud.get_stops_by_user(user_id)
+    print('----------------------------------------------------------------USER ID:', user_id)
+    if user_id:
+        user_stops = crud.get_stops_by_user(user_id)
+    # print('USER STOPS:', user_stops)
 
     return jsonify({user_stop.stop_id: user_stop.to_dict() for user_stop in user_stops})
 

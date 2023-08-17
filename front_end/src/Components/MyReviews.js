@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const StopReviews = () => {
+const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) => {
     const [userReviews, setUserReviews] = useState([]); 
-
+    console.log('StopReviews currentUser pre uE:', currentUser);
+   
     useEffect(() => {
-        const user_id = sessionStorage.user_id
-
-        fetch(`/api/user/${user_id}/reviews`) 
+        fetch(`/api/user/${currentUser}/reviews`) 
             .then(response => response.json())
             .then(data => {setUserReviews(data)}) 
             .catch(error => console.log(error));
     }, []); 
 
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
-    console.log('user reviews by user id:', userReviewsObj);
 
     return ( 
         <div className="my-reviews">
