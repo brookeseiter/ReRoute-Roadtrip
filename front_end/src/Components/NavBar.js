@@ -1,19 +1,20 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Navbar ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
+export default function Navbar ({ setUser, currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate();
 
     const handleLogout = (e) => {
         e.preventDefault();
 
         fetch(`/logout`)
-            .then(response => response.json())
-            .then(data =>{
+            .then((response) => response.json())
+            .then((data) =>{
                 setIsLoggedIn(false);
+                setUser({});
                 alert('Logout successful.');
                 navigate('/');
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log(error, 'error');
             });
     };

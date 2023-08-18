@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) => {
     const [userReviews, setUserReviews] = useState([]); 
-    console.log('StopReviews currentUser pre uE:', currentUser);
    
     useEffect(() => {
         fetch(`/api/user/${currentUser}/reviews`) 
             .then(response => response.json())
             .then(data => {setUserReviews(data)}) 
             .catch(error => console.log(error));
-    }, []); 
+    }, [currentUser]); 
 
+    console.log('value of currentUser on MyReviews', currentUser);
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
 
     return ( 

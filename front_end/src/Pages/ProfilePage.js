@@ -27,7 +27,7 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser }) 
     
     return ( 
         <div className="profile-page">
-            <Navbar setIsLoggedIn={setIsLoggedIn} />
+            <Navbar setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
             <div className="profile-page-content container">
                 <div className="row">
                     <div className="col-md-12">

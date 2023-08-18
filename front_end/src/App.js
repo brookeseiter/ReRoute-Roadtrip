@@ -24,7 +24,7 @@ function App() {
       .then((loginStatusData) => {
         if (loginStatusData.message === 'User is logged in.') {
           console.log('login-status if', isLoggedIn);
-          setIsLoggedIn(true);
+          // setIsLoggedIn(true);
           setCurrentUser(loginStatusData.userId);
           navigate('/profile');
         } else {
@@ -35,7 +35,7 @@ function App() {
       .catch(error => {
           console.log('error: ', error);
       }, []); 
-  }, [isLoggedIn, currentUser]);
+  }, [isLoggedIn]);
 
 
   return (

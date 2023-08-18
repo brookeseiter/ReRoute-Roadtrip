@@ -34,7 +34,7 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
       })
       .catch((error) => {
         console.log('error: ', error);
-        alert('Either the email or password you entered was incorrect or no account has been made with these credentials. Please try again.');
+        alert('Either the email or password entered was incorrect or no account has been created with these credentials. Please try again.');
       }, []); 
   };
 
