@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const StopReviews = ({ handleRatingChange }) => {
-    let { stop_id } = useParams(); 
+    let { stopId } = useParams(); 
     const [reviews, setReviews] = useState([]); 
     let [reviewsObj, setReviewsObj] = useState([]);
 
     useEffect(() => {
-        fetch(`/api/stops/${stop_id}/reviews`) 
+        fetch(`/api/stops/${stopId}/reviews`) 
             .then(response => response.json())
             .then(data => {
                 setReviews(data); 
@@ -34,7 +34,7 @@ const StopReviews = ({ handleRatingChange }) => {
                 }
             }) 
             .catch(error => console.log(error));
-    }, [stop_id, handleRatingChange]); 
+    }, [stopId, handleRatingChange]); 
     
     reviewsObj = Object.entries(reviews).map(([key, value]) => ({key, value}))
 

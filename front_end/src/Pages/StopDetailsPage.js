@@ -39,7 +39,6 @@ const StopDetails = ({ currentUser }) => {
             rating: inputs.rating,
             content: inputs.content
         }
-        console.log(sessionStorage);
 
         const requestOptions = {
             method: 'POST',

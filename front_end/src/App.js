@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from './Pages/Homepage';
 import ProfilePage from './Pages/ProfilePage';
 import CreateAccountPage from './Pages/CreateAccountPage';
-// import LoginPage from './Pages/LoginPage';
 import CreateStopPage from './Pages/CreateStopPage';
 import CreateRoutePage from './Pages/CreateRoutePage';
 import AllStopsPage from './Pages/AllStopsPage';
@@ -44,7 +43,7 @@ function App() {
       <Route path="/create-stop" element={<CreateStopPage user={user} isLoggedIn={isLoggedIn} currentUser={currentUser} />} />
       <Route path="/create-route" element={<CreateRoutePage />} />
       <Route path="/stops" element={<AllStopsPage />} />
-      <Route path="/stops/:stop_id" element={<StopDetails currentUser={currentUser} />} />
+      <Route path="/stops/:stopId" element={<StopDetails currentUser={currentUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes> 
   );

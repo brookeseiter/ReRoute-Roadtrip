@@ -155,6 +155,7 @@ def view_stop(stop_id):
     # reviews = crud.get_reviews_by_stop(stop_id)
 
     # return jsonify(stop.to_dict(), {review.review_id: review.to_dict() for review in reviews})
+    print('stopidddddddddddddd:', stop_id)
     stop = crud.get_stop_by_id(stop_id)
 
     return jsonify(stop.to_dict())
