@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Components/NavBar";
 import StopReviews from "../Components/StopReviews";
 
-const StopDetails = ({ currentUser }) => {
+const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) => {
     let { stopId } = useParams(); 
     const [stop, setStop] = useState([]); 
     const [updateRating, setUpdateRating] = useState('');

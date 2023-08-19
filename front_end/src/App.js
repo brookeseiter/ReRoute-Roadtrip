@@ -6,7 +6,7 @@ import CreateAccountPage from './Pages/CreateAccountPage';
 import CreateStopPage from './Pages/CreateStopPage';
 import CreateRoutePage from './Pages/CreateRoutePage';
 import AllStopsPage from './Pages/AllStopsPage';
-import StopDetails from './Pages/StopDetailsPage';
+import StopDetailsPage from './Pages/StopDetailsPage';
 import NotFound from './Components/NotFound';
 import { useEffect, useState } from 'react';
 
@@ -16,7 +16,7 @@ function App() {
   const[isLoggedIn, setIsLoggedIn] = useState(false);
   const[user, setUser] = useState({ email: '', username: '', phoneNum: '' });
   const[currentUser, setCurrentUser] = useState({ userId: '' });
-
+ 
   useEffect(() => {
     fetch('/login-status')
       .then((response) => response.json())
@@ -24,6 +24,7 @@ function App() {
         if (loginStatusData.message === 'User is logged in.') {
           console.log('login-status if', isLoggedIn);
           setCurrentUser(loginStatusData.userId);
+          // sessionStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
           navigate('/profile');
         } else {
           console.log('login-status else', isLoggedIn);
@@ -43,7 +44,7 @@ function App() {
       <Route path="/create-stop" element={<CreateStopPage user={user} isLoggedIn={isLoggedIn} currentUser={currentUser} />} />
       <Route path="/create-route" element={<CreateRoutePage />} />
       <Route path="/stops" element={<AllStopsPage />} />
-      <Route path="/stops/:stopId" element={<StopDetails currentUser={currentUser} />} />
+      <Route path="/stops/:stopId" element={<StopDetailsPage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes> 
   );
