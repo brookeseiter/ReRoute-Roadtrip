@@ -16,13 +16,15 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser, se
     console.log('value of currentUser on ProfilePage', currentUser);
     
     useEffect(() => {
-        fetch(`/api/${currentUser}/stops`)
-            .then((response) => response.json())
-            .then((userStopData) => {
-                console.log(userStopData);
-                setMyStops(userStopData);
-            })
-            .catch((error) => console.log(error));
+        if (currentUser.userId !== '') {
+            fetch(`/api/${currentUser}/stops`)
+                .then((response) => response.json())
+                .then((userStopData) => {
+                    console.log(userStopData);
+                    setMyStops(userStopData);
+                })
+                .catch((error) => console.log(error));
+        }
     }, [currentUser]);
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));

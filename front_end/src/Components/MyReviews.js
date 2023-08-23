@@ -5,13 +5,14 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
     const [userReviews, setUserReviews] = useState([]); 
    
     useEffect(() => {
-        fetch(`/api/user/${currentUser}/reviews`) 
-            .then(response => response.json())
-            .then(data => {setUserReviews(data)}) 
-            .catch(error => console.log(error));
+        if (currentUser.userId !== '') {
+            fetch(`/api/user/${currentUser}/reviews`) 
+                .then(response => response.json())
+                .then(data => {setUserReviews(data)}) 
+                .catch(error => console.log(error));
+        }
     }, [currentUser]); 
 
-    console.log('value of currentUser on MyReviews', currentUser);
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
 
     return ( 
