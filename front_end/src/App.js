@@ -23,6 +23,7 @@ function App() {
         if (loginStatusData.message === 'User is logged in.') {
           console.log('login-status if', isLoggedIn);
           setCurrentUser(loginStatusData.userId);
+          setIsLoggedIn(true);
           // sessionStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
         } else {
           console.log('login-status else', isLoggedIn);
