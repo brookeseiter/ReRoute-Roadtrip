@@ -10,8 +10,8 @@ export default function Navbar ({ setUser, currentUser, setCurrentUser, isLogged
             .then((response) => response.json())
             .then((data) =>{
                 setIsLoggedIn(false);
-                setUser({});
-                setCurrentUser({});
+                setUser({ email: '', username: '', phoneNum: '' });
+                setCurrentUser({ userId: '' });
                 alert('Logout successful.');
                 navigate('/');
             })
