@@ -33,9 +33,9 @@ const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const body = {
-            user_id: currentUser,
-            stop_id: stopId,
+        const reviewInfo = {
+            userId: currentUser,
+            stopId: stopId,
             rating: inputs.rating,
             content: inputs.content
         }
@@ -45,19 +45,17 @@ const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) 
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify(reviewInfo)
         }
 
-        fetch(`/api/stops/${stopId}/review`, requestOptions)
+        fetch(`/stops/${stopId}/review`, requestOptions)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
                 setUpdateRating(updateRating);
             })
             .catch(error => console.log(error));
-        console.log('handleSubmit triggered');
         console.log(inputs);
-        console.log(body);
     }
     
     return ( 

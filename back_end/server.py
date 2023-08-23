@@ -182,12 +182,12 @@ def view_stop_reviews(stop_id):
 
     return jsonify({stop_review['review_id']: stop_review for stop_review in stop_reviews_dict})
 
-@app.route('/api/stops/<stop_id>/review', methods = ['GET', 'POST'])
+@app.route('/stops/<stop_id>/review', methods = ['GET', 'POST'])
 def create_review(stop_id):
     """Create a new review for a stop."""
 
-    user_id = request.json['user_id']
-    # stop_id = request.json['stop_id']
+    user_id = request.json['userId']
+    # stop_id = request.json['stopId']
     rating = request.json['rating']
     content = request.json['content']
 
