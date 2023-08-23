@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from './Pages/Homepage';
 import ProfilePage from './Pages/ProfilePage';
@@ -12,20 +12,18 @@ import { useEffect, useState } from 'react';
 
 
 function App() {
-  const navigate = useNavigate();
   const[isLoggedIn, setIsLoggedIn] = useState(false);
   const[user, setUser] = useState({ email: '', username: '', phoneNum: '' });
   const[currentUser, setCurrentUser] = useState({ userId: '' });
  
   useEffect(() => {
-    fetch('/login-status')
+    fetch(`/login-status`)
       .then((response) => response.json())
       .then((loginStatusData) => {
         if (loginStatusData.message === 'User is logged in.') {
           console.log('login-status if', isLoggedIn);
           setCurrentUser(loginStatusData.userId);
           // sessionStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
-          navigate('/profile');
         } else {
           console.log('login-status else', isLoggedIn);
         }
@@ -40,7 +38,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Homepage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} /> 
       <Route path="/create-account" element={<CreateAccountPage />} />
-      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} />} />
+      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
       <Route path="/create-stop" element={<CreateStopPage user={user} isLoggedIn={isLoggedIn} currentUser={currentUser} />} />
       <Route path="/create-route" element={<CreateRoutePage />} />
       <Route path="/stops" element={<AllStopsPage />} />

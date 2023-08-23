@@ -9,8 +9,11 @@ import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 
 
-const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser }) => {
+const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
     const [myStops, setMyStops] = useState([]);
+    
+    console.log('value of user on ProfilePage', user);
+    console.log('value of currentUser on ProfilePage', currentUser);
     
     useEffect(() => {
         fetch(`/api/${currentUser}/stops`)
@@ -23,11 +26,10 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser }) 
     }, [currentUser]);
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
-
     
     return ( 
         <div className="profile-page">
-            <Navbar setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
+            <Navbar setUser={setUser} setCurrentUser={setCurrentUser} setIsLoggedIn={setIsLoggedIn} />
             <div className="profile-page-content container">
                 <div className="row">
                     <div className="col-md-12">
@@ -66,7 +68,7 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser }) 
                         </Tab.Container>
                     </section>
                 </div>
-            </div>
+            </div> 
         </div>
      );
 }

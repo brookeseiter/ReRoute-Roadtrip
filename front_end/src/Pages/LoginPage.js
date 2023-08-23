@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
-// 8/16/ 2:51
-// export default function LoginPage ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
-  // const navigate = useNavigate();
+export default function LoginPage ({ user, setUser, isLoggedIn, setIsLoggedIn }) {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,11 +23,9 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
     fetch(`/login`, requestOptions)
       .then((response) => response.ok ? response.json() : Promise.reject(response))
       .then((userData) => {
-        // next line attempt to redo old state 8/8
         setUser({ ...user, email: userData.email, username: userData.username, phoneNum: userData.phoneNum });
         console.log(user);
         setIsLoggedIn(true);
-        // navigate('/profile');
       })
       .catch((error) => {
         console.log('error: ', error);
@@ -39,8 +34,12 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
   };
 
   console.log('value of user on LoginPage', user);
-  // console.log('value of currentUser on LoginPage', currentUser);
-  // maybe conditionally render login page or navigate to profile page when currentUser is loaded
+
+  useEffect (() => {
+    if (isLoggedIn) {
+      return navigate('/profile');
+    }
+  }, [navigate, isLoggedIn]);
 
   return ( 
       <div className="login-page">
@@ -80,7 +79,7 @@ export default function LoginPage ({ user, setUser, setIsLoggedIn }) {
               </small>
           </form>
       </div>
-)
+  );
 }
 
 

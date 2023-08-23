@@ -11,6 +11,7 @@ export default function Navbar ({ setUser, currentUser, setCurrentUser, isLogged
             .then((data) =>{
                 setIsLoggedIn(false);
                 setUser({});
+                setCurrentUser({});
                 alert('Logout successful.');
                 navigate('/');
             })
