@@ -6,6 +6,7 @@ import StopReviews from "../Components/StopReviews";
 const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) => {
     let { stopId } = useParams(); 
     const [stop, setStop] = useState([]); 
+    const [inputs, setInputs] = useState({});
     const [updateRating, setUpdateRating] = useState('');
 
     const handleRatingChange = avgRating => {
@@ -14,16 +15,14 @@ const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) 
     }
    
     useEffect(() => {
-        fetch(`/api/stops/${stopId}`) 
+        fetch(`/stops/${stopId}`) 
             .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setStop(data);
+            .then((stopData) => {
+                console.log(stopData);
+                setStop(stopData);
             }) 
             .catch((error) => console.log(error));
     }, [stopId]); 
-
-    const [inputs, setInputs] = useState({});
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -31,7 +30,7 @@ const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) 
         setInputs(values => ({...values, [name]: value}));
     }
 
-    const handleSubmit = (e) => {
+    const handleAddReview = (e) => {
         e.preventDefault();
         const reviewInfo = {
             userId: currentUser,
@@ -49,13 +48,12 @@ const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) 
         }
 
         fetch(`/stops/${stopId}/review`, requestOptions)
-            .then(response => response.json())
-            .then(data => {
+            .then((response) => response.json())
+            .then((data) => {
                 console.log(data);
                 setUpdateRating(updateRating);
             })
-            .catch(error => console.log(error));
-        console.log(inputs);
+            .catch((error) => console.log(error));
     }
     
     return ( 
@@ -75,9 +73,9 @@ const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) 
                         <br />
                     </div>
                     <div className="row">
-                        <div className="create-review col-md-6" onSubmit={handleSubmit}>
+                        <div className="create-review col-md-6">
                             <h2>Leave a Review</h2>
-                            <form className="create-review-form">
+                            <form className="create-review-form" onSubmit={handleAddReview}>
                                 <label 
                                     htmlFor="review-rating-input" 
                                     className="create-review-form-input"

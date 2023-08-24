@@ -7,30 +7,29 @@ const StopReviews = ({ handleRatingChange }) => {
     let [reviewsObj, setReviewsObj] = useState([]);
 
     useEffect(() => {
-        fetch(`/api/stops/${stopId}/reviews`) 
-            .then(response => response.json())
-            .then(data => {
+        fetch(`/stops/${stopId}/reviews`) 
+            .then((response) => response.json())
+            .then((data) => {
                 setReviews(data); 
                 setReviewsObj(Object.entries(reviews).map(([key, value]) => ({key, value})));
                 const ratingArray = [];
                 if (!Object.keys(data).length) {
                     handleRatingChange(null);
-                }    
-                else {
-                    for (const review of reviewsObj) {
-                        const rating = parseInt(review.value.rating);
-                        ratingArray.push(rating);
-                    }
-                    console.log(ratingArray);
-                    let ratingSum = 0;
-                    let lenRatingArray = 0;
-                    ratingArray.forEach( rating => {
-                        ratingSum += rating;
-                        lenRatingArray += 1;
-                    });
-                    const avgRating = parseFloat(ratingSum/lenRatingArray).toFixed(1);
-                    console.log(avgRating);
-                    handleRatingChange(avgRating);
+                } else {
+                for (const review of reviewsObj) {
+                    const rating = parseInt(review.value.rating);
+                    ratingArray.push(rating);
+                }
+                console.log(ratingArray);
+                let ratingSum = 0;
+                let lenRatingArray = 0;
+                ratingArray.forEach( rating => {
+                    ratingSum += rating;
+                    lenRatingArray += 1;
+                });
+                const avgRating = parseFloat(ratingSum/lenRatingArray).toFixed(1);
+                console.log(avgRating);
+                handleRatingChange(avgRating);
                 }
             }) 
             .catch(error => console.log(error));
