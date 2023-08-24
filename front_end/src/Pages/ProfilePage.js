@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 
 
-const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
+const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser, isLoaded, setIsLoaded }) => {
     const [myStops, setMyStops] = useState([]);
     
     console.log('value of user on ProfilePage', user);
@@ -59,7 +59,7 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser, se
                                 <Col sm={9}>
                                     <Tab.Content>
                                         <Tab.Pane className="fade shadow rounded bg-white show p-4" eventKey="first">
-                                            {{stopsObj} && <StopList stopsObj={stopsObj} title="My Stops" />}
+                                            {{stopsObj} && <StopList stopsObj={stopsObj} isLoaded={isLoaded} setIsLoaded={setIsLoaded} title="My Stops" />}
                                         </Tab.Pane>
                                         <Tab.Pane className="fade shadow rounded bg-white show p-4" eventKey="second">
                                             <MyReviews title="My Reviews" currentUser={currentUser} />

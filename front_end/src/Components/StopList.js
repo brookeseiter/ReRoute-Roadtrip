@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
 
-const StopList = ({ stopsObj, title }) => {
+const StopList = ({ stopsObj, title, isLoaded, setIsLoaded }) => {
 
-    const handleDelete= (stopObj) => {
-        const stop_id = stopObj.value.stop_id;
-        fetch(`/stops/${stop_id}`, {
+    const handleDeleteStop= (stopObj) => {
+        console.log(stopObj);
+        const stopId = stopObj.value.stop_id;
+        fetch(`/stops/${stopId}`, {
             method: 'DELETE'
         }).then(() => {
             console.log("deleted"); 
-        })
-    }
+            // setIsLoaded(true);
+        });
+        window.location.reload(true);
+    };
 
     return (
         <div className="stop-list">
@@ -25,7 +28,7 @@ const StopList = ({ stopsObj, title }) => {
                         <p>Longitude { stopObj.value.stop_lng.toFixed(7) }</p>
                     </Link> 
                     { title  === "My Stops" &&
-                        <button onClick={() => handleDelete(stopObj)}>Delete Stop</button>
+                        <button onClick={() => handleDeleteStop(stopObj)}>Delete Stop</button>
                     }
                 </div>
             ))}

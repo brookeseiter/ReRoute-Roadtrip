@@ -15,6 +15,7 @@ function App() {
   const[isLoggedIn, setIsLoggedIn] = useState(false);
   const[user, setUser] = useState({ email: '', username: '', phoneNum: '' });
   const[currentUser, setCurrentUser] = useState({ userId: '' });
+  const[isLoaded, setIsLoaded] = useState(false);
  
   useEffect(() => {
     fetch(`/login-status`)
@@ -34,12 +35,15 @@ function App() {
       }, []); 
   }, [isLoggedIn]);
 
+  // useEffect(() => {
+  //   setIsLoaded(true);
+  // }, [isLoaded]);
 
   return (
     <Routes>
       <Route path="/" element={<Homepage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} /> 
       <Route path="/create-account" element={<CreateAccountPage />} />
-      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} isLoaded={isLoaded} setIsLoaded={setIsLoaded} />} />
       <Route path="/create-stop" element={<CreateStopPage user={user} isLoggedIn={isLoggedIn} currentUser={currentUser} />} />
       <Route path="/create-route" element={<CreateRoutePage />} />
       <Route path="/stops" element={<AllStopsPage />} />
