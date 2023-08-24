@@ -4,7 +4,7 @@ const StopList = ({ stopsObj, title }) => {
 
     const handleDelete= (stopObj) => {
         const stop_id = stopObj.value.stop_id;
-        fetch(`/api/stops/${stop_id}`, {
+        fetch(`/stops/${stop_id}`, {
             method: 'DELETE'
         }).then(() => {
             console.log("deleted"); 

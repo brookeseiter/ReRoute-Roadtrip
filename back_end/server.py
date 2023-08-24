@@ -140,14 +140,13 @@ def view_all_stops_on_map():
 def stops_by_user(user_id):
     """View a user's stops."""
 
-    print('----------------------------------------------------------------USER ID:', user_id)
     if user_id:
         user_stops = crud.get_stops_by_user(user_id)
-    # print('USER STOPS:', user_stops)
 
     return jsonify({user_stop.stop_id: user_stop.to_dict() for user_stop in user_stops})
 
-@app.route('/stops/<stop_id>', methods= ['GET'])
+
+@app.route('/stops/<stop_id>', methods= ['GET', 'DELETE'])
 def view_stop(stop_id):
     """View a stop."""
 
@@ -155,21 +154,15 @@ def view_stop(stop_id):
     # reviews = crud.get_reviews_by_stop(stop_id)
 
     # return jsonify(stop.to_dict(), {review.review_id: review.to_dict() for review in reviews})
-    print('stopidddddddddddddd:', stop_id)
     stop = crud.get_stop_by_id(stop_id)
 
-    return jsonify(stop.to_dict())
+    if request.method == 'GET':
+        return jsonify(stop.to_dict()), 200
+    if request.method == 'DELETE':
+        db.session.delete(stop)
+        db.session.commit()
+        return jsonify({'message': 'Stop has been deleted.'}), 200
 
-@app.route('/stops/<stop_id>', methods= ['DELETE'])
-def delete_stop(stop_id):
-    """Delete a stop."""
-
-    stop = crud.get_stop_by_id(stop_id)
-
-    db.session.delete(stop)
-    db.session.commit()
-
-    return jsonify({'message': 'Stop has been deleted.'})
 
 @app.route('/stops/<stop_id>/reviews')
 def view_stop_reviews(stop_id):
