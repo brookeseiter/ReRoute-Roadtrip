@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from './Pages/Homepage';
 import ProfilePage from './Pages/ProfilePage';
@@ -16,6 +16,7 @@ function App() {
   const[user, setUser] = useState({ email: '', username: '', phoneNum: '' });
   const[currentUser, setCurrentUser] = useState({ userId: '' });
   const[isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
  
   useEffect(() => {
     fetch(`/login-status`)
@@ -38,6 +39,42 @@ function App() {
   // useEffect(() => {
   //   setIsLoaded(true);
   // }, [isLoaded]);
+
+
+  // user activity event listeners
+  document.addEventListener("mousemove", () =>{ 
+    localStorage.setItem('lastActvity', new Date())
+  });
+
+  document.addEventListener("click", () =>{ 
+    localStorage.setItem('lastActvity', new Date())
+  });
+
+  // automatic logout of inactive user
+  // code borrowed from Vishnu Bhadoriya: 
+  // https://stackoverflow.com/questions/68848031/how-to-handle-inactive-users-and-log-them-out-in-react-javascript
+  let timeInterval = setInterval(() => {
+    let lastAcivity = localStorage.getItem('lastActvity');
+    var diffMs = Math.abs(new Date(lastAcivity) - new Date()); // milliseconds between now & last activity
+    var seconds = Math.floor((diffMs/1000));
+    var minute = Math.floor((seconds/60));
+    // console.log(seconds +' sec and '+minute+' min since last activity');
+    if (currentUser.userId != '' && minute == 10) {
+      console.log('No activity from last 10 minutes... Logging Out');
+      clearInterval(timeInterval);
+      fetch(`/logout`)
+            .then((response) => response.json())
+            .then((data) =>{
+              navigate('/');
+              setIsLoggedIn(false);
+              setUser({ email: '', username: '', phoneNum: '' });
+              setCurrentUser({ userId: '' });
+            })
+            .catch((error) => {
+              console.log(error, 'error');
+            });
+    }
+  },1000)
 
   return (
     <Routes>
