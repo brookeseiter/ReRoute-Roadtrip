@@ -9,9 +9,8 @@ const StopList = ({ stopsObj, title, isLoaded, setIsLoaded }) => {
             method: 'DELETE'
         }).then(() => {
             console.log("deleted"); 
-            // setIsLoaded(true);
+            setIsLoaded(false);
         });
-        window.location.reload(true);
     };
 
     return (

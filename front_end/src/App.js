@@ -74,7 +74,7 @@ function App() {
               console.log(error, 'error');
             });
     }
-  },1000)
+  },1000);
 
   return (
     <Routes>

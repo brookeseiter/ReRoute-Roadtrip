@@ -22,10 +22,11 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser, se
                 .then((userStopData) => {
                     console.log(userStopData);
                     setMyStops(userStopData);
+                    setIsLoaded(true);
                 })
                 .catch((error) => console.log(error));
         }
-    }, [currentUser]);
+    }, [isLoaded, currentUser]);
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
     
@@ -42,7 +43,6 @@ const ProfilePage = ({ user, setUser, isLoggedIn, setIsLoggedIn, currentUser, se
                         <br />
                         <Link to="/create-route">Create a Route</Link>
                     </div>
-
                     <section className="py-5">
                         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                             <Row>
