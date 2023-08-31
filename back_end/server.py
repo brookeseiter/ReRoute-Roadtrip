@@ -120,7 +120,7 @@ def create_stop():
 
     return jsonify(new_stop.to_dict())
 
-@app.route('/api/stops')
+@app.route('/stops')
 def view_all_stops():
     """View all stops."""
 
