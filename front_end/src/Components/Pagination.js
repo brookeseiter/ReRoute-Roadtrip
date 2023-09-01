@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+// import Pagination from 'react-bootstrap/Pagination';
 
-const Pagination = ({ postsPerPage, totalPosts }) => {
+
+const Pagination = ({ stopsPerPage, totalStops, paginate }) => {
     const pageNumbers = [];
 
-    for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(totalStops / stopsPerPage); i++) {
         pageNumbers.push(i);
     }
 
@@ -12,9 +14,9 @@ const Pagination = ({ postsPerPage, totalPosts }) => {
         <ul className="pagination">
             {pageNumbers.map(number => (
                 <li key={number} className='page-item'>
-                    <a href='!#' className='page-link'>
+                    <button onClick={() => paginate(number)} className='page-link'>
                         {number}
-                    </a>
+                    </button>
                 </li>
             ))}
         </ul>

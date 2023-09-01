@@ -1,13 +1,14 @@
-import Pagination from 'react-bootstrap/Pagination';
+// import Pagination from 'react-bootstrap/Pagination';
 import { StandaloneSearchBox } from '@react-google-maps/api';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import Navbar from '../Components/NavBar.js';
-import StopList from '../Components/StopList.js'
+import StopList from '../Components/StopList.js';
+import Pagination from '../Components/Pagination.js';
 
 const AllStopsPage = () => {
     const [stops, setStops] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [stopsPerPage, setStopsPerPage] = useState(10);
+    const [stopsPerPage] = useState(10);
     
     useEffect(() => {
         fetch(`/stops`)
@@ -26,6 +27,9 @@ const AllStopsPage = () => {
     const idxOfLastStop = currentPage * stopsPerPage;
     const idxOfFirstStop = idxOfLastStop - stopsPerPage;
     const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     // stopsObj.filter((stop) => {
     //     // console.log(stop.value.stop_name);
@@ -81,8 +85,12 @@ const AllStopsPage = () => {
 
                     })}
                 </table> */}
-
                 {stopsObj && <StopList stopsObj={currentStops} title="All Stops" />}
+                <Pagination 
+                    stopsPerPage={stopsPerPage} 
+                    totalStops={stopsObj.length}
+                    paginate={paginate}
+                />
                 {/* {stopsObj && <StopList stopsObj={stopsObj} title="All Stops" />} */}
             </div>
         </div>
