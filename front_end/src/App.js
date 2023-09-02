@@ -55,11 +55,11 @@ function App() {
   // https://stackoverflow.com/questions/68848031/how-to-handle-inactive-users-and-log-them-out-in-react-javascript
   let timeInterval = setInterval(() => {
     let lastAcivity = localStorage.getItem('lastActvity');
-    var diffMs = Math.abs(new Date(lastAcivity) - new Date()); // milliseconds between now & last activity
-    var seconds = Math.floor((diffMs/1000));
-    var minute = Math.floor((seconds/60));
-    // console.log(seconds +' sec and '+minute+' min since last activity');
-    if (currentUser.userId != '' && minute == 10) {
+    let diffMs = Math.abs(new Date(lastAcivity) - new Date()); // milliseconds between now & last activity
+    let seconds = Math.floor((diffMs/1000));
+    let minute = Math.floor((seconds/60));
+    console.log(seconds +' sec and '+minute+' min since last activity');
+    if (currentUser.userId != '' && minute == 1) {
       console.log('No activity from last 10 minutes... Logging Out');
       clearInterval(timeInterval);
       fetch(`/logout`)
