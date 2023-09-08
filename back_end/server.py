@@ -6,6 +6,7 @@ from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_session import Session
 from dotenv import load_dotenv
+from datetime import timedelta
 import os 
 import crud
 
@@ -21,6 +22,8 @@ bycrypt = Bcrypt(app)
 app.config['SESSION_TYPE'] = "filesystem"
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_FILE_THRESHOLD'] = 200
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=5)
 
 # Create and initialize the Flask-Session object AFTER 'app' has been configured
 server_session = Session(app)
