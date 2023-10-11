@@ -40,7 +40,6 @@ function App() {
   //   setIsLoaded(true);
   // }, [isLoaded]);
 
-
   // user activity event listeners
   document.addEventListener("mousemove", () =>{ 
     localStorage.setItem('lastActvity', new Date())
@@ -51,25 +50,25 @@ function App() {
   });
 
   // automatic logout of inactive user
-  // code borrowed from Vishnu Bhadoriya: 
+  // code adapted from Vishnu Bhadoriya: 
   // https://stackoverflow.com/questions/68848031/how-to-handle-inactive-users-and-log-them-out-in-react-javascript
- 
+
   let timeInterval = setInterval(() => {
     let lastAcivity = localStorage.getItem('lastActvity');
     let diffMs = Math.abs(new Date(lastAcivity) - new Date()); // milliseconds between now & last activity
     let seconds = Math.floor((diffMs/1000));
     let minute = Math.floor((seconds/60));
-    console.log(seconds +' sec and '+minute+' min since last activity');
-    if (currentUser.userId != '' && minute == 10) {
-      console.log('No activity from last 10 minutes... Logging Out');
+    // console.log(seconds +' sec and '+minute+' min since last activity');
+    if (user.email !== '' && minute === 15) { 
+      // console.log('No activity from last 10 minutes... Logging Out');
       clearInterval(timeInterval);
       fetch(`/logout`)
             .then((response) => response.json())
             .then((data) =>{
-              navigate('/');
-              setIsLoggedIn(false);
+              navigate('/'); 
               setUser({ email: '', username: '', phoneNum: '' });
               setCurrentUser({ userId: '' });
+              setIsLoggedIn(false); 
             })
             .catch((error) => {
               console.log(error, 'error');

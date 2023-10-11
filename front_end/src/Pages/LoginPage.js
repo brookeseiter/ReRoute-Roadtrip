@@ -33,7 +33,7 @@ export default function LoginPage ({ user, setUser, isLoggedIn, setIsLoggedIn })
       }, []); 
   };
 
-  console.log('value of user on LoginPage', user);
+  // console.log('value of user on LoginPage', user);
 
   useEffect (() => {
     if (isLoggedIn) {

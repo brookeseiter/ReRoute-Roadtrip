@@ -102,7 +102,8 @@ def login_status():
 def logout_user():
     """Log user out."""
 
-    session.pop('user_id')
+    if 'user_id' in session:
+        session.pop('user_id')
     
     return jsonify({'message': 'Logout succesful.'}), 200
 
