@@ -121,7 +121,14 @@ const AllStopsPage = () => {
                             }
                         }}  
                     />
-                    <Pagination.Last />
+                    <Pagination.Last 
+                        onClick={ () => {
+                            if (active >= 1) {
+                                paginate(Math.ceil(stopsObj.length / stopsPerPage));
+                                setActive(Math.ceil(stopsObj.length / stopsPerPage));
+                            }
+                        }} 
+                    />
                 </Pagination>
                 {/* <Pagination 
                     stopsPerPage={stopsPerPage} 
