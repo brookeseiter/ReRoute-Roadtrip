@@ -97,7 +97,14 @@ const AllStopsPage = () => {
                 {stopsObj && <StopList stopsObj={currentStops} title="All Stops" />}
                 <Pagination>
                     <Pagination.First />
-                    <Pagination.Prev />
+                    <Pagination.Prev 
+                        onClick={ () => {
+                            if (active > 1) {
+                                paginate(active - 1);
+                                setActive(active - 1);
+                            }
+                        }}  
+                    />
                     {pageNumbers}
                     <Pagination.Next />
                     <Pagination.Last />
