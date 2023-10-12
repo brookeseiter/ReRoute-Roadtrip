@@ -106,7 +106,14 @@ const AllStopsPage = () => {
                         }}  
                     />
                     {pageNumbers}
-                    <Pagination.Next />
+                    <Pagination.Next 
+                        onClick={ () => {
+                            if (active >= 1) {
+                                paginate(active + 1);
+                                setActive(active + 1);
+                            }
+                        }}  
+                    />
                     <Pagination.Last />
                 </Pagination>
                 {/* <Pagination 
