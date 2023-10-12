@@ -96,7 +96,14 @@ const AllStopsPage = () => {
                 </table> */}
                 {stopsObj && <StopList stopsObj={currentStops} title="All Stops" />}
                 <Pagination>
-                    <Pagination.First />
+                    <Pagination.First 
+                        onClick={ () => {
+                            if (active > 1) {
+                                paginate(1);
+                                setActive(1);
+                            }
+                        }} 
+                    />
                     <Pagination.Prev 
                         onClick={ () => {
                             if (active > 1) {
