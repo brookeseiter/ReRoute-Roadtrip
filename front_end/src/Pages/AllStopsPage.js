@@ -10,6 +10,7 @@ const AllStopsPage = () => {
     const [active, setActive] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
     const [stopsPerPage] = useState(10);
+    const [limit, setLimit] = useState(11);
     
     useEffect(() => {
         fetch(`/stops`)
@@ -23,9 +24,14 @@ const AllStopsPage = () => {
     const stopsObj = Object.entries(stops).map(([key, value]) => ({key, value}));
     console.log(stopsObj);
 
-    const pageNumbers = [];
+    let pageNumbers = [];
+    // const pageNumbers = [];
 
-    for (let i = 1; i <= Math.ceil(stopsObj.length / stopsPerPage); i++) {
+    // not OG
+    let totalPages = Math.ceil(stopsObj.length/limit)
+
+    for (let i = 1; i < (currentPage * limit); i++) {
+    // for (let i = 1; i <= Math.ceil(stopsObj.length / stopsPerPage); i++) {
         pageNumbers.push(
             <Pagination.Item 
                 key={i} 
@@ -113,6 +119,14 @@ const AllStopsPage = () => {
                         }}  
                     />
                     {pageNumbers}
+                    <Pagination.Ellipsis
+                        onClick={ () => {
+                            if (active >= 10) {
+                                paginate(11);
+                                setActive(11);
+                            }
+                        }} 
+                    />
                     <Pagination.Next 
                         onClick={ () => {
                             if (active >= 1) {
