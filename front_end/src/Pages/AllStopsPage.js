@@ -7,9 +7,13 @@ import StopList from '../Components/StopList.js';
 
 const AllStopsPage = () => {
     const [stops, setStops] = useState([]);
+    // the page thats highlighted totally in blue in the pagination 
     const [active, setActive] = useState(1);
+    // the page that youre currently looking at (stops change)
     const [currentPage, setCurrentPage] = useState(1);
+    // # of stops on each page
     const [stopsPerPage] = useState(10);
+    // # of pages of the pagination 
     const [limit, setLimit] = useState(11);
     
     useEffect(() => {
@@ -24,14 +28,23 @@ const AllStopsPage = () => {
     const stopsObj = Object.entries(stops).map(([key, value]) => ({key, value}));
     console.log(stopsObj);
 
-    let pageNumbers = [];
-    // const pageNumbers = [];
+    // let pageNumbers = [];
+    const pageNumbers = [];
 
     // not OG
-    let totalPages = Math.ceil(stopsObj.length/limit)
+    // let totalPages = Math.ceil(stopsObj.length/limit)
 
-    for (let i = 1; i < (currentPage * limit); i++) {
-    // for (let i = 1; i <= Math.ceil(stopsObj.length / stopsPerPage); i++) {
+    // Get current stops
+    const idxOfLastStop = currentPage * stopsPerPage;
+    const idxOfFirstStop = idxOfLastStop - stopsPerPage;
+    const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
+
+    // Change page
+    const paginate = (i) => setCurrentPage(i);
+
+    // for (let i = 1; i <= limit; i++) {  // Goes to 11 and flips stops past that, no new #s
+    for (let i = 1; i < (currentPage * limit); i++) {  // further #s shown, multiplied by 10 peach time past the last stop and flipping works
+    // for (let i = 1; i <= Math.ceil(stopsObj.length / stopsPerPage); i++) { // the numbers go to the end (1-31) and flipping works
         pageNumbers.push(
             <Pagination.Item 
                 key={i} 
@@ -46,13 +59,6 @@ const AllStopsPage = () => {
         );
     }
 
-    // Get current stops
-    const idxOfLastStop = currentPage * stopsPerPage;
-    const idxOfFirstStop = idxOfLastStop - stopsPerPage;
-    const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
-
-    // Change page
-    const paginate = (i) => setCurrentPage(i);
 
     // stopsObj.filter((stop) => {
     //     // console.log(stop.value.stop_name);
@@ -120,12 +126,12 @@ const AllStopsPage = () => {
                     />
                     {pageNumbers}
                     <Pagination.Ellipsis
-                        onClick={ () => {
-                            if (active >= 10) {
-                                paginate(11);
-                                setActive(11);
-                            }
-                        }} 
+                        // onClick={ () => {
+                        //     if (active >= 10) {
+                        //         paginate(11);
+                        //         setActive(11);
+                        //     }
+                        // }} 
                     />
                     <Pagination.Next 
                         onClick={ () => {
