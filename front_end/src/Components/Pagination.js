@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState , useEffect} from 'react';
+import { useEffect} from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 
 const PaginationComp = ({ 
@@ -7,27 +7,19 @@ const PaginationComp = ({
     totalItems, 
     currentPage,
     setCurrentPage,
-    paginate 
+    changePage
 }) => {
     const pagesCount = Math.ceil(totalItems / itemsPerPage);
-    // const isCurrentPageFirst = currentPage === 1;
-    // const isCurrentPageLast = currentPage === pagesCount;
-    // const changePage = number => {
-    //     if (currentPage === number) return;
-    //     setCurrentPage(number);
-    // };
-    // const onPageNumberClick = pageNumber => {
-    //     changePage(pageNumber);
-    // };
-    
+
     const setLastPageAsCurrent = () => {
-        if (currentPage > pagesCount) {
+        if (currentPage !== 1 && currentPage > pagesCount) {
           setCurrentPage(pagesCount);
         }
     };
 
     let isPageNumberOutOfRange;
 
+    // code adapted from: https://github.com/lukaaspl/ellipsis-pagination/blob/master/src/components/Pagination.js
     const pageNumbers = [...new Array(pagesCount)].map((_, index) => {
       const pageNumber = index + 1;
       const isPageNumberFirst = pageNumber === 1;
@@ -44,11 +36,7 @@ const PaginationComp = ({
         return (
           <Pagination.Item
             key={pageNumber}
-            onClick={() => {
-                paginate(pageNumber);
-                setCurrentPage(pageNumber);
-            }}
-            onLoad={console.log(pageNumber)}
+            onClick={() => changePage(pageNumber)}
             active={pageNumber === currentPage}
           >
             {pageNumber}
@@ -64,8 +52,7 @@ const PaginationComp = ({
       return null;
     });
     
-    useEffect(setLastPageAsCurrent, [pagesCount]);
-    // useEffect(setLastPageAsCurrent, [pagesCount, currentPage, setCurrentPage]);
+    useEffect(setLastPageAsCurrent, [pagesCount, currentPage, setCurrentPage]);
 
     return (
         <nav> 
@@ -74,14 +61,14 @@ const PaginationComp = ({
                     <Pagination.First 
                         onClick={ () => {
                             if (currentPage > 1) {
-                                paginate(1);
+                                changePage(1);
                             }
                         }} 
                     />
                     <Pagination.Prev 
                         onClick={ () => {
                             if (currentPage > 1) {
-                                paginate(currentPage - 1);
+                                changePage(currentPage - 1);
                             }
                         }}  
                     />
@@ -89,14 +76,14 @@ const PaginationComp = ({
                     <Pagination.Next 
                         onClick={ () => {
                             if (currentPage >= 1) {
-                                paginate(currentPage + 1);
+                                changePage(currentPage + 1);
                             }
                         }}  
                     />
                     <Pagination.Last 
                         onClick={ () => {
                             if (currentPage >= 1) {
-                                paginate(pagesCount);
+                                changePage(pagesCount);
                             }
                         }} 
                     />

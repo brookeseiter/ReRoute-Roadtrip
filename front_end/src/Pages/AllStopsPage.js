@@ -5,10 +5,7 @@ import PaginationComp from '../Components/Pagination.js';
 
 const AllStopsPage = () => {
     const [stops, setStops] = useState([]);
-    // the page thats highlighted totally in blue in the pagination 
-    // the page that youre currently looking at (stops change)
     const [currentPage, setCurrentPage] = useState(1);
-    // # of stops on each page
     const [stopsPerPage] = useState(10);
     
     useEffect(() => {
@@ -28,7 +25,7 @@ const AllStopsPage = () => {
     const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
 
     // Change page
-    const paginate = (i) => setCurrentPage(i);
+    const changePage = (pageNum) => setCurrentPage(pageNum);
 
     // stopsObj.filter((stop) => {
     //     // console.log(stop.value.stop_name);
@@ -79,7 +76,7 @@ const AllStopsPage = () => {
                     totalItems={stopsObj.length}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
-                    paginate={paginate}
+                    changePage={changePage}
                 />
             </div>
         </div>
