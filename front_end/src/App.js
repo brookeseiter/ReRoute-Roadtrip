@@ -15,7 +15,7 @@ function App() {
   const[isLoggedIn, setIsLoggedIn] = useState(false);
   const[user, setUser] = useState({ email: '', username: '', phoneNum: '' });
   const[currentUser, setCurrentUser] = useState({ userId: '' });
-  const[isLoaded, setIsLoaded] = useState(false);
+  const[loading, setLoading] = useState(false);
   const navigate = useNavigate();
  
   useEffect(() => {
@@ -80,10 +80,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Homepage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} /> 
       <Route path="/create-account" element={<CreateAccountPage />} />
-      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} isLoaded={isLoaded} setIsLoaded={setIsLoaded} />} />
+      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} loading={loading} setLoading={setLoading} />} />
       <Route path="/create-stop" element={<CreateStopPage user={user} isLoggedIn={isLoggedIn} currentUser={currentUser} />} />
       <Route path="/create-route" element={<CreateRoutePage />} />
-      <Route path="/stops" element={<AllStopsPage />} />
+      <Route path="/stops" element={<AllStopsPage loading={loading} setLoading={setLoading} />} />
       <Route path="/stops/:stopId" element={<StopDetailsPage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes> 

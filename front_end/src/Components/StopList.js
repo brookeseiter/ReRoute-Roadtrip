@@ -1,23 +1,18 @@
 import { Link } from 'react-router-dom';
-import Pagination from 'react-bootstrap/Pagination';
-import { useState } from 'react';
 
-
-
-const StopList = ({ stopsObj, title, isLoaded, setIsLoaded }) => {
+const StopList = ({ stopsObj, title, loading, setLoading }) => {
 
     const handleDeleteStop= (stopObj) => {
         console.log(stopObj);
+        setLoading(true);
         const stopId = stopObj.value.stop_id;
         fetch(`/stops/${stopId}`, {
             method: 'DELETE'
         }).then(() => {
             console.log("deleted"); 
-            setIsLoaded(false);
+            setLoading(false);
         });
     };
-
-
 
     return (
         <div className="stop-list">
@@ -25,7 +20,7 @@ const StopList = ({ stopsObj, title, isLoaded, setIsLoaded }) => {
                 <h1>All Stops</h1>
             }
             {stopsObj.map((stopObj) => (
-                 <div className="stop-preview rounded" key={ stopObj.key }>
+                <div className="stop-preview rounded" key={ stopObj.key }>
                     <Link to={`/stops/${stopObj.value.stop_id}`}>
                         <h2>{ stopObj.value.stop_name }</h2>
                         <p>Category { stopObj.value.stop_category }</p>
@@ -36,7 +31,7 @@ const StopList = ({ stopsObj, title, isLoaded, setIsLoaded }) => {
                         <button onClick={() => handleDeleteStop(stopObj)}>Delete Stop</button>
                     }
                 </div>
-            ))}
+            ))} 
         </div>
     );
 }

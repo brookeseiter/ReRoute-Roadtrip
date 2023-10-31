@@ -3,19 +3,21 @@ import Navbar from '../Components/NavBar.js';
 import StopList from '../Components/StopList.js';
 import PaginationComp from '../Components/Pagination.js';
 
-const AllStopsPage = () => {
+const AllStopsPage = ({ loading, setLoading }) => {
     const [stops, setStops] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [stopsPerPage] = useState(10);
     
     useEffect(() => {
+        setLoading(true);
         fetch(`/stops`)
             .then((response) => response.json())
             .then((data) => {
                 setStops(data);
+                setLoading(false);
             })
             .catch((error) => console.log(error));
-    }, []);
+    }, [setLoading]);
 
     const stopsObj = Object.entries(stops).map(([key, value]) => ({key, value}));
 
@@ -23,6 +25,9 @@ const AllStopsPage = () => {
     const idxOfLastStop = currentPage * stopsPerPage;
     const idxOfFirstStop = idxOfLastStop - stopsPerPage;
     const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
+    // if (loading) {
+    //     return <h2>Loading...</h2>;
+    // }
 
     // stopsObj.filter((stop) => {
     //     // console.log(stop.value.stop_name);
@@ -47,35 +52,37 @@ const AllStopsPage = () => {
     return (
         <div className="all-stops-page">
             <Navbar />
-            <div className="all-stops-page-content container">
-                {/* <input 
-                    type="search"
-                    onChange={handleChange}
-                    value={searchInput} />
-                <table>
-                    <tr>
-                        <th>Country</th>
-                    </tr>
-
-                    {stopsObj.map((stop) => {
-
-                    <div key={stop.key}>
+            {loading ? <h2>Loading...</h2> :
+                <div className="all-stops-page-content container">
+                    {/* <input 
+                        type="search"
+                        onChange={handleChange}
+                        value={searchInput} />
+                    <table>
                         <tr>
-                            <td>{stop.value.stop_name}</td>
+                            <th>Country</th>
                         </tr>
-                    </div>
 
-                    })}
-                </table> */}
-                {stopsObj && <StopList stopsObj={currentStops} title="All Stops" />}
-                <PaginationComp
-                    itemsPerPage={stopsPerPage} 
-                    totalItems={stopsObj.length}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    alwaysShown={false}
-                />
-            </div>
+                        {stopsObj.map((stop) => {
+
+                        <div key={stop.key}>
+                            <tr>
+                                <td>{stop.value.stop_name}</td>
+                            </tr>
+                        </div>
+
+                        })}
+                    </table> */}
+                    {stopsObj && <StopList stopsObj={currentStops} loading={loading} setLoading={setLoading} title="All Stops" />}
+                    <PaginationComp
+                        itemsPerPage={stopsPerPage} 
+                        totalItems={stopsObj.length}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                        alwaysShown={false}
+                    />
+                </div>
+            }           
         </div>
     );
 };
