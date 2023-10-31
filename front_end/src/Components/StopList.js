@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 
-const StopList = ({ stopsObj, title, loading, setLoading }) => {
 
+const StopList = ({ 
+    stopsObj, 
+    title, 
+    loading, 
+    setLoading 
+}) => {
     const handleDeleteStop= (stopObj) => {
         console.log(stopObj);
         setLoading(true);
@@ -34,6 +39,6 @@ const StopList = ({ stopsObj, title, loading, setLoading }) => {
             ))} 
         </div>
     );
-}
+};
  
 export default StopList;

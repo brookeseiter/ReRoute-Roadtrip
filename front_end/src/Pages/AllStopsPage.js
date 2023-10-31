@@ -3,6 +3,7 @@ import Navbar from '../Components/NavBar.js';
 import StopList from '../Components/StopList.js';
 import PaginationComp from '../Components/Pagination.js';
 
+
 const AllStopsPage = ({ loading, setLoading }) => {
     const [stops, setStops] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);

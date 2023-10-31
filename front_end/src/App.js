@@ -52,7 +52,6 @@ function App() {
   // automatic logout of inactive user
   // code adapted from Vishnu Bhadoriya: 
   // https://stackoverflow.com/questions/68848031/how-to-handle-inactive-users-and-log-them-out-in-react-javascript
-
   let timeInterval = setInterval(() => {
     let lastAcivity = localStorage.getItem('lastActvity');
     let diffMs = Math.abs(new Date(lastAcivity) - new Date()); // milliseconds between now & last activity
@@ -78,17 +77,39 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Homepage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} /> 
+      <Route path="/" element={<Homepage 
+                                  user={user} 
+                                  setUser={setUser} 
+                                  isLoggedIn={isLoggedIn} 
+                                  setIsLoggedIn={setIsLoggedIn} />} /> 
       <Route path="/create-account" element={<CreateAccountPage />} />
-      <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} loading={loading} setLoading={setLoading} />} />
-      <Route path="/create-stop" element={<CreateStopPage user={user} isLoggedIn={isLoggedIn} currentUser={currentUser} />} />
+      <Route path="/profile" element={<ProfilePage 
+                                        user={user} 
+                                        setUser={setUser} 
+                                        isLoggedIn={isLoggedIn} 
+                                        setIsLoggedIn={setIsLoggedIn} 
+                                        currentUser={currentUser} 
+                                        setCurrentUser={setCurrentUser} 
+                                        loading={loading} 
+                                        setLoading={setLoading} />} />
+      <Route path="/create-stop" element={<CreateStopPage 
+                                            user={user} 
+                                            isLoggedIn={isLoggedIn} 
+                                            currentUser={currentUser} />} />
       <Route path="/create-route" element={<CreateRoutePage />} />
-      <Route path="/stops" element={<AllStopsPage loading={loading} setLoading={setLoading} />} />
-      <Route path="/stops/:stopId" element={<StopDetailsPage user={user} setUser={setUser} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} />} />
+      <Route path="/stops" element={<AllStopsPage 
+                                      loading={loading} 
+                                      setLoading={setLoading} />} />
+      <Route path="/stops/:stopId" element={<StopDetailsPage 
+                                              user={user} 
+                                              setUser={setUser} 
+                                              isLoggedIn={isLoggedIn} 
+                                              setIsLoggedIn={setIsLoggedIn} 
+                                              currentUser={currentUser} />} />
       <Route path="*" element={<NotFound />} />
     </Routes> 
   );
-}
+};
 
 export default App;
 
