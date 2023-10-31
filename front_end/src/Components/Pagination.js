@@ -7,9 +7,11 @@ const PaginationComp = ({
     totalItems, 
     currentPage,
     setCurrentPage,
-    changePage
+    alwaysShown = true
 }) => {
     const pagesCount = Math.ceil(totalItems / itemsPerPage);
+    const isPaginationShown = alwaysShown ? true : pagesCount > 1;
+    const changePage = (pageNum) => setCurrentPage(pageNum);
 
     const setLastPageAsCurrent = () => {
         if (currentPage !== 1 && currentPage > pagesCount) {
@@ -57,37 +59,39 @@ const PaginationComp = ({
     return (
         <nav> 
             <ul className="pagination">
-                <Pagination>
-                    <Pagination.First 
-                        onClick={ () => {
-                            if (currentPage > 1) {
-                                changePage(1);
-                            }
-                        }} 
-                    />
-                    <Pagination.Prev 
-                        onClick={ () => {
-                            if (currentPage > 1) {
-                                changePage(currentPage - 1);
-                            }
-                        }}  
-                    />
-                    {pageNumbers}
-                    <Pagination.Next 
-                        onClick={ () => {
-                            if (currentPage >= 1) {
-                                changePage(currentPage + 1);
-                            }
-                        }}  
-                    />
-                    <Pagination.Last 
-                        onClick={ () => {
-                            if (currentPage >= 1) {
-                                changePage(pagesCount);
-                            }
-                        }} 
-                    />
-                </Pagination>
+                {isPaginationShown && (
+                    <Pagination>
+                        <Pagination.First 
+                            onClick={ () => {
+                                if (currentPage > 1) {
+                                    changePage(1);
+                                }
+                            }} 
+                        />
+                        <Pagination.Prev 
+                            onClick={ () => {
+                                if (currentPage > 1) {
+                                    changePage(currentPage - 1);
+                                }
+                            }}  
+                        />
+                        {pageNumbers}
+                        <Pagination.Next 
+                            onClick={ () => {
+                                if (currentPage >= 1) {
+                                    changePage(currentPage + 1);
+                                }
+                            }}  
+                        />
+                        <Pagination.Last 
+                            onClick={ () => {
+                                if (currentPage >= 1) {
+                                    changePage(pagesCount);
+                                }
+                            }} 
+                        />
+                    </Pagination>
+                )}
             </ul>
         </nav>
     );

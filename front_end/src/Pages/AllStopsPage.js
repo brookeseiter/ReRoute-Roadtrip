@@ -24,9 +24,6 @@ const AllStopsPage = () => {
     const idxOfFirstStop = idxOfLastStop - stopsPerPage;
     const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
 
-    // Change page
-    const changePage = (pageNum) => setCurrentPage(pageNum);
-
     // stopsObj.filter((stop) => {
     //     // console.log(stop.value.stop_name);
     //     return stop.value.stop_name;
@@ -76,7 +73,7 @@ const AllStopsPage = () => {
                     totalItems={stopsObj.length}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
-                    changePage={changePage}
+                    alwaysShown={false}
                 />
             </div>
         </div>
