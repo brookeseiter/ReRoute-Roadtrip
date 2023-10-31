@@ -6,13 +6,10 @@ import PaginationComp from '../Components/Pagination.js';
 const AllStopsPage = () => {
     const [stops, setStops] = useState([]);
     // the page thats highlighted totally in blue in the pagination 
-    // const [active, setActive] = useState(1);
     // the page that youre currently looking at (stops change)
     const [currentPage, setCurrentPage] = useState(1);
     // # of stops on each page
     const [stopsPerPage] = useState(10);
-    // # of pages of the pagination 
-    const [limit, setLimit] = useState(11);
     
     useEffect(() => {
         fetch(`/stops`)
@@ -80,12 +77,14 @@ const AllStopsPage = () => {
                 <PaginationComp
                     itemsPerPage={stopsPerPage} 
                     totalItems={stopsObj.length}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
                     paginate={paginate}
                 />
             </div>
         </div>
     );
-}
+};
 
 export default AllStopsPage;
 
