@@ -2,8 +2,17 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../Components/NavBar";
 import StopReviews from "../Components/StopReviews";
+import Spinner from 'react-bootstrap/Spinner';
 
-const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) => {
+
+const StopDetails = ({ 
+    currentUser, 
+    user, 
+    setUser, 
+    isLoggedIn, 
+    setisLoggedIn, 
+    loading 
+}) => {
     let { stopId } = useParams(); 
     const [stop, setStop] = useState([]); 
     const [inputs, setInputs] = useState({});
@@ -59,64 +68,65 @@ const StopDetails = ({ currentUser, user, setUser, isLoggedIn, setisLoggedIn }) 
     return ( 
         <div className="stop-page">
             <Navbar />
-            <div className="stop-details-page-content container" id="stop-details">
-                {/* <div className="row"> */}
-                    <div className="row stop-info">
-                        <h1>{ stop.stop_name }</h1>
-                        <p>Category: { stop.stop_category }</p>
-                        <p>Latitude: { stop.stop_lat}</p>
-                        <p>Longitude: { stop.stop_lng }</p>
-                        {
-                            updateRating  ?
-                            (<p>Rating: { updateRating }</p>) : null
-                        }
-                        <br />
-                    </div>
-                    <div className="row">
-                        <div className="create-review col-md-6">
-                            <h2>Leave a Review</h2>
-                            <form className="create-review-form" onSubmit={handleAddReview}>
-                                <label 
-                                    htmlFor="review-rating-input" 
-                                    className="create-review-form-input"
-                                >
-                                    Rating
-                                <input 
-                                    type="text" 
-                                    name="rating"
-                                    id="review-rating-input"
-                                    value={inputs.rating || ""}
-                                    onChange={handleChange}
-                                    placeholder="Enter a number between 1-5"
-                                    required 
-                                />
-                                </label>
-                                <label 
-                                    htmlFor="review-text-input" 
-                                    className="create-review-form-input"
-                                >
-                                    Review
-                                </label>
-                                <textarea 
-                                    type="textArea" 
-                                    name="content"
-                                    id="review-text-input"
-                                    value={inputs.content || ""}
-                                    onChange={handleChange} 
-                                    placeholder="Tell other travelers why you love it (or don't!)"
-                                    required 
-                                />
-                                <button onClick={() => setUpdateRating(true)}>Create Review</button>
-                            </form>
+            {loading ? <Spinner animation="border" /> :
+                <div className="stop-details-page-content container" id="stop-details">
+                    {/* <div className="row"> */}
+                        <div className="row stop-info">
+                            <h1>{ stop.stop_name }</h1>
+                            <p>Category: { stop.stop_category }</p>
+                            <p>Latitude: { stop.stop_lat}</p>
+                            <p>Longitude: { stop.stop_lng }</p>
+                            {
+                                updateRating  ?
+                                (<p>Rating: { updateRating }</p>) : null
+                            }
+                            <br />
                         </div>
-                        <div className="col-md-6">
-                            <StopReviews handleRatingChange={handleRatingChange} />
+                        <div className="row">
+                            <div className="create-review col-md-6">
+                                <h2>Leave a Review</h2>
+                                <form className="create-review-form" onSubmit={handleAddReview}>
+                                    <label 
+                                        htmlFor="review-rating-input" 
+                                        className="create-review-form-input"
+                                    >
+                                        Rating
+                                    <input 
+                                        type="text" 
+                                        name="rating"
+                                        id="review-rating-input"
+                                        value={inputs.rating || ""}
+                                        onChange={handleChange}
+                                        placeholder="Enter a number between 1-5"
+                                        required 
+                                    />
+                                    </label>
+                                    <label 
+                                        htmlFor="review-text-input" 
+                                        className="create-review-form-input"
+                                    >
+                                        Review
+                                    </label>
+                                    <textarea 
+                                        type="textArea" 
+                                        name="content"
+                                        id="review-text-input"
+                                        value={inputs.content || ""}
+                                        onChange={handleChange} 
+                                        placeholder="Tell other travelers why you love it (or don't!)"
+                                        required 
+                                    />
+                                    <button onClick={() => setUpdateRating(true)}>Create Review</button>
+                                </form>
+                            </div>
+                            <div className="col-md-6">
+                                <StopReviews handleRatingChange={handleRatingChange} />
+                            </div>
                         </div>
-                    </div>
                 </div>
-            {/* </div> */}
+            }
         </div>
-     );
+    );
 }
  
 export default StopDetails;

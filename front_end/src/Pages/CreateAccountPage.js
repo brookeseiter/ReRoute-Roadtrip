@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner';
 
-export default function CreateAccountPage () {
+
+export default function CreateAccountPage ({ loading }) {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
-
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -54,74 +55,76 @@ export default function CreateAccountPage () {
                     <h1 className="d-inline-block"> ReRoute Roadtrip</h1>
                 </div>
             </nav>
-            <div className="create-account-page-content container">
-                <div className="row">
-                    <div className="col">
-                        <h1>Create An Account</h1>
-                        <form className="create-account-form">
-                            <div className="mb-3">
-                                <label htmlFor="email-input" className="create-account-input">
-                                <input 
-                                    type="text"
-                                    name="email"
-                                    id="email-input" 
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Email"
-                                    required
-                                />
-                                </label>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="username-input" className="create-account-input">
-                                <input 
-                                    type="text"
-                                    name="username" 
-                                    id="username-input"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    placeholder="Username"
-                                    required
-                                />
-                                </label>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="password-input" className="create-account-input">
-                                <input 
-                                    type="text"
-                                    name="password" 
-                                    id="password-input"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Password"
-                                    required
-                                />
-                                </label>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="phone-num-input" className="create-account-input">
-                                <input 
-                                    type="text"
-                                    name="phoneNum" 
-                                    id="phone-num-input"
-                                    value={phoneNum}
-                                    onChange={(e) => setPhoneNum(e.target.value)}
-                                    placeholder="Phone Number"
-                                    required
-                                />
-                                </label>
-                            </div>
-                            <button>Submit</button>
-                            <br />
-                            <small>
-                                Already have an account? 
-                                <br /> 
-                                <Link to='/'>Log In</Link>
-                            </small>
-                        </form>
+            {loading ? <Spinner animation="border" /> :
+                <div className="create-account-page-content container">
+                    <div className="row">
+                        <div className="col">
+                            <h1>Create An Account</h1>
+                            <form className="create-account-form">
+                                <div className="mb-3">
+                                    <label htmlFor="email-input" className="create-account-input">
+                                    <input 
+                                        type="text"
+                                        name="email"
+                                        id="email-input" 
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="Email"
+                                        required
+                                    />
+                                    </label>
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="username-input" className="create-account-input">
+                                    <input 
+                                        type="text"
+                                        name="username" 
+                                        id="username-input"
+                                        value={username}
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        placeholder="Username"
+                                        required
+                                    />
+                                    </label>
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="password-input" className="create-account-input">
+                                    <input 
+                                        type="text"
+                                        name="password" 
+                                        id="password-input"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        placeholder="Password"
+                                        required
+                                    />
+                                    </label>
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="phone-num-input" className="create-account-input">
+                                    <input 
+                                        type="text"
+                                        name="phoneNum" 
+                                        id="phone-num-input"
+                                        value={phoneNum}
+                                        onChange={(e) => setPhoneNum(e.target.value)}
+                                        placeholder="Phone Number"
+                                        required
+                                    />
+                                    </label>
+                                </div>
+                                <button>Submit</button>
+                                <br />
+                                <small>
+                                    Already have an account? 
+                                    <br /> 
+                                    <Link to='/'>Log In</Link>
+                                </small>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
      );
 }

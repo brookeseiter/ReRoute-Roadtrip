@@ -1,6 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Navbar ({ setUser, currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) {
+
+export default function Navbar ({ 
+    setUser, 
+    currentUser, 
+    setCurrentUser, 
+    isLoggedIn, 
+    setIsLoggedIn 
+}) {
     const navigate = useNavigate();
 
     const handleLogout = (e) => {

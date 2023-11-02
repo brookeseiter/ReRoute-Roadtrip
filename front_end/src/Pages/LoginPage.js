@@ -1,8 +1,16 @@
 import React, { useEffect } from 'react';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner';
 
-export default function LoginPage ({ user, setUser, isLoggedIn, setIsLoggedIn }) {
+
+export default function LoginPage ({ 
+  user, 
+  setUser, 
+  isLoggedIn, 
+  setIsLoggedIn, 
+  loading 
+}) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,6 +51,7 @@ export default function LoginPage ({ user, setUser, isLoggedIn, setIsLoggedIn })
 
   return ( 
       <div className="login-page">
+        {loading ? <Spinner animation="border" /> :
           <form className='login-form' onSubmit={handleLogin}>
               <div className="mb-3">
                   <label htmlFor="email-input" className="login-form-input">
@@ -78,6 +87,7 @@ export default function LoginPage ({ user, setUser, isLoggedIn, setIsLoggedIn })
                   <Link to='/create-account'>Create One</Link>
               </small>
           </form>
+        }         
       </div>
   );
 }

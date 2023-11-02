@@ -5,13 +5,20 @@ import usePlacesAutocomplete, {getGeocode, getLatLng} from "use-places-autocompl
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import Navbar from "../Components/NavBar";
+import Spinner from 'react-bootstrap/Spinner';
+
 
 const center = {
     lat: 37.733795, 
     lng: -122.446747
 };
 
-export default function CreateStopPage ({ user, isLoggedIn, currentUser }) {
+export default function CreateStopPage ({ 
+    user, 
+    isLoggedIn, 
+    currentUser, 
+    loading 
+}) {
     const mapRef = useRef();
     const [libraries] = useState(['places','geometry']);
     const navigate = useNavigate();
@@ -73,135 +80,143 @@ export default function CreateStopPage ({ user, isLoggedIn, currentUser }) {
     }
 
     console.log('currentUser CreateStopPage:', currentUser);
-  
 
-    if (!isLoaded) return <div>Loading...</div>
+    if (!isLoaded) return (
+        <>
+            <Navbar />
+            <Spinner animation="border" />
+        </>
+    )
     return ( 
         <div className="create-stop-page" onSubmit={handleSubmit}>
             <Navbar />
-            <div className="create-stop-page-content container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <h1>Create A Stop</h1>
-                        <p>Click the map to drop a pin at approximate location of your stop</p>
-                        <StandaloneSearchBox panTo={panTo} />
-                        <br />
+            {loading ? <Spinner animation="border" /> :
+                <div className="create-stop-page-content container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h1>Create A Stop</h1>
+                            <p>Click the map to drop a pin at approximate location of your stop</p>
+                            <StandaloneSearchBox panTo={panTo} />
+                            <br />
+                        </div>
                     </div>
+                    {loading ? <Spinner animation="border" /> :
+                        <div className="row g-3">
+                            <div className="map-content col-md-6">
+                                <GoogleMap 
+                                    zoom={10} 
+                                    center={center} 
+                                    mapContainerClassName="map-container"
+                                    mapContainerStyle={{
+                                        height: '395px',
+                                        width: '530px'
+                                    }}
+                                    onClick={(e) => {
+                                        marker = {
+                                            lat: e.latLng.lat(),
+                                            lng: e.latLng.lng()};
+                                        setMarker(marker);
+                                        console.log(marker);
+                                    }}
+                                    options={{
+                                        streetViewControl: false,
+                                        fullscreenControl: false,
+                                        mapTypeControl: false,
+                                        controlSize: 36,
+                                        gestureHandling: "cooperative"
+                                    }}
+                                    onLoad={onMapLoad}
+                                >
+                                    {marker.lat ? (<MarkerF position={{ lat: marker.lat, lng: marker.lng }} />) : null}
+                                </GoogleMap>
+                            </div>
+                            <div className="col-md-6">
+                                <form className="create-stop-form">
+                                    <label 
+                                        htmlFor="stop-name-input" 
+                                        className="create-stop-form-input"
+                                    >
+                                        Stop Name
+                                    <input 
+                                        type="text" 
+                                        name="stopName"
+                                        id="stop-name-input"
+                                        value={inputs.stopName || ""}
+                                        onChange={handleChange}
+                                        placeholder="Name your stop"
+                                        required 
+                                    />
+                                    </label>
+                                    <label 
+                                        htmlFor="stop-lat-input" 
+                                        className="create-stop-form-input"
+                                    >
+                                        Stop Latitutde
+                                    <input 
+                                        type="text" 
+                                        name="stopLat"
+                                        id="stop-lat-input"
+                                        value={marker.lat || ""}
+                                        onChange={handleChange} 
+                                        placeholder="Drop a pin on map"
+                                        required 
+                                    />
+                                    </label>
+                                    <label 
+                                        htmlFor="stop-lng-input" 
+                                        className="create-stop-form-input"
+                                    >
+                                        Stop Longitude
+                                    <input 
+                                        type="text"
+                                        name="stopLng" 
+                                        id="stop-lng-input"
+                                        value={marker.lng || ""}
+                                        onChange={handleChange}
+                                        placeholder="Drop a pin on map"
+                                        required 
+                                    />
+                                    </label>
+                                    <label
+                                        htmlFor="stop-category-select"
+                                        className="create-stop-form-select"
+                                    >
+                                        Stop Category
+                                    </label>
+                                    <select 
+                                        name="stopCategory" 
+                                        id="stop-category-select" 
+                                        value={catChoice} 
+                                        onChange={(e) => {
+                                            catChoice = e.target.value;
+                                            setCatChoice(catChoice);
+                                            console.log(catChoice);
+                                        }}
+                                        required
+                                    >
+                                        <option value="Camping">Camping</option>
+                                        <option value="Caverns">Caverns</option>
+                                        <option value="Climbing Access/Scrambling">Climbing Access/Scrambling</option>
+                                        <option value="Hiking">Hiking</option>
+                                        <option value="National Monument">National Monument</option>
+                                        <option value="National Park">National Park</option>
+                                        <option value="Picnic Area">Picnic Area</option>
+                                        <option value="State Park">State Park</option>
+                                        <option value="Swimming Hole">Swimming Hole</option>
+                                        <option value="Unique Find">Unique Find</option>
+                                        <option value="View Point">View Point</option>
+                                        <option value="Water Access">Water Access</option>
+                                    </select>
+                                    <button>Create Stop</button>
+                                </form>
+                            </div>
+                        </div>
+                    }
                 </div>
-                <div className="row g-3">
-                    <div className="map-content col-md-6">
-                        <GoogleMap 
-                            zoom={10} 
-                            center={center} 
-                            mapContainerClassName="map-container"
-                            mapContainerStyle={{
-                                height: '395px',
-                                width: '530px'
-                            }}
-                            onClick={(e) => {
-                                marker = {
-                                    lat: e.latLng.lat(),
-                                    lng: e.latLng.lng()};
-                                setMarker(marker);
-                                console.log(marker);
-                            }}
-                            options={{
-                                streetViewControl: false,
-                                fullscreenControl: false,
-                                mapTypeControl: false,
-                                controlSize: 36,
-                                gestureHandling: "cooperative"
-                                }}
-                            onLoad={onMapLoad}
-                        >
-                            {marker.lat ? (<MarkerF position={{ lat: marker.lat, lng: marker.lng }} />) : null}
-                        </GoogleMap>
-                    </div>
-                    <div className="col-md-6">
-                        <form className="create-stop-form">
-                            <label 
-                                htmlFor="stop-name-input" 
-                                className="create-stop-form-input"
-                            >
-                                Stop Name
-                            <input 
-                                type="text" 
-                                name="stopName"
-                                id="stop-name-input"
-                                value={inputs.stopName || ""}
-                                onChange={handleChange}
-                                placeholder="Name your stop"
-                                required 
-                            />
-                            </label>
-                            <label 
-                                htmlFor="stop-lat-input" 
-                                className="create-stop-form-input"
-                            >
-                                Stop Latitutde
-                            <input 
-                                type="text" 
-                                name="stopLat"
-                                id="stop-lat-input"
-                                value={marker.lat || ""}
-                                onChange={handleChange} 
-                                placeholder="Drop a pin on map"
-                                required 
-                            />
-                            </label>
-                            <label 
-                                htmlFor="stop-lng-input" 
-                                className="create-stop-form-input"
-                            >
-                                Stop Longitude
-                            <input 
-                                type="text"
-                                name="stopLng" 
-                                id="stop-lng-input"
-                                value={marker.lng || ""}
-                                onChange={handleChange}
-                                placeholder="Drop a pin on map"
-                                required 
-                            />
-                            </label>
-                            <label
-                                htmlFor="stop-category-select"
-                                className="create-stop-form-select"
-                            >
-                                Stop Category
-                            </label>
-                            <select 
-                                name="stopCategory" 
-                                id="stop-category-select" 
-                                value={catChoice} 
-                                onChange={(e) => {
-                                    catChoice = e.target.value;
-                                    setCatChoice(catChoice);
-                                    console.log(catChoice);
-                                }}
-                                required
-                            >
-                                <option value="Camping">Camping</option>
-                                <option value="Caverns">Caverns</option>
-                                <option value="Climbing Access/Scrambling">Climbing Access/Scrambling</option>
-                                <option value="Hiking">Hiking</option>
-                                <option value="National Monument">National Monument</option>
-                                <option value="National Park">National Park</option>
-                                <option value="Picnic Area">Picnic Area</option>
-                                <option value="State Park">State Park</option>
-                                <option value="Swimming Hole">Swimming Hole</option>
-                                <option value="Unique Find">Unique Find</option>
-                                <option value="View Point">View Point</option>
-                                <option value="Water Access">Water Access</option>
-                            </select>
-                            <button>Create Stop</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     );
-}
+};
 
 function StandaloneSearchBox({ panTo }) {
     const {
@@ -252,5 +267,5 @@ function StandaloneSearchBox({ panTo }) {
             </ComboboxPopover>
         </Combobox>
     );
-}
+};
  

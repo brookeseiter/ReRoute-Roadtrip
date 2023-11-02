@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '../Components/NavBar.js';
 import StopList from '../Components/StopList.js';
 import PaginationComp from '../Components/Pagination.js';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 const AllStopsPage = ({ loading, setLoading }) => {
@@ -26,9 +27,6 @@ const AllStopsPage = ({ loading, setLoading }) => {
     const idxOfLastStop = currentPage * stopsPerPage;
     const idxOfFirstStop = idxOfLastStop - stopsPerPage;
     const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
-    // if (loading) {
-    //     return <h2>Loading...</h2>;
-    // }
 
     // stopsObj.filter((stop) => {
     //     // console.log(stop.value.stop_name);
@@ -53,7 +51,7 @@ const AllStopsPage = ({ loading, setLoading }) => {
     return (
         <div className="all-stops-page">
             <Navbar />
-            {loading ? <h2>Loading...</h2> :
+            {loading ? <Spinner animation="border" /> :
                 <div className="all-stops-page-content container">
                     {/* <input 
                         type="search"
