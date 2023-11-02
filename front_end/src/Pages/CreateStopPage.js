@@ -15,8 +15,11 @@ const center = {
 
 export default function CreateStopPage ({ 
     user, 
-    isLoggedIn, 
+    setUser,
     currentUser, 
+    setCurrentUser,
+    isLoggedIn, 
+    setIsLoggedIn,
     loading 
 }) {
     const mapRef = useRef();
@@ -89,7 +92,14 @@ export default function CreateStopPage ({
     )
     return ( 
         <div className="create-stop-page" onSubmit={handleSubmit}>
-            <Navbar />
+            <Navbar 
+                user={user}
+                setUser={setUser} 
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser} 
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn} 
+            />
             {loading ? <Spinner animation="border" /> :
                 <div className="create-stop-page-content container">
                     <div className="row">

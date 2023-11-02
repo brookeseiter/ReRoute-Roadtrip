@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function Navbar ({ 
+    user,
     setUser, 
     currentUser, 
     setCurrentUser, 
@@ -12,7 +13,6 @@ export default function Navbar ({
 
     const handleLogout = (e) => {
         e.preventDefault();
-
         fetch(`/logout`)
             .then((response) => response.json())
             .then((data) =>{

@@ -26,7 +26,16 @@ const center = {
   lng: -101.299591
 };
 
-export default function CreateRoutePage () {
+export default function CreateRoutePage ({
+  user, 
+  setUser, 
+  isLoggedIn, 
+  setIsLoggedIn, 
+  currentUser, 
+  setCurrentUser, 
+  loading, 
+  setLoading 
+}) {
   const [libraries] = useState(['places', 'geometry']);
   const [inputs, setInputs] = useState({});
   const [mapData, setMapData] =useState([]);
@@ -130,7 +139,14 @@ export default function CreateRoutePage () {
   
   return (
     <div className="create-route-page">
-      <Navbar />
+      <Navbar 
+        user={user}
+        setUser={setUser} 
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser} 
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn} 
+      />
       <div className="create-route-page-content container">
         <div className="row align-items-center">
           <h1>Create a Route</h1>

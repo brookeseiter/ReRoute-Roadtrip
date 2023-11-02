@@ -32,7 +32,7 @@ const ProfilePage = ({
                 .then((userStopData) => {
                     console.log(userStopData);
                     setMyStops(userStopData);
-                    setLoading(false);
+                    // setLoading(false);
                 })
                 .catch((error) => console.log(error));
         }
@@ -40,14 +40,22 @@ const ProfilePage = ({
     }, [loading, currentUser]);
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
+
+    console.log('PP user', user);
+    console.log('PP currentUser', currentUser);
+    console.log('PP isLoggedIn', isLoggedIn);
     
     return ( 
         <div className="profile-page">
             <Navbar 
+                user={user}
                 setUser={setUser} 
+                currentUser={currentUser}
                 setCurrentUser={setCurrentUser} 
+                isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn} 
             />
+            {/* right now loading isn't ever triggered */}
             {loading ? <Spinner animation="border" /> :
                 <div className="profile-page-content container">
                     <div className="row">

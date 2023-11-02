@@ -9,6 +9,7 @@ import AllStopsPage from './Pages/AllStopsPage';
 import StopDetailsPage from './Pages/StopDetailsPage';
 import NotFound from './Components/NotFound';
 import { useEffect, useState } from 'react';
+import Navbar from './Components/NavBar';
 
 
 function App() {
@@ -96,18 +97,38 @@ function App() {
                                       />} />
       <Route path="/create-stop" element={<CreateStopPage 
                                             user={user} 
-                                            isLoggedIn={isLoggedIn} 
-                                            loading={loading}
+                                            setUser={setUser}
                                             currentUser={currentUser} 
+                                            setCurrentUser={setCurrentUser}
+                                            isLoggedIn={isLoggedIn} 
+                                            setIsLoggedIn={setIsLoggedIn}
+                                            loading={loading}
                                           />} />
-      <Route path="/create-route" element={<CreateRoutePage />} />
-      <Route path="/stops" element={<AllStopsPage loading={loading} setLoading={setLoading} />} />
+      <Route path="/create-route" element={<CreateRoutePage 
+                                              user={user} 
+                                              setUser={setUser}
+                                              currentUser={currentUser} 
+                                              setCurrentUser={setCurrentUser}
+                                              isLoggedIn={isLoggedIn} 
+                                              setIsLoggedIn={setIsLoggedIn}
+                                              loading={loading}
+                                          />} />
+      <Route path="/stops" element={<AllStopsPage 
+                                      user={user} 
+                                      setUser={setUser}
+                                      currentUser={currentUser} 
+                                      setCurrentUser={setCurrentUser}
+                                      isLoggedIn={isLoggedIn} 
+                                      setIsLoggedIn={setIsLoggedIn}
+                                      loading={loading} 
+                                      setLoading={setLoading} />} />
       <Route path="/stops/:stopId" element={<StopDetailsPage 
                                               user={user} 
                                               setUser={setUser} 
+                                              currentUser={currentUser} 
+                                              setCurrentUser={setCurrentUser}
                                               isLoggedIn={isLoggedIn} 
                                               setIsLoggedIn={setIsLoggedIn} 
-                                              currentUser={currentUser} 
                                               loading={loading}
                                             />} />
       <Route path="*" element={<NotFound />} />

@@ -6,11 +6,12 @@ import Spinner from 'react-bootstrap/Spinner';
 
 
 const StopDetails = ({ 
-    currentUser, 
     user, 
     setUser, 
+    currentUser, 
+    setCurrentUser,
     isLoggedIn, 
-    setisLoggedIn, 
+    setIsLoggedIn, 
     loading 
 }) => {
     let { stopId } = useParams(); 
@@ -67,7 +68,14 @@ const StopDetails = ({
     
     return ( 
         <div className="stop-page">
-            <Navbar />
+            <Navbar 
+                user={user}
+                setUser={setUser} 
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser} 
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn} 
+            />
             {loading ? <Spinner animation="border" /> :
                 <div className="stop-details-page-content container" id="stop-details">
                     {/* <div className="row"> */}

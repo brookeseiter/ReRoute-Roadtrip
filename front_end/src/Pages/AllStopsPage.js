@@ -5,7 +5,16 @@ import PaginationComp from '../Components/Pagination.js';
 import Spinner from 'react-bootstrap/Spinner';
 
 
-const AllStopsPage = ({ loading, setLoading }) => {
+const AllStopsPage = ({ 
+    user, 
+    setUser, 
+    isLoggedIn, 
+    setIsLoggedIn, 
+    currentUser, 
+    setCurrentUser, 
+    loading, 
+    setLoading 
+}) => {
     const [stops, setStops] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [stopsPerPage] = useState(10);
@@ -27,6 +36,10 @@ const AllStopsPage = ({ loading, setLoading }) => {
     const idxOfLastStop = currentPage * stopsPerPage;
     const idxOfFirstStop = idxOfLastStop - stopsPerPage;
     const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
+
+    console.log('Allstops user', user);
+    console.log('Allstops currentUser', currentUser);
+    console.log('Allstops isLoggedIn', isLoggedIn);
 
     // stopsObj.filter((stop) => {
     //     // console.log(stop.value.stop_name);
@@ -50,7 +63,14 @@ const AllStopsPage = ({ loading, setLoading }) => {
 
     return (
         <div className="all-stops-page">
-            <Navbar />
+            <Navbar 
+                user={user}
+                setUser={setUser} 
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser} 
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn} 
+            />
             {loading ? <Spinner animation="border" /> :
                 <div className="all-stops-page-content container">
                     {/* <input 
