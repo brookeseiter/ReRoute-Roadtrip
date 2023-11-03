@@ -9,7 +9,6 @@ import AllStopsPage from './Pages/AllStopsPage';
 import StopDetailsPage from './Pages/StopDetailsPage';
 import NotFound from './Components/NotFound';
 import { useEffect, useState } from 'react';
-import Navbar from './Components/NavBar';
 
 
 function App() {
@@ -130,7 +129,7 @@ function App() {
                                               isLoggedIn={isLoggedIn} 
                                               setIsLoggedIn={setIsLoggedIn} 
                                               loading={loading}
-                                            />} />
+                                              setLoading={setLoading}/>} />
       <Route path="*" element={<NotFound />} />
     </Routes> 
   );

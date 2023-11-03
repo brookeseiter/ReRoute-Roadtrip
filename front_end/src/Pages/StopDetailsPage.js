@@ -12,16 +12,17 @@ const StopDetails = ({
     setCurrentUser,
     isLoggedIn, 
     setIsLoggedIn, 
-    loading 
+    loading,
+    setLoading
 }) => {
     let { stopId } = useParams(); 
     const [stop, setStop] = useState([]); 
     const [inputs, setInputs] = useState({});
-    const [updateRating, setUpdateRating] = useState('');
+    const [rating, setRating] = useState(0);
+    // const [updateRating, setUpdateRating] = useState('');
 
-    const handleRatingChange = avgRating => {
-        console.log(avgRating);
-        setUpdateRating(avgRating);
+    const handleRatingChange = (avgRating) => {
+        setRating(avgRating);
     }
    
     useEffect(() => {
@@ -61,7 +62,7 @@ const StopDetails = ({
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                setUpdateRating(updateRating);
+                setRating(rating);
             })
             .catch((error) => console.log(error));
     }
@@ -84,10 +85,7 @@ const StopDetails = ({
                             <p>Category: { stop.stop_category }</p>
                             <p>Latitude: { stop.stop_lat}</p>
                             <p>Longitude: { stop.stop_lng }</p>
-                            {
-                                updateRating  ?
-                                (<p>Rating: { updateRating }</p>) : null
-                            }
+                            {rating  ? (<p>Rating: {rating}</p>): null} 
                             <br />
                         </div>
                         <div className="row">
@@ -124,7 +122,7 @@ const StopDetails = ({
                                         placeholder="Tell other travelers why you love it (or don't!)"
                                         required 
                                     />
-                                    <button onClick={() => setUpdateRating(true)}>Create Review</button>
+                                    <button onClick={() => setRating(true)}>Create Review</button>
                                 </form>
                             </div>
                             <div className="col-md-6">

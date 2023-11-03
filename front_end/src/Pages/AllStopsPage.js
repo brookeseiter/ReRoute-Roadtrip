@@ -15,9 +15,11 @@ const AllStopsPage = ({
     loading, 
     setLoading 
 }) => {
-    const [stops, setStops] = useState([]);
+    const [stops, setStops] = useState({});
+    // changed stops to an object 11/3
     const [currentPage, setCurrentPage] = useState(1);
     const [stopsPerPage] = useState(10);
+    const [query, setQuery] = useState('');
     
     useEffect(() => {
         setLoading(true);
@@ -32,14 +34,27 @@ const AllStopsPage = ({
 
     const stopsObj = Object.entries(stops).map(([key, value]) => ({key, value}));
 
+
+    // for (let i=0; i < 1; i++) {
+    //     console.log('stopsObj', stopsObj[i]);
+    // }
+
+    const getFilteredStops = (query, stopsObj) => {
+        if (!query) {
+            return stopsObj;
+        }
+        return stopsObj.filter(stopObj => stopObj.value.stop_name.includes(query));
+    }
+
+    const filteredStops = getFilteredStops(query, stopsObj);
+
+
     // Get current stops
     const idxOfLastStop = currentPage * stopsPerPage;
     const idxOfFirstStop = idxOfLastStop - stopsPerPage;
-    const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
+    const currentStops = filteredStops.slice(idxOfFirstStop, idxOfLastStop);
+    // const currentStops = stopsObj.slice(idxOfFirstStop, idxOfLastStop);
 
-    console.log('Allstops user', user);
-    console.log('Allstops currentUser', currentUser);
-    console.log('Allstops isLoggedIn', isLoggedIn);
 
     // stopsObj.filter((stop) => {
     //     // console.log(stop.value.stop_name);
@@ -73,6 +88,8 @@ const AllStopsPage = ({
             />
             {loading ? <Spinner animation="border" /> :
                 <div className="all-stops-page-content container">
+                    <label>Search</label>
+                    <input type="text" onChange={e => setQuery(e.target.value)} />
                     {/* <input 
                         type="search"
                         onChange={handleChange}
@@ -92,14 +109,22 @@ const AllStopsPage = ({
 
                         })}
                     </table> */}
-                    {stopsObj && <StopList stopsObj={currentStops} loading={loading} setLoading={setLoading} title="All Stops" />}
+                    {stopsObj && <StopList filteredStops={currentStops} loading={loading} setLoading={setLoading} title="All Stops" />}
+                    <PaginationComp
+                        itemsPerPage={stopsPerPage} 
+                        totalItems={filteredStops.length}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                        alwaysShown={false}
+                    />
+                    {/* {stopsObj && <StopList stopsObj={currentStops} loading={loading} setLoading={setLoading} title="All Stops" />}
                     <PaginationComp
                         itemsPerPage={stopsPerPage} 
                         totalItems={stopsObj.length}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                         alwaysShown={false}
-                    />
+                    /> */}
                 </div>
             }           
         </div>
