@@ -22,8 +22,8 @@ bycrypt = Bcrypt(app)
 app.config['SESSION_TYPE'] = "filesystem"
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
-app.config['SESSION_FILE_THRESHOLD'] = 200
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=5)
+app.config['SESSION_FILE_THRESHOLD'] = 50
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
 
 # Create and initialize the Flask-Session object AFTER 'app' has been configured
 server_session = Session(app)
