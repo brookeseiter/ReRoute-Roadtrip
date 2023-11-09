@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+
 
 const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) => {
     const [userReviews, setUserReviews] = useState([]); 
+    const [modalOpen, setModalOpen] = useState(false);
    
     useEffect(() => {
         if (currentUser.userId !== '') {
@@ -12,6 +15,9 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                 .catch(error => console.log(error));
         }
     }, [currentUser]); 
+
+    const handleOpenModal = () => setModalOpen(true);
+    const handleCloseModal = () => setModalOpen(false);
 
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
 
@@ -29,6 +35,22 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                     {/* </Link> */}
                 </div>
             ))}
+            <button onClick={handleOpenModal}>Edit Review</button>
+            {modalOpen && (
+                <>
+                <Modal show={modalOpen} onHide={handleCloseModal}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Footer>
+                  <button variant="secondary" >
+                    Close
+                  </button>
+                </Modal.Footer>
+              </Modal>
+              </>
+            )}
         </div>
      );
 }
