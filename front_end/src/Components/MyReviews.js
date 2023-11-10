@@ -8,7 +8,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedReview, setSelectedReview] = useState({});
     const [rating, setRating] = useState("");
-    const [review, setReview] = useState("");
+    const [content, setContent] = useState("");
    
     useEffect(() => {
         if (currentUser.userId !== '') {
@@ -22,7 +22,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
     const handleOpenModal = () => setModalOpen(true);
     const handleCloseModal = () => setModalOpen(false);
     const updateRating = (e) => setRating(e.target.value);
-    const updateReview = (e) => setReview(e.target.value);
+    const updateContent = (e) => setContent(e.target.value);
 
 
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
@@ -36,7 +36,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
             userId: currentUser,
             stopId: selectedReview.value.stop_id,
             rating: rating,
-            content: review
+            content: content
         }
         console.log(updateReviewInfo);
 
@@ -50,13 +50,10 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
 
         fetch(`/user/${currentUser}/${selectedReview.value.review_id}/edit`, requestOptions)
             .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setRating(rating);
-            })
+            .then((data) => console.log(data))
             .catch((error) => console.log(error));
+            handleCloseModal();
     }
-
     
 
     return ( 
@@ -112,7 +109,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                     </Modal.Body>
                     <Modal.Body>
                         <label 
-                            htmlFor="review-text-input" 
+                            htmlFor="review-content-input" 
                             className="edit-review-form-input"
                         >
                             Review:
@@ -126,7 +123,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                             rows="10"
                             cols="50"
                             defaultValue={selectedReview.value.content}
-                            onChange={updateReview}
+                            onChange={updateContent}
                             required
                         />
                     </Modal.Body>

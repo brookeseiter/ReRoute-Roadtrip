@@ -91,6 +91,21 @@ def create_review(user_id, stop_id, rating, content):
 
     return review
 
+def get_review_by_id(review_id):
+    """Returns review by review id."""
+
+    return Review.query.filter(Review.review_id==review_id).first()
+
+def edit_review(review_id, rating, content):
+    """Edit a Review."""
+
+    original_review = get_review_by_id(review_id)
+
+    original_review.rating = rating
+    original_review.content = content
+
+    db.session.commit()
+
 def get_reviews_by_user(user_id):
     """Return all reviews created by a user."""
 
