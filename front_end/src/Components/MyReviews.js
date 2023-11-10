@@ -53,8 +53,30 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                 <Modal.Header closeButton>
                   <Modal.Title>{selectedReview.value.stop_name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>{selectedReview.value.rating}</Modal.Body>
-                <Modal.Body>{selectedReview.value.content}</Modal.Body>
+                <Modal.Body>
+                        Rating: 
+                        <select
+                            className='modal_input'
+                            type="number"
+                            id="number_input"
+                            defaultValue={selectedReview.value.rating}
+                        > 
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                </Modal.Body>
+                <Modal.Body>
+                    Review:
+                    <textarea
+                        className='modal_input'
+                        type="text"
+                        id="number_input"
+                        defaultValue={selectedReview.value.content}
+                    />
+                </Modal.Body>
                 <Modal.Footer>
                   <button variant="secondary" >
                     Close
