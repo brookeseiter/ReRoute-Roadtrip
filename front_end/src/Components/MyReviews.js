@@ -25,11 +25,37 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
     const updateReview = (e) => setReview(e.target.value);
 
 
-    console.log(userReviews);
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
     console.log(userReviewsObj);
     console.log(selectedReview);
 
+    const handleEditReview = (e) => {
+        e.preventDefault();
+        const updateReviewInfo = {
+            reviewId: selectedReview.value.review_id,
+            userId: currentUser,
+            stopId: selectedReview.value.stop_id,
+            rating: rating,
+            content: review
+        }
+        console.log(updateReviewInfo);
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateReviewInfo)
+        }
+
+        fetch(`/user/${currentUser}/${selectedReview.value.review_id}/edit`, requestOptions)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setRating(rating);
+            })
+            .catch((error) => console.log(error));
+    }
 
     
 
@@ -105,9 +131,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                    <button type="submit" >
-                        Update Review
-                    </button>
+                        <button type="submit" onClick={() => handleEditReview}>Update Review</button>
                     </Modal.Footer>
                 </form>
               </Modal>
