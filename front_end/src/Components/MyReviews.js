@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) => {
     const [userReviews, setUserReviews] = useState([]); 
     const [modalOpen, setModalOpen] = useState(false);
+    const [selectedReview, setSelectedReview] = useState({});
    
     useEffect(() => {
         if (currentUser.userId !== '') {
@@ -18,13 +19,16 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
 
     const handleOpenModal = () => setModalOpen(true);
     const handleCloseModal = () => setModalOpen(false);
-
+    console.log(userReviews);
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
+    console.log(userReviewsObj);
+    console.log(selectedReview);
 
     return ( 
         <div className="my-reviews">
             {(userReviewsObj.length === 0) && "Visit a stop and leave a review!" }
             {userReviewsObj.map((userReviewObj) => (
+                <>
                 <div className="user-review-preview rounded" key={ userReviewObj.key }>
                     {/* <Link to={`/stops/${userReviewObj.value.stop_id}`}> */}
                         <h2>{ userReviewObj.value.stop_name }</h2>
@@ -33,16 +37,24 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                         <p>Rating: { userReviewObj.value.rating }</p>
                         <p>{ userReviewObj.value.content }</p>
                     {/* </Link> */}
+                    <button onClick={() => {
+                        handleOpenModal();
+                        setSelectedReview(userReviewObj);
+                    }}>
+                        Edit Review
+                    </button>
                 </div>
+                </>
             ))}
-            <button onClick={handleOpenModal}>Edit Review</button>
+            {/* <button onClick={handleOpenModal}>Edit Review</button> */}
             {modalOpen && (
                 <>
                 <Modal show={modalOpen} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Modal heading</Modal.Title>
+                  <Modal.Title>{selectedReview.value.stop_name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>{selectedReview.value.rating}</Modal.Body>
+                <Modal.Body>{selectedReview.value.content}</Modal.Body>
                 <Modal.Footer>
                   <button variant="secondary" >
                     Close
