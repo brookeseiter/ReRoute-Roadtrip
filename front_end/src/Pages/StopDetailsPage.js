@@ -119,6 +119,8 @@ const StopDetails = ({
                                         id="review-text-input"
                                         value={inputs.content || ""}
                                         onChange={handleChange} 
+                                        maxLength="500"
+                                        spellCheck="true"
                                         placeholder="Tell other travelers why you love it (or don't!)"
                                         required 
                                     />

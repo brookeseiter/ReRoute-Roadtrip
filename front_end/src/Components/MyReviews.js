@@ -7,6 +7,8 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
     const [userReviews, setUserReviews] = useState([]); 
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedReview, setSelectedReview] = useState({});
+    const [rating, setRating] = useState("");
+    const [review, setReview] = useState("");
    
     useEffect(() => {
         if (currentUser.userId !== '') {
@@ -19,10 +21,17 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
 
     const handleOpenModal = () => setModalOpen(true);
     const handleCloseModal = () => setModalOpen(false);
+    const updateRating = (e) => setRating(e.target.value);
+    const updateReview = (e) => setReview(e.target.value);
+
+
     console.log(userReviews);
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
     console.log(userReviewsObj);
     console.log(selectedReview);
+
+
+    
 
     return ( 
         <div className="my-reviews">
@@ -46,20 +55,27 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                 </div>
                 </>
             ))}
-            {/* <button onClick={handleOpenModal}>Edit Review</button> */}
             {modalOpen && (
                 <>
                 <Modal show={modalOpen} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
                   <Modal.Title>{selectedReview.value.stop_name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                        Rating: 
+                <form className="edit-review-form">
+                    <Modal.Body>
+                        <label 
+                            htmlFor="review-rating-input" 
+                            className="edit-review-form-input"
+                        >
+                            Rating:
+                        </label>
                         <select
-                            className='modal_input'
                             type="number"
-                            id="number_input"
+                            name="rating"
+                            id="edit-review-rating-input"
                             defaultValue={selectedReview.value.rating}
+                            onChange={updateRating}
+                            required
                         > 
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -67,26 +83,38 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                </Modal.Body>
-                <Modal.Body>
-                    Review:
-                    <textarea
-                        className='modal_input'
-                        type="text"
-                        id="number_input"
-                        defaultValue={selectedReview.value.content}
-                    />
-                </Modal.Body>
-                <Modal.Footer>
-                  <button variant="secondary" >
-                    Close
-                  </button>
-                </Modal.Footer>
+                    </Modal.Body>
+                    <Modal.Body>
+                        <label 
+                            htmlFor="review-text-input" 
+                            className="edit-review-form-input"
+                        >
+                            Review:
+                        </label>
+                        <textarea
+                            type="textArea"
+                            name="content"
+                            id="edit-review-text-input"
+                            maxLength="500"
+                            spellCheck="true"
+                            rows="10"
+                            cols="50"
+                            defaultValue={selectedReview.value.content}
+                            onChange={updateReview}
+                            required
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <button type="submit" >
+                        Update Review
+                    </button>
+                    </Modal.Footer>
+                </form>
               </Modal>
               </>
             )}
         </div>
-     );
+    );
 }
  
 export default StopReviews;
