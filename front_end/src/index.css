@@ -211,14 +211,17 @@ a:hover {
 .create-links {
   font-size: 30px;
 }
-.user-review-preview {
+.user-review-preview, .stop-preview {
   color: #181617;
   padding: 10px 16px;
   margin: 20px 0;
   border-bottom: 1px solid #fafafa;
 }
-.user-review-preview:hover {
+.user-review-preview:hover, .stop-preview:hover {
   box-shadow: 4px 6px 8px rgba(0,0,0,0.1);
+}
+.tab-pane, .stop-list {
+  width: 100%;
 }
 
 

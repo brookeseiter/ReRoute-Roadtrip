@@ -70,11 +70,11 @@ const ProfilePage = ({
                             <Link to="/create-route">Create a Route</Link>
                         </div>
                         <section className="py-5">
-                            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+                            <Tab.Container id="tab-container" defaultActiveKey="first">
                                 <Row>
                                     <Col sm={3}>
                                         <Nav variant="pills" className="flex-column nav-pills-custom">
-                                            <Nav.Item>
+                                            <Nav.Item className='nav-item'>
                                                 <Nav.Link 
                                                     title="My Stops" 
                                                     className="nav-link mb-3 p-3 shadow" 
@@ -83,7 +83,7 @@ const ProfilePage = ({
                                                     My Stops
                                                 </Nav.Link>
                                             </Nav.Item>
-                                            <Nav.Item>
+                                            <Nav.Item className='nav-item'>
                                                 <Nav.Link 
                                                     title="My Reviews" 
                                                     className="nav-link mb-3 p-3 shadow" 
@@ -94,9 +94,10 @@ const ProfilePage = ({
                                             </Nav.Item>
                                         </Nav>
                                     </Col>
-                                    <Col sm={9}>
-                                        <Tab.Content>
-                                            <Tab.Pane className="fade shadow rounded bg-white show p-4" eventKey="first">
+                                    <Col sm={9} className=''>
+                                        <Tab.Content className='tab-content'>
+                                            <Tab.Pane className="tab-pane fade shadow rounded bg-white show p-4" eventKey="first">
+                                                {(stopsObj.length === 0) && "Create a stop!"}
                                                 {{stopsObj} && <StopList 
                                                                     filteredStops={stopsObj} 
                                                                     loading={loading} 
@@ -105,7 +106,7 @@ const ProfilePage = ({
                                                                     setEditSuccess={setEditSuccess} 
                                                                 />}
                                             </Tab.Pane>
-                                            <Tab.Pane className="fade shadow rounded bg-white show p-4" eventKey="second">
+                                            <Tab.Pane className="tab-pane fade shadow rounded bg-white show p-4" eventKey="second">
                                                 <MyReviews 
                                                     title="My Reviews" 
                                                     currentUser={currentUser} 
