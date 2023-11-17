@@ -9,25 +9,25 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
     const [selectedReview, setSelectedReview] = useState({});
     const [rating, setRating] = useState('');
     const [content, setContent] = useState('');
+    const [editSuccess, setEditSuccess] = useState(false);
+
    
     useEffect(() => {
         if (currentUser.userId !== '') {
             fetch(`/api/user/${currentUser}/reviews`) 
                 .then(response => response.json())
-                .then(data => {setUserReviews(data)}) 
+                .then(data => setUserReviews(data)) 
                 .catch(error => console.log(error));
         }
-    }, [currentUser]); 
+        setEditSuccess(false);
+    }, [currentUser, editSuccess]); 
 
     const handleOpenModal = () => setModalOpen(true);
     const handleCloseModal = () => setModalOpen(false);
     const updateRating = (e) => setRating(e.target.value);
     const updateContent = (e) => setContent(e.target.value);
 
-
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
-    console.log(userReviewsObj);
-    console.log(selectedReview);
 
     const handleEditReview = (e) => {
         e.preventDefault();
@@ -38,7 +38,6 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
             rating: rating,
             content: content
         }
-        console.log(updateReviewInfo);
 
         const requestOptions = {
             method: 'PUT',
@@ -50,14 +49,13 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
 
         fetch(`/user/${currentUser}/${selectedReview.value.review_id}/edit`, requestOptions)
             .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then((data) => {
+                console.log(data);
+                setEditSuccess(true);
+            })
             .catch((error) => console.log(error));
-            console.log('FETCH COMPLETEEEEEEEEEEEEEEEEEEE');
             handleCloseModal();
     }
-
-    console.log('rating:', rating);
-    console.log('content:', content);
 
     return ( 
         <div className="my-reviews">

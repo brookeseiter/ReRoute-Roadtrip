@@ -218,11 +218,6 @@ def edit_user_review(user_id, review_id):
 
     rating = request.json['rating']
     content = request.json['content']
-    print(user_id)
-    print(review_id)
-    print(rating)
-    print(content)
-    print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', content)
 
     crud.edit_review(review_id, rating, content)
 
