@@ -30,15 +30,17 @@ export default function Navbar ({
     return (  
         <nav className="navbar navbar-expand-lg bg-body-tertiary container rounded shadow">
             <div className="navbar-brand">
-                <img 
-                    src='../Images/logo.png'
-                    className="d-inline-block align-text-center" 
-                    id="Logo"
-                    alt=''
-                    width="80"
-                    height="80"
-                />  
-                <h1 className="d-inline-block"> ReRoute Roadtrip</h1>
+                <Link to="/profile" >
+                    <img 
+                        src='../Images/logo.png'
+                        className="d-inline-block align-text-center" 
+                        id="Logo"
+                        alt=''
+                        width="80"
+                        height="80"
+                    /> 
+                    <h1 className="d-inline-block"> ReRoute Roadtrip</h1>
+                </Link>
             </div>
             <div className="collapse navbar-collapse align-content-flex-end" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 justify-content-end">
