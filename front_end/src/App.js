@@ -58,7 +58,7 @@ function App() {
     let seconds = Math.floor((diffMs/1000));
     let minute = Math.floor((seconds/60));
     // console.log(seconds +' sec and '+minute+' min since last activity');
-    if (user.email !== '' && minute === 15) { 
+    if (user.email !== '' && minute === 10) { 
       // console.log('No activity from last 10 minutes... Logging Out');
       clearInterval(timeInterval);
       fetch(`/logout`)

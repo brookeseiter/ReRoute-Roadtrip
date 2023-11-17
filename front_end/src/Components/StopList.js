@@ -5,17 +5,28 @@ const StopList = ({
     filteredStops, 
     title, 
     loading, 
-    setLoading 
+    setLoading,
+    setEditSuccess
 }) => {
+    // const handleDeleteStop= (filteredStop) => {
+    //     console.log(filteredStop);
+    //     setLoading(true);
+    //     const stopId = filteredStop.value.stop_id;
+    //     fetch(`/stops/${stopId}`, {
+    //         method: 'DELETE'
+    //     }).then(() => {
+    //         console.log("deleted"); 
+    //         setLoading(false);
+    //     });
+    // };
     const handleDeleteStop= (filteredStop) => {
         console.log(filteredStop);
-        setLoading(true);
         const stopId = filteredStop.value.stop_id;
         fetch(`/stops/${stopId}`, {
             method: 'DELETE'
         }).then(() => {
             console.log("deleted"); 
-            setLoading(false);
+            setEditSuccess(true);
         });
     };
 

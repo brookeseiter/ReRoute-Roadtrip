@@ -21,6 +21,7 @@ const ProfilePage = ({
     setLoading 
 }) => {
     const [myStops, setMyStops] = useState([]);
+    const [editSuccess, setEditSuccess] = useState(false);
     
     console.log('value of user on ProfilePage', user);
     console.log('value of currentUser on ProfilePage', currentUser);
@@ -36,8 +37,9 @@ const ProfilePage = ({
                 })
                 .catch((error) => console.log(error));
         }
+        setEditSuccess(false);
     // eslint-disable-next-line 
-    }, [loading, currentUser]);
+    }, [loading, currentUser, editSuccess]);
 
     const stopsObj = Object.entries(myStops).map(([key, value]) => ({key, value}));
 
@@ -73,20 +75,43 @@ const ProfilePage = ({
                                     <Col sm={3}>
                                         <Nav variant="pills" className="flex-column nav-pills-custom">
                                             <Nav.Item>
-                                                <Nav.Link title="My Stops" className="nav-link mb-3 p-3 shadow" eventKey="first">My Stops</Nav.Link>
+                                                <Nav.Link 
+                                                    title="My Stops" 
+                                                    className="nav-link mb-3 p-3 shadow" 
+                                                    eventKey="first"
+                                                >
+                                                    My Stops
+                                                </Nav.Link>
                                             </Nav.Item>
                                             <Nav.Item>
-                                                <Nav.Link title="My Reviews" className="nav-link mb-3 p-3 shadow" eventKey="second">My Reviews</Nav.Link>
+                                                <Nav.Link 
+                                                    title="My Reviews" 
+                                                    className="nav-link mb-3 p-3 shadow" 
+                                                    eventKey="second"
+                                                >
+                                                    My Reviews
+                                                </Nav.Link>
                                             </Nav.Item>
                                         </Nav>
                                     </Col>
                                     <Col sm={9}>
                                         <Tab.Content>
                                             <Tab.Pane className="fade shadow rounded bg-white show p-4" eventKey="first">
-                                                {{stopsObj} && <StopList stopsObj={stopsObj} loading={loading} setLoading={setLoading} title="My Stops" />}
+                                                {{stopsObj} && <StopList 
+                                                                    filteredStops={stopsObj} 
+                                                                    loading={loading} 
+                                                                    setLoading={setLoading} 
+                                                                    title="My Stops" 
+                                                                    setEditSuccess={setEditSuccess} 
+                                                                />}
                                             </Tab.Pane>
                                             <Tab.Pane className="fade shadow rounded bg-white show p-4" eventKey="second">
-                                                <MyReviews title="My Reviews" currentUser={currentUser} loading={loading} setLoading={setLoading}/>
+                                                <MyReviews 
+                                                    title="My Reviews" 
+                                                    currentUser={currentUser} 
+                                                    loading={loading} 
+                                                    setLoading={setLoading}
+                                                />
                                             </Tab.Pane>
                                         </Tab.Content>
                                     </Col>
