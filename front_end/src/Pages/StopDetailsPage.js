@@ -128,7 +128,7 @@ const StopDetails = ({
                                 </form>
                             </div>
                             <div className="col-md-6">
-                                <StopReviews handleRatingChange={handleRatingChange} />
+                                <StopReviews handleRatingChange={handleRatingChange}/>
                             </div>
                         </div>
                 </div>

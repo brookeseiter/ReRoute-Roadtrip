@@ -86,7 +86,7 @@ const ProfilePage = ({
                                                 {{stopsObj} && <StopList stopsObj={stopsObj} loading={loading} setLoading={setLoading} title="My Stops" />}
                                             </Tab.Pane>
                                             <Tab.Pane className="fade shadow rounded bg-white show p-4" eventKey="second">
-                                                <MyReviews title="My Reviews" currentUser={currentUser} />
+                                                <MyReviews title="My Reviews" currentUser={currentUser} loading={loading} setLoading={setLoading}/>
                                             </Tab.Pane>
                                         </Tab.Content>
                                     </Col>

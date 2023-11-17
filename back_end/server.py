@@ -213,15 +213,20 @@ def view_user_reviews(user_id):
     return jsonify({user_review['review_id']: user_review for user_review in user_reviews_dict})
 
 @app.route('/user/<user_id>/<review_id>/edit', methods=['PUT'])
-def edit_user_review(review_id):
+def edit_user_review(user_id, review_id):
     """Edit a user's review for a stop."""
 
-    rating = request.json.get('rating')
-    content = request.json.get('content')
+    rating = request.json['rating']
+    content = request.json['content']
+    print(user_id)
+    print(review_id)
+    print(rating)
+    print(content)
+    print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', content)
 
     crud.edit_review(review_id, rating, content)
 
-    return "Successfully edited review."
+    return jsonify({'message': 'Review has been successfully edited.'}), 200
 
 # @app.route('/api/user/<user_id>/reviews')
 # def view_user_reviews(user_id):

@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 
 
-const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) => {
+const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, loading, setLoading }) => {
     const [userReviews, setUserReviews] = useState([]); 
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedReview, setSelectedReview] = useState({});
-    const [rating, setRating] = useState("");
-    const [content, setContent] = useState("");
+    const [rating, setRating] = useState('');
+    const [content, setContent] = useState('');
    
     useEffect(() => {
         if (currentUser.userId !== '') {
@@ -52,15 +52,17 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
             .then((response) => response.json())
             .then((data) => console.log(data))
             .catch((error) => console.log(error));
+            console.log('FETCH COMPLETEEEEEEEEEEEEEEEEEEE');
             handleCloseModal();
     }
-    
+
+    console.log('rating:', rating);
+    console.log('content:', content);
 
     return ( 
         <div className="my-reviews">
             {(userReviewsObj.length === 0) && "Visit a stop and leave a review!" }
             {userReviewsObj.map((userReviewObj) => (
-                <>
                 <div className="user-review-preview rounded" key={ userReviewObj.key }>
                     {/* <Link to={`/stops/${userReviewObj.value.stop_id}`}> */}
                         <h2>{ userReviewObj.value.stop_name }</h2>
@@ -71,12 +73,13 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                     {/* </Link> */}
                     <button onClick={() => {
                         handleOpenModal();
-                        setSelectedReview(userReviewObj);
+                        setSelectedReview(userReviewObj);  
+                        setRating(userReviewObj.value.rating);
+                        setContent(userReviewObj.value.content);
                     }}>
                         Edit Review
                     </button>
                 </div>
-                </>
             ))}
             {modalOpen && (
                 <>
@@ -84,8 +87,8 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                 <Modal.Header closeButton>
                   <Modal.Title>{selectedReview.value.stop_name}</Modal.Title>
                 </Modal.Header>
-                <form className="edit-review-form">
-                    <Modal.Body>
+                <form className="edit-review-form" onSubmit={handleEditReview}>
+                    <Modal.Body >
                         <label 
                             htmlFor="review-rating-input" 
                             className="edit-review-form-input"
@@ -128,7 +131,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <button type="submit" onClick={() => handleEditReview}>Update Review</button>
+                        <button type="submit">Update Review</button>
                     </Modal.Footer>
                 </form>
               </Modal>
