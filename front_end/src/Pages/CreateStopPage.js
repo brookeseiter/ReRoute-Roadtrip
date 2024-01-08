@@ -204,6 +204,7 @@ export default function CreateStopPage ({
                                         }}
                                         required
                                     >
+                                        <option disabled={true} value="">Choose a stop category</option>
                                         <option value="Camping">Camping</option>
                                         <option value="Caverns">Caverns</option>
                                         <option value="Climbing Access/Scrambling">Climbing Access/Scrambling</option>
