@@ -242,11 +242,18 @@ a:hover {
 }
 .create-stop-form input,  .create-stop-form select {
   width: 400px;
+  font-size: 17px;
+}
+#stop-category-select {
+  width: 400px;
+  height: 44px;
+  font-family: "Roboto Condensed";
+  color: rgb(118, 118, 118);
 }
 .create-stop-form button {
   width: 400px;
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 28px;
 }
 .create-stop-form label {
   font-size: 20px;
@@ -260,7 +267,6 @@ a:hover {
   border: 1px solid #ddd;
   box-sizing: border-box;
   display: block;
-  
 }
 
 
