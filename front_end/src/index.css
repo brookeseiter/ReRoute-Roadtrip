@@ -62,7 +62,7 @@ h1 {
   box-sizing: border-box;
   display: block;
 }
-.create-account-form button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button, .create-route-page .btn {
+.create-account-form button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button, .my-reviews button, .create-route-page .btn {
   background: #9f814f;
   color: #fff;
   border: 0;
@@ -222,6 +222,9 @@ a:hover {
 }
 .tab-pane, .stop-list {
   width: 100%;
+}
+.my-reviews button, .stop-list button {
+  margin-top: 18px;
 }
 
 
