@@ -148,26 +148,39 @@ def stop_reviews(stop_id):
         .all()
     )
 
-def stop_reviews_to_dict(lst):
+def stop_reviews_to_dict(stop_reviews):
 
     data_list = []
 
-    for review in lst:
+    for review in stop_reviews:
         data = {
-            'review_id': review[0],
-            'rating': review[1],
-            'content': review[2],
-            'stop_id': review[3],
-            'stop_name': review[4],
-            'stop_lat': review[5],
-            'stop_lng': review[6],
-            'stop_category': review[7],
-            'user_id': review[8],
-            'username': review[9]
+            'review_id': review.review_id,
+            'rating': review.rating,
+            'content': review.content,
+            'stop_id': review.stop_id,
+            'stop_name': review.stop_name,
+            'stop_lat': review.stop_lat,
+            'stop_lng': review.stop_lng,
+            'stop_category': review.stop_category,
+            'user_id': review.user_id,
+            'username': review.username
         }
         data_list.append(data)
 
     return  data_list
+
+# 1/10 INSERT
+def stop_avg_rating(reviews):
+    count = len(reviews)
+    total_rating = 0
+
+    for rev in reviews:
+        total_rating += rev['rating']
+
+    avg_rating = total_rating/count 
+
+    return avg_rating
+    
 
 def user_reviews(user_id):
     """Returns a list of sqlalchemy rows with review information for a user."""
@@ -198,19 +211,19 @@ def user_reviews(user_id):
         .all()
     )
 
-def user_reviews_to_dict(lst):
+def user_reviews_to_dict(user_reviews):
 
     data_list = []
 
-    for review in lst:
+    for review in user_reviews:
         data = {
-            'review_id': review[0],
-            'rating': review[1],
-            'content': review[2],
-            'stop_id': review[3],
-            'stop_name': review[4],
-            'stop_category': review[5],
-            'user_id': review[6],
+            'review_id': review.review_id,
+            'rating': review.rating,
+            'content': review.content,
+            'stop_id': review.stop_id,
+            'stop_name': review.stop_name,
+            'stop_category': review.stop_category,
+            'user_id': review.user_id,
         }
         data_list.append(data)
 

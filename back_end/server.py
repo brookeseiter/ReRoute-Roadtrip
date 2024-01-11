@@ -146,6 +146,7 @@ def stops_by_user(user_id):
 
     if user_id:
         user_stops = crud.get_stops_by_user(user_id)
+        print("--------------------", user_stops, "---------------------")
 
     return jsonify({user_stop.stop_id: user_stop.to_dict() for user_stop in user_stops})
 

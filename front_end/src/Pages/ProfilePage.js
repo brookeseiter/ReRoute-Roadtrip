@@ -46,6 +46,7 @@ const ProfilePage = ({
     console.log('PP user', user);
     console.log('PP currentUser', currentUser);
     console.log('PP isLoggedIn', isLoggedIn);
+    console.log('myStops:', myStops);
     
     return ( 
         <div className="profile-page">
