@@ -34,8 +34,9 @@ const StopReviews = ({ handleRatingChange }) => {
             }) 
             .catch(error => console.log(error));
     }, [stopId, handleRatingChange]); 
-    
-    reviewsObj = Object.entries(reviews).map(([key, value]) => ({key, value}))
+    console.log('reviews:', reviews);
+    reviewsObj = Object.entries(reviews).map(([key, value]) => ({key, value}));
+    console.log('reviewsObj:', reviewsObj);
 
     return ( 
         <div className="stop-review-details">

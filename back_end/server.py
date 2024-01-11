@@ -175,10 +175,15 @@ def view_stop_reviews(stop_id):
     # stop_reviews = crud.get_reviews_by_stop(stop_id)
 
     # return jsonify({review.review_id: review.to_dict() for review in stop_reviews})
+    
+    # trying to do avg_rating on the backend, works for now reviews and can send over the average
+    # otherwise but needs to be edited in front end code to separate avg from actual review obj
     stop_reviews = crud.stop_reviews(stop_id)
+    print('=======================', stop_reviews, '=========================')
     stop_reviews_dict = crud.stop_reviews_to_dict(stop_reviews)
-
-    return jsonify({stop_review['review_id']: stop_review for stop_review in stop_reviews_dict})
+    avg_rating = crud.stop_avg_rating(stop_reviews_dict)
+    print('----------------------', avg_rating, '-------------------------')
+    return jsonify(avg_rating, {stop_review['review_id']: stop_review for stop_review in stop_reviews_dict})
 
 @app.route('/stops/<stop_id>/review', methods = ['GET', 'POST'])
 def create_review(stop_id):
