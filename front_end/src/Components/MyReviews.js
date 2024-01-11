@@ -28,6 +28,8 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
     const updateContent = (e) => setContent(e.target.value);
 
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
+    console.log('userReviews:  ', userReviews);
+    console.log('userReviewsObj:  ', userReviewsObj);
 
     const handleEditReview = (e) => {
         e.preventDefault();
@@ -64,7 +66,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
                 <div className="user-review-preview rounded" key={ userReviewObj.key }>
                     <Link to={`/stops/${userReviewObj.value.stop_id}`}>
                         <h2>{ userReviewObj.value.stop_name }</h2>
-                        <p>{ userReviewObj.value.stop_category }</p>
+                        <p><strong>Category: </strong><em>{ userReviewObj.value.stop_category }</em></p>
                         <h3>Your Review:</h3>
                         <p>Rating: { userReviewObj.value.rating }</p>
                         <p>{ userReviewObj.value.content }</p>
