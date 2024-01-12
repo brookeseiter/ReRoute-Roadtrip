@@ -170,6 +170,8 @@ def stop_reviews_to_dict(stop_reviews):
 
     return  data_list
 
+
+
 # 1/10 INSERT
 def stop_avg_rating(reviews):
     count = len(reviews)
