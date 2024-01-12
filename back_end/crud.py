@@ -2,6 +2,7 @@
 
 from model import db, User, Stop, Review, connect_to_db
 import json
+from sqlalchemy.sql import func, insert, update
 
 
 def create_user(email, username, password, phone_num):
@@ -180,6 +181,34 @@ def stop_avg_rating(reviews):
     avg_rating = total_rating/count 
 
     return avg_rating
+
+# 1/11 INSERT (so far not connected to any other file, not functional)
+def join_reviews_and_stop_data(stop_id):
+    stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).join(User, User.user_id == Review.user_id).filter(Stop.stop_id == stop_id).first()
+    print('STOP:', stop)
+    print('STOP.REVIEWS:', stop.reviews)
+
+def join_reviews_and_stop_data2(stop_id):
+    stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).filter(Stop.stop_id == stop_id).first()
+    print('STOP:', stop)
+    print('STOP.REVIEWS:', stop.reviews)
+
+# def join_reviews_and_stop_data3():
+#     # stops = Stop.query.join(Review).first()
+#     stop = Stop.query.join(Review).first()
+#     print('STOP:', stop)
+#     print(stop.reviews)
+#     for rev in stop.reviews:
+#         print(stop.reviews)
+
+def get_reviews_by_stop(stop_id):
+
+    return Review.query.with_entities(func.avg(Review.rating)).filter(Review.stop_id == stop_id).all()
+
+    
+    
+
+
     
 
 def user_reviews(user_id):

@@ -124,6 +124,15 @@ def create_stop():
 
     return jsonify(new_stop.to_dict())
 
+# OG
+# @app.route('/stops')
+# def view_all_stops():
+#     """View all stops."""
+
+#     stops = crud.get_stops()
+
+#     return jsonify({stop.stop_id: stop.to_dict() for stop in stops})
+
 @app.route('/stops')
 def view_all_stops():
     """View all stops."""
@@ -150,7 +159,23 @@ def stops_by_user(user_id):
 
     return jsonify({user_stop.stop_id: user_stop.to_dict() for user_stop in user_stops})
 
+# OG
+# @app.route('/stops/<stop_id>', methods= ['GET', 'DELETE'])
+# def view_stop(stop_id):
+#     """View a stop."""
 
+#     # stop = crud.get_stop_by_id(stop_id)
+#     # reviews = crud.get_reviews_by_stop(stop_id)
+
+#     # return jsonify(stop.to_dict(), {review.review_id: review.to_dict() for review in reviews})
+#     stop = crud.get_stop_by_id(stop_id)
+
+#     if request.method == 'GET':
+#         return jsonify(stop.to_dict()), 200
+#     if request.method == 'DELETE':
+#         db.session.delete(stop)
+#         db.session.commit()
+        # return jsonify({'message': 'Stop has been deleted.'}), 200
 @app.route('/stops/<stop_id>', methods= ['GET', 'DELETE'])
 def view_stop(stop_id):
     """View a stop."""
@@ -160,9 +185,17 @@ def view_stop(stop_id):
 
     # return jsonify(stop.to_dict(), {review.review_id: review.to_dict() for review in reviews})
     stop = crud.get_stop_by_id(stop_id)
+    rating = crud.get_reviews_by_stop(stop_id)
+    avg_rating = round(rating[0][0], 2)
 
     if request.method == 'GET':
-        return jsonify(stop.to_dict()), 200
+        return jsonify({'stop_id': stop.stop_id,
+                    'stop_name': stop.stop_name,
+                    'stop_lat': stop.stop_lat,
+                    'stop_lng': stop.stop_lng,
+                    'stop_category': stop.stop_category,
+                    'user_id': stop.user_id,
+                    'rating': avg_rating}), 200
     if request.method == 'DELETE':
         db.session.delete(stop)
         db.session.commit()
@@ -178,12 +211,16 @@ def view_stop_reviews(stop_id):
     
     # trying to do avg_rating on the backend, works for now reviews and can send over the average
     # otherwise but needs to be edited in front end code to separate avg from actual review obj
+    # stop_reviews = crud.stop_reviews(stop_id)
+    # print('=======================', stop_reviews, '=========================')
+    # stop_reviews_dict = crud.stop_reviews_to_dict(stop_reviews)
+    # avg_rating = crud.stop_avg_rating(stop_reviews_dict)
+    # print('----------------------', avg_rating, '-------------------------')
+    # return jsonify(avg_rating, {stop_review['review_id']: stop_review for stop_review in stop_reviews_dict})
+    
     stop_reviews = crud.stop_reviews(stop_id)
-    print('=======================', stop_reviews, '=========================')
     stop_reviews_dict = crud.stop_reviews_to_dict(stop_reviews)
-    avg_rating = crud.stop_avg_rating(stop_reviews_dict)
-    print('----------------------', avg_rating, '-------------------------')
-    return jsonify(avg_rating, {stop_review['review_id']: stop_review for stop_review in stop_reviews_dict})
+    return jsonify({stop_review['review_id']: stop_review for stop_review in stop_reviews_dict})
 
 @app.route('/stops/<stop_id>/review', methods = ['GET', 'POST'])
 def create_review(stop_id):
