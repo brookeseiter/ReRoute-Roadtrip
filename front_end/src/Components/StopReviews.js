@@ -124,7 +124,8 @@ import { useParams } from "react-router-dom";
  
 // export default StopReviews;
 
-const StopReviews = ({ handleRatingChange }) => {
+// const StopReviews = ({ handleRatingChange }) => {
+const StopReviews = ({ setUpdateReviews }) => {
     let { stopId } = useParams(); 
     const [reviews, setReviews] = useState([]); 
     let [reviewsObj, setReviewsObj] = useState([]);
@@ -135,28 +136,11 @@ const StopReviews = ({ handleRatingChange }) => {
             .then((data) => {
                 setReviews(data); 
                 setReviewsObj(Object.entries(reviews).map(([key, value]) => ({key, value})));
-                // const ratingArray = [];
-                // if (!Object.keys(data).length) {
-                //     handleRatingChange(null);
-                // } else {
-                // for (const review of reviewsObj) {
-                //     const rating = parseInt(review.value.rating);
-                //     ratingArray.push(rating);
-                // }
-                // console.log(ratingArray);
-                // let ratingSum = 0;
-                // let lenRatingArray = 0;
-                // ratingArray.forEach( rating => {
-                //     ratingSum += rating;
-                //     lenRatingArray += 1;
-                // });
-                // const avgRating = parseFloat(ratingSum/lenRatingArray).toFixed(1);
-                // console.log(avgRating);
-                // handleRatingChange(avgRating);
-                // }
+                setUpdateReviews(true);
             }) 
             .catch(error => console.log(error));
-    }, [stopId, handleRatingChange]); 
+    // }, [stopId, handleRatingChange]); 
+    }, [stopId]); 
     console.log('reviews:', reviews);
     reviewsObj = Object.entries(reviews).map(([key, value]) => ({key, value}));
     console.log('reviewsObj:', reviewsObj);

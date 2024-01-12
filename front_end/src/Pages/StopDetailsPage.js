@@ -151,11 +151,13 @@ const StopDetails = ({
     let { stopId } = useParams(); 
     const [stop, setStop] = useState([]); 
     const [inputs, setInputs] = useState({});
-    const [updateRating, setUpdateRating] = useState('');
+    // const [updateRating, setUpdateRating] = useState('');
     
-    const handleRatingChange = (avgRating) => {
-        setUpdateRating(avgRating);
-    }
+    // const handleRatingChange = (avgRating) => {
+    //     setUpdateRating(avgRating);
+    // }
+    const [updateReviews, setUpdateReviews] = useState(false);
+
    
     useEffect(() => {
         fetch(`/stops/${stopId}`) 
@@ -165,7 +167,8 @@ const StopDetails = ({
                 setStop(stopData);
             }) 
             .catch((error) => console.log(error));
-    }, [stopId]); 
+        setUpdateReviews(false);
+    }, [stopId, updateReviews]); 
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -194,7 +197,7 @@ const StopDetails = ({
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                setUpdateRating(updateRating);
+                setUpdateReviews(true);
             })
             .catch((error) => console.log(error));
     }
@@ -256,11 +259,13 @@ const StopDetails = ({
                                         placeholder="Tell other travelers why you love it (or don't!)"
                                         required 
                                     />
-                                    <button onClick={() => setUpdateRating(true)}>Create Review</button>
+                                    {/* <button onClick={() => setUpdateRating(true)}>Create Review</button> */}
+                                    <button onClick={() => setUpdateReviews(true)}>Create Review</button>
                                 </form>
                             </div>
                             <div className="col-md-6">
-                                <StopReviews handleRatingChange={handleRatingChange} />
+                                {/* <StopReviews handleRatingChange={handleRatingChange} /> */}
+                                <StopReviews setUpdateReviews={setUpdateReviews} />
                             </div>
                         </div>
                 </div>
