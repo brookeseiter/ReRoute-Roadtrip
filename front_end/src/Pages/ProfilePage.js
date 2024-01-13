@@ -97,8 +97,8 @@ const ProfilePage = ({
                                     </Col>
                                     <Col sm={9} className=''>
                                         <Tab.Content className='tab-content'>
-                                            <Tab.Pane className="tab-pane fade shadow rounded bg-white show p-4" eventKey="first">
-                                                {(stopsObj.length === 0) && "Create a stop!"}
+                                            <Tab.Pane className="tab-pane fade shadow rounded bg-white show p-4 my-stops" eventKey="first">
+                                                {(stopsObj.length === 0) && <p className="empty-stops">Create a stop to view your stops</p>}
                                                 {{stopsObj} && <StopList 
                                                                     filteredStops={stopsObj} 
                                                                     loading={loading} 

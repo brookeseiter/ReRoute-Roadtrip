@@ -61,7 +61,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
 
     return ( 
         <div className="my-reviews">
-            {(userReviewsObj.length === 0) && "Visit a stop and leave a review!" }
+            {(userReviewsObj.length === 0) && <p className="empty-reviews">Visit a stop and leave a review</p> }
             {userReviewsObj.map((userReviewObj) => (
                 <div className="user-review-preview rounded" key={ userReviewObj.key }>
                     <Link to={`/stops/${userReviewObj.value.stop_id}`}>
