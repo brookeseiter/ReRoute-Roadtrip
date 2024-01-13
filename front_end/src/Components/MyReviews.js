@@ -93,7 +93,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
                             htmlFor="review-rating-input" 
                             className="edit-review-form-input"
                         >
-                            Rating:
+                            Rating
                         </label>
                         <select
                             type="number"
@@ -115,7 +115,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
                             htmlFor="review-content-input" 
                             className="edit-review-form-input"
                         >
-                            Review:
+                            Review
                         </label>
                         <textarea
                             type="textArea"

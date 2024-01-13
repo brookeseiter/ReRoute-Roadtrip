@@ -54,7 +54,7 @@ h1 {
   font-size: 27px;
   color: #000000;
 }
-.create-account-form input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input {
+.create-account-form input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input, .edit-review-form textarea, .edit-review-form select {
   padding: 6px 10px;
   margin: 10px 0;
   border-radius: 3px;
@@ -62,7 +62,7 @@ h1 {
   box-sizing: border-box;
   display: block;
 }
-.create-account-form button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button, .my-reviews button, .create-route-page .btn {
+.create-account-form button, .login-form button, .create-stop-form button, .create-review-form button, .create-route-form button, .stop-list button, .my-reviews button, .edit-review-form button, .create-route-page .btn {
   background: #9f814f;
   color: #fff;
   border: 0;
@@ -220,11 +220,21 @@ a:hover {
 .stop-preview:hover, .user-review-preview:hover {
   box-shadow: 4px 6px 8px rgba(0,0,0,0.1);
 }
-.tab-pane, .stop-list, .my-reviews {
+.tab-pane, .stop-list, .my-reviews, .edit-review-form textarea {
   width: 100%;
 }
 .stop-list button, .my-reviews button {
   margin-top: 18px;
+}
+.modal-header {
+  border-bottom-width: 2px;
+  border-bottom-color: #000000;
+}
+.modal-footer {
+  border-top: none;
+}
+.edit-review-form button {
+  margin-top: 0;
 }
 
 
