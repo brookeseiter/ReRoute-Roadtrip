@@ -10,8 +10,6 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
     const [rating, setRating] = useState('');
     const [content, setContent] = useState('');
     const [editSuccess, setEditSuccess] = useState(false);
-    const [reviewId, setReviewId] = useState(null);
-
    
     useEffect(() => {
         if (currentUser.userId !== '') {
@@ -58,17 +56,17 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
             })
             .catch((error) => console.log(error));
             handleCloseModal();
-    }
+    };
 
     const handleDeleteReview = () => {
         fetch(`/reviews/${selectedReview.key}/delete`, {
-            method: 'DELETE'
-        }).then((reviewData) => {
-            console.log('reviewData:', reviewData);
-            console.log("deleted"); 
-            setEditSuccess(true);
-        }) 
-    }
+            method: 'DELETE',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(selectedReview.key)
+        }).then((response) => response.json())
+          .then((addConfirmation) => {setEditSuccess(addConfirmation)})
+          .catch((error) => console.log(error));
+    };
 
     return ( 
         <div className="my-reviews">
