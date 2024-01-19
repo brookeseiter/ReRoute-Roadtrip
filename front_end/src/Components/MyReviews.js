@@ -10,6 +10,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
     const [rating, setRating] = useState('');
     const [content, setContent] = useState('');
     const [editSuccess, setEditSuccess] = useState(false);
+    const [reviewId, setReviewId] = useState(null);
 
    
     useEffect(() => {
@@ -59,11 +60,21 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
             handleCloseModal();
     }
 
+    const handleDeleteReview = () => {
+        fetch(`/reviews/${selectedReview.key}/delete`, {
+            method: 'DELETE'
+        }).then((reviewData) => {
+            console.log('reviewData:', reviewData);
+            console.log("deleted"); 
+            setEditSuccess(true);
+        }) 
+    }
+
     return ( 
         <div className="my-reviews">
             {(userReviewsObj.length === 0) && <p className="empty-reviews">Visit a stop and leave a review</p> }
             {userReviewsObj.map((userReviewObj) => (
-                <div className="user-review-preview rounded" key={ userReviewObj.key }>
+                <div className="user-review-preview rounded" key={ userReviewObj.key } onMouseOver={() => setSelectedReview(userReviewObj)}>
                     <Link to={`/stops/${userReviewObj.value.stop_id}`}>
                         <h2>{ userReviewObj.value.stop_name }</h2>
                         <p><strong>Category: </strong><em>{ userReviewObj.value.stop_category }</em></p>
@@ -78,6 +89,9 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
                         setContent(userReviewObj.value.content);
                     }}>
                         Edit Review
+                    </button>
+                    <button onClick={handleDeleteReview}>
+                        Delete Review
                     </button>
                 </div>
             ))}

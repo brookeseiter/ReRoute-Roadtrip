@@ -165,7 +165,6 @@ def view_stop(stop_id):
                     'stop_category': stop.stop_category,
                     'user_id': stop.user_id,
                     'rating': avg_rating}), 200
-    
     elif request.method == 'GET':
         return jsonify(stop.to_dict()), 200
     
@@ -173,6 +172,7 @@ def view_stop(stop_id):
         db.session.delete(stop)
         db.session.commit()
         return jsonify({'message': 'Stop has been deleted.'}), 200
+
 
 @app.route('/stops/<stop_id>/reviews')
 def view_stop_reviews(stop_id):
@@ -229,6 +229,18 @@ def edit_user_review(user_id, review_id):
     crud.edit_review(review_id, rating, content)
 
     return jsonify({'message': 'Review has been successfully edited.'}), 200
+
+@app.route('/reviews/<review_id>/delete', methods=['DELETE'])
+def delete_stop_review(review_id):
+    """Delete a user's review for a stop."""
+    print('---------------------------review_id:', review_id)
+    review = crud.get_review_by_id(review_id)
+    print('---------------------------REVIEW:', review)
+
+    db.session.delete(review)
+    db.session.commit()
+
+    return jsonify({'message': 'Review has been successfully deleted.'}), 200
 
 
 if __name__ == "__main__":
