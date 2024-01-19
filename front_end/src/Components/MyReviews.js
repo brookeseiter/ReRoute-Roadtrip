@@ -13,12 +13,12 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
    
     useEffect(() => {
         if (currentUser.userId !== '') {
+            console.log(editSuccess);
             fetch(`/api/user/${currentUser}/reviews`) 
                 .then(response => response.json())
                 .then(data => setUserReviews(data)) 
                 .catch(error => console.log(error));
         }
-        setEditSuccess(false);
     }, [currentUser, editSuccess]); 
 
     const handleOpenModal = () => setModalOpen(true);
@@ -27,8 +27,8 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
     const updateContent = (e) => setContent(e.target.value);
 
     const userReviewsObj = Object.entries(userReviews).map(([key, value]) => ({key, value}));
-    console.log('userReviews:  ', userReviews);
-    console.log('userReviewsObj:  ', userReviewsObj);
+    // console.log('userReviews:  ', userReviews);
+    // console.log('userReviewsObj:  ', userReviewsObj);
 
     const handleEditReview = (e) => {
         e.preventDefault();
