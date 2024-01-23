@@ -16,7 +16,7 @@ export default function Homepage ({ user, setUser, isLoggedIn, setIsLoggedIn }) 
                     <br />
                     <img 
                         src="../Images/logo.png"
-                        className="rounded mx-auto d-block" 
+                        className="rounded mx-auto d-block sm-img" 
                         id="Logo"
                         alt=""
                         width="180px"

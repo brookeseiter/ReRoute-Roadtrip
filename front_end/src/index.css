@@ -91,16 +91,19 @@ h1 {
   max-width: fit-content;
 }
 .bg-img {
-  height: 100vh;
   width: 100vw;
+  /* height: 100vw; */
+  /* position: relative; */
 }
-.col-md-3 h2 {
-  font-size: 58px;
-}
-.col-md-3 img {
+.sm-img {
+  /* width: 180px;
+  height: 180px; */
   margin-top: 18px;
   margin-bottom: 2px;
   margin-right: 20px;
+}
+.col-md-3 h2 {
+  font-size: 58px;
 }
 .homepage .col-md-3 {
   background-color: #4E6C50;
