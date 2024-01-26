@@ -5,14 +5,14 @@ export default function Homepage ({ user, setUser, isLoggedIn, setIsLoggedIn }) 
     return ( 
         <div className="homepage">   
             <img 
-                src="../Images/rocks.jpeg"
+                src="../Images/rocks.webp"
                 className="bg-img" 
                 alt=""
             />             
             <div className="col-md-3">
                 <br />
                 <img 
-                    src="../Images/logo.png"
+                    src="../Images/logo.webp"
                     className="rounded mx-auto d-block sm-img" 
                     id="Logo"
                     alt=""
