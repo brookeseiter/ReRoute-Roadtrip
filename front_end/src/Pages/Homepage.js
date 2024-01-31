@@ -3,12 +3,12 @@ import LoginPage from './LoginPage.js';
 export default function Homepage ({ user, setUser, isLoggedIn, setIsLoggedIn }) {
 
     return ( 
-        <div className="homepage">   
+        <div className="homepage">  
             <img 
                 src="../Images/rocks.webp"
                 className="bg-img" 
                 alt=""
-            />             
+            />   
             <div className="col-md-3">
                 <br />
                 <img 

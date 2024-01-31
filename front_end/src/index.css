@@ -81,8 +81,7 @@ h1 {
 /* Homepage */
 .bg-img {
   width: 100vw;
-  height: 100vh;
-  position: absolute;
+  position: fixed;
 }
 .sm-img {
   width: 180px;
@@ -95,21 +94,17 @@ h1 {
   height: 100vh;
   float: right;
   transform: translate(-40%);
+  background-color: #4E6C50;
+  position: relative;
 }
 .col-md-3 h2 {
   font-size: 58px;
-}
-.homepage .col-md-3 {
-  background-color: #4E6C50;
-  position: relative;
+  margin-bottom: 0px;
 }
 .col-md-3 p {
   font-family: "Bebas Neue";
   font-size: 18px;
   margin-bottom: 50px;
-}
-h2 {
-  margin-bottom: 0px;
 }
 .login-form a, small {
   font-family: "Roboto Condensed";
