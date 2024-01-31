@@ -45,7 +45,7 @@ export default function CreateAccountPage ({ loading }) {
             <nav className="navbar navbar-expand-lg bg-body-tertiary container">
                 <div className="navbar-brand">
                     <img 
-                        src='../Images/logo.png' 
+                        src='../Images/logo.webp' 
                         className="d-inline-block align-text-center" 
                         id="Logo"
                         alt=''

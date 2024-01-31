@@ -93,7 +93,7 @@ input {
   margin-bottom: 2px;
   margin-right: 20px;
 }
-.col-md-3 {
+.login {
   height: 100vh;
   float: right;
   transform: translate(-40%);

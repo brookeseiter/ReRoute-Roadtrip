@@ -32,7 +32,7 @@ export default function Navbar ({
             <div className="navbar-brand">
                 <Link to="/profile" >
                     <img 
-                        src='../Images/logo.png'
+                        src='../Images/logo.webp'
                         className="d-inline-block align-text-center" 
                         id="Logo"
                         alt=''

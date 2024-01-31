@@ -9,7 +9,7 @@ export default function Homepage ({ user, setUser, isLoggedIn, setIsLoggedIn }) 
                 className="bg-img" 
                 alt=""
             />   
-            <div className="col-md-3">
+            <div className="login col-md-3">
                 <br />
                 <img 
                     src="../Images/logo.webp"
