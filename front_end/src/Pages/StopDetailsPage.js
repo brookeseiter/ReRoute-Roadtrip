@@ -19,6 +19,7 @@ const StopDetails = ({
     const [stop, setStop] = useState([]); 
     const [inputs, setInputs] = useState({});
     const [updateReviews, setUpdateReviews] = useState(false);
+    let [userRating, setUserRating] = useState("");
    
     useEffect(() => {
         fetch(`/stops/${stopId}`) 
@@ -41,7 +42,7 @@ const StopDetails = ({
         const reviewInfo = {
             userId: currentUser,
             stopId: stopId,
-            rating: inputs.rating,
+            rating: userRating,
             content: inputs.content
         }
 
@@ -90,15 +91,23 @@ const StopDetails = ({
                                         className="create-review-form-input"
                                     >
                                         Rating
-                                    <input 
-                                        type="text" 
-                                        name="rating"
-                                        id="review-rating-input"
-                                        value={inputs.rating || ""}
-                                        onChange={handleChange}
-                                        placeholder="Enter a number between 1-5"
-                                        required 
-                                    />
+                                    <select 
+                                        name="rating" 
+                                        id="review-rating-select"
+                                        value={userRating}
+                                        onChange={(e) => {
+                                            userRating = e.target.value;
+                                            setUserRating(userRating);
+                                        }}
+                                        required
+                                    >
+                                        <option disabled={true} value="">Choose a number between 1-5</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
                                     </label>
                                     <label 
                                         htmlFor="review-text-input" 
