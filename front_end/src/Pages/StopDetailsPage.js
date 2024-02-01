@@ -56,9 +56,11 @@ const StopDetails = ({
 
         fetch(`/stops/${stopId}/review`, requestOptions)
             .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
+            .then((reviewData) => {
+                console.log(reviewData);
                 setUpdateReviews(true);
+                setUserRating('');
+                setInputs({});
             })
             .catch((error) => console.log(error));
     }

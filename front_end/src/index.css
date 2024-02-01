@@ -281,6 +281,8 @@ a:hover {
 #review-rating-select {
   width: 450px;
   font-family: "Roboto Condensed";
+  color: rgb(118, 118, 118);
+  font-size: 17px;
 }
 #review-text-input {
   height: 100px;
