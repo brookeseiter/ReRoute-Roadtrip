@@ -51,7 +51,7 @@ input, textarea, select {
   font-size: 27px;
   color: #000000;
 }
-.create-account-form input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .create-route-form input, .create-review-form input, .create-review-form select, .create-review-form textarea, .edit-review-form textarea, .edit-review-form select {
+.create-account-form input, .login-form input, .create-stop-form input, .create-stop-form select, .create textarea, .create select, .stop-search, .create-route-form input, .create-review-form input, .create-review-form select, .create-review-form textarea, .edit-review-form textarea, .edit-review-form select {
   padding: 6px 10px;
   margin: 10px 0;
   border-radius: 3px;

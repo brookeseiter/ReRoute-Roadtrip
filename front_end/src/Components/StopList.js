@@ -32,9 +32,9 @@ const StopList = ({
 
     return (
         <div className="stop-list">
-            { title  === "All Stops" &&
+            {/* { title  === "All Stops" &&
                 <h1>All Stops</h1>
-            }
+            } */}
             {filteredStops && filteredStops.map((filteredStop) => (
                 <div className="stop-preview rounded" key={ filteredStop.key }>
                     <Link to={`/stops/${filteredStop.value.stop_id}`}>

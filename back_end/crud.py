@@ -83,7 +83,7 @@ def get_stop_by_user(user_id,stop_id):
 
 def create_review(user_id, stop_id, rating, content):
     """Create and return a new review by a user for a stop."""
-
+    # if get_reviews_by_stop contains user_id already, user can't create a review
     review = Review(
     user_id=user_id, 
     stop_id=stop_id, 
@@ -171,24 +171,20 @@ def stop_reviews_to_dict(stop_reviews):
     return  data_list
 
 
-
-# 1/10 INSERT
-def stop_avg_rating(reviews):
-    count = len(reviews)
-    total_rating = 0
-
-    for rev in reviews:
-        total_rating += rev['rating']
-
-    avg_rating = total_rating/count 
-
-    return avg_rating
-
-# 1/11 INSERT (so far not connected to any other file, not functional)
-def join_reviews_and_stop_data(stop_id):
+# def join_reviews_and_stop_data(stop_id, user_id):
+#     stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).join(User, User.user_id == Review.user_id).filter(Stop.stop_id == stop_id).first()
+#     print('STOP:', stop)
+#     print('STOP.REVIEWS:', stop.reviews)
+#     if user_id in stop.reviews:
+#         print('YES HERE')
+#     else:
+#         print('NONE YET')
+def join_reviews_and_stop_data(stop_id,user_id):
     stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).join(User, User.user_id == Review.user_id).filter(Stop.stop_id == stop_id).first()
-    print('STOP:', stop)
-    print('STOP.REVIEWS:', stop.reviews)
+    print('stop.reviews:', stop.reviews)
+    if user_id in stop.reviews.Review.user_id:
+        return True
+    return False
 
 def join_reviews_and_stop_data2(stop_id):
     stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).filter(Stop.stop_id == stop_id).first()
@@ -203,7 +199,8 @@ def join_reviews_and_stop_data2(stop_id):
 #     for rev in stop.reviews:
 #         print(stop.reviews)
 
-def get_reviews_by_stop(stop_id):
+def get_stop_avg_rating(stop_id):
+    """Calculates average rating of a stop."""
 
     return Review.query.with_entities(func.avg(Review.rating)).filter(Review.stop_id == stop_id).all()
 
