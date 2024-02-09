@@ -194,11 +194,10 @@ def create_review(stop_id):
     rating = request.json['rating']
     content = request.json['content']
 
-    current_stop_reviews = crud.get_reviews_by_stop(stop_id)
+    user_has_reviewed_stop = crud.has_user_reviewed_stop(stop_id, user_id)
 
-    for review in current_stop_reviews:
-        if review.user_id == user_id:
-            return jsonify({'message': 'User has already created a review for this stop.'})
+    if user_has_reviewed_stop == True:
+        return jsonify({'message': 'User has already created a review for this stop.'})
 
     new_review = crud.create_review(user_id, stop_id, rating, content)
 

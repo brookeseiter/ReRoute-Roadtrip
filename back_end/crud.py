@@ -113,10 +113,20 @@ def get_reviews_by_user(user_id):
     return Review.query.filter(Review.user_id == user_id).all()
 
 def get_reviews_by_stop(stop_id):
-    """Return all reviews for a stop as a list of Review objects."""
+    """Returns all reviews for a stop as a list of Review objects."""
 
     return Review.query.filter(Review.stop_id == stop_id).all()
 
+def has_user_reviewed_stop(stop_id, user_id):
+    """Checks whether a user has created a review for a given stop, returns boolean."""
+
+    user_stop_review = Review.query.filter(Review.stop_id == stop_id).filter(Review.user_id == user_id).first()
+    
+    if user_stop_review:
+        return True
+    else:
+        return False
+    
 def stop_reviews(stop_id):
     """Returns a list of sqlalchemy rows with review information for a stop."""
 
