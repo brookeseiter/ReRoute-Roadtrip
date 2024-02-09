@@ -126,7 +126,7 @@ def has_user_reviewed_stop(stop_id, user_id):
         return True
     else:
         return False
-    
+
 def stop_reviews(stop_id):
     """Returns a list of sqlalchemy rows with review information for a stop."""
 
@@ -180,6 +180,25 @@ def stop_reviews_to_dict(stop_reviews):
 
     return  data_list
 
+# def stop_reviews2():
+#     """Returns a list of sqlalchemy rows with review information for a stop."""
+
+#     return (
+#         db.session.query(
+#             # Review.rating,
+#             Stop.stop_id
+#             # Stop.stop_name
+#             # Stop.stop_lat,
+#             # Stop.stop_lng,
+#             # Stop.stop_category,
+#             # User.user_id,
+#             # User.username
+#         )
+#         # .filter(
+#         #     Stop.user_id == User.user_id
+#         # )
+#         .all()
+#     )
 
 # def join_reviews_and_stop_data(stop_id, user_id):
 #     stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).join(User, User.user_id == Review.user_id).filter(Stop.stop_id == stop_id).first()
@@ -189,17 +208,23 @@ def stop_reviews_to_dict(stop_reviews):
 #         print('YES HERE')
 #     else:
 #         print('NONE YET')
-def join_reviews_and_stop_data(stop_id,user_id):
-    stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).join(User, User.user_id == Review.user_id).filter(Stop.stop_id == stop_id).first()
-    print('stop.reviews:', stop.reviews)
-    if user_id in stop.reviews.Review.user_id:
-        return True
-    return False
 
-def join_reviews_and_stop_data2(stop_id):
-    stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).filter(Stop.stop_id == stop_id).first()
-    print('STOP:', stop)
-    print('STOP.REVIEWS:', stop.reviews)
+# def join_reviews_and_stop_data(stop_id,user_id):
+#     stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).join(User, User.user_id == Review.user_id).filter(Stop.stop_id == stop_id).first()
+#     print('stop.reviews:', stop.reviews)
+#     if user_id in stop.reviews.Review.user_id:
+#         return True
+#     return False
+
+# def join_reviews_and_stop_data2(stop_id):
+#     stop = Stop.query.join(Review, Review.stop_id == Stop.stop_id).filter(Stop.stop_id == stop_id).all()
+#     print('STOP:', stop)
+#     print('STOP.REVIEWS:', stop.reviews)
+
+
+# def ploop():
+#     stops = Stop.query.join(Review, Review.stop_id == Stop.stop_id).all()
+#     print('STOP:', stops)
 
 # def join_reviews_and_stop_data3():
 #     # stops = Stop.query.join(Review).first()
@@ -209,16 +234,24 @@ def join_reviews_and_stop_data2(stop_id):
 #     for rev in stop.reviews:
 #         print(stop.reviews)
 
+# def stops_ratings_combo():
+#     """Returns a list of sqlalchemy rows with review information for a user."""
+
+#     return (
+#         db.session.query(
+#             Review.rating,
+#             Stop.stop_id,
+#             Stop.stop_name,
+#             Stop.stop_category,
+#             User.user_id,
+#         )
+#         .all()
+#     )
+
 def get_stop_avg_rating(stop_id):
     """Calculates average rating of a stop."""
 
-    return Review.query.with_entities(func.avg(Review.rating)).filter(Review.stop_id == stop_id).all()
-
-    
-    
-
-
-    
+    return Review.query.with_entities(func.avg(Review.rating)).filter(Review.stop_id == stop_id).all() 
 
 def user_reviews(user_id):
     """Returns a list of sqlalchemy rows with review information for a user."""
@@ -266,7 +299,6 @@ def user_reviews_to_dict(user_reviews):
         data_list.append(data)
 
     return  data_list
-
 
 # def create_route(user, num_stops, route_name, total_miles, total_time, 
 # start_lat, start_lng, end_lat, end_lng):
