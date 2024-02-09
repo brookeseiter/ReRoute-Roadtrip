@@ -58,6 +58,9 @@ const StopDetails = ({
             .then((response) => response.json())
             .then((reviewData) => {
                 console.log(reviewData);
+                if (reviewData.message === 'User has already created a review for this stop.') {
+                    alert('You have already reviewed this stop.');
+                }
                 setUpdateReviews(true);
                 setUserRating('');
                 setInputs({});
