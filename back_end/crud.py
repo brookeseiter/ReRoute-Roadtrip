@@ -83,7 +83,7 @@ def get_stop_by_user(user_id,stop_id):
 
 def create_review(user_id, stop_id, rating, content):
     """Create and return a new review by a user for a stop."""
-    # if get_reviews_by_stop contains user_id already, user can't create a review
+
     review = Review(
     user_id=user_id, 
     stop_id=stop_id, 
