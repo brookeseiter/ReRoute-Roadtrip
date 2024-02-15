@@ -551,6 +551,37 @@ section.py-5 {
 
 
 
+/* reviews background */
+/* .stop-review-details {
+  height: 36rem;
+  width: fit-content;
+  border-radius: 1.6rem;
+  background: #ffffff;
+  box-shadow: 0 0.8rem 2rem rgba(#5a6181, 0.05) !important;
+}  */
+
+.page-item .page-link {
+  background:#f9f9fa;
+  --bs-pagination-border-color: none;
+  box-shadow: none;
+  color: rgb(110, 112, 114);
+}
+.page-item .page-link span {
+  color: rgb(110, 112, 114);
+  outline: none !important;
+}
+.page-item.active .page-link {
+  display: inline-block;
+  color: #000000;
+  height: 24px;
+  font-weight: bold;
+}
+
+
+
+
+
+
 
 
 

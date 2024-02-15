@@ -49,7 +49,7 @@ const PaginationComp = ({
   
       if (!isPageNumberOutOfRange) {
         isPageNumberOutOfRange = true;
-        return <Pagination.Ellipsis key={pageNumber} className="muted" />;
+        return <Pagination.Ellipsis key={pageNumber} className="muted page__dots" />;
       }
   
       return null;
@@ -63,6 +63,7 @@ const PaginationComp = ({
                 {isPaginationShown && (
                     <Pagination>
                         <Pagination.First 
+                            style={{ backgroundColor: 'red' }}
                             onClick={ () => {
                                 if (currentPage > 1) {
                                     changePage(1);
