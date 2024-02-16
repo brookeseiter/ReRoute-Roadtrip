@@ -63,7 +63,6 @@ const PaginationComp = ({
                 {isPaginationShown && (
                     <Pagination>
                         <Pagination.First 
-                            style={{ backgroundColor: 'red' }}
                             onClick={ () => {
                                 if (currentPage > 1) {
                                     changePage(1);

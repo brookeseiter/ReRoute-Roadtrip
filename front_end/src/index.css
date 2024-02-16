@@ -560,21 +560,25 @@ section.py-5 {
   box-shadow: 0 0.8rem 2rem rgba(#5a6181, 0.05) !important;
 }  */
 
+/* Pagination */
 .page-item .page-link {
   background:#f9f9fa;
   --bs-pagination-border-color: none;
   box-shadow: none;
   color: rgb(110, 112, 114);
+  font-size: 20px;
+  font-weight: lighter;
 }
 .page-item .page-link span {
-  color: rgb(110, 112, 114);
+  color: rgb(99, 99, 100);
   outline: none !important;
+  font-size: 25px;
 }
 .page-item.active .page-link {
-  display: inline-block;
   color: #000000;
   height: 24px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: bolder;
 }
 
 
