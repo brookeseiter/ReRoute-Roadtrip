@@ -61,12 +61,11 @@ const AllStopsPage = ({
             {loading ? <Spinner animation="border" /> :
                 <div className="all-stops-page-content container">
                     <h1>All Stops</h1>
-                    <label>Search</label>
                     <input 
                         type="text" 
                         className="stop-search" 
                         onChange={e => setQuery(e.target.value)} 
-                        placeholder='Enter the name of a stop'
+                        placeholder='Search for a stop'
                     />
                     {currentStops && <StopList 
                                         filteredStops={currentStops} 

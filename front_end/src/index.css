@@ -1,4 +1,4 @@
-/* base styles */
+/* Base Styles */
 * {
   margin: 0;
   font-family: "Bebas Neue";
@@ -37,7 +37,7 @@ input, textarea, select {
 }
 
 
-/* forms */
+/* Forms */
 .create-account-form, .create-stop-form {
   max-width: 360px;
   margin: 0 auto;
@@ -208,7 +208,6 @@ a:hover {
 .stop-preview, .user-review-preview {
   color: #181617;
   padding: 10px 16px;
-  margin: 20px 0;
 }
 .stop-category em {
   font-family: "Roboto Condensed";
@@ -237,6 +236,12 @@ a:hover {
 /* All Stops Page */
 .stop-preview h2 {
   font-size: 40px;
+}
+.stop-search {
+  display: inline;
+  width: 40%;
+  margin-bottom: 20px;
+  margin-left: 13px;
 }
 
 
@@ -357,10 +362,9 @@ button.infowindow {
 }
 
 
-/* stop previews / list */
+/* Stop Previews/List */
 .stop-preview {
   padding: 10px 16px;
-  margin: 20px 0;
 }
 .stop-preview:hover {
   box-shadow: 10px 6px 18px rgba(0,0,0,0.1);
@@ -526,9 +530,6 @@ section.py-5 {
 .nav-pills-custom .nav-link.active::before {
   opacity: 1;
 }
-/* .tab-content>.active {
-  display: flex;
-} */
 .tab-content>.tab-pane {
   max-width: 95%;
 }
@@ -548,9 +549,6 @@ section.py-5 {
   margin-top: 1.9rem;
   margin-bottom: 1.9rem;
 }
-
-
-
 
 /* reviews background */
 /* .stop-review-details {
