@@ -209,10 +209,9 @@ a:hover {
   color: #181617;
   padding: 10px 16px;
   margin: 20px 0;
-  border-bottom: 1px solid #fafafa;
 }
 .stop-preview:hover, .user-review-preview:hover {
-  box-shadow: 4px 6px 8px rgba(0,0,0,0.1);
+  box-shadow: 10px 6px 15px rgba(0,0,0,0.1);
 }
 .tab-pane, .stop-list, .my-reviews, .edit-review-form textarea {
   width: 100%;
@@ -362,7 +361,7 @@ button.infowindow {
   border-bottom: 1px solid #fafafa;
 }
 .stop-preview:hover {
-  box-shadow: 8px 8px 10px rgba(0,0,0,0.1);
+  box-shadow: 10px 6px 18px rgba(0,0,0,0.1);
 }
 .stop-preview h2, .stop-page h2, .review-preview h2, .col-lg-7 h2{
   font-size: 40px;
