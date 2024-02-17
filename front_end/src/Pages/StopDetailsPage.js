@@ -82,7 +82,7 @@ const StopDetails = ({
                 <div className="stop-details-page-content container" id="stop-details">
                         <div className="row stop-info">
                             <h1>{ stop.stop_name }</h1>
-                            <p>Category: { stop.stop_category }</p>
+                            <p className="stop-category"><em>{ stop.stop_category }</em></p>
                             <p>Latitude: { stop.stop_lat}</p>
                             <p>Longitude: { stop.stop_lng }</p>
                             {stop.rating  ? (<p>Rating: {stop.rating}</p>): null} 

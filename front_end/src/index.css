@@ -210,6 +210,9 @@ a:hover {
   padding: 10px 16px;
   margin: 20px 0;
 }
+.stop-category em {
+  font-family: "Roboto Condensed";
+}
 .stop-preview:hover, .user-review-preview:hover {
   box-shadow: 10px 6px 15px rgba(0,0,0,0.1);
 }
@@ -358,7 +361,6 @@ button.infowindow {
 .stop-preview {
   padding: 10px 16px;
   margin: 20px 0;
-  border-bottom: 1px solid #fafafa;
 }
 .stop-preview:hover {
   box-shadow: 10px 6px 18px rgba(0,0,0,0.1);

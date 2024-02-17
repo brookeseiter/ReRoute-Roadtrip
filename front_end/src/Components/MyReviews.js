@@ -75,7 +75,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
                 <div className="user-review-preview rounded" key={ userReviewObj.key } onMouseOver={() => setSelectedReview(userReviewObj)}>
                     <Link to={`/stops/${userReviewObj.value.stop_id}`}>
                         <h2>{ userReviewObj.value.stop_name }</h2>
-                        <p><strong>Category: </strong><em>{ userReviewObj.value.stop_category }</em></p>
+                        <p className="stop-category"><em>{ userReviewObj.value.stop_category }</em></p>
                         <h3>Your Review:</h3>
                         <p>Rating: { userReviewObj.value.rating }</p>
                         <p>{ userReviewObj.value.content }</p>
