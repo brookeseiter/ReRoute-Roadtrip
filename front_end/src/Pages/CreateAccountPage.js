@@ -44,15 +44,17 @@ export default function CreateAccountPage ({ loading }) {
         <div className="create-account-page" onSubmit={handleSignUp}>
             <nav className="navbar navbar-expand-lg bg-body-tertiary container">
                 <div className="navbar-brand">
-                    <img 
-                        src='../Images/logo.webp' 
-                        className="d-inline-block align-text-center" 
-                        id="Logo"
-                        alt=''
-                        width="80"
-                        height="80"
-                    />  
-                    <h1 className="d-inline-block"> ReRoute Roadtrip</h1>
+                    <Link to="/" >
+                        <img 
+                            src='../Images/logo.webp' 
+                            className="d-inline-block align-text-center" 
+                            id="Logo"
+                            alt=''
+                            width="80"
+                            height="80"
+                        />  
+                        <h1 className="d-inline-block"> ReRoute Roadtrip</h1>
+                    </Link>
                 </div>
             </nav>
             {loading ? <Spinner animation="border" /> :
