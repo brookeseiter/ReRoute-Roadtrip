@@ -85,7 +85,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, l
                         setSelectedReview(userReviewObj);  
                         setRating(userReviewObj.value.rating);
                         setContent(userReviewObj.value.content);
-                    }}>
+                    }}> 
                         Edit Review
                     </button>
                     <button onClick={handleDeleteReview}>
