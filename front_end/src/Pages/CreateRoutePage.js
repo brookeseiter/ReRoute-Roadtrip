@@ -161,7 +161,7 @@ export default function CreateRoutePage ({
                  
                 <input 
                   id="origin"
-                  className="form-control"
+                  className="form-control noSelect"
                   type="text"
                   name="origin"
                   value={inputs.origin || ""}

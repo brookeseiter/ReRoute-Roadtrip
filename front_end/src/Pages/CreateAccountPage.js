@@ -64,6 +64,7 @@ export default function CreateAccountPage ({ loading }) {
                                 <div className="mb-3">
                                     <label htmlFor="email-input" className="create-account-input">
                                     <input 
+                                        className="create-account-input"
                                         type="text"
                                         name="email"
                                         id="email-input" 
@@ -77,6 +78,7 @@ export default function CreateAccountPage ({ loading }) {
                                 <div className="mb-3">
                                     <label htmlFor="username-input" className="create-account-input">
                                     <input 
+                                        className="create-account-input"
                                         type="text"
                                         name="username" 
                                         id="username-input"
@@ -90,7 +92,8 @@ export default function CreateAccountPage ({ loading }) {
                                 <div className="mb-3">
                                     <label htmlFor="password-input" className="create-account-input">
                                     <input 
-                                        type="text"
+                                        className="create-account-input"
+                                        type="password"
                                         name="password" 
                                         id="password-input"
                                         value={password}
@@ -103,6 +106,7 @@ export default function CreateAccountPage ({ loading }) {
                                 <div className="mb-3">
                                     <label htmlFor="phone-num-input" className="create-account-input">
                                     <input 
+                                        className="create-account-input"
                                         type="text"
                                         name="phoneNum" 
                                         id="phone-num-input"
