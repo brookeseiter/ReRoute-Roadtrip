@@ -1,4 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# came with create react app automatically
 
 # dependencies
 /node_modules
@@ -29,4 +30,5 @@ env/
 .env
 *.pyc
 /*_session/
+.gitignore
 

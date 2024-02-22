@@ -19,6 +19,7 @@ Demo: https://www.youtube.com/watch?v=VPYsfzPS-bk
 - React-Bootstrap
 - HTML
 - CSS
+
 APIs:
 - Google Maps (Directions, Distance Matrix, Geocoding) API
 - National Park System API
@@ -33,12 +34,12 @@ To run ReRoute Roadtrip locally on your computer, follow these steps:
 $ git clone https://github.com/brookeseiter/ReRoute-Roadtrip.git
 ```
 3. Instructions for NPS and Google Maps APIs
-4. Create and activate a virtual environment:
+4. Create and activate a virtual environment
 ```sh
 $ virtualenv env
 $ source env/bin/activate
 ```
-5. Install dependencies:
+5. Install dependencies
 ```sh
 $ pip install -r requirements.txt
 ```

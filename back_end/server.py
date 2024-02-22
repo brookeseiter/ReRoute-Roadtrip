@@ -14,7 +14,7 @@ load_dotenv()
 
 # Create the Flask application
 app = Flask(__name__)
-app.secret_key = os.environ['SECRET_KEY']
+app.secret_key = os.environ['FLASK_SECRET_KEY']
 CORS(app, supports_credentials=True)
 bycrypt = Bcrypt(app)
 
