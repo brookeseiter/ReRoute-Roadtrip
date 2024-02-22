@@ -34,6 +34,15 @@ To run ReRoute Roadtrip locally on your computer, follow these steps:
 $ git clone https://github.com/brookeseiter/ReRoute-Roadtrip.git
 ```
 3. Instructions for NPS and Google Maps APIs
+- In the back_end folder, create a .env file and place the following keys in it
+```sh
+$ FLASK_SECRET_KEY = "YOUR_FLASK_SECRET_KEY"
+$ NPS_KEY = "YOUR_NPS_KEY"
+```
+- In the front_end folder, create a .env file and place the following keys in it
+```sh
+$ REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_MAPS_KEY
+```
 4. Create and activate a virtual environment
 ```sh
 $ virtualenv env
