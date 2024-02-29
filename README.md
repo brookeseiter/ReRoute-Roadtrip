@@ -39,8 +39,7 @@ Requirements:
 $ git clone https://github.com/brookeseiter/ReRoute-Roadtrip.git
 ```
 2. Instructions for **NPS and Google Maps APIs**
-- **Get an API key** for [NPS API](https://www.nps.gov/subjects/developer/get-started.htm) and [Google Maps API](https://developers.google.com/maps)
-* Note: NPS API is not required unless you'd like to seed the app's map with additional stops not already included in /data/stops.json
+- **Get an API key** for [NPS API](https://www.nps.gov/subjects/developer/get-started.htm) and [Google Maps API](https://developers.google.com/maps) (Note: NPS API is not required unless you'd like to seed the app's map with additional stops not already included in /data/stops.json)
 - In the back_end folder, place the following keys in a .env file
 ```sh
 $ FLASK_SECRET_KEY = "YOUR_FLASK_SECRET_KEY"
