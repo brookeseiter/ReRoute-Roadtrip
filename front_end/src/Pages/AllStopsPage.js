@@ -48,6 +48,7 @@ const AllStopsPage = ({
     const idxOfFirstStop = idxOfLastStop - stopsPerPage;
     const currentStops = filteredStops.slice(idxOfFirstStop, idxOfLastStop);
 
+
     return (
         <div className="all-stops-page">
             <Navbar 
@@ -58,15 +59,16 @@ const AllStopsPage = ({
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn} 
             />
-            {loading ? <Spinner animation="border" /> :
-                <div className="all-stops-page-content container">
-                    <h1>All Stops</h1>
-                    <input 
+            <div className="all-stops-page-content container">
+                <h1>All Stops</h1>
+                <input 
                         type="text" 
                         className="stop-search" 
                         onChange={e => setQuery(e.target.value)} 
                         placeholder='Search for a stop'
-                    />
+                />
+                {loading ? <Spinner className="spinner" animation="border" /> :
+                    <>
                     {currentStops && <StopList 
                                         filteredStops={currentStops} 
                                         loading={loading} 
@@ -81,8 +83,9 @@ const AllStopsPage = ({
                         setCurrentPage={setCurrentPage}
                         alwaysShown={false}
                     />
-                </div>
-            }           
+                    </>
+                }
+            </div>          
         </div>
     );
 };

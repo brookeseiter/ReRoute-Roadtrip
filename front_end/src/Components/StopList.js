@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const StopList = ({ 
     filteredStops, 
     title, 
-    loading, 
-    setLoading,
+    // loading, 
+    // setLoading,
     setEditSuccess
 }) => {
     // const handleDeleteStop= (filteredStop) => {
@@ -29,12 +29,11 @@ const StopList = ({
             setEditSuccess(true);
         });
     };
+    console.log('in stoplist');
+
 
     return (
         <div className="stop-list">
-            {/* { title  === "All Stops" &&
-                <h1>All Stops</h1>
-            } */}
             {filteredStops && filteredStops.map((filteredStop) => (
                 <div className="stop-preview rounded" key={ filteredStop.key }>
                     <Link to={`/stops/${filteredStop.value.stop_id}`}>

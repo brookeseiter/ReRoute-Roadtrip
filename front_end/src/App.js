@@ -37,8 +37,8 @@ function App() {
   }, [isLoggedIn]);
 
   // useEffect(() => {
-  //   setIsLoaded(true);
-  // }, [isLoaded]);
+  //   setloading(true);
+  // }, [loading]);
 
   // user activity event listeners
   document.addEventListener("mousemove", () =>{ 

@@ -84,12 +84,6 @@ export default function CreateStopPage ({
 
     console.log('currentUser CreateStopPage:', currentUser);
 
-    if (!isLoaded) return (
-        <>
-            <Navbar />
-            <Spinner animation="border" />
-        </>
-    )
     return ( 
         <div className="create-stop-page" onSubmit={handleSubmit}>
             <Navbar 
@@ -100,7 +94,8 @@ export default function CreateStopPage ({
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn} 
             />
-            {loading ? <Spinner animation="border" /> :
+            <Spinner className="spinner" animation="border" />
+            {(loading || !isLoaded) ? <Spinner className="spinner" animation="border" /> :
                 <div className="create-stop-page-content container">
                     <div className="row">
                         <div className="col-md-12">

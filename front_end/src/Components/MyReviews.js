@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 
 
-const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, loading, setLoading }) => {
+// const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, loading, setLoading }) => {
+const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) => {
     const [userReviews, setUserReviews] = useState([]); 
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedReview, setSelectedReview] = useState({});
