@@ -278,6 +278,9 @@ a:hover {
   position: relative;;
   bottom: 38px;
 }
+[data-reach-combobox-option-text] {
+  font-family: "Roboto Condensed" !important;
+}
 .create-stop-page h1 {
   margin-top: 8px;
 }

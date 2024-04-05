@@ -94,7 +94,7 @@ export default function CreateStopPage ({
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn} 
             />
-            <Spinner className="spinner" animation="border" />
+            {/* <Spinner className="spinner" animation="border" /> */}
             {(loading || !isLoaded) ? <Spinner className="spinner" animation="border" /> :
                 <div className="create-stop-page-content container">
                     <div className="row">
@@ -200,7 +200,7 @@ export default function CreateStopPage ({
                                         required
                                     >
                                         <option disabled={true} value="">Choose a stop category</option>
-                                        <option value="Camping">Camping</option>
+                                        <option className="enbled" value="Camping">Camping</option>
                                         <option value="Caverns">Caverns</option>
                                         <option value="Climbing Access/Scrambling">Climbing Access/Scrambling</option>
                                         <option value="Hiking">Hiking</option>
@@ -240,6 +240,7 @@ function StandaloneSearchBox({ panTo }) {
     
     return (
         <Combobox 
+            className="combobox"
             style={{width: '400px'}}
             onSelect={async (address) => {
                 setValue(address, false);
@@ -263,8 +264,8 @@ function StandaloneSearchBox({ panTo }) {
                 disabled={!ready}
                 placeholder="Enter an address near your stop"
             />
-            <ComboboxPopover>
-                <ComboboxList>
+            <ComboboxPopover id="popover">
+                <ComboboxList id="combobox-list">
                     {status === "OK" && 
                         data.map(({id, description}) => (
                             <ComboboxOption id="create-stop-search-option" key={id} value={description} />
