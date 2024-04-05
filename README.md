@@ -25,6 +25,7 @@ APIs:
 - National Park Service API
 
 ## <a name="features">Features</a>
+![allstopspage](https://github.com/brookeseiter/ReRoute-Roadtrip/assets/100550224/e97399a5-00d5-430a-8aba-7cb4be2a3227)
 
 ## <a name="installation">Installation</a>
 Follow these steps to run ReRoute Roadtrip locally on your computer:
