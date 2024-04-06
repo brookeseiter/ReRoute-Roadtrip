@@ -41,7 +41,8 @@ export default function CreateStopPage ({
 
     const panTo = useCallback(({lat, lng}) => {
         mapRef.current.panTo({lat, lng});
-        mapRef.current.setZoom(12);
+        // mapRef.current.setZoom(12);
+        mapRef.current.setZoom(15);
     }, []);
 
     const handleChange = (e) => {

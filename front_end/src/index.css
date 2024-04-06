@@ -281,6 +281,9 @@ a:hover {
 [data-reach-combobox-option-text] {
   font-family: "Roboto Condensed" !important;
 }
+[data-reach-combobox-popover] {
+  border: none;
+}
 .create-stop-page h1 {
   margin-top: 8px;
 }
