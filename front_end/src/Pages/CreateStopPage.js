@@ -10,7 +10,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 const center = {
     lat: 37.733795, 
-    lng: -122.446747
+    lng: -122.372551
 };
 
 export default function CreateStopPage ({ 
@@ -41,7 +41,6 @@ export default function CreateStopPage ({
 
     const panTo = useCallback(({lat, lng}) => {
         mapRef.current.panTo({lat, lng});
-        // mapRef.current.setZoom(12);
         mapRef.current.setZoom(15);
     }, []);
 
@@ -95,7 +94,6 @@ export default function CreateStopPage ({
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn} 
             />
-            {/* <Spinner className="spinner" animation="border" /> */}
             {(loading || !isLoaded) ? <Spinner className="spinner" animation="border" /> :
                 <div className="create-stop-page-content container">
                     <div className="row">
@@ -110,7 +108,7 @@ export default function CreateStopPage ({
                         <div className="row g-3">
                             <div className="map-content col-md-6">
                                 <GoogleMap 
-                                    zoom={10} 
+                                    zoom={9} 
                                     center={center} 
                                     mapContainerClassName="map-container"
                                     mapContainerStyle={{
