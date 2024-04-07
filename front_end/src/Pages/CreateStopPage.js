@@ -56,8 +56,8 @@ export default function CreateStopPage ({
             userId: currentUser,
             stopCategory: catChoice,
             stopName: inputs.stopName,
-            stopLat: marker.lat,
-            stopLng: marker.lng,
+            stopLat: marker.lat.toFixed(7),
+            stopLng: marker.lng.toFixed(7),
         }
         console.log(stopInfo);
 
