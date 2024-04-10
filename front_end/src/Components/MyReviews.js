@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 
 
-// const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn, loading, setLoading }) => {
 const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn }) => {
     const [userReviews, setUserReviews] = useState([]); 
     const [modalOpen, setModalOpen] = useState(false);
@@ -12,15 +11,31 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
     const [content, setContent] = useState('');
     const [editSuccess, setEditSuccess] = useState(false);
    
+    // console.log('selected review:', selectedReview.value);
+    // console.log('content:', content);
+    // console.log('rating:', rating);
+
     useEffect(() => {
         if (currentUser.userId !== '') {
-            console.log(editSuccess);
             fetch(`/api/user/${currentUser}/reviews`) 
                 .then(response => response.json())
-                .then(data => setUserReviews(data)) 
+                .then(data => {
+                    setUserReviews(data);
+                    setEditSuccess(false);
+                }) 
                 .catch(error => console.log(error));
         }
     }, [currentUser, editSuccess]); 
+
+    // const getUserReviews = () = {
+    //     fetch(`/api/user/${currentUser}/reviews`) 
+    //         .then(response => response.json())
+    //         .then(data => setUserReviews(data)) 
+    // };
+
+    // useEffect (() => {
+    //     getUserReviews();
+    // }, [currentUser]);
 
     const handleOpenModal = () => setModalOpen(true);
     const handleCloseModal = () => setModalOpen(false);
@@ -40,6 +55,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
             rating: rating,
             content: content
         }
+        // console.log('updateReviewInfo:', updateReviewInfo);
 
         const requestOptions = {
             method: 'PUT',
@@ -58,6 +74,8 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
             .catch((error) => console.log(error));
             handleCloseModal();
     };
+
+    console.log('edit success:', editSuccess);
 
     const handleDeleteReview = () => {
         fetch(`/reviews/${selectedReview.key}/delete`, {
