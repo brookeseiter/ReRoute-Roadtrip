@@ -359,8 +359,8 @@ a:hover {
   margin-top: 8px;
 }
 .form-control:focus {
-  border-color: none;
-  box-shadow: none;
+  border-color: none !important;
+  box-shadow: none !important;
 }
 .create-route-page label {
   font-size: 22px;
@@ -417,6 +417,9 @@ button.infowindow {
 
 
 /* Accordion */
+.accordion {
+  --bs-accordion-btn-focus-box-shadow: none;
+}
 body {
   background-color: #f9f9fa
 }

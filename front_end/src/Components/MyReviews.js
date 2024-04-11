@@ -31,6 +31,7 @@ const StopReviews = ({ currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn })
     //     fetch(`/api/user/${currentUser}/reviews`) 
     //         .then(response => response.json())
     //         .then(data => setUserReviews(data)) 
+    //         .catch(error => console.log(error));
     // };
 
     // useEffect (() => {
