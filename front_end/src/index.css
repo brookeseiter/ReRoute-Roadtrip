@@ -362,6 +362,9 @@ a:hover {
   border-color: none !important;
   box-shadow: none !important;
 }
+.form-control {
+  transition: none;
+}
 .create-route-page label {
   font-size: 22px;
   margin-top: 0.5rem;
