@@ -18,24 +18,24 @@ const StopDetails = ({
     let { stopId } = useParams(); 
     const [stop, setStop] = useState([]); 
     const [inputs, setInputs] = useState({});
+    const [userRating, setUserRating] = useState("");
     const [updateReviews, setUpdateReviews] = useState(false);
-    let [userRating, setUserRating] = useState("");
-   
-    useEffect(() => {
+
+    const fetchStopData = () => {
         setLoading(true);
         fetch(`/stops/${stopId}`) 
             .then((response) => response.json())
-            .then((stopData) => {
-                console.log('stopData:', stopData);
-                setStop(stopData);
-                setLoading(false);
-            }) 
-            .catch((error) => console.log(error));
+            .then((stopData) => setStop(stopData)) 
+            .catch((error) => console.log(error))
+            .finally(() => setLoading(false));
+    }
+
+    useEffect(() => {
+        fetchStopData();
     }, [setLoading, stopId, updateReviews]); 
 
     const handleChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
+        const { name, value } = e.target;
         setInputs(values => ({...values, [name]: value}));
     }
 
@@ -59,18 +59,19 @@ const StopDetails = ({
         fetch(`/stops/${stopId}/review`, requestOptions)
             .then((response) => response.json())
             .then((reviewData) => {
-                console.log(reviewData);
                 if (reviewData.message === 'User has already created a review for this stop.') {
                     alert('You have already reviewed this stop.');
+                } else {
+                    setInputs({});
+                    setUserRating('');
+                    setUpdateReviews(prevState => !prevState);
+                    fetchStopData(); 
                 }
-                setUpdateReviews(true);
-                setUserRating('');
-                setInputs({});
             })
             .catch((error) => console.log(error));
     }
     
-    if (loading) {
+    if (loading || !stop.stop_name) {
         return (
             <div className="profile-page">
                 <Navbar 
@@ -117,10 +118,7 @@ const StopDetails = ({
                                     name="rating" 
                                     id="review-rating-select"
                                     value={userRating}
-                                    onChange={(e) => {
-                                        userRating = e.target.value;
-                                        setUserRating(userRating);
-                                    }}
+                                    onChange={(e) => setUserRating(e.target.value)}
                                     required
                                 >
                                     <option disabled={true} value="">Choose a number between 1-5</option>
@@ -161,6 +159,7 @@ const StopDetails = ({
 }
  
 export default StopDetails;
+
 
 
 
