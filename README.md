@@ -26,16 +26,20 @@ APIs:
 
 ## <a name="features">Features</a>
 All Stops Page:
-features: search, pagination
+Features: search, pagination
 ![allstopspage](https://github.com/brookeseiter/ReRoute-Roadtrip/assets/100550224/e97399a5-00d5-430a-8aba-7cb4be2a3227)
 
 Create Stop Page
-features: autofill, drop pin on map, create a stop
+Features: autofill, drop pin on map, create a stop
 ![createstoppage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/createstoppage.gif)
 
 Profile Page
-features: delete stop, delete/edit review
+Features: delete stop, delete/edit review
 ![profilepage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/profilepage.gif)
+
+Stop Details Page
+Features: create review
+![stopdetailspage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/stopdetailspage.gif)
 
 ## <a name="installation">Installation</a>
 Follow these steps to run ReRoute Roadtrip locally on your computer:
