@@ -41,6 +41,10 @@ Stop Details Page
 Features: create review
 ![stopdetailspage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/stopdetailspage.gif)
 
+Create Route Page
+Features: create/edit route, get route directions
+![createroutepage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/createroutepage.gif)
+
 ## <a name="installation">Installation</a>
 Follow these steps to run ReRoute Roadtrip locally on your computer:
 

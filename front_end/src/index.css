@@ -378,6 +378,9 @@ a:hover {
   margin-top: 0px !important;
   margin-bottom: 2.5rem !important;
 }
+h1.modal-title {
+  border-bottom: none;
+}
 .modal.fade .modal-dialog {
   border-radius: var(--bs-modal-border-radius);
   transform: none;
