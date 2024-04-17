@@ -35,7 +35,7 @@ h1 {
   border-bottom: 2px solid #000000;
 }
 input, textarea, select {
-  outline: 0;
+  outline: 0 !important;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -359,11 +359,10 @@ a:hover {
   margin-top: 8px;
 }
 .form-control:focus {
-  border-color: none !important;
-  box-shadow: none !important;
-}
-.form-control {
-  transition: none;
+  border-color: #ddd;
+  box-shadow: none;
+  transition: none !important;
+  outline: none !important;
 }
 .create-route-page label {
   font-size: 22px;
