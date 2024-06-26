@@ -26,25 +26,38 @@ APIs:
 - National Park Service API
 
 ## <a name="features">Features</a>
-All Stops Page:
-Features: search, pagination
+Users can create an account with enhanced security through the use of password encryption. Then, the user can log in and access the rest of the web app and the following features:
+
+**All Stops Page**
+
 ![allstopspage](https://github.com/brookeseiter/ReRoute-Roadtrip/assets/100550224/e97399a5-00d5-430a-8aba-7cb4be2a3227)
 
+- Search: Users can search through the list of all stops by name.
+- Pagination: To enhance the efficiency of browsing through the list of stops, the display is limited to 10 stops per page. Clicking through the pagination controls allows users to to navigate to different pages and skip ahead to other stops in the list.
+
 Create Stop Page
-Features: autofill, drop pin on map, create a stop
 ![createstoppage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/createstoppage.gif)
 
-Profile Page
-Features: delete stop, delete/edit review
-![profilepage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/profilepage.gif)
+- Location Search: Users can type a location into the input box and receive suggested locations through an autofill feature built using the Google Places API, making it easier to search for a specific location on the map.
+- Interactive Map Pinpointing: Users can click anywhere on the map to drop a pin and instantly obtain the latitude and longitude coordinates of that location, facilitating precise location identification.
+- Create A Stop: Once a user has dropped a pin on the map and added a name and category, the stop can be submitted and becomes accessible to other users.
 
 Stop Details Page
-Features: create review
 ![stopdetailspage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/stopdetailspage.gif)
 
+- Create Review: After creating or visiting a stop submitted by another user, users can add a review including a written body and rating, offering valuable feedback and insights for others.
+
+Profile Page
+![profilepage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/profilepage.gif)
+
+- Delete Stop: Users have the ability to delete stops they've created, providing control over their contributions to the platform.
+- Delete/Edit Review: Users can edit or delete their reviews for stops, allowing them to update their feedback or remove it as needed.
+
 Create Route Page
-Features: create/edit route, get route directions
 ![createroutepage](https://github.com/brookeseiter/gifs/blob/main/reroute-roadtrip/gifs/createroutepage.gif)
+
+- Create/Edit Route: Users can create a route on the map by entering an origin and destination address. Stops submitted to the database are displayed as pins on the map. Users can dynamically add or remove these stops from the route, allowing for flexible route planning based on user input.
+- Get Route Directions: Once the route is finalized, users can access optimized directions provided through the Google Maps API, ensuring efficient navigation between selected stops.
 
 ## <a name="installation">Installation</a>
 Follow these steps to run ReRoute Roadtrip locally on your computer:
